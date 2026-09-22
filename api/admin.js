@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { get, put } from "@vercel/blob";
+import { get, put, issueSignedToken, presignUrl } from "@vercel/blob";
 const COOKIE="syriatech_admin"; const EMPTY={overrides:{},additions:[],deleted:[]};
 const secret=()=>process.env.ADMIN_SECRET||"";
 const sign=v=>crypto.createHmac("sha256",secret()).update(v).digest("hex");
@@ -21,6 +21,18 @@ export default async function handler(req,res){
   if(req.method==="POST"&&action==="logout"){res.setHeader("Set-Cookie",COOKIE+"=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0");return res.status(200).json({ok:true});}
   if(!authed(req))return fail(res,401,"Unauthorized");
   if(req.method==="GET"&&action==="state")return res.status(200).json(await readState());
+  if(req.method==="POST"&&action==="presign"){
+   const body=typeof req.body==="string"?JSON.parse(req.body||"{}"):(req.body||{});
+   const filename=String(body.filename||"").replace(/[^a-zA-Z0-9._-]/g,"-");
+   const contentType=String(body.contentType||"");
+   const size=Number(body.size||0);
+   if(!filename||!contentType.startsWith("image/"))return fail(res,400,"Invalid image file");
+   if(!size||size>10*1024*1024)return fail(res,400,"Image must be 10MB or smaller");
+   const pathname="products/"+Date.now()+"-"+filename;
+   const token=await issueSignedToken({pathname,operations:["put"]});
+   const {presignedUrl}=await presignUrl(token,{pathname,operation:"put",validUntil:Date.now()+15*60*1000});
+   return res.status(200).json({ok:true,pathname,presignedUrl});
+  }
   if(req.method==="POST"&&action==="save"){
    const body=typeof req.body==="string"?JSON.parse(req.body||"{}"):(req.body||{});const p=body.product;
    if(!p||!p.id||!p.name)return fail(res,400,"Product id and name are required");
