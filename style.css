@@ -228,3 +228,4 @@ button{cursor:pointer}
   .discount-label{display:block;margin:3px 0 0}
   .floating-whatsapp{right:12px;bottom:12px;width:52px;height:52px}
 }
+.image-lightbox{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}.image-lightbox[hidden]{display:none}.image-lightbox img{display:block;max-width:min(94vw,1200px);max-height:90vh;width:auto;height:auto;object-fit:contain;border-radius:14px;box-shadow:0 20px 70px rgba(0,0,0,.5);background:#fff;padding:10px;cursor:default}.lightbox-close{position:absolute;top:18px;right:22px;width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:#111;font-size:34px;line-height:1;cursor:pointer;z-index:2}.product-image img{cursor:zoom-in}.lightbox-open{overflow:hidden}
