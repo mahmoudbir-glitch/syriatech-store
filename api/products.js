@@ -2,10 +2,18 @@ import { get } from "@vercel/blob";
 
 const EMPTY = { overrides: {}, additions: [], deleted: [], settings: {} };
 
+// Only the two fields the storefront needs; internal bookkeeping stays private.
+function publicSettings(settings) {
+  const s = settings && typeof settings === "object" ? settings : {};
+  return { whatsapp: String(s.whatsapp || ""), email: String(s.email || "") };
+}
+
 export default async function handler(req, res) {
   if (req.method !== "GET") return res.status(405).json({ error: "Method not allowed" });
   // Cached briefly at the edge so a repeat visit does not pay for a function call.
-  res.setHeader("Cache-Control", "public, max-age=0, s-maxage=30, stale-while-revalidate=300");
+  // The browser always revalidates (an admin edit must show up at once); the edge
+  // still absorbs the traffic.
+  res.setHeader("Cache-Control", "public, max-age=0, must-revalidate, s-maxage=30, stale-while-revalidate=60");
   try {
     const blob = await get("data/store-state.json", { access: "private", useCache: false });
     if (!blob) return res.status(200).json(EMPTY);
@@ -20,7 +28,7 @@ export default async function handler(req, res) {
       // A product the owner deleted must not stay readable here.
       additions: (Array.isArray(state.additions) ? state.additions : []).filter(x => !hidden.has(Number(x && x.id))),
       deleted,
-      settings: state.settings && typeof state.settings === "object" ? state.settings : {}
+      settings: publicSettings(state.settings)
     });
   } catch (e) {
     // The storefront falls back to the default catalog when this fails.

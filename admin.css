@@ -20,7 +20,8 @@ button,input,select,textarea{font:inherit}
 label{display:block;margin:0 0 14px;font-weight:700;font-size:14px}
 label small{font-weight:400;color:var(--muted);font-size:12px}
 input,select,textarea{width:100%;border:1px solid #d0d5dd;border-radius:10px;padding:11px 12px;margin-top:6px;background:#fff;color:var(--ink)}
-input:focus,select:focus,textarea:focus{outline:2px solid rgba(18,100,255,.25);border-color:var(--blue)}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #0a5fd6;outline-offset:2px}
+input:focus,select:focus,textarea:focus{border-color:var(--blue)}
 textarea{resize:vertical}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .msg{min-height:20px;margin-top:10px;font-size:14px;color:var(--muted)}

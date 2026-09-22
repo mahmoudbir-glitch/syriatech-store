@@ -63,3 +63,24 @@ export async function presignUrl(token, options = {}) {
 export function parseStoreIdFromDelegationToken(delegationToken) {
   return JSON.parse(Buffer.from(delegationToken, "base64url").toString()).storeId;
 }
+
+export async function list(options = {}) {
+  const prefix = options.prefix || "";
+  const names = fs.existsSync(ROOT) ? fs.readdirSync(ROOT) : [];
+  const blobs = names
+    .filter(n => !n.endsWith(".meta.json"))
+    .map(n => decodeURIComponent(n))
+    .filter(p => p.startsWith(prefix))
+    .map(p => ({ pathname: p, url: "blob://" + p, size: fs.statSync(file(p)).size }));
+  return { blobs, cursor: null, hasMore: false };
+}
+
+export async function del(urls) {
+  const many = Array.isArray(urls) ? urls : [urls];
+  for (const u of many) {
+    const pathname = String(u).replace("blob://", "");
+    for (const p of [file(pathname), metaFile(pathname)]) {
+      if (fs.existsSync(p)) fs.unlinkSync(p);
+    }
+  }
+}

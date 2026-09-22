@@ -1,5 +1,5 @@
 // End-to-end checks against the local dev server.
-const BASE = "http://127.0.0.1:3100";
+const BASE = "http://127.0.0.1:" + (process.env.DEV_PORT || 3100);
 let cookie = "";
 let failures = 0;
 

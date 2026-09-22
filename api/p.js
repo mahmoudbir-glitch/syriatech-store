@@ -7,12 +7,29 @@
  */
 let store = null;
 
-async function loadStore(origin) {
+// The bundled files are read from disk. A request's Host header must never
+// decide where code is loaded from, so the HTTP fallback uses Vercel's own
+// deployment URL.
+function trustedOrigin() {
+  const host = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL || "";
+  return host ? "https://" + host : "";
+}
+
+async function readSource(name) {
+  try {
+    const fs = await import("node:fs/promises");
+    const path = await import("node:path");
+    return await fs.readFile(path.join(process.cwd(), name), "utf8");
+  } catch (e) {
+    const origin = trustedOrigin();
+    if (!origin) throw e;
+    return fetch(origin + "/" + name).then(r => r.text());
+  }
+}
+
+async function loadStore() {
   if (store) return store;
-  const [i18nSrc, catalogSrc] = await Promise.all([
-    fetch(origin + "/i18n.js").then(r => r.text()),
-    fetch(origin + "/catalog.js").then(r => r.text())
-  ]);
+  const [i18nSrc, catalogSrc] = await Promise.all([readSource("i18n.js"), readSource("catalog.js")]);
   const win = {};
   const nav = { languages: ["ar"] };
   const storage = { getItem: () => null, setItem: () => {} };
@@ -26,10 +43,10 @@ async function loadStore(origin) {
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 export default async function handler(req, res) {
-  const origin = "https://" + req.headers.host;
+  const origin = trustedOrigin() || "https://" + String(req.headers.host || "").replace(/[^\w.:-]/g, "");
   const id = Number(req.query && req.query.id);
   try {
-    const win = await loadStore(origin);
+    const win = await loadStore();
     const state = await fetch(origin + "/api/products").then(r => r.json()).catch(() => ({}));
     const product = win.STORE.merge(state).find(p => p.id === id);
     if (!product) {
@@ -39,9 +56,12 @@ export default async function handler(req, res) {
     }
 
     const raw = String(product.image || "");
-    const image = raw && !raw.startsWith("data:")
-      ? (raw.startsWith("http") ? raw : origin + "/" + raw.replace(/^\//, ""))
-      : origin + "/assets/og-cover.png";
+    // WhatsApp and Facebook render WebP unreliably, so every catalogue photo also
+    // has a 1200x630 JPEG card at /assets/og/<id>.jpg.
+    const card = /^\/?assets\/products\/(\d+)\.webp$/.exec(raw);
+    const image = card
+      ? origin + "/assets/og/" + card[1] + ".jpg"
+      : (raw.startsWith("http") ? raw : origin + "/assets/og-cover.png");
     const url = origin + "/p/" + product.id;
     const description = win.STORE.descFor(product, "ar") || product.description || "";
     const title = product.name + " | " + win.I18N.t("brandName", null, "ar");
@@ -73,6 +93,13 @@ export default async function handler(req, res) {
       '<meta property="og:title" content="' + esc(title) + '">' +
       '<meta property="og:description" content="' + esc(description) + '">' +
       '<meta property="og:image" content="' + esc(image) + '">' +
+      '<meta property="og:image:width" content="1200">' +
+      '<meta property="og:image:height" content="630">' +
+      '<meta property="og:locale" content="ar_AR">' +
+      '<link rel="alternate" hreflang="ar" href="' + esc(url) + '?lang=ar">' +
+      '<link rel="alternate" hreflang="en" href="' + esc(url) + '?lang=en">' +
+      '<link rel="alternate" hreflang="tr" href="' + esc(url) + '?lang=tr">' +
+      '<link rel="alternate" hreflang="x-default" href="' + esc(url) + '">' +
       '<meta property="product:price:amount" content="' + product.price.toFixed(2) + '">' +
       '<meta property="product:price:currency" content="USD">' +
       '<meta name="twitter:card" content="summary_large_image">' +
@@ -81,18 +108,20 @@ export default async function handler(req, res) {
       '<meta name="twitter:image" content="' + esc(image) + '">' +
       '<link rel="canonical" href="' + esc(url) + '">' +
       '<script type="application/ld+json">' + JSON.stringify(jsonLd).replace(/</g, "\\u003c") + "</script>" +
-      '<script>location.hash="#product/' + product.id + '";</script>';
+      '<link rel="alternate" type="application/json" href="' + esc(url) + '">';
 
     const shell = await fetch(origin + "/index.html").then(r => r.text());
     const html = shell
-      .replace(/<title>[^<]*<\/title>/, "<title>" + esc(title) + "</title>")
-      .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="' + esc(description) + '">')
+      .replace('<body>', () => '<body data-product-id="' + product.id + '">')
+      .replace(/<title>[^<]*<\/title>/, () => "<title>" + esc(title) + "</title>")
+      .replace(/<meta name="description" content="[^"]*">/, () => '<meta name="description" content="' + esc(description) + '">')
       // Drop the site-wide preview tags: a crawler keeps the first one it sees,
       // and this page must advertise the product, not the home page.
       .replace(/[ \t]*<meta property="og:[^>]*>\r?\n?/g, "")
       .replace(/[ \t]*<meta name="twitter:[^>]*>\r?\n?/g, "")
       .replace(/[ \t]*<link rel="canonical"[^>]*>\r?\n?/g, "")
-      .replace("</head>", tags + "</head>");
+      .replace(/[ \t]*<link rel="alternate" hreflang="[^"]*"[^>]*>\r?\n?/g, "")
+      .replace("</head>", () => tags + "</head>");
 
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.setHeader("Cache-Control", "public, max-age=0, s-maxage=300, stale-while-revalidate=86400");

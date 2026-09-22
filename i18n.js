@@ -83,8 +83,8 @@
       sortName: "حسب الاسم",
       searchResults: "نتائج البحث عن “{q}”",
       favoritesTitle: "المفضلة",
-      skipToProducts: "تخطَّ إلى المنتجات",
-      removeFilter: "إزالة التصفية: {name}",
+      skipToProducts: "الانتقال إلى المنتجات",
+      removeFilter: "إزالة عامل التصفية: {name}",
       productNotFound: "هذا المنتج لم يعد متوفراً في المتجر.",
       dealsTitle: "العروض والخصومات",
       inStockOnly: "المتوفر فقط",
@@ -120,7 +120,7 @@
 
       contactEyebrow: "خدمة الزبائن",
       contactTitle: "اطلب أو استفسر مباشرة",
-      contactText: "فريقنا يرد عليك على واتساب خلال دقائق ضمن أوقات الدوام.",
+      contactText: "فريقنا يرد عليك عبر واتساب خلال دقائق ضمن أوقات الدوام.",
 
       cartEyebrow: "طلبك",
       cartTitle: "سلة المشتريات",
@@ -164,7 +164,7 @@
         addProduct: "إضافة منتج جديد",
         chooseCategory: "اختر القسم",
         duplicate: "نسخ المنتج",
-        testWhatsapp: "جرّب الرقم على واتساب ↗",
+        testWhatsapp: "جرّب الرقم عبر واتساب",
         listInfo: "عدد المنتجات: {n} — اضغط على أي منتج لتعديله",
         listInfoFiltered: "{n} من أصل {total} — اضغط على أي منتج لتعديله",
         noResults: "لا توجد منتجات مطابقة للبحث.",
@@ -252,6 +252,7 @@
         unsupported_image: "صيغة الصورة غير مدعومة. استخدم JPG أو PNG أو WEBP",
         image_too_large: "حجم الصورة يجب أن يكون أقل من 10 ميغابايت",
         corrupt_state: "تعذّر الحفظ بسبب مشكلة في ملف بيانات المتجر. لم يتغيّر شيء في متجرك — تواصل مع الدعم الفني.",
+        no_backup: "لا توجد نسخة احتياطية محفوظة",
         unknown_action: "عملية غير معروفة",
         server_error: "خطأ في الخادم، حاول مرة أخرى"
       },
@@ -260,7 +261,7 @@
         "hubs-docks": "موزّعات ومحطات ربط", power: "محطات شحن مكتبية", car: "شحن السيارة",
         audio: "سماعات ومكبّرات صوت", security: "كاميرات مراقبة وحماية", "smart-home": "المنزل الذكي",
         projector: "أجهزة عرض", solar: "طاقة متنقلة وشمسية",
-        "phone-cases": "كفرات وحمايات", accessories: "ملحقات وقطع تبديل"
+        "phone-cases": "كفرات وواقيات شاشة", accessories: "ملحقات متنوعة"
       },
       categoryDesc: {
         "power-bank": "باور بانك أصلي من {brand} لشحن سريع يدوم معك طوال اليوم.",
@@ -276,7 +277,7 @@
         projector: "جهاز عرض من {brand} يحوّل بيتك إلى سينما.",
         solar: "محطة طاقة من {brand} تبقيك متصلاً وقت انقطاع الكهرباء.",
         "phone-cases": "كفر أصلي من {brand} يحمي جهازك بمظهر أنيق.",
-        accessories: "ملحق أصلي من {brand} لتشغيل أفضل وعمر أطول لجهازك."
+        accessories: "ملحق أصلي من {brand} يكمّل جهازك ويطيل عمره."
       },
       brandTagline: {
         Anker: "شحن وطاقة · الأكثر مبيعاً عالمياً",
@@ -532,6 +533,7 @@
         unsupported_image: "Image format not supported. Use JPG, PNG or WEBP",
         image_too_large: "The image must be smaller than 10MB",
         corrupt_state: "The store data file is corrupt, nothing was saved",
+        no_backup: "No saved backup was found",
         unknown_action: "Unknown action",
         server_error: "Server error, please try again"
       },
@@ -651,7 +653,7 @@
       filterStock: "Stok durumu",
       detailsTitle: "Ürün detayları",
       staleNotice: "Fiyatlar şu anda güncellenemedi — sipariş öncesi fiyat ve stok durumunu WhatsApp'tan doğrulayın.",
-      orderRef: "Sipariş no.",
+      orderRef: "Sipariş No",
       orderFields: "Ad Soyad: ______\nŞehir: ______\nAdres: ______",
       quantity: "Adet",
 
@@ -755,7 +757,7 @@
         imageUrl: "Veya bir görsel bağlantısı yapıştırın",
         preparingImage: "Görsel hazırlanıyor...",
         uploadingImage: "Görsel yükleniyor...",
-        imageUploaded: "Görsel yüklendi ✓ görseli ürüne eklemek için Kaydet'e basın.",
+        imageUploaded: "Görsel yüklendi ✓ ürüne eklemek için Kaydet'e basın.",
         imageRemoved: "Görsel kaldırıldı. Değişikliği uygulamak için Kaydet'e basın.",
         uploadFailed: "Görsel yüklenemedi: {error}",
         unsupportedFile: "Bu görsel biçimi desteklenmiyor. JPG, PNG veya WEBP kullanın",
@@ -773,7 +775,7 @@
         settingsSaved: "Ayarlar kaydedildi ✓",
         discountHint: "%{n} indirim uygulanacak; indirimsiz fiyat üzeri çizili gösterilecek.",
         discountWarn: "İndirimsiz fiyat, güncel fiyattan daha yüksek olmalı",
-        confirmDelete: "\"{name}\" mağazadan silinsin mi? Silinenler listesinden geri alabilirsiniz.",
+        confirmDelete: "“{name}” mağazadan silinsin mi? Silinenler listesinden geri alabilirsiniz.",
         confirmRevert: "Bu ürün orijinal bilgilerine döndürülsün mü?",
         confirmLeave: "Kaydedilmemiş değişiklikleriniz var. Kaydetmeden çıkılsın mı?",
         needName: "Ürün adını yazın",
@@ -787,10 +789,10 @@
         saveSettings: "Ayarları kaydet",
         helpTitle: "Nasıl kullanılır",
         help1: "Ürün düzenleme: listeden ürüne dokunun, değiştirmek istediğinizi değiştirin ve Kaydet'e basın.",
-        help2: "Görsel değiştirme: ürünü açın, \"Bu cihazdan görsel seç\" düğmesine basın, yüklendi mesajını bekleyin ve Kaydet'e basın.",
-        help3: "İndirim: yeni fiyatı \"Güncel fiyat\" alanına, eski fiyatı \"İndirimsiz fiyat\" alanına yazın; oran otomatik hesaplanır.",
-        help4: "Stok bitti: \"Ürün stokta var\" kutucuğunun işaretini kaldırın; müşteri ürünü tükendi olarak görür ve WhatsApp'tan sorabilir.",
-        help5: "Ürün ekleme: \"Yeni ürün ekle\" düğmesine basın ve bilgileri doldurun.",
+        help2: "Görsel değiştirme: ürünü açın, “Bu cihazdan görsel seç” düğmesine basın, yüklendi mesajını bekleyin ve Kaydet'e basın.",
+        help3: "İndirim: yeni fiyatı “Güncel fiyat” alanına, eski fiyatı “İndirimsiz fiyat” alanına yazın; oran otomatik hesaplanır.",
+        help4: "Stok bitti: “Ürün stokta var” kutucuğunun işaretini kaldırın; müşteri ürünü tükendi olarak görür ve WhatsApp'tan sorabilir.",
+        help5: "Ürün ekleme: “Yeni ürün ekle” düğmesine basın ve bilgileri doldurun.",
         help6: "Silme ve geri alma: silmek kalıcı değildir, sayfanın altındaki silinenler listesinde bulursunuz.",
         helpNote: "Her değişiklik kaydettikten hemen sonra mağazada yayına girer.",
         sessionExpired: "Oturum sona erdi, lütfen tekrar giriş yapın",
@@ -812,6 +814,7 @@
         unsupported_image: "Görsel biçimi desteklenmiyor. JPG, PNG veya WEBP kullanın",
         image_too_large: "Görsel 10 MB'tan küçük olmalı",
         corrupt_state: "Mağaza veri dosyası bozuk, hiçbir değişiklik kaydedilmedi",
+        no_backup: "Kayıtlı yedek bulunamadı",
         unknown_action: "Bilinmeyen işlem",
         server_error: "Sunucu hatası, lütfen tekrar deneyin"
       },

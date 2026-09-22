@@ -31,13 +31,13 @@
   function artworkFor(product) {
     if (!product) return "";
     const id = Number(product.id) || 0;
-    const hue = 196 + ((id * 23) % 74);
+    const hue = 214 + ((id * 23) % 34);
     const kind = SHAPE_BY_CATEGORY[product.category] || "tech";
     const shape = SHAPES[kind];
     const stroke = kind === "cable" ? ' stroke="url(#g)"' : ' stroke="rgba(14,24,38,.18)"';
     const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700">' +
       '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
-      '<stop stop-color="hsl(' + hue + ',70%,58%)"/><stop offset="1" stop-color="hsl(' + (hue + 48) + ',66%,44%)"/>' +
+      '<stop stop-color="hsl(' + hue + ',70%,58%)"/><stop offset="1" stop-color="hsl(' + (hue + 22) + ',66%,44%)"/>' +
       '</linearGradient></defs>' +
       '<circle cx="570" cy="125" r="155" fill="url(#g)" opacity=".13"/>' +
       '<circle cx="110" cy="585" r="190" fill="url(#g)" opacity=".09"/>' +

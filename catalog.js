@@ -459,13 +459,19 @@
 
   function fallbackFor(p) {
     const c = categoryMap[p && p.category];
-    return (c && c.art) || PLACEHOLDER;
+    return rooted((c && c.art) || PLACEHOLDER);
+  }
+
+  // Paths are stored without a leading slash; serve them from the root so they
+  // also resolve on /p/<id>.
+  function rooted(url) {
+    return url && !/^(https?:|data:|\/)/.test(url) ? "/" + url : url;
   }
 
   function imageFor(p) {
-    if (p && typeof p.image === "string" && p.image.trim()) return p.image.trim();
+    if (p && typeof p.image === "string" && p.image.trim()) return rooted(p.image.trim());
     const custom = window.PRODUCT_IMAGES && window.PRODUCT_IMAGES[String(p && p.id)];
-    if (custom) return custom;
+    if (custom) return rooted(custom);
     const art = typeof window.STORE_ARTWORK === "function" ? window.STORE_ARTWORK(p) : "";
     return art || fallbackFor(p);
   }
@@ -497,12 +503,18 @@
   function isKnownCategory(id) { return categoryIds.has(String(id)); }
 
   // Broken image → category artwork → generic placeholder (never loops).
+  // Bound once in the capture phase: 'error' does not bubble.
+  document.addEventListener("error", function (e) {
+    const img = e.target;
+    if (img && img.tagName === "IMG" && img.dataset.fallback !== undefined) window.storeImageFallback(img);
+  }, true);
+
   window.storeImageFallback = function (img) {
     const next = img.dataset.fallback;
     img.dataset.fallback = "";
     if (next && img.getAttribute("src") !== next) { img.src = next; return; }
     img.onerror = null;
-    if (img.getAttribute("src") !== PLACEHOLDER) img.src = PLACEHOLDER;
+    if (img.getAttribute("src") !== "/" + PLACEHOLDER) img.src = "/" + PLACEHOLDER;
   };
 
   window.STORE = {

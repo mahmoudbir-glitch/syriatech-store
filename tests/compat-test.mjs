@@ -7,7 +7,7 @@ import path from "node:path";
 import puppeteer from "puppeteer-core";
 
 const REPO = process.env.DEV_REPO || "D:/bir/syriatech-store";
-const BASE = "http://127.0.0.1:3100";
+const BASE = "http://127.0.0.1:" + (process.env.DEV_PORT || 3100);
 const SHOT = process.env.SHOT_DIR;
 let failures = 0;
 const check = (name, ok, detail) => {
@@ -36,7 +36,7 @@ check("localStorage access is wrapped in try/catch", !/[^h]\blocalStorage\.(get|
 
 /* ---------- Screens ---------- */
 const browser = await puppeteer.launch({
-  executablePath: "process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe"",
+  executablePath: process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe",
   headless: "new",
   args: ["--no-sandbox", "--disable-dev-shm-usage"]
 });

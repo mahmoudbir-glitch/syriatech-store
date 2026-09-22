@@ -2,7 +2,7 @@
 import puppeteer from "puppeteer-core";
 import fs from "node:fs";
 
-const BASE = "http://127.0.0.1:3100";
+const BASE = "http://127.0.0.1:" + (process.env.DEV_PORT || 3100);
 const SHOT = process.env.SHOT_DIR;
 let failures = 0;
 const check = (name, ok, detail) => {
@@ -18,7 +18,7 @@ async function click(page, selector) {
 }
 
 const browser = await puppeteer.launch({
-  executablePath: "process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe"",
+  executablePath: process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe",
   headless: "new",
   args: ["--no-sandbox", "--disable-dev-shm-usage"]
 });
@@ -55,7 +55,7 @@ async function newPage(lang) {
     badge: el.querySelector(".product-badge")?.textContent
   }));
   check("card shows arabic description", /[\u0600-\u06FF]/.test(card.desc), card.desc);
-  check("card shows a real product photo", card.img.startsWith("assets/products/"), card.img);
+  check("card shows a real product photo", card.img.startsWith("/assets/products/"), card.img);
   check("card shows a price", /^\$\d+\.\d\d$/.test(card.price), card);
 
   // Scrolling near the end loads the next page (the button is the no-observer fallback).
@@ -81,7 +81,7 @@ async function newPage(lang) {
   check("category filter works", audioOk, audioIds.slice(0, 3));
   check("active pill follows the category", (await page.$eval("#categoryPills .category-pill.active", el => el.textContent)) === "سماعات ومكبّرات صوت");
 
-  await click(page, "#clearFilterButton");
+  await click(page, "#categoryPills [data-show-all]");
   check("show all resets to the first page", (await page.$$eval(".product", e => e.length)) === 24);
 
   await page.type("#searchInput", "nebula");
@@ -121,7 +121,7 @@ async function newPage(lang) {
   check("favourite count updates", (await page.$eval("#favoritesCount", el => el.textContent)) === "1");
   await click(page, "#favoritesButton");
   check("favourites view shows only saved items", (await page.$$eval(".product", e => e.length)) === 1);
-  await click(page, "#clearFilterButton");
+  await click(page, "#categoryPills [data-show-all]");
 
   await click(page, ".product .add-product");
   check("cart opens after adding", await page.$eval("#cart", el => el.classList.contains("open")));
@@ -133,14 +133,9 @@ async function newPage(lang) {
   await click(page, "#overlay");
   check("overlay click closes the cart", !(await page.$eval("#cart", el => el.classList.contains("open"))));
 
-  const waLink = await page.evaluate(() => {
-    let captured = "";
-    const open = window.open;
-    window.open = url => { captured = url; return null; };
-    document.getElementById("checkoutButton").click();
-    window.open = open;
-    return captured;
-  });
+  // The checkout control is a real link, so in-app browsers that block
+  // window.open still reach WhatsApp.
+  const waLink = await page.$eval("#checkoutButton", el => el.href);
   check("checkout builds a WhatsApp order", /wa\.me\/963949951985/.test(waLink), waLink.slice(0, 60));
 
   await click(page, ".product .product-image");
@@ -162,7 +157,7 @@ async function newPage(lang) {
   const firstId = await page.evaluate(() => window.STORE.products[0].id);
   const firstName = await page.evaluate(() => window.STORE.products[0].name);
   const direct = await browser.newPage();
-  await direct.goto(BASE + "#product/" + firstId, { waitUntil: "networkidle0" });
+  await direct.goto(BASE + "#product/" + firstId, { waitUntil: "load" });
   await wait(700);
   const deep = await direct.evaluate(() => ({
     visible: !document.querySelector("#productView").hidden,

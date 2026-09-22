@@ -13,6 +13,7 @@ let editing = null; // { product, isNew }
 let dirty = false;
 let uploading = false;
 let uploadAbort = null;
+let editorPushed = false;
 
 /* ---------- Server ---------- */
 async function api(action, body) {
@@ -58,7 +59,7 @@ function busy(button, on, label) {
   else { button.textContent = button.dataset.label || button.textContent; button.disabled = false; }
 }
 function imgTag(p) {
-  return '<img src="' + esc(S.imageFor(p)) + '" data-fallback="' + esc(S.fallbackFor(p)) + '" alt="" loading="lazy" onerror="storeImageFallback(this)">';
+  return '<img src="' + esc(S.imageFor(p)) + '" data-fallback="' + esc(S.fallbackFor(p)) + '" alt="" loading="lazy">';
 }
 
 /* ---------- Views ---------- */
@@ -131,7 +132,7 @@ function renderList() {
       "<div><strong>" + esc(p.name) + "</strong><small>" + esc(p.brand) + " · " + esc(S.categoryLabel(p.category)) + "</small>" +
       (tags.length ? '<div class="tags">' + tags.join("") + "</div>" : "") + "</div>" +
       '<div class="price"><b>' + money(p.price) + "</b>" + (p.discount ? "<del>" + money(p.oldPrice) + "</del>" : "") + "</div></button>" +
-      '<button type="button" class="stock-toggle' + (p.inStock ? " on" : "") + '" data-stock="' + p.id + '">' +
+      '<button type="button" class="stock-toggle' + (p.inStock ? " on" : "") + '" data-stock="' + p.id + '" aria-pressed="' + p.inStock + '">' +
       esc(t(p.inStock ? "inStock" : "outOfStock")) + "</button></div>";
   }).join("") || '<div class="empty">' + esc(t("admin.noResults")) + "</div>";
 }
@@ -200,30 +201,28 @@ function openEditor(product) {
   dirty = false;
   field("editor").hidden = false;
   document.body.style.overflow = "hidden";
-  if (!history.state || !history.state.editor) history.pushState({ editor: true }, "");
+  if (!editorPushed) { history.pushState({ editor: true }, ""); editorPushed = true; }
   if (isNew) field("name").focus();
 }
 
 function closeEditor(force) {
-  if (!force && uploading) {
-    if (!confirm(t("admin.confirmLeave"))) return;
+  if (!force && (dirty || uploading) && !confirm(t("admin.confirmLeave"))) return;
+  if (uploading) {
     if (uploadAbort) uploadAbort.abort();
     uploading = false;
     field("saveBtn").disabled = false;
   }
-  if (!force && dirty && !confirm(t("admin.confirmLeave"))) return;
   field("editor").hidden = true;
   document.body.style.overflow = "";
   editing = null;
   dirty = false;
-  if (history.state && history.state.editor) history.back();
+  if (editorPushed) { editorPushed = false; history.back(); }
 }
 
 function updatePreview() {
   const preview = field("preview");
   const p = { id: editing.product.id, category: field("category").value, brand: field("brand").value, name: field("name").value, image: field("image").value.trim() };
   preview.dataset.fallback = S.fallbackFor(p);
-  preview.onerror = () => storeImageFallback(preview);
   preview.src = S.imageFor(p);
   field("removeImage").hidden = !p.image;
 }
@@ -407,7 +406,20 @@ function bind() {
         const payload = { ...product, inStock: !product.inStock };
         delete payload.added; delete payload.edited; delete payload.discount;
         const data = await api("save", { product: payload, isNew: false });
-        setState(data.state);
+        state = data.state;
+        list = S.merge(state);
+        const now = list.find(p => p.id === product.id);
+        busy(stock, false);
+        if (now) {
+          stock.classList.toggle("on", now.inStock);
+          stock.setAttribute("aria-pressed", String(now.inStock));
+          stock.textContent = t(now.inStock ? "inStock" : "outOfStock");
+          const row = stock.previousElementSibling;
+          const tags = row && row.querySelector(".tags");
+          if (tags) tags.innerHTML = tags.innerHTML.replace(/<span class="tag out">[^<]*<\/span>/, "") +
+            (now.inStock ? "" : '<span class="tag out">' + esc(t("admin.tagOutOfStock")) + "</span>");
+        }
+        renderDeleted();
         toast(t("admin.saved"));
       } catch (err) { toast(err.message, true); busy(stock, false); }
       return;
@@ -441,8 +453,8 @@ function bind() {
   });
   field("duplicateBtn").addEventListener("click", () => {
     if (!editing) return;
-    const copy = { ...editing.product, name: editing.product.name + " (2)" };
-    delete copy.id; delete copy.added; delete copy.edited;
+    const copy = { ...formProduct(), name: field("name").value.trim() + " (2)" };
+    delete copy.id;
     openEditor(null);
     field("name").value = copy.name;
     field("brand").value = copy.brand || "";
@@ -452,6 +464,7 @@ function bind() {
     field("descriptionAr").value = copy.descriptionAr || "";
     field("description").value = copy.description || "";
     field("descriptionTr").value = copy.descriptionTr || "";
+    field("badge").value = copy.badge || "";
     field("image").value = copy.image || "";
     field("inStock").checked = copy.inStock !== false;
     dirty = true;
@@ -484,18 +497,28 @@ function bind() {
   });
 
   window.addEventListener("popstate", () => {
-    if (!$("#editor").hidden) {
-      // Already stepped back in history, so close without stepping again.
-      field("editor").hidden = true;
-      document.body.style.overflow = "";
-      editing = null;
-      dirty = false;
+    if ($("#editor").hidden) return;
+    if ((dirty || uploading) && !confirm(t("admin.confirmLeave"))) {
+      // Keep the editor open and restore the history entry we just left.
+      history.pushState({ editor: true }, "");
+      editorPushed = true;
+      return;
     }
+    if (uploading && uploadAbort) uploadAbort.abort();
+    // Already stepped back in history, so close without stepping again.
+    editorPushed = false;
+    field("editor").hidden = true;
+    document.body.style.overflow = "";
+    editing = null;
+    dirty = false;
+    uploading = false;
   });
   window.addEventListener("beforeunload", e => { if (dirty || uploading) { e.preventDefault(); e.returnValue = ""; } });
 }
 
 async function boot() {
+  // A reload can leave our editor entry in history; start from a clean state.
+  if (history.state && history.state.editor) history.replaceState(null, "");
   applyLanguage();
   $("#bootView").textContent = t("admin.loggingIn");
   bind();

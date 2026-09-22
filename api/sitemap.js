@@ -1,12 +1,29 @@
 /* Sitemap that follows the catalogue automatically, including admin changes. */
 let store = null;
 
-async function loadStore(origin) {
+// The bundled files are read from disk. A request's Host header must never
+// decide where code is loaded from, so the HTTP fallback uses Vercel's own
+// deployment URL.
+function trustedOrigin() {
+  const host = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL || "";
+  return host ? "https://" + host : "";
+}
+
+async function readSource(name) {
+  try {
+    const fs = await import("node:fs/promises");
+    const path = await import("node:path");
+    return await fs.readFile(path.join(process.cwd(), name), "utf8");
+  } catch (e) {
+    const origin = trustedOrigin();
+    if (!origin) throw e;
+    return fetch(origin + "/" + name).then(r => r.text());
+  }
+}
+
+async function loadStore() {
   if (store) return store;
-  const [i18nSrc, catalogSrc] = await Promise.all([
-    fetch(origin + "/i18n.js").then(r => r.text()),
-    fetch(origin + "/catalog.js").then(r => r.text())
-  ]);
+  const [i18nSrc, catalogSrc] = await Promise.all([readSource("i18n.js"), readSource("catalog.js")]);
   const win = {};
   const nav = { languages: ["ar"] };
   const storage = { getItem: () => null, setItem: () => {} };
@@ -18,9 +35,9 @@ async function loadStore(origin) {
 }
 
 export default async function handler(req, res) {
-  const origin = "https://" + req.headers.host;
+  const origin = trustedOrigin() || "https://" + String(req.headers.host || "").replace(/[^\w.:-]/g, "");
   try {
-    const win = await loadStore(origin);
+    const win = await loadStore();
     const state = await fetch(origin + "/api/products").then(r => r.json()).catch(() => ({}));
     const products = win.STORE.merge(state);
     const urls = ["<url><loc>" + origin + "/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>"]

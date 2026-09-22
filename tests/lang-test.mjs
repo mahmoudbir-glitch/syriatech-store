@@ -9,7 +9,7 @@ import path from "node:path";
 import puppeteer from "puppeteer-core";
 
 const REPO = process.env.DEV_REPO || "D:/bir/syriatech-store";
-const BASE = "http://127.0.0.1:3100";
+const BASE = "http://127.0.0.1:" + (process.env.DEV_PORT || 3100);
 let failures = 0;
 const check = (name, ok, detail) => {
   console.log((ok ? "PASS " : "FAIL ") + name + (ok ? "" : " -> " + JSON.stringify(detail).slice(0, 400)));
@@ -103,7 +103,7 @@ check("no unused keys in the dictionary", !unused.length, unused);
 
 /* ---------------- Runtime checks ---------------- */
 const browser = await puppeteer.launch({
-  executablePath: "process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe"",
+  executablePath: process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe",
   headless: "new",
   args: ["--no-sandbox", "--disable-dev-shm-usage"]
 });

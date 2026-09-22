@@ -25,14 +25,14 @@ const scrollBehavior = () => (reduceMotion() ? "auto" : "smooth");
 
 // Keeps the page behind an open overlay out of the keyboard and screen-reader order.
 function holdBackground() {
-  document.querySelectorAll("header.store-header, main#home, footer.footer").forEach(el => {
+  document.querySelectorAll(".notice-bar, header.store-header, main#home, footer.footer, .floating-whatsapp, .skip-link").forEach(el => {
     el.inert = true;
     el.setAttribute("aria-hidden", "true");
   });
 }
 function releaseBackground() {
   if (!$("#productView").hidden || $("#cart").classList.contains("open")) return;
-  document.querySelectorAll("header.store-header, main#home, footer.footer").forEach(el => {
+  document.querySelectorAll(".notice-bar, header.store-header, main#home, footer.footer, .floating-whatsapp, .skip-link").forEach(el => {
     el.inert = false;
     el.removeAttribute("aria-hidden");
   });
@@ -114,10 +114,12 @@ let toastTimer;
 function toast(message) {
   const el = $("#toast");
   if (!el) return;
+  // The live region stays in the accessibility tree; only its visibility changes,
+  // otherwise screen readers never hear the message.
   el.textContent = message;
-  el.hidden = false;
+  el.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => { el.hidden = true; }, 2600);
+  toastTimer = setTimeout(() => { el.classList.remove("show"); el.textContent = ""; }, 2600);
 }
 
 /* ---------- Cart ---------- */
@@ -131,6 +133,8 @@ function renderCart() {
   $("#cartButton")?.setAttribute("aria-label", t("cartLabel") + " (" + totalQty + ")");
   const total = $("#cartTotal");
   if (total) total.textContent = totalPrice.toFixed(2);
+  const checkout = $("#checkoutButton");
+  if (checkout) checkout.href = cart.length ? whatsappLink(orderText()) : "#";
 
   if (!cart.length) {
     box.innerHTML = '<div class="empty-state">' + esc(t("cartEmpty")) + "</div>";
@@ -226,20 +230,25 @@ function orderReference() {
   return "SY-" + String(now.getFullYear()).slice(2) + String(now.getMonth() + 1).padStart(2, "0") +
     String(now.getDate()).padStart(2, "0") + "-" + String(Math.floor(Math.random() * 9000) + 1000);
 }
-function checkoutWhatsApp(e) {
-  if (e) e.preventDefault();
-  if (!cart.length) { toast(t("cartEmptyAlert")); return; }
+function orderText() {
   const lines = cart.map(i => {
     const p = findProduct(i.id);
     const code = p && p.sku ? " (" + p.sku + ")" : "";
     return "• " + i.name + code + " × " + i.qty + " = " + money(i.price * i.qty);
   });
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-  const text = t("orderIntro") + "\n\n" + lines.join("\n") +
+  return t("orderIntro") + "\n\n" + lines.join("\n") +
     "\n\n" + t("orderTotal") + " " + money(total) +
-    "\n" + t("orderRef") + ": " + orderReference() +
+    "\n" + t("orderRef") + " " + orderReference() +
     "\n\n" + t("orderFields");
-  window.open(whatsappLink(text), "_blank");
+}
+function checkoutWhatsApp(e) {
+  if (!cart.length) { if (e) e.preventDefault(); toast(t("cartEmptyAlert")); return; }
+  // The href is already the WhatsApp link, so this only keeps the tab behaviour
+  // consistent where window.open is allowed.
+  const link = whatsappLink(orderText());
+  const opened = window.open(link, "_blank");
+  if (opened && e) e.preventDefault();
 }
 function productMessage(p, intro) {
   const link = productLink(p);
@@ -299,7 +308,7 @@ function productCard(p) {
     (badge ? '<span class="product-badge">' + esc(badge) + "</span>" : "") +
     '<button class="fav-btn' + (fav ? " on" : "") + '" data-fav="' + p.id + '" type="button" aria-pressed="' + fav + '" aria-label="' + esc(t(fav ? "removeFavorite" : "addFavorite")) + '">' + icon("heart", 17) + "</button>" +
     '<a class="product-image" href="#product/' + p.id + '" data-open="' + p.id + '" tabindex="-1" aria-hidden="true">' +
-    '<img src="' + esc(S.imageFor(p)) + '" data-fallback="' + esc(S.fallbackFor(p)) + '" alt="' + name + '" loading="lazy" onerror="storeImageFallback(this)">' +
+    '<img src="' + esc(S.imageFor(p)) + '" data-fallback="' + esc(S.fallbackFor(p)) + '" alt="' + name + '" loading="lazy">' +
     (p.inStock ? "" : '<span class="stock-flag">' + esc(t("outOfStock")) + "</span>") +
     "</a>" +
     '<div class="product-info"><small>' + esc(p.brand) + "</small>" +
@@ -336,6 +345,8 @@ function renderProducts(resetPaging) {
       : t("resultCountFiltered", { n: items.length, total: products.length });
   }
   renderActiveFilters();
+  const clearButton = $("#clearFilterButton");
+  if (clearButton) clearButton.hidden = !(view.category || view.brand || view.query || view.favorites || view.deals);
   if (!items.length) {
     grid.dataset.count = "0";
     grid.dataset.key = viewKey();
@@ -486,7 +497,7 @@ let detailsCache = null;
 async function loadDetails() {
   if (detailsCache) return detailsCache;
   try {
-    const response = await fetch("assets/details.json", { cache: "force-cache" });
+    const response = await fetch("/assets/details.json", { cache: "force-cache" });
     detailsCache = response.ok ? await response.json() : {};
   } catch (e) { detailsCache = {}; }
   return detailsCache;
@@ -517,7 +528,7 @@ function renderProductView(id) {
     '<div class="product-page container">' +
     '<button type="button" class="back-link" data-close-product>' + icon("arrow", 16) + "<span>" + esc(t("backToProducts")) + "</span></button>" +
     '<div class="product-page-main">' +
-    '<div class="product-page-image"><img src="' + esc(S.imageFor(p)) + '" data-fallback="' + esc(S.fallbackFor(p)) + '" alt="' + esc(p.name) + '" onerror="storeImageFallback(this)">' +
+    '<div class="product-page-image"><img src="' + esc(S.imageFor(p)) + '" data-fallback="' + esc(S.fallbackFor(p)) + '" alt="' + esc(p.name) + '">' +
     '<button type="button" class="zoom-btn" data-zoom="' + p.id + '" aria-label="' + esc(t("imagePreview")) + '">' + icon("zoom", 18) + "</button></div>" +
     "<div class=\"product-page-info\">" +
     '<button type="button" class="brand-link" data-brand="' + esc(p.brand) + '">' + esc(p.brand) + "</button>" +
@@ -587,6 +598,12 @@ function openProduct(id) {
 }
 
 function handleRoute() {
+  // /p/<id> marks the product on <body>; no inline script is needed for it.
+  const marked = document.body.dataset.productId;
+  if (marked && !location.hash) {
+    document.body.removeAttribute("data-product-id");
+    if (renderProductView(Number(marked))) return;
+  }
   const match = /^#product\/(\d+)$/.exec(location.hash || "");
   if (match) {
     if (!renderProductView(Number(match[1]))) {
@@ -682,6 +699,12 @@ function bindEvents() {
     view.deals = false;
     view.category = null;
     view.brand = null;
+    filters = { brands: [], min: 0, max: 0, inStock: false };
+    document.querySelectorAll("#brandFilters input:checked").forEach(x => { x.checked = false; });
+    markCheckedBrands();
+    const minBox = $("#minPrice"); if (minBox) minBox.value = "";
+    const maxBox = $("#maxPrice"); if (maxBox) maxBox.value = "";
+    const stockBox = $("#inStockFilter"); if (stockBox) stockBox.checked = false;
     closeProductView();
     renderProducts(true);
   };
@@ -785,6 +808,12 @@ function bindEvents() {
 
   document.addEventListener("keydown", e => {
     if (e.key !== "Escape") return;
+    if (dropdown && dropdown.classList.contains("open")) {
+      dropdown.classList.remove("open");
+      dropdownButton?.setAttribute("aria-expanded", "false");
+      dropdownButton?.focus();
+      return;
+    }
     if (!$("#imageLightbox").hidden) return closeImageLightbox();
     if ($("#cart").classList.contains("open")) return closeCart();
     if (openProductId) exitProductView();
@@ -827,9 +856,12 @@ async function loadCatalog() {
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 6000);
-    const response = await fetch("/api/products?ts=" + Date.now(), { cache: "no-store", signal: controller.signal });
+    const response = await fetch("/api/products", { signal: controller.signal });
     clearTimeout(timer);
-    if (response.ok) {
+    // fetch() does not throw on 5xx, and /api/products answers 503 when the
+    // store data cannot be read — the exact case the cache below is for.
+    if (!response.ok) throw new Error("HTTP " + response.status);
+    {
       const state = await response.json();
       products = S.merge(state);
       settings = S.mergeSettings(state);
@@ -851,10 +883,13 @@ async function loadCatalog() {
     showStaleNotice();
   }
   if (catalogReady) syncStoredData();
-  applySettings();
-  renderNavigation();
-  renderProducts();
-  renderCart();
+  const signature = JSON.stringify([products.length, products.slice(0, 24).map(p => [p.id, p.price, p.name, p.inStock]), settings]);
+  if (signature !== bootSignature) {
+    applySettings();
+    renderNavigation();
+    renderProducts();
+    renderCart();
+  }
   renderFavoritesCount();
   handleRoute();
   injectStoreSchema();
@@ -880,6 +915,8 @@ function injectStoreSchema() {
   });
   document.head.appendChild(el);
 }
+
+const bootSignature = JSON.stringify([products.length, products.slice(0, 24).map(p => [p.id, p.price, p.name, p.inStock]), settings]);
 
 loadCart();
 loadFavorites();

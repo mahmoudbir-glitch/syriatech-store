@@ -1,8 +1,9 @@
 import crypto from "crypto";
-import { get, put, issueSignedToken, presignUrl, parseStoreIdFromDelegationToken, BlobPreconditionFailedError } from "@vercel/blob";
+import { get, put, list, del, issueSignedToken, presignUrl, parseStoreIdFromDelegationToken, BlobPreconditionFailedError } from "@vercel/blob";
 
 const COOKIE = "syriatech_admin";
 const STATE_PATH = "data/store-state.json";
+const BACKUP_PREFIX = "data/backups/store-state.";
 const SESSION_MS = 12 * 60 * 60 * 1000;
 const CATEGORIES = new Set(["power-bank", "charger", "wireless", "cables", "hubs-docks", "power", "car", "audio", "security", "smart-home", "projector", "solar", "phone-cases", "accessories"]);
 const IMAGE_TYPES = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif" };
@@ -12,7 +13,7 @@ const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
 const CODES = new Set([
   "missing_env", "invalid_password", "unauthorized", "product_required", "name_required",
   "invalid_price", "invalid_category", "invalid_image", "invalid_id", "invalid_whatsapp",
-  "invalid_email", "unsupported_image", "image_too_large", "corrupt_state", "unknown_action", "server_error"
+  "invalid_email", "unsupported_image", "image_too_large", "corrupt_state", "no_backup", "unknown_action", "server_error"
 ]);
 
 const fail = (res, status, code) => res.status(status).json({ ok: false, error: code });
@@ -27,17 +28,27 @@ function signSession(payload) {
   return digest(secret + "|" + digest("pw", password).toString("hex"), payload).toString("base64url");
 }
 function newSessionCookie() {
-  const payload = Buffer.from(JSON.stringify({ exp: Date.now() + SESSION_MS })).toString("base64url");
+  const payload = Buffer.from(JSON.stringify({ exp: Date.now() + SESSION_MS, iat: Date.now() })).toString("base64url");
   return `${COOKIE}=${payload}.${signSession(payload)}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${SESSION_MS / 1000}`;
 }
-function isAuthed(req) {
+async function isAuthed(req) {
   const { password, secret } = env();
   if (!password || !secret) return false;
+  // Load the revocation stamp before trusting a cookie on a cold instance.
+  if (revokedBefore === null) { try { await readState(); } catch (e) { revokedBefore = 0; } }
   const raw = (req.headers.cookie || "").split(";").map(x => x.trim()).find(x => x.startsWith(COOKIE + "="));
   const [payload, signature] = (raw ? raw.slice(COOKIE.length + 1) : "").split(".");
   if (!payload || !signature || !safeEqual(signature, signSession(payload))) return false;
-  try { return JSON.parse(Buffer.from(payload, "base64url").toString()).exp > Date.now(); } catch { return false; }
+  try {
+    const claims = JSON.parse(Buffer.from(payload, "base64url").toString());
+    if (!(claims.exp > Date.now())) return false;
+    // Sessions issued before the last "sign out" are refused.
+    return !(revokedBefore && Number(claims.iat || 0) < revokedBefore);
+  } catch { return false; }
 }
+
+// Cached per warm instance; null until the state has been read once.
+let revokedBefore = null;
 
 function normalizeState(s) {
   const state = s && typeof s === "object" ? s : {};
@@ -61,7 +72,9 @@ async function readState() {
   const usable = parsed && typeof parsed === "object" && !Array.isArray(parsed) &&
     ["overrides", "additions", "deleted", "settings"].some(k => k in parsed);
   if (!usable) throw new Error("corrupt_state");
-  return { state: normalizeState(parsed), etag: blob.blob.etag || null, exists: true };
+  const normalized = normalizeState(parsed);
+  revokedBefore = Number(normalized.settings.revokedBefore || 0);
+  return { state: normalized, etag: blob.blob.etag || null, exists: true };
 }
 
 // Read → change → write with an ETag check; retries if another save happened in between.
@@ -77,10 +90,15 @@ async function mutate(change) {
         addRandomSuffix: false,
         ...(etag ? { ifMatch: etag } : exists ? { allowOverwrite: true } : { allowOverwrite: false })
       });
+      // One backup per save, newest 20 kept, so this morning's mistake is recoverable.
       try {
-        await put(STATE_PATH.replace(".json", "." + new Date().toISOString().slice(0, 10) + ".json"), body, {
+        const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+        await put(BACKUP_PREFIX + stamp + ".json", body, {
           access: "private", contentType: "application/json", addRandomSuffix: false, allowOverwrite: true
         });
+        const { blobs } = await list({ prefix: BACKUP_PREFIX });
+        const old = blobs.sort((a, b) => (a.pathname < b.pathname ? 1 : -1)).slice(20);
+        if (old.length) await del(old.map(b => b.url));
       } catch (backupError) {
         console.error("state backup failed", backupError);
       }
@@ -147,8 +165,8 @@ export default async function handler(req, res) {
     if (req.method === "POST" && action === "login") {
       const { password, secret } = env();
       if (!password || !secret) {
-        console.error("ADMIN_PASSWORD / ADMIN_SECRET are not set");
-        return fail(res, 500, "missing_env");
+        console.error("ADMIN_PASSWORD / ADMIN_SECRET are not set in the Vercel project");
+        return fail(res, 401, "invalid_password");
       }
       if (!safeEqual(String(body.password || ""), password)) {
         await new Promise(r => setTimeout(r, 800));
@@ -159,20 +177,43 @@ export default async function handler(req, res) {
     }
     if (req.method === "POST" && action === "logout") {
       res.setHeader("Set-Cookie", `${COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`);
+      // Invalidate the signed cookie itself, not just the browser's copy.
+      if (await isAuthed(req)) {
+        try {
+          await mutate(s => { s.settings = { ...s.settings, revokedBefore: Date.now() }; });
+        } catch (e) { console.error("session revoke failed", e); }
+      }
       return res.status(200).json({ ok: true });
     }
 
-    if (!isAuthed(req)) return fail(res, 401, "unauthorized");
+    if (!(await isAuthed(req))) return fail(res, 401, "unauthorized");
 
     if (req.method === "GET" && action === "state") {
       const { state } = await readState();
       return res.status(200).json({ ok: true, state });
     }
 
+    if (req.method === "POST" && (action === "reset" || action === "restore-backup")) {
+      // Deliberately does not read the current state, so it still works when the
+      // stored document is unreadable.
+      let body2 = JSON.stringify({ overrides: {}, additions: [], deleted: [], settings: {} });
+      if (action === "restore-backup") {
+        const { blobs } = await list({ prefix: BACKUP_PREFIX });
+        const newest = blobs.sort((a, b) => (a.pathname < b.pathname ? 1 : -1))[0];
+        if (!newest) return fail(res, 400, "no_backup");
+        const backup = await get(newest.pathname, { access: "private", useCache: false });
+        if (!backup) return fail(res, 400, "no_backup");
+        body2 = await new Response(backup.stream).text();
+      }
+      await put(STATE_PATH, body2, { access: "private", contentType: "application/json", addRandomSuffix: false, allowOverwrite: true });
+      return res.status(200).json({ ok: true, state: normalizeState(JSON.parse(body2)) });
+    }
+
     if (req.method === "POST" && action === "save") {
       const product = cleanProduct(body.product);
-      const requestedId = Number(body.product && body.product.id);
-      if (requestedId && (!Number.isSafeInteger(requestedId) || requestedId <= 0)) return fail(res, 400, "invalid_id");
+      const rawId = body.product && body.product.id;
+      const requestedId = rawId === undefined || rawId === null || rawId === "" ? 0 : Number(rawId);
+      if (requestedId !== 0 && (!Number.isSafeInteger(requestedId) || requestedId <= 0)) return fail(res, 400, "invalid_id");
       let savedId = 0;
       const state = await mutate(s => {
         if (body.isNew || !requestedId) {
