@@ -52,6 +52,73 @@ products.forEach(p => {
   p.badge = "30% OFF";
 });
 
+
+const ankerCategoryAdditions = [
+  {id:101,category:"power-bank",icon:"🔋",brand:"Anker",name:"Anker Nano Power Bank 10K 45W",description:"10,000mAh، خرج 45W وكابل USB-C مدمج",base:59.99},
+  {id:102,category:"power-bank",icon:"🔋",brand:"Anker",name:"Anker Prime Power Bank 9.6K 65W",description:"بطارية Prime مدمجة بقدرة 65W",base:89.99},
+  {id:103,category:"power-bank",icon:"🔋",brand:"Anker",name:"Anker Nano Power Bank 30W Built-In USB-C",description:"باور بانك Nano مع كابل USB-C مدمج",base:49.99},
+  {id:104,category:"power-bank",icon:"🔋",brand:"Anker",name:"Anker 621 Magnetic Battery MagGo",description:"بطارية مغناطيسية MagGo نحيفة",base:42.99},
+  {id:105,category:"power-bank",icon:"🔋",brand:"Anker",name:"Anker 622 Magnetic Battery MagGo",description:"بطارية مغناطيسية مع تصميم عملي للحمل",base:47.99},
+  {id:106,category:"power-bank",icon:"🔋",brand:"Anker",name:"Anker Zolo Power Bank 20K",description:"20,000mAh مع USB-C وكابل مدمج",base:54.99},
+
+  {id:107,category:"charger",icon:"🔌",brand:"Anker",name:"Anker Nano Charger 45W 180° Foldable",description:"شاحن Nano سريع وقابل للطي",base:39.99},
+  {id:108,category:"charger",icon:"🔌",brand:"Anker",name:"Anker Nano Charger 65W",description:"شاحن USB-C صغير بقدرة 65W",base:49.99},
+  {id:109,category:"charger",icon:"🔌",brand:"Anker",name:"Anker Prime Charger 100W 3-Port",description:"شاحن Prime متعدد المنافذ بقدرة 100W",base:79.99},
+  {id:110,category:"charger",icon:"🔌",brand:"Anker",name:"Anker 735 Charger 65W GaNPrime",description:"شاحن GaNPrime متعدد المنافذ",base:59.99},
+  {id:111,category:"charger",icon:"🔌",brand:"Anker",name:"Anker 737 Charger 120W GaNPrime",description:"شاحن سريع عالي القدرة للأجهزة المتعددة",base:99.99},
+  {id:112,category:"charger",icon:"🔌",brand:"Anker",name:"Anker Nano Travel Adapter 5-in-1 20W",description:"محول سفر متعدد الوظائف",base:39.99},
+
+  {id:113,category:"accessories",icon:"🔗",brand:"Anker",name:"Anker Prime USB-C Cable 240W Upcycled-Braided",description:"كابل USB-C متين بقدرة تصل إلى 240W",base:29.99},
+  {id:114,category:"accessories",icon:"📡",brand:"Anker",name:"Anker MagGo Wireless Charger 2-in-1",description:"شاحن لاسلكي 2-in-1 مع محول",base:69.99},
+  {id:115,category:"accessories",icon:"📱",brand:"Anker",name:"Anker MagGo Qi2 15W Stand",description:"حامل وشاحن MagGo بتقنية Qi2",base:45.99},
+  {id:116,category:"accessories",icon:"🖥️",brand:"Anker",name:"Anker Nano Docking Station 13-in-1",description:"Docking Station متعددة المنافذ ودعم شاشات",base:149.99},
+  {id:117,category:"accessories",icon:"🖥️",brand:"Anker",name:"Anker Prime TB5 Docking Station 14-in-1",description:"محطة Thunderbolt 5 احترافية",base:399.99},
+  {id:118,category:"accessories",icon:"🔌",brand:"Anker",name:"Anker 543 USB-C Hub",description:"Hub USB-C لتوسيع منافذ الكمبيوتر",base:39.99},
+
+  {id:119,category:"audio",icon:"🎧",brand:"Anker soundcore",name:"soundcore Liberty 5",description:"سماعات True Wireless مع إلغاء ضوضاء",base:129.99},
+  {id:120,category:"audio",icon:"🎧",brand:"Anker soundcore",name:"soundcore P42i",description:"سماعات لاسلكية للاستخدام اليومي",base:79.99},
+  {id:121,category:"audio",icon:"🎧",brand:"Anker soundcore",name:"soundcore Liberty 4 NC",description:"سماعات True Wireless مع ANC",base:99.99},
+  {id:122,category:"audio",icon:"🎧",brand:"Anker soundcore",name:"soundcore Space Q45",description:"سماعات رأس لاسلكية مع عزل ضوضاء",base:149.99},
+  {id:123,category:"audio",icon:"🔊",brand:"Anker soundcore",name:"soundcore Boom 2",description:"سماعة Bluetooth محمولة بصوت قوي",base:129.99},
+  {id:124,category:"audio",icon:"🔊",brand:"Anker soundcore",name:"soundcore Select 4 Go",description:"سماعة Bluetooth صغيرة ومحمولة",base:29.99},
+
+  {id:125,category:"security",icon:"📷",brand:"eufy",name:"eufyCam S4",description:"كاميرا أمنية ذكية من منظومة eufy",base:299.99},
+  {id:126,category:"security",icon:"📷",brand:"eufy",name:"eufy Indoor Cam E220",description:"كاميرا داخلية ذكية للمراقبة المنزلية",base:59.99},
+  {id:127,category:"security",icon:"📷",brand:"eufy",name:"eufy SoloCam C210",description:"كاميرا أمنية لاسلكية للاستخدام الخارجي",base:79.99},
+  {id:128,category:"security",icon:"🔔",brand:"eufy",name:"eufy Video Doorbell S330",description:"جرس باب فيديو ذكي بدقة عالية",base:199.99},
+  {id:129,category:"security",icon:"📷",brand:"eufy",name:"eufy Indoor Cam S350",description:"كاميرا داخلية بدقة عالية وعدسة مزدوجة",base:129.99},
+  {id:130,category:"security",icon:"🔦",brand:"eufy",name:"eufy Floodlight Cam E340",description:"كاميرا Floodlight للمراقبة الخارجية",base:199.99},
+
+  {id:131,category:"smart-home",icon:"🤖",brand:"eufy",name:"eufy X10 Pro Omni",description:"روبوت تنظيف ذكي متكامل",base:799.99},
+  {id:132,category:"smart-home",icon:"🤖",brand:"eufy",name:"eufy Omni C20",description:"روبوت تنظيف ذكي مع محطة متكاملة",base:599.99},
+  {id:133,category:"smart-home",icon:"🔐",brand:"eufy",name:"eufy Smart Lock C220",description:"قفل ذكي للمنزل مع تحكم إلكتروني",base:119.99},
+  {id:134,category:"smart-home",icon:"🔐",brand:"eufy",name:"eufy Smart Lock E30",description:"قفل ذكي حديث للأبواب",base:179.99},
+  {id:135,category:"smart-home",icon:"🏠",brand:"eufy",name:"eufy HomeBase S380 HomeBase 3",description:"مركز إدارة أجهزة المنزل والأمان",base:139.99},
+  {id:136,category:"smart-home",icon:"👶",brand:"eufy",name:"eufy Baby Monitor E110",description:"حل مراقبة ذكي للطفل والمنزل",base:99.99},
+
+  {id:137,category:"projector",icon:"📽️",brand:"Nebula",name:"Nebula Capsule 3 Laser",description:"جهاز عرض محمول بتقنية Laser",base:799.99},
+  {id:138,category:"projector",icon:"📽️",brand:"Nebula",name:"Nebula Capsule 3",description:"جهاز عرض محمول ذكي من Capsule",base:599.99},
+  {id:139,category:"projector",icon:"📽️",brand:"Nebula",name:"Nebula Mars 3 Air",description:"جهاز عرض محمول للمنزل والسفر",base:599.99},
+  {id:140,category:"projector",icon:"📽️",brand:"Nebula",name:"Nebula Mars 3",description:"جهاز عرض محمول عالي السطوع",base:1099.99},
+  {id:141,category:"projector",icon:"📽️",brand:"Nebula",name:"Nebula Cosmos 4K SE",description:"جهاز عرض منزلي بدقة 4K",base:1299.99},
+  {id:142,category:"projector",icon:"📽️",brand:"Nebula",name:"Nebula Cosmos Laser 4K",description:"جهاز عرض منزلي Laser بدقة 4K",base:1599.99},
+
+  {id:143,category:"solar",icon:"☀️",brand:"Anker SOLIX",name:"Anker SOLIX C1000 Gen 2",description:"محطة طاقة محمولة عالية السعة",base:1199.99},
+  {id:144,category:"solar",icon:"☀️",brand:"Anker SOLIX",name:"Anker SOLIX C2000 Gen 2",description:"محطة طاقة محمولة عالية القدرة",base:1699.99},
+  {id:145,category:"solar",icon:"☀️",brand:"Anker SOLIX",name:"Anker SOLIX F3800",description:"نظام طاقة منزلي محمول عالي القدرة",base:3999.99},
+  {id:146,category:"solar",icon:"☀️",brand:"Anker SOLIX",name:"Anker SOLIX PS60 Portable Solar Panel",description:"لوح شمسي محمول للطاقة المتنقلة",base:149.99},
+  {id:147,category:"solar",icon:"☀️",brand:"Anker SOLIX",name:"Anker SOLIX PS100 Portable Solar Panel",description:"لوح شمسي محمول بقدرة أعلى",base:249.99},
+  {id:148,category:"solar",icon:"☀️",brand:"Anker SOLIX",name:"Anker SOLIX PS400 Portable Solar Panel",description:"لوح شمسي محمول عالي القدرة",base:999.99}
+];
+
+ankerCategoryAdditions.forEach(p => {
+  p.oldPrice = Number(p.base.toFixed(2));
+  p.price = Number((p.base * 0.70).toFixed(2));
+  p.discount = 30;
+  p.badge = "30% OFF";
+  products.push(p);
+});
+
 const WHATSAPP = "963949951985";
 const CART_KEY = "syriatech_cart";
 let cart = [];
