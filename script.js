@@ -128,103 +128,32 @@ function money(value){return "$"+Number(value).toFixed(2);}
 function loadCart(){try{const saved=localStorage.getItem(CART_KEY);const parsed=saved?JSON.parse(saved):[];cart=Array.isArray(parsed)?parsed:[]}catch(e){cart=[];try{localStorage.removeItem(CART_KEY);}catch(_) {}}}
 function saveCart(){try{localStorage.setItem(CART_KEY,JSON.stringify(cart));}catch(e){}}
 
-function renderProducts(list, label){
-  const grid=$("#productsGrid"); if(!grid)return;
-  const items=Array.isArray(list)?list:products;
-  const title=$("#productsTitle");
-  if(title) title.textContent=label||"منتجات Anker ومجموعاتها";
-  if(!items.length){grid.innerHTML='<div class="empty-state">لا توجد منتجات في هذا القسم.</div>';return;}
-  grid.innerHTML=items.map(p=>'<article class="product"><span class="product-badge">'+(p.badge||"")+'</span><div class="product-image" role="img" aria-label="'+p.name+'">'+p.icon+'</div><div class="product-info"><small>'+p.brand+'</small><h3>'+p.name+'</h3><p>'+p.description+'</p><div class="product-bottom"><div>'+(p.oldPrice?'<del>'+money(p.oldPrice)+'</del>':'')+'<strong>'+money(p.price)+'</strong></div><button type="button" class="add-product" data-id="'+p.id+'">أضف للسلة</button></div></div></article>').join("");
-  grid.querySelectorAll(".add-product").forEach(b=>b.addEventListener("click",()=>addToCart(Number(b.dataset.id))));
+function t(){return isEnglish?translations.en:translations.ar;}
+function activeFilters(){return{brands:[...document.querySelectorAll("[data-brand-check]:checked")].map(x=>x.dataset.brandCheck),min:+($("#minPrice")?.value||0),max:+($("#maxPrice")?.value||0)}}
+function filterProducts({category=null,brand=null,reset=false}={}){
+ if(reset){document.querySelectorAll("[data-brand-check]").forEach(x=>x.checked=false);if($("#minPrice"))$("#minPrice").value="";if($("#maxPrice"))$("#maxPrice").value="";}
+ let list=[...products];if(category)list=list.filter(p=>p.category===category);if(brand)list=list.filter(p=>p.brand.toLowerCase()===brand.toLowerCase());
+ const f=activeFilters();if(f.brands.length)list=list.filter(p=>f.brands.includes(p.brand));if(f.min)list=list.filter(p=>p.price>=f.min);if(f.max)list=list.filter(p=>p.price<=f.max);
+ renderProducts(list,brand?brand+" — "+t().productsLabel:category?(t().categories[category]||t().productsLabel):t().productsTitle);document.querySelectorAll(".side-filter").forEach(x=>x.classList.toggle("active",category?x.dataset.category===category:x.hasAttribute("data-category-all")));$("#products")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
-function filterProducts({category=null,brand=null}={}){
-  let list=products;
-  let label="منتجات Anker ومجموعاتها";
-  if(category){list=products.filter(p=>p.category===category);const names={"power-bank":"Power Banks","audio":"Headphones & Audio","charger":"Chargers","accessories":"Accessories","security":"Security","smart-home":"Smart Home","projector":"Projectors","solar":"SOLIX Energy"};label=names[category]||"المنتجات";}
-  if(brand){list=products.filter(p=>p.brand.toLowerCase()===brand.toLowerCase());label=brand+" — المنتجات";}
-  renderProducts(list,label);
-  const section=$("#products");if(section)section.scrollIntoView({behavior:"smooth",block:"start"});
+function renderProducts(list,label){
+ const grid=$("#productsGrid");if(!grid)return;let items=[...(list||products)];const s=$("#sortSelect")?.value;if(s==="price-low")items.sort((a,b)=>a.price-b.price);if(s==="price-high")items.sort((a,b)=>b.price-a.price);if(s==="name")items.sort((a,b)=>a.name.localeCompare(b.name));
+ setText("productsTitle",label||t().productsTitle);setText("resultCount",t().showing.replace("{n}",items.length));setText("allCount",products.length);
+ if(!items.length){grid.innerHTML='<div class="empty-state">'+t().emptyProducts+"</div>";return;}
+ grid.innerHTML=items.map(p=>'<article class="product"><span class="product-badge">'+(p.badge||"")+'</span><button class="quick-btn" data-quick="'+p.id+'" type="button">◉</button><div class="product-image">'+p.icon+'</div><div class="product-info"><small>'+p.brand+'</small><h3>'+p.name+'</h3><p>'+p.description+'</p><div class="product-bottom"><div><del>'+money(p.oldPrice)+'</del><strong>'+money(p.price)+'</strong><span class="discount-label">30% OFF</span></div><button class="add-product" data-id="'+p.id+'" type="button">🛍</button></div></div></article>').join("");
+ grid.querySelectorAll(".add-product").forEach(b=>b.onclick=()=>addToCart(+b.dataset.id));grid.querySelectorAll("[data-quick]").forEach(b=>b.onclick=()=>openQuickView(+b.dataset.quick));
 }
-function renderCart(){
-  const items=$("#cartItems"),count=$("#cartCount"),total=$("#cartTotal");if(!items||!count||!total)return;
-  count.textContent=String(cart.reduce((s,i)=>s+Number(i.qty||0),0));
-  total.textContent=cart.reduce((s,i)=>s+Number(i.price||0)*Number(i.qty||0),0).toFixed(2);
-  if(!cart.length){items.innerHTML='<div class="empty-state">السلة فارغة حالياً.</div>';return;}
-  items.innerHTML=cart.map(i=>'<div class="cart-item"><div><strong>'+i.name+'</strong><div class="cart-controls"><button type="button" class="qty-minus" data-id="'+i.id+'">−</button><span>'+i.qty+'</span><button type="button" class="qty-plus" data-id="'+i.id+'">+</button></div></div><div class="cart-item-price"><strong>'+money(i.price*i.qty)+'</strong><button type="button" class="remove-item" data-id="'+i.id+'">حذف</button></div></div>').join("");
-  items.querySelectorAll(".qty-minus").forEach(b=>b.addEventListener("click",()=>changeQty(Number(b.dataset.id),-1)));
-  items.querySelectorAll(".qty-plus").forEach(b=>b.addEventListener("click",()=>changeQty(Number(b.dataset.id),1)));
-  items.querySelectorAll(".remove-item").forEach(b=>b.addEventListener("click",()=>removeFromCart(Number(b.dataset.id))));
-}
-function addToCart(id){const p=products.find(x=>x.id===id);if(!p)return;const e=cart.find(x=>x.id===id);if(e)e.qty++;else cart.push({id:p.id,name:p.name,price:p.price,qty:1});saveCart();renderCart();openCart();}
-function changeQty(id,d){const i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>x.id!==id);saveCart();renderCart();}
+function renderCart(){const box=$("#cartItems"),count=$("#cartCount"),total=$("#cartTotal");if(!box)return;count.textContent=cart.reduce((s,i)=>s+i.qty,0);total.textContent=cart.reduce((s,i)=>s+i.price*i.qty,0).toFixed(2);if(!cart.length){box.innerHTML='<div class="empty-state">'+t().emptyCart+"</div>";return;}box.innerHTML=cart.map(i=>'<div class="cart-item"><div><strong>'+i.name+'</strong><div class="cart-controls"><button class="qty-minus" data-id="'+i.id+'">−</button><span>'+i.qty+'</span><button class="qty-plus" data-id="'+i.id+'">+</button></div></div><div><strong>'+money(i.price*i.qty)+'</strong><button class="remove-item" data-id="'+i.id+'">'+t().remove+"</button></div></div>").join("");box.querySelectorAll(".qty-minus").forEach(b=>b.onclick=()=>changeQty(+b.dataset.id,-1));box.querySelectorAll(".qty-plus").forEach(b=>b.onclick=()=>changeQty(+b.dataset.id,1));box.querySelectorAll(".remove-item").forEach(b=>b.onclick=()=>removeFromCart(+b.dataset.id));}
+function addToCart(id){const p=products.find(x=>x.id===id);if(!p)return;const e=cart.find(x=>x.id===id);e?e.qty++:cart.push({id:p.id,name:p.name,price:p.price,qty:1});saveCart();renderCart();openCart();}
+function changeQty(id,d){const i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<1)cart=cart.filter(x=>x.id!==id);saveCart();renderCart();}
 function removeFromCart(id){cart=cart.filter(x=>x.id!==id);saveCart();renderCart();}
-function openCart(){$("#cart")?.classList.add("open");$("#overlay")?.classList.add("active");}
-function closeCart(){$("#cart")?.classList.remove("open");$("#overlay")?.classList.remove("active");}
-function searchProducts(){const q=($("#searchInput")?.value||"").trim().toLowerCase();const list=!q?products:products.filter(p=>[p.name,p.brand,p.description].some(v=>v.toLowerCase().includes(q)));renderProducts(list,q?"نتائج البحث":"منتجات Anker ومجموعاتها");$("#products")?.scrollIntoView({behavior:"smooth"});}
-const translations={
-  ar:{
-    top:"شحن سريع لجميع المناطق | اطلب الآن عبر واتساب",
-    home:"الرئيسية",all:"كل المنتجات",brands:"العلامات التجارية",offers:"العروض",contactNav:"تواصل معنا",
-    search:"بحث",searchPlaceholder:"ابحث عن منتج...",shop:"تسوق الآن",
-    heroEyebrow:"SYRIATECH × ANKER",heroTitle:"كل ما تحتاجه من التقنية في مكان واحد",heroSub:"منتجات تقنية أصلية بجودة عالية وأسعار مناسبة",
-    productsEyebrow:"منتجات أصلية",productsTitle:"منتجات Anker ومجموعاتها",allProducts:"عرض كل المنتجات",
-    categories:{power:"Power Banks",audio:"Headphones & Audio",charger:"Chargers",accessories:"Accessories",security:"Security",smart:"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},
-    offersTitle:"منتجات مختارة من Anker ومجموعاته",offersEyebrow:"عروض Syriatech",order:"اطلب عبر واتساب",
-    brandsEyebrow:"علامات تجارية موثوقة",brandsTitle:"تسوق حسب العلامة التجارية",
-    contactTitle:"تواصل معنا",contactSub:"للطلب والاستفسار تواصل معنا عبر واتساب",
-    cartTitle:"سلة المشتريات",empty:"السلة فارغة حالياً.",total:"المجموع:",checkout:"إتمام الطلب عبر واتساب",remove:"حذف",
-    footerDesc:"متجرك الموثوق للمنتجات التقنية.",important:"روابط مهمة",footerContact:"تواصل معنا",whatsapp:"واتساب:"
-  },
-  en:{
-    top:"Fast shipping to all areas | Order now on WhatsApp",
-    home:"Home",all:"All Products",brands:"Brands",offers:"Offers",contactNav:"Contact Us",
-    search:"Search",searchPlaceholder:"Search for a product...",shop:"Shop Now",
-    heroEyebrow:"SYRIATECH × ANKER",heroTitle:"Everything you need from technology in one place",heroSub:"Authentic technology products with quality and great prices",
-    productsEyebrow:"Original Products",productsTitle:"Anker Products & Ecosystem",allProducts:"View All Products",
-    categories:{power:"Power Banks",audio:"Headphones & Audio",charger:"Chargers",accessories:"Accessories",security:"Security",smart:"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},
-    offersTitle:"Selected products from Anker and its ecosystem",offersEyebrow:"Syriatech Offers",order:"Order via WhatsApp",
-    brandsEyebrow:"Trusted Brands",brandsTitle:"Shop by Brand",
-    contactTitle:"Contact Us",contactSub:"For orders and inquiries, contact us on WhatsApp",
-    cartTitle:"Shopping Cart",empty:"Your cart is empty.",total:"Total:",checkout:"Checkout via WhatsApp",remove:"Remove",
-    footerDesc:"Your trusted store for technology products.",important:"Important Links",footerContact:"Contact Us",whatsapp:"WhatsApp:"
-  }
-};
-function setText(id,value){const el=$("#"+id);if(el)el.textContent=value;}
-function changeLanguage(){
-  isEnglish=!isEnglish;
-  const t=isEnglish?translations.en:translations.ar;
-  document.documentElement.lang=isEnglish?"en":"ar";
-  document.documentElement.dir=isEnglish?"ltr":"rtl";
-  document.documentElement.dataset.language=isEnglish?"en":"ar";
-  setText("languageButton",isEnglish?"AR":"EN");
-  setText("searchButton",t.search);
-  const input=$("#searchInput");if(input)input.placeholder=t.searchPlaceholder;
-  document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;if(t[key])el.textContent=t[key];});
-  setText("productsEyebrow",t.productsEyebrow);
-  setText("productsTitle",t.productsTitle);
-  setText("clearFilterButton",t.allProducts);
-  setText("offersEyebrow",t.offersEyebrow);
-  setText("offersTitle",t.offersTitle);
-  setText("contactTitle",t.contactTitle);
-  const contactSub=$("#contactSub");if(contactSub)contactSub.textContent=t.contactSub;
-  setText("cartTitle",t.cartTitle);
-  setText("checkoutButton",t.checkout);
-  renderCart();
-  renderProducts(products,isEnglish?t.productsTitle:"منتجات Anker ومجموعاتها");
-}
-function checkoutWhatsApp(e){if(e)e.preventDefault();if(!cart.length){alert("السلة فارغة.");return;}const lines=cart.map(i=>"• "+i.name+" × "+i.qty+" = "+money(i.price*i.qty));const total=cart.reduce((s,i)=>s+i.price*i.qty,0);const msg="مرحباً Syriatech، أريد طلب:\n\n"+lines.join("\n")+"\n\nالإجمالي: "+money(total);window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank","noopener,noreferrer");}
-function bindNavigation(){
-  $("#languageButton")?.addEventListener("click",changeLanguage);
-  $("#cartButton")?.addEventListener("click",openCart);
-  $("#closeCartButton")?.addEventListener("click",closeCart);
-  $("#overlay")?.addEventListener("click",closeCart);
-  $("#searchButton")?.addEventListener("click",searchProducts);
-  $("#searchInput")?.addEventListener("keydown",e=>{if(e.key==="Enter")searchProducts();});
-  $("#checkoutButton")?.addEventListener("click",checkoutWhatsApp);
-  $("#clearFilterButton")?.addEventListener("click",()=>filterProducts());
-  document.querySelectorAll("[data-category]").forEach(el=>el.addEventListener("click",()=>filterProducts({category:el.dataset.category})));
-  document.querySelectorAll("[data-brand]").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();filterProducts({brand:el.dataset.brand});}));
-  document.querySelectorAll("[data-filter-all]").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();filterProducts();}));
-  document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart();});
-}
+function openCart(){$("#cart")?.classList.add("open");$("#overlay")?.classList.add("active");}function closeCart(){$("#cart")?.classList.remove("open");$("#overlay")?.classList.remove("active");}
+function openQuickView(id){const p=products.find(x=>x.id===id);if(!p)return;$("#quickContent").innerHTML='<div class="quick-product"><div class="quick-product-image">'+p.icon+'</div><div><small>'+p.brand+'</small><h2>'+p.name+'</h2><div class="quick-price">'+money(p.price)+' <del>'+money(p.oldPrice)+'</del></div><p class="quick-desc">'+p.description+'</p><button class="main-button" id="quickAdd">'+t().addToCart+'</button></div></div>';$("#quickView").classList.add("open");$("#quickAdd").onclick=()=>{addToCart(id);closeQuickView();};}
+function closeQuickView(){$("#quickView")?.classList.remove("open");}
+function searchProducts(){const q=($("#searchInput")?.value||"").trim().toLowerCase();renderProducts(q?products.filter(p=>[p.name,p.brand,p.description].some(v=>v.toLowerCase().includes(q))):products,q?t().searchResults:t().productsTitle);$("#products")?.scrollIntoView({behavior:"smooth"});}
+const translations={ar:{top:"شحن سريع لجميع المناطق | اطلب الآن عبر واتساب",home:"الرئيسية",all:"كل المنتجات",brands:"العلامات التجارية",offers:"العروض",contactNav:"تواصل معنا",search:"بحث",shop:"تسوق الآن",heroTitle:"كل ما تحتاجه من التقنية في مكان واحد",heroSub:"منتجات تقنية أصلية بجودة عالية وأسعار مناسبة",productsEyebrow:"منتجات أصلية",productsTitle:"منتجات Anker ومجموعاتها",productsLabel:"المنتجات",allProducts:"عرض كل المنتجات",categoriesTitle:"الأقسام",priceFilter:"السعر",apply:"تطبيق",showing:"عرض {n} منتج",emptyProducts:"لا توجد منتجات مطابقة.",emptyCart:"السلة فارغة حالياً.",addToCart:"أضف للسلة",remove:"حذف",total:"المجموع:",checkout:"إتمام الطلب عبر واتساب",searchResults:"نتائج البحث",categories:{"power-bank":"Power Banks",audio:"Headphones & Audio",charger:"Chargers",accessories:"Accessories",security:"Security","smart-home":"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},offersEyebrow:"عروض Syriatech",offersTitle:"منتجات مختارة من Anker ومجموعاته",dealSub:"خصم 30% على المنتجات المحددة",order:"اطلب عبر واتساب",contactTitle:"تواصل معنا",contactSub:"للطلب والاستفسار تواصل معنا عبر واتساب",cartTitle:"سلة المشتريات",footerDesc:"متجرك الموثوق للمنتجات التقنية.",important:"روابط مهمة",footerContact:"تواصل معنا",whatsapp:"واتساب:"},en:{top:"Fast shipping to all areas | Order now on WhatsApp",home:"Home",all:"All Products",brands:"Brands",offers:"Offers",contactNav:"Contact Us",search:"Search",shop:"Shop Now",heroTitle:"Everything you need from technology in one place",heroSub:"Authentic technology products with quality and great prices",productsEyebrow:"Original Products",productsTitle:"Anker Products & Ecosystem",productsLabel:"Products",allProducts:"View All Products",categoriesTitle:"Categories",priceFilter:"Price",apply:"Apply",showing:"Showing {n} products",emptyProducts:"No matching products.",emptyCart:"Your cart is empty.",addToCart:"Add to cart",remove:"Remove",total:"Total:",checkout:"Checkout via WhatsApp",searchResults:"Search results",categories:{"power-bank":"Power Banks",audio:"Headphones & Audio",charger:"Chargers",accessories:"Accessories",security:"Security","smart-home":"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},offersEyebrow:"Syriatech Offers",offersTitle:"Selected products from Anker and its ecosystem",dealSub:"30% discount on selected products",order:"Order via WhatsApp",contactTitle:"Contact Us",contactSub:"For orders and inquiries, contact us on WhatsApp",cartTitle:"Shopping Cart",footerDesc:"Your trusted store for technology products.",important:"Important Links",footerContact:"Contact Us",whatsapp:"WhatsApp:"}};
+function setText(id,v){const e=$("#"+id);if(e)e.textContent=v;}
+function changeLanguage(){isEnglish=!isEnglish;const x=t();document.documentElement.lang=isEnglish?"en":"ar";document.documentElement.dir=isEnglish?"ltr":"rtl";document.querySelectorAll("[data-i18n]").forEach(e=>{if(x[e.dataset.i18n])e.textContent=x[e.dataset.i18n]});setText("languageButton",isEnglish?"🌐 AR":"🌐 EN");if($("#searchInput"))$("#searchInput").placeholder=isEnglish?"Search for a product or model...":"ابحث عن منتج أو موديل...";renderProducts(products);renderCart();}
+function checkoutWhatsApp(e){if(e)e.preventDefault();if(!cart.length){alert(t().emptyCart);return;}const lines=cart.map(i=>"• "+i.name+" × "+i.qty+" = "+money(i.price*i.qty));const total=cart.reduce((s,i)=>s+i.price*i.qty,0);window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent("Hello Syriatech, I would like to order:\n\n"+lines.join("\n")+"\n\nTotal: "+money(total)),"_blank");}
+function bindNavigation(){$("#languageButton")?.addEventListener("click",changeLanguage);$("#cartButton")?.addEventListener("click",openCart);$("#closeCartButton")?.addEventListener("click",closeCart);$("#overlay")?.addEventListener("click",closeCart);$("#searchForm")?.addEventListener("submit",e=>{e.preventDefault();searchProducts()});$("#checkoutButton")?.addEventListener("click",checkoutWhatsApp);$("#clearFilterButton")?.addEventListener("click",()=>filterProducts({reset:true}));$("#applyPrice")?.addEventListener("click",()=>filterProducts());$("#sortSelect")?.addEventListener("change",()=>filterProducts());document.querySelectorAll("[data-category]").forEach(e=>e.addEventListener("click",()=>filterProducts({category:e.dataset.category})));document.querySelectorAll("[data-category-all]").forEach(e=>e.addEventListener("click",()=>filterProducts({reset:true})));document.querySelectorAll("[data-brand]").forEach(e=>e.addEventListener("click",a=>{a.preventDefault();filterProducts({brand:e.dataset.brand})}));document.querySelectorAll("[data-filter-all]").forEach(e=>e.addEventListener("click",a=>{a.preventDefault();filterProducts({reset:true})}));document.querySelectorAll("[data-brand-check]").forEach(e=>e.addEventListener("change",()=>filterProducts()));$("#closeQuick")?.addEventListener("click",closeQuickView);$("#quickView")?.addEventListener("click",e=>{if(e.target.id==="quickView")closeQuickView()});document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeCart();closeQuickView()}});}
 document.addEventListener("DOMContentLoaded",()=>{loadCart();bindNavigation();renderProducts(products);renderCart();});
