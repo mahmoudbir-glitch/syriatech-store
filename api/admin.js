@@ -35,13 +35,18 @@ export default async function handler(req,res){
    const s=await readState();s.additions=s.additions.filter(x=>Number(x.id)!==id);delete s.overrides[String(id)];if(!s.deleted.includes(id))s.deleted.push(id);await writeState(s);return res.status(200).json({ok:true,state:s});
   }
   if(req.method==="POST"&&action==="upload"){
-   const form=await req.formData();const file=form.get("file");
-   if(!file||typeof file.arrayBuffer!=="function")return fail(res,400,"Image file required");
-   if(!String(file.type||"").startsWith("image/"))return fail(res,400,"Only image files are allowed");
-   if(file.size>8*1024*1024)return fail(res,400,"Maximum image size is 8MB");
-   const ext=(String(file.name||"jpg").split(".").pop()||"jpg").replace(/[^a-z0-9]/gi,"").toLowerCase()||"jpg";
+   const body=typeof req.body==="string"?JSON.parse(req.body||"{}"):(req.body||{});
+   const name=String(body.name||"product.jpg");
+   const type=String(body.type||"image/jpeg");
+   const data=String(body.data||"");
+   if(!data)return fail(res,400,"Image data is required");
+   if(!type.startsWith("image/"))return fail(res,400,"Only image files are allowed");
+   const raw=data.includes(",")?data.split(",").pop():data;
+   const buffer=Buffer.from(raw,"base64");
+   if(buffer.length>8*1024*1024)return fail(res,400,"Maximum image size is 8MB");
+   const ext=(name.split(".").pop()||"jpg").replace(/[^a-z0-9]/gi,"").toLowerCase()||"jpg";
    const pathname=`products/${Date.now()}-${crypto.randomBytes(5).toString("hex")}.${ext}`;
-   const b=await put(pathname,file,{access:"public",addRandomSuffix:false,contentType:file.type});
+   const b=await put(pathname,buffer,{access:"public",addRandomSuffix:false,contentType:type});
    return res.status(200).json({ok:true,url:b.url});
   }
   return fail(res,404,"Unknown action");
