@@ -1,85 +1,88 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-title-key="adminPageTitle">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<meta name="description" content="">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<title>Syriatech — لوحة التحكم</title>
-<link rel="stylesheet" href="admin.css?v=4">
+<title></title>
+<link rel="stylesheet" href="admin.css?v=8">
 </head>
 <body>
 
-<div id="bootView" class="boot">جارٍ التحميل...</div>
+<div id="bootView" class="boot"></div>
 
 <section id="loginView" class="login-wrap" hidden>
   <form id="loginForm" class="card login">
     <div class="logo">SYRIA<span>TECH</span></div>
-    <h1>لوحة تحكم المتجر</h1>
-    <p class="muted">أدخل كلمة مرور المدير للدخول</p>
-    <input id="password" type="password" autocomplete="current-password" placeholder="كلمة المرور" required>
-    <button type="submit" class="btn primary block" id="loginBtn">دخول</button>
+    <h1 data-i18n="admin.title"></h1>
+    <p class="muted" data-i18n="admin.loginHint"></p>
+    <input id="password" type="password" autocomplete="current-password" data-i18n-attr="placeholder:admin.password;aria-label:admin.password" required>
+    <button type="submit" class="btn primary block" id="loginBtn" data-i18n="admin.login"></button>
     <div id="loginMsg" class="msg"></div>
+    <select id="loginLanguage" class="lang-select" data-i18n-attr="aria-label:languageLabel"></select>
   </form>
 </section>
 
 <section id="adminView" hidden>
   <header class="topbar">
-    <div class="logo">SYRIA<span>TECH</span> <small>لوحة التحكم</small></div>
+    <div class="logo">SYRIA<span>TECH</span> <small data-i18n="admin.title"></small></div>
     <nav class="tabs">
-      <button type="button" class="tab active" data-tab="products">المنتجات</button>
-      <button type="button" class="tab" data-tab="settings">الإعدادات</button>
-      <button type="button" class="tab" data-tab="help">طريقة الاستخدام</button>
+      <button type="button" class="tab active" data-tab="products" data-i18n="admin.tabProducts"></button>
+      <button type="button" class="tab" data-tab="settings" data-i18n="admin.tabSettings"></button>
+      <button type="button" class="tab" data-tab="help" data-i18n="admin.tabHelp"></button>
     </nav>
     <div class="top-actions">
-      <a href="/" target="_blank" rel="noopener" class="btn ghost">عرض المتجر ↗</a>
-      <button type="button" id="logoutBtn" class="btn ghost">خروج</button>
+      <select id="languageSelect" class="lang-select" data-i18n-attr="aria-label:languageLabel"></select>
+      <a href="/" target="_blank" rel="noopener" class="btn ghost" data-i18n="admin.viewStore"></a>
+      <button type="button" id="logoutBtn" class="btn ghost" data-i18n="admin.logout"></button>
     </div>
   </header>
 
   <main class="wrap">
     <section id="tab-products">
       <div class="toolbar">
-        <input id="filter" type="search" placeholder="ابحث باسم المنتج أو العلامة التجارية...">
-        <select id="catFilter" aria-label="القسم"><option value="">كل الأقسام</option></select>
-        <select id="brandFilter" aria-label="العلامة التجارية"><option value="">كل العلامات</option></select>
-        <button type="button" id="addBtn" class="btn primary">+ إضافة منتج جديد</button>
+        <input id="filter" type="search" data-i18n-attr="placeholder:admin.searchPlaceholder;aria-label:admin.searchPlaceholder">
+        <select id="catFilter" data-i18n-attr="aria-label:admin.allCategories"></select>
+        <select id="brandFilter" data-i18n-attr="aria-label:admin.allBrands"></select>
+        <button type="button" id="addBtn" class="btn primary" data-i18n="admin.addProduct"></button>
       </div>
       <p id="listInfo" class="muted small"></p>
       <div id="products" class="product-list"></div>
 
       <details id="deletedBox" class="card deleted" hidden>
-        <summary>المنتجات المحذوفة (<span id="deletedCount">0</span>) — يمكنك استعادتها</summary>
+        <summary id="deletedSummary"></summary>
         <div id="deletedList"></div>
       </details>
     </section>
 
     <section id="tab-settings" hidden>
       <form id="settingsForm" class="card narrow">
-        <h2>معلومات التواصل</h2>
-        <p class="muted small">تظهر في المتجر، وتصل إليها طلبات الزبائن عبر واتساب.</p>
-        <label>رقم واتساب <small>مع رمز الدولة، أرقام فقط — مثال: 963949951985</small>
+        <h2 data-i18n="admin.settingsTitle"></h2>
+        <p class="muted small" data-i18n="admin.settingsHint"></p>
+        <label><span data-i18n="admin.fieldWhatsapp"></span> <small data-i18n="admin.whatsappHint"></small>
           <input id="setWhatsapp" inputmode="numeric" dir="ltr" required>
         </label>
-        <label>البريد الإلكتروني <small>اختياري</small>
+        <label><span data-i18n="admin.fieldEmail"></span>
           <input id="setEmail" type="email" dir="ltr">
         </label>
-        <button type="submit" class="btn primary">حفظ الإعدادات</button>
+        <button type="submit" class="btn primary" data-i18n="admin.saveSettings"></button>
       </form>
     </section>
 
     <section id="tab-help" hidden>
       <div class="card narrow help">
-        <h2>طريقة الاستخدام</h2>
+        <h2 data-i18n="admin.helpTitle"></h2>
         <ol>
-          <li><b>تعديل منتج:</b> اضغط على المنتج من القائمة، غيّر الاسم أو السعر أو الوصف، ثم اضغط <b>حفظ</b>.</li>
-          <li><b>تغيير الصورة:</b> داخل نافذة المنتج اضغط <b>اختيار صورة من الجهاز</b>، انتظر رسالة "تم رفع الصورة"، ثم اضغط <b>حفظ</b>.</li>
-          <li><b>الخصم:</b> اكتب السعر الجديد في "السعر الحالي" والسعر القديم في "السعر قبل الخصم". نسبة الخصم تُحسب وتظهر تلقائياً. إذا تركت السعر القديم فارغاً لن يظهر خصم.</li>
-          <li><b>إضافة منتج:</b> اضغط <b>+ إضافة منتج جديد</b> واملأ البيانات.</li>
-          <li><b>حذف منتج:</b> افتح المنتج واضغط <b>حذف المنتج</b>. المنتج المحذوف يمكن استعادته من قائمة "المنتجات المحذوفة" أسفل الصفحة.</li>
-          <li><b>التراجع عن تعديل:</b> للمنتجات الأصلية يوجد زر <b>استرجاع البيانات الأصلية</b>.</li>
+          <li data-i18n="admin.help1"></li>
+          <li data-i18n="admin.help2"></li>
+          <li data-i18n="admin.help3"></li>
+          <li data-i18n="admin.help4"></li>
+          <li data-i18n="admin.help5"></li>
+          <li data-i18n="admin.help6"></li>
         </ol>
-        <p class="muted small">كل تغيير يظهر في المتجر مباشرة بعد الحفظ (حدّث صفحة المتجر لرؤيته).</p>
+        <p class="muted small" data-i18n="admin.helpNote"></p>
       </div>
     </section>
   </main>
@@ -88,44 +91,47 @@
 <div id="editor" class="modal" hidden>
   <form id="productForm" class="modal-card" novalidate>
     <header class="modal-head">
-      <h2 id="formTitle">تعديل المنتج</h2>
-      <button type="button" class="icon-btn" data-close aria-label="إغلاق">×</button>
+      <h2 id="formTitle"></h2>
+      <button type="button" class="icon-btn" data-close data-i18n-attr="aria-label:closeLabel"></button>
     </header>
     <div class="modal-body">
       <div class="image-box">
         <img id="preview" alt="" src="data:,">
         <div class="image-actions">
-          <label class="btn primary file-btn">📷 اختيار صورة من الجهاز<input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/*"></label>
-          <button type="button" id="removeImage" class="btn ghost">إزالة الصورة</button>
+          <label class="btn primary file-btn"><span data-i18n="admin.pickImage"></span><input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/*"></label>
+          <button type="button" id="removeImage" class="btn ghost" data-i18n="admin.removeImage"></button>
         </div>
         <div id="uploadMsg" class="msg"></div>
         <details class="advanced">
-          <summary>أو ضع رابط صورة من الإنترنت</summary>
+          <summary data-i18n="admin.imageUrl"></summary>
           <input id="image" type="text" dir="ltr" placeholder="https://...">
         </details>
       </div>
       <div class="fields">
-        <label>اسم المنتج<input id="name" maxlength="200" required></label>
+        <label><span data-i18n="admin.fieldName"></span><input id="name" maxlength="200" required></label>
         <div class="two">
-          <label>العلامة التجارية<input id="brand" list="brandList" maxlength="60" required></label>
-          <label>القسم<select id="category"></select></label>
+          <label><span data-i18n="admin.fieldBrand"></span><input id="brand" list="brandList" maxlength="60" required></label>
+          <label><span data-i18n="admin.fieldCategory"></span><select id="category"></select></label>
         </div>
         <div class="two">
-          <label>السعر الحالي ($)<input id="price" type="number" min="0" step="0.01" inputmode="decimal" required></label>
-          <label>السعر قبل الخصم ($) <small>اختياري</small><input id="oldPrice" type="number" min="0" step="0.01" inputmode="decimal"></label>
+          <label><span data-i18n="admin.fieldPrice"></span><input id="price" type="number" min="0" step="0.01" inputmode="decimal" required></label>
+          <label><span data-i18n="admin.fieldOldPrice"></span> <small data-i18n="admin.optional"></small><input id="oldPrice" type="number" min="0" step="0.01" inputmode="decimal"></label>
         </div>
         <p id="discountHint" class="hint"></p>
-        <label>شارة على الصورة <small>اختياري — مثل: جديد، الأكثر مبيعاً. اتركها فارغة لعرض نسبة الخصم</small><input id="badge" maxlength="30"></label>
-        <label>الوصف بالعربية<textarea id="descriptionAr" rows="3" maxlength="2000" placeholder="إذا تركته فارغاً يظهر وصف عام حسب القسم"></textarea></label>
-        <label>الوصف بالإنجليزية <small>يظهر عند اختيار اللغة الإنجليزية</small><textarea id="description" rows="3" dir="ltr" maxlength="2000"></textarea></label>
+        <label class="switch"><input id="inStock" type="checkbox" checked><span data-i18n="admin.fieldStock"></span></label>
+        <p class="hint muted" data-i18n="admin.stockHint"></p>
+        <label><span data-i18n="admin.fieldBadge"></span> <small data-i18n="admin.badgeHint"></small><input id="badge" maxlength="30"></label>
+        <label><span data-i18n="admin.fieldDescAr"></span> <small data-i18n="admin.descHint"></small><textarea id="descriptionAr" rows="2" maxlength="2000" dir="rtl"></textarea></label>
+        <label><span data-i18n="admin.fieldDescEn"></span><textarea id="description" rows="2" maxlength="2000" dir="ltr"></textarea></label>
+        <label><span data-i18n="admin.fieldDescTr"></span><textarea id="descriptionTr" rows="2" maxlength="2000" dir="ltr"></textarea></label>
       </div>
     </div>
     <footer class="modal-foot">
-      <button type="submit" class="btn primary" id="saveBtn">حفظ</button>
-      <button type="button" class="btn ghost" data-close>إلغاء</button>
+      <button type="submit" class="btn primary" id="saveBtn" data-i18n="admin.save"></button>
+      <button type="button" class="btn ghost" data-close data-i18n="admin.cancel"></button>
       <span class="spacer"></span>
-      <button type="button" id="revertBtn" class="btn ghost" hidden>استرجاع البيانات الأصلية</button>
-      <button type="button" id="deleteBtn" class="btn danger">حذف المنتج</button>
+      <button type="button" id="revertBtn" class="btn ghost" hidden data-i18n="admin.revert"></button>
+      <button type="button" id="deleteBtn" class="btn danger" data-i18n="admin.deleteProduct"></button>
     </footer>
   </form>
 </div>
@@ -133,8 +139,9 @@
 <datalist id="brandList"></datalist>
 <div id="toast" class="toast" role="status" hidden></div>
 
-<script src="catalog.js?v=1"></script>
-<script src="product-images.js?v=2"></script>
-<script src="admin.js?v=10"></script>
+<script src="i18n.js?v=1"></script>
+<script src="catalog.js?v=2"></script>
+<script src="product-images.js?v=3"></script>
+<script src="admin.js?v=20"></script>
 </body>
 </html>

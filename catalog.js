@@ -1,37 +1,27 @@
 /*
- * SYRIATECH — الكتالوج الأساسي للمتجر
- * ====================================
- * هذه هي المنتجات الافتراضية. لا حاجة لتعديل هذا الملف:
- * كل التعديلات (الأسعار، الأوصاف، الصور، الإضافة والحذف) تتم من لوحة التحكم /admin.html
- * وتُحفظ في Vercel Blob، وتُطبَّق فوق هذه القائمة تلقائياً.
+ * SYRIATECH — بيانات المتجر الافتراضية
+ * ======================================
+ * هذا الملف يحوي المنتجات فقط (بدون نصوص واجهة — كل النصوص في i18n.js).
+ * لا حاجة لتعديله يدوياً: كل تعديل من لوحة التحكم /admin.html يُطبَّق فوقه.
  */
 (function () {
   const categories = [
-    { id: "power-bank", ar: "باور بانك", en: "Power Banks", art: "assets/new-power.svg", descAr: "باور بانك أصلي من {brand} للاستخدام اليومي والشحن السريع." },
-    { id: "charger", ar: "الشواحن", en: "Chargers", art: "assets/new-charger.svg", descAr: "شاحن أصلي من {brand} للشحن السريع والآمن." },
-    { id: "wireless", ar: "الشحن اللاسلكي", en: "Wireless Charging", art: "assets/new-charger.svg", descAr: "حل شحن لاسلكي أصلي من {brand} للأجهزة المتوافقة." },
-    { id: "cables", ar: "الكابلات", en: "Cables", art: "assets/new-cables.svg", descAr: "كابل أصلي من {brand} للشحن ونقل البيانات." },
-    { id: "hubs-docks", ar: "المحطات والموزعات", en: "Hubs & Docks", art: "assets/new-dock.svg", descAr: "محطة أو موزع أصلي من {brand} لتوسيع المنافذ والاتصال." },
-    { id: "power", ar: "الطاقة ومحطات الشحن", en: "Power & Charging Stations", art: "assets/new-charger.svg", descAr: "حل طاقة وشحن أصلي من {brand} للمكتب والمنزل." },
-    { id: "car", ar: "شحن السيارة", en: "Car Charging", art: "assets/new-charger.svg", descAr: "ملحق شحن أصلي من {brand} للسيارة." },
-    { id: "audio", ar: "الصوتيات والسماعات", en: "Audio & Headphones", art: "assets/new-audio.svg", descAr: "منتج صوتي أصلي من {brand}." },
-    { id: "security", ar: "الأمان", en: "Security", art: "assets/new-security.svg", descAr: "منتج أمان ذكي أصلي من {brand}." },
-    { id: "smart-home", ar: "المنزل الذكي", en: "Smart Home", art: "assets/new-security.svg", descAr: "منتج منزل ذكي أصلي من {brand}." },
-    { id: "projector", ar: "أجهزة العرض", en: "Projectors", art: "assets/new-projector.svg", descAr: "جهاز عرض أصلي من {brand}." },
-    { id: "solar", ar: "الطاقة المتنقلة والشمسية", en: "Portable & Solar Power", art: "assets/new-solar.svg", descAr: "حل طاقة متنقلة أصلي من {brand} للمنزل والرحلات." }
+    { id: "power-bank", art: "assets/new-power.svg" },
+    { id: "charger", art: "assets/new-charger.svg" },
+    { id: "wireless", art: "assets/new-charger.svg" },
+    { id: "cables", art: "assets/new-cables.svg" },
+    { id: "hubs-docks", art: "assets/new-dock.svg" },
+    { id: "power", art: "assets/new-charger.svg" },
+    { id: "car", art: "assets/new-charger.svg" },
+    { id: "audio", art: "assets/new-audio.svg" },
+    { id: "security", art: "assets/new-security.svg" },
+    { id: "smart-home", art: "assets/new-security.svg" },
+    { id: "projector", art: "assets/new-projector.svg" },
+    { id: "solar", art: "assets/new-solar.svg" }
   ];
 
-  const brands = [
-    { name: "Anker", ar: "طاقة • شحن • ملحقات", en: "Power • Charging • Accessories" },
-    { name: "UGREEN", ar: "شواحن • كابلات • موزعات", en: "Chargers • Cables • Hubs" },
-    { name: "Baseus", ar: "شحن • سيارة • ملحقات", en: "Charging • Car • Accessories" },
-    { name: "soundcore", ar: "سماعات • أذن • مكبرات صوت", en: "Headphones • Earbuds • Speakers" },
-    { name: "eufy", ar: "أمان • منزل ذكي", en: "Security • Smart Home" },
-    { name: "Nebula", ar: "أجهزة عرض • سينما منزلية", en: "Projectors • Home Cinema" },
-    { name: "Anker SOLIX", ar: "طاقة متنقلة • طاقة شمسية", en: "Portable Energy • Solar" },
-    { name: "BLUETTI", ar: "محطات طاقة متنقلة", en: "Portable Power Stations" },
-    { name: "EcoFlow", ar: "طاقة احتياطية للمنزل", en: "Home Backup Power" }
-  ];
+  // Display order of the brands that have a tagline in i18n.js.
+  const brands = ["Anker", "UGREEN", "Baseus", "soundcore", "eufy", "Nebula", "Anker SOLIX", "BLUETTI", "EcoFlow"];
 
   const settings = { whatsapp: "963949951985", email: "info@syriatech.store" };
 
@@ -172,6 +162,7 @@
 
   const PLACEHOLDER = "assets/product-accessories.svg";
   const categoryMap = Object.fromEntries(categories.map(c => [c.id, c]));
+  const t = (key, vars) => (window.I18N ? window.I18N.t(key, vars) : "");
 
   function esc(value) {
     return String(value ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -195,8 +186,10 @@
       category: String(p.category || ""),
       description: String(p.description || ""),
       descriptionAr: String(p.descriptionAr || ""),
+      descriptionTr: String(p.descriptionTr || ""),
       badge: String(p.badge || ""),
       image: String(p.image || ""),
+      inStock: p.inStock !== false,
       price,
       oldPrice,
       discount: oldPrice > price ? Math.round((1 - price / oldPrice) * 100) : 0
@@ -269,20 +262,27 @@
     return art || fallbackFor(p);
   }
 
+  const ARABIC = /[\u0600-\u06FF]/;
+
+  // Description in the requested language, falling back to the generic
+  // category line so no shopper ever sees another language's text.
   function descFor(p, lang) {
-    if (lang === "en") return p.description || p.descriptionAr || "";
-    if (p.descriptionAr) return p.descriptionAr;
-    // Text the admin typed wins over the generic line — older admin versions
-    // stored it in the single "description" field, often in Arabic.
-    if ((p.added || p.edited) && p.description) return p.description;
-    if (/[\u0600-\u06FF]/.test(p.description || "")) return p.description;
-    const c = categoryMap[p.category];
-    return c ? c.descAr.replace("{brand}", p.brand || "") : p.description || "";
+    const own = { ar: p.descriptionAr, en: p.description, tr: p.descriptionTr };
+    if (own[lang]) return own[lang];
+    // Older admin versions had a single description field, often filled in Arabic.
+    if (lang === "ar" && p.description && (ARABIC.test(p.description) || p.added || p.edited)) return p.description;
+    const generic = t("categoryDesc." + p.category, { brand: p.brand || "" });
+    if (generic && generic.indexOf("\u27E6") !== 0) return generic;
+    return p.description && !ARABIC.test(p.description) ? p.description : "";
   }
 
-  function categoryLabel(id, lang) {
-    const c = categoryMap[id];
-    return c ? c[lang === "en" ? "en" : "ar"] : String(id || "");
+  function categoryLabel(id) {
+    return t("category." + id) || String(id || "");
+  }
+
+  function brandTagline(name) {
+    const value = t("brandTagline." + name);
+    return value && value.indexOf("⟦") !== 0 ? value : "";
   }
 
   // Broken image → category artwork → generic placeholder (never loops).
@@ -294,5 +294,8 @@
     if (img.getAttribute("src") !== PLACEHOLDER) img.src = PLACEHOLDER;
   };
 
-  window.STORE = { categories, brands, products, settings, PLACEHOLDER, esc, merge, deletedProducts, mergeSettings, imageFor, fallbackFor, descFor, categoryLabel };
+  window.STORE = {
+    categories, brands, products, settings, PLACEHOLDER,
+    esc, merge, deletedProducts, mergeSettings, imageFor, fallbackFor, descFor, categoryLabel, brandTagline
+  };
 })();

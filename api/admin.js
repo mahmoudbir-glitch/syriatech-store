@@ -7,7 +7,14 @@ const SESSION_MS = 12 * 60 * 60 * 1000;
 const IMAGE_TYPES = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif" };
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
 
-const fail = (res, code, message) => res.status(code).json({ ok: false, error: message });
+// The API answers with a code; the admin page turns it into a translated message.
+const CODES = new Set([
+  "missing_env", "invalid_password", "unauthorized", "product_required", "name_required",
+  "invalid_price", "invalid_category", "invalid_image", "invalid_id", "invalid_whatsapp",
+  "invalid_email", "unsupported_image", "image_too_large", "corrupt_state", "unknown_action", "server_error"
+]);
+
+const fail = (res, status, code) => res.status(status).json({ ok: false, error: code });
 const env = () => ({ password: process.env.ADMIN_PASSWORD || "", secret: process.env.ADMIN_SECRET || "" });
 const digest = (key, value) => crypto.createHmac("sha256", key).update(String(value)).digest();
 const safeEqual = (a, b) => crypto.timingSafeEqual(digest("compare", a), digest("compare", b));
@@ -48,7 +55,7 @@ async function readState() {
   if (!blob) return { state: normalizeState({}), etag: null };
   const text = await new Response(blob.stream).text();
   let parsed;
-  try { parsed = JSON.parse(text); } catch { throw new Error("ملف بيانات المتجر تالف، لم يتم حفظ أي تغيير"); }
+  try { parsed = JSON.parse(text); } catch { throw new Error("corrupt_state"); }
   return { state: normalizeState(parsed), etag: blob.blob.etag || null };
 }
 
@@ -84,17 +91,17 @@ function cleanImage(value) {
   if (/^\/api\/image\?pathname=products%2F[\w.%-]+$/.test(url)) return url;
   if (/^assets\/[\w./-]+$/.test(url) && !url.includes("..")) return url;
   if (/^https:\/\/[^\s"'<>]+$/.test(url)) return url;
-  throw new Error("رابط الصورة غير صالح");
+  throw new Error("invalid_image");
 }
 function cleanProduct(p) {
-  if (!p || typeof p !== "object") throw new Error("بيانات المنتج ناقصة");
+  if (!p || typeof p !== "object") throw new Error("product_required");
   const name = text(p.name, 200);
-  if (!name) throw new Error("اسم المنتج مطلوب");
+  if (!name) throw new Error("name_required");
   const price = money(p.price);
-  if (Number.isNaN(price)) throw new Error("السعر غير صالح");
+  if (Number.isNaN(price)) throw new Error("invalid_price");
   const old = money(p.oldPrice);
   const category = text(p.category, 40);
-  if (!/^[a-z0-9-]+$/.test(category)) throw new Error("القسم غير صالح");
+  if (!/^[a-z0-9-]+$/.test(category)) throw new Error("invalid_category");
   return {
     name,
     brand: text(p.brand, 60),
@@ -103,8 +110,10 @@ function cleanProduct(p) {
     oldPrice: Number.isNaN(old) || old < price ? price : old,
     description: text(p.description, 2000),
     descriptionAr: text(p.descriptionAr, 2000),
+    descriptionTr: text(p.descriptionTr, 2000),
     badge: text(p.badge, 30),
-    image: cleanImage(p.image)
+    image: cleanImage(p.image),
+    inStock: p.inStock !== false
   };
 }
 
@@ -121,10 +130,10 @@ export default async function handler(req, res) {
 
     if (req.method === "POST" && action === "login") {
       const { password, secret } = env();
-      if (!password || !secret) return fail(res, 500, "لم يتم ضبط ADMIN_PASSWORD و ADMIN_SECRET في إعدادات Vercel");
+      if (!password || !secret) return fail(res, 500, "missing_env");
       if (!safeEqual(String(body.password || ""), password)) {
         await new Promise(r => setTimeout(r, 800));
-        return fail(res, 401, "كلمة المرور غير صحيحة");
+        return fail(res, 401, "invalid_password");
       }
       res.setHeader("Set-Cookie", newSessionCookie());
       return res.status(200).json({ ok: true });
@@ -134,7 +143,7 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true });
     }
 
-    if (!isAuthed(req)) return fail(res, 401, "يجب تسجيل الدخول");
+    if (!isAuthed(req)) return fail(res, 401, "unauthorized");
 
     if (req.method === "GET" && action === "state") {
       const { state } = await readState();
@@ -167,7 +176,7 @@ export default async function handler(req, res) {
 
     if (req.method === "POST" && (action === "delete" || action === "restore" || action === "revert")) {
       const id = Number(body.id);
-      if (!Number.isSafeInteger(id) || id <= 0) return fail(res, 400, "رقم المنتج غير صالح");
+      if (!Number.isSafeInteger(id) || id <= 0) return fail(res, 400, "invalid_id");
       const state = await mutate(s => {
         s.deleted = s.deleted.filter(x => x !== id);
         if (action === "delete") s.deleted.push(id);
@@ -178,9 +187,9 @@ export default async function handler(req, res) {
 
     if (req.method === "POST" && action === "settings") {
       const whatsapp = String(body.whatsapp || "").replace(/\D/g, "");
-      if (whatsapp.length < 8 || whatsapp.length > 15) return fail(res, 400, "رقم واتساب غير صالح — اكتبه مع رمز الدولة، مثال: 963949951985");
+      if (whatsapp.length < 8 || whatsapp.length > 15) return fail(res, 400, "invalid_whatsapp");
       const email = text(body.email, 120);
-      if (email && !/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(email)) return fail(res, 400, "البريد الإلكتروني غير صالح");
+      if (email && !/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(email)) return fail(res, 400, "invalid_email");
       const state = await mutate(s => { s.settings = { ...s.settings, whatsapp, email }; });
       return res.status(200).json({ ok: true, state });
     }
@@ -188,9 +197,9 @@ export default async function handler(req, res) {
     if (req.method === "POST" && action === "presign") {
       const contentType = String(body.contentType || "").toLowerCase();
       const ext = IMAGE_TYPES[contentType];
-      if (!ext) return fail(res, 400, "صيغة الصورة غير مدعومة. استخدم JPG أو PNG أو WEBP");
+      if (!ext) return fail(res, 400, "unsupported_image");
       const size = Number(body.size || 0);
-      if (!size || size > MAX_IMAGE_BYTES) return fail(res, 400, "حجم الصورة يجب أن يكون أقل من 10MB");
+      if (!size || size > MAX_IMAGE_BYTES) return fail(res, 400, "image_too_large");
       const base = String(body.filename || "").replace(/\.[^.]*$/, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "image";
       const pathname = `products/${Date.now()}-${crypto.randomBytes(3).toString("hex")}-${base}.${ext}`;
       const validUntil = Date.now() + 15 * 60 * 1000;
@@ -201,9 +210,10 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true, pathname, presignedUrl, storeId });
     }
 
-    return fail(res, 404, "عملية غير معروفة");
+    return fail(res, 404, "unknown_action");
   } catch (e) {
-    console.error("admin api error", e);
-    return fail(res, e instanceof Error && /[؀-ۿ]/.test(e.message) ? 400 : 500, e?.message || "خطأ في الخادم");
+    const code = CODES.has(e?.message) ? e.message : "server_error";
+    if (code === "server_error") console.error("admin api error", e);
+    return fail(res, code === "server_error" ? 500 : 400, code);
   }
 }

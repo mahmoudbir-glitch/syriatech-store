@@ -103,3 +103,21 @@ textarea{resize:vertical}
   .modal-foot .btn{flex:1}
   .spacer{display:none}
 }
+
+/* ============ v8: languages, stock switch ============ */
+.lang-select{width:auto;margin:0;border:1px solid #d0d5dd;border-radius:11px;padding:9px 11px;background:#fff;font-weight:700;font-size:13px}
+.login .lang-select{margin-top:16px;width:100%}
+.tag.out{background:#fdecec;color:#dc2626}
+.switch{display:flex;align-items:center;gap:9px;background:#f6f8fb;border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:6px;cursor:pointer}
+.switch input{width:18px;height:18px;margin:0;accent-color:var(--blue);flex:none}
+.switch span{font-weight:700;font-size:14px}
+.hint.muted{color:var(--muted);margin-top:0}
+.file-btn span{pointer-events:none}
+.modal-body textarea{min-height:58px}
+.row .price del{display:block}
+@media(max-width:820px){
+.top-actions{flex-wrap:wrap;gap:6px}
+.lang-select{padding:8px 9px;font-size:12px}
+}
+
+.icon-btn:before{content:"\00d7"}
