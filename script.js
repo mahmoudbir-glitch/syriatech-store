@@ -55,7 +55,7 @@ const products = [
 {id:54,category:"smart-home",brand:"eufy",name:"eufy Smart Lock C220",description:"Smart door lock",oldPrice:119.99,price:119.99,badge:""},
 {id:55,category:"smart-home",brand:"eufy",name:"eufy HomeBase S380 (HomeBase 3)",description:"Central hub for eufy security devices",oldPrice:139.99,price:139.99,badge:""},
 {id:56,category:"projector",brand:"Nebula",name:"Nebula Capsule 3 Laser",description:"Portable laser smart projector",oldPrice:799.99,price:799.99,badge:""},
-{id:57,category:"projector",brand:"Nebula Mars 3 Air",name:"Nebula Mars 3 Air",description:"Portable projector",oldPrice:599.99,price:599.99,badge:""},
+{id:57,category:"projector",brand:"Nebula",name:"Nebula Mars 3 Air",description:"Portable projector",oldPrice:599.99,price:599.99,badge:""},
 {id:58,category:"projector",brand:"Nebula",name:"Nebula Cosmos 4K SE",description:"4K home projector",oldPrice:1299.99,price:1299.99,badge:""},
 {id:59,category:"solar",brand:"Anker SOLIX",name:"Anker SOLIX C1000 Gen 2",description:"Portable power station",oldPrice:1199.99,price:1199.99,badge:""},
 {id:60,category:"solar",brand:"Anker SOLIX",name:"Anker SOLIX C2000 Gen 2",description:"High-capacity portable power station",oldPrice:1699.99,price:1699.99,badge:""},
@@ -74,6 +74,16 @@ products.forEach(p => {
 });
 
 
+
+// Catalog integrity guard: prevents malformed product records from breaking filters/cart.
+products.forEach(p=>{
+  if(!p.brand) p.brand="Anker";
+  if(!p.category) p.category="accessories";
+  if(!p.name) p.name="Anker Product";
+  p.price=Number(p.price)||0;
+  p.oldPrice=Number(p.oldPrice)||p.price;
+  p.discount=p.oldPrice>p.price?Math.round((1-p.price/p.oldPrice)*100):0;
+});
 const WHATSAPP = "963949951985";
 const CART_KEY = "syriatech_cart";
 let cart = [];
