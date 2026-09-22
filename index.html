@@ -6,18 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syriatech Store</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
   <div class="top-bar">شحن سريع لجميع المناطق | اطلب الآن عبر واتساب</div>
 
   <header class="header">
     <div class="logo"><span>S</span> Syriatech</div>
-
     <div class="search-box">
       <input id="searchInput" type="search" placeholder="ابحث عن منتج..." autocomplete="off">
       <button id="searchButton" type="button">بحث</button>
     </div>
-
     <div class="header-icons">
       <button id="languageButton" type="button">EN</button>
       <button id="cartButton" type="button">🛒 <b id="cartCount">0</b></button>
@@ -26,14 +25,14 @@
 
   <nav class="navbar">
     <a href="#home">الرئيسية</a>
-    <a href="#products">كل المنتجات</a>
+    <a href="#products" data-filter-all="true">كل المنتجات</a>
     <div class="dropdown">
       <button type="button">العلامات التجارية ▾</button>
       <div class="dropdown-content">
-        <a href="#products">Anker</a>
-        <a href="#products">Soundcore</a>
-        <a href="#products">eufy</a>
-        <a href="#products">Nebula</a>
+        <a href="#products" data-brand="Anker">Anker</a>
+        <a href="#products" data-brand="Anker soundcore">Anker soundcore</a>
+        <a href="#products" data-brand="eufy">eufy</a>
+        <a href="#products" data-brand="Nebula">Nebula</a>
       </div>
     </div>
     <a href="#offers">العروض</a>
@@ -51,27 +50,38 @@
       <div class="hero-product"><div class="circle">S</div></div>
     </section>
 
-    <section class="categories">
-      <div>🔋<span>Power Banks</span></div>
-      <div>🎧<span>Headphones</span></div>
-      <div>🔌<span>Chargers</span></div>
-      <div>📱<span>Accessories</span></div>
+    <section class="categories" aria-label="الأقسام">
+      <button type="button" class="category-card" data-category="power-bank"><span class="category-icon">🔋</span><span>Power Banks</span></button>
+      <button type="button" class="category-card" data-category="audio"><span class="category-icon">🎧</span><span>Headphones & Audio</span></button>
+      <button type="button" class="category-card" data-category="charger"><span class="category-icon">🔌</span><span>Chargers</span></button>
+      <button type="button" class="category-card" data-category="accessories"><span class="category-icon">📱</span><span>Accessories</span></button>
+      <button type="button" class="category-card" data-category="security"><span class="category-icon">📷</span><span>Security</span></button>
+      <button type="button" class="category-card" data-category="smart-home"><span class="category-icon">🏠</span><span>Smart Home</span></button>
+      <button type="button" class="category-card" data-category="projector"><span class="category-icon">📽️</span><span>Projectors</span></button>
+      <button type="button" class="category-card" data-category="solar"><span class="category-icon">☀️</span><span>SOLIX Energy</span></button>
     </section>
 
     <section id="products" class="section">
-      <div class="section-title"><p>منتجاتنا</p><h2>الأكثر مبيعًا</h2></div>
+      <div class="section-title">
+        <p id="productsEyebrow">منتجات أصلية</p>
+        <h2 id="productsTitle">منتجات Anker ومجموعاتها</h2>
+        <button id="clearFilterButton" type="button" class="clear-filter">عرض كل المنتجات</button>
+      </div>
       <div id="productsGrid" class="products-grid"></div>
     </section>
 
     <section id="offers" class="offer">
-      <div><p>عروض Syriatech</p><h2>خصومات مميزة على منتجات Anker</h2></div>
+      <div><p>عروض Syriatech</p><h2>منتجات مختارة من Anker ومجموعاته</h2></div>
       <a href="https://wa.me/963949951985" target="_blank" rel="noopener noreferrer" class="main-button">اطلب عبر واتساب</a>
     </section>
 
     <section class="brands section">
       <div class="section-title"><p>علامات تجارية موثوقة</p><h2>تسوق حسب العلامة التجارية</h2></div>
       <div class="brand-list">
-        <div>Anker</div><div>Soundcore</div><div>eufy</div><div>Nebula</div>
+        <button type="button" data-brand="Anker">Anker</button>
+        <button type="button" data-brand="Anker soundcore">Anker soundcore</button>
+        <button type="button" data-brand="eufy">eufy</button>
+        <button type="button" data-brand="Nebula">Nebula</button>
       </div>
     </section>
 
@@ -83,22 +93,18 @@
   </main>
 
   <aside id="cart" class="cart" aria-label="سلة المشتريات">
-    <div class="cart-header">
-      <h2>سلة المشتريات</h2>
-      <button id="closeCartButton" type="button" aria-label="إغلاق">×</button>
-    </div>
+    <div class="cart-header"><h2>سلة المشتريات</h2><button id="closeCartButton" type="button" aria-label="إغلاق">×</button></div>
     <div id="cartItems"></div>
     <div class="cart-total">المجموع: $<span id="cartTotal">0.00</span></div>
     <a id="checkoutButton" href="https://wa.me/963949951985" target="_blank" rel="noopener noreferrer" class="checkout-button">إتمام الطلب عبر واتساب</a>
   </aside>
 
   <div id="overlay"></div>
-
-  <a class="whatsapp" href="https://wa.me/963949951985" target="_blank" rel="noopener noreferrer" aria-label="واتساب">💬</a>
+  <a class="whatsapp" href="https://wa.me/963949951985" target="_blank" rel="noopener noreferrer" aria-label="تواصل معنا عبر واتساب"><i class="fa-brands fa-whatsapp"></i></a>
 
   <footer>
     <div><h3>Syriatech</h3><p>متجرك الموثوق للمنتجات التقنية.</p></div>
-    <div><h3>روابط مهمة</h3><a href="#home">الرئيسية</a><a href="#products">المنتجات</a><a href="#contact">تواصل معنا</a></div>
+    <div><h3>روابط مهمة</h3><a href="#home">الرئيسية</a><a href="#products" data-filter-all="true">المنتجات</a><a href="#contact">تواصل معنا</a></div>
     <div><h3>تواصل معنا</h3><p>واتساب: +963 949 951 985</p></div>
   </footer>
 
