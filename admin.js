@@ -14,9 +14,10 @@ $("#uploadBtn").onclick=async()=>{
  const f=$("#imageFile").files[0];if(!f)return alert("اختر صورة");if(!f.type.startsWith("image/"))return alert("اختر ملف صورة");
  try{
   $("#uploadBtn").disabled=true;$("#saveMsg").textContent="جاري الاتصال بخدمة رفع الصور...";
-  const mod=await import("https://esm.sh/@vercel/blob@2.7.0/client?bundle");
-  const result=await mod.upload("products/"+Date.now()+"-"+f.name.replace(/[^a-zA-Z0-9._-]/g,"-"),f,{access:"private",handleUploadUrl:"/api/blob-upload.js",multipart:true,onUploadProgress(e){$("#saveMsg").textContent="جاري رفع الصورة... "+Math.round(e.percentage)+"%";}});
-  const imageUrl="/api/image?pathname="+encodeURIComponent(result.pathname);$("#image").value=imageUrl;$("#preview").src=imageUrl;$("#preview").hidden=false;$("#saveMsg").textContent="تم رفع الصورة بنجاح ✓";
+  const prep=await api("presign",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({filename:f.name,contentType:f.type,size:f.size})});
+  const putResponse=await fetch(prep.presignedUrl,{method:"PUT",body:f,headers:{"Content-Type":f.type}});
+  if(!putResponse.ok) throw new Error("فشل إرسال الصورة إلى Vercel Blob ("+putResponse.status+")");
+  const imageUrl="/api/image?pathname="+encodeURIComponent(prep.pathname);$("#image").value=imageUrl;$("#preview").src=imageUrl;$("#preview").hidden=false;$("#saveMsg").textContent="تم رفع الصورة بنجاح ✓";
  }catch(err){$("#saveMsg").textContent="فشل رفع الصورة: "+(err.message||"خطأ غير معروف")}finally{$("#uploadBtn").disabled=false}
 };
 $("#productForm").onsubmit=async e=>{e.preventDefault();const p={id:editing?Number(editing.id):Date.now(),name:$("#name").value.trim(),description:$("#description").value.trim(),price:Number($("#price").value),oldPrice:Number($("#oldPrice").value||$("#price").value),category:$("#category").value,brand:$("#brand").value.trim()||"Anker",image:$("#image").value.trim(),badge:"NEW"};try{await api("save",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({mode:editing?"edit":"add",product:p})});$("#saveMsg").textContent="تم حفظ المنتج";reset();await load();render()}catch(e){$("#saveMsg").textContent=e.message}}
