@@ -241,8 +241,8 @@ function filterProducts({category=undefined,brand=undefined,reset=false}={}) {
 function productImagePath(p){
   // Admin-uploaded product images must take priority over category placeholders.
   if (p && typeof p.image === "string" && p.image.trim()) return p.image.trim();
-  const map={"power-bank":"assets/product-power.svg","charger":"assets/product-charger.svg","wireless":"assets/product-accessories.svg","cables":"assets/product-accessories.svg","hubs-docks":"assets/product-accessories.svg","power":"assets/product-accessories.svg","car":"assets/product-charger.svg","audio":"assets/product-audio.svg","security":"assets/product-security.svg","smart-home":"assets/product-smart.svg","projector":"assets/product-projector.svg","solar":"assets/product-solar.svg"};
-  return map[p.category]||"assets/product-accessories.svg";
+  const map={"power-bank":"assets/new-power.svg","charger":"assets/new-charger.svg","wireless":"assets/new-charger.svg","cables":"assets/new-cables.svg","hubs-docks":"assets/new-dock.svg","power":"assets/new-charger.svg","car":"assets/new-charger.svg","audio":"assets/new-audio.svg","security":"assets/new-security.svg","smart-home":"assets/new-security.svg","projector":"assets/new-projector.svg","solar":"assets/new-solar.svg"};
+  return map[p.category]||"assets/new-power.svg";
 }
 function openImageLightbox(src, alt){
  const box=document.getElementById("imageLightbox");
