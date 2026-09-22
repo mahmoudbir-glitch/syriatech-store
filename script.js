@@ -396,3 +396,49 @@ renderCart();}
 function checkoutWhatsApp(e){if(e)e.preventDefault();if(!cart.length){alert(t().emptyCart);return;}const lines=cart.map(i=>"• "+i.name+" × "+i.qty+" = "+money(i.price*i.qty));const total=cart.reduce((s,i)=>s+i.price*i.qty,0);window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent((isEnglish?"Hello Syriatech, I would like to order:":"مرحباً Syriatech، أريد طلب المنتجات التالية:")+"\n\n"+lines.join("\n")+"\n\n"+(isEnglish?"Total: ":"المجموع: ")+money(total)),"_blank");}
 function bindNavigation(){$("#languageButton")?.addEventListener("click",changeLanguage);$("#cartButton")?.addEventListener("click",openCart);$("#closeCartButton")?.addEventListener("click",closeCart);$("#overlay")?.addEventListener("click",closeCart);$("#searchForm")?.addEventListener("submit",e=>{e.preventDefault();searchProducts()});$("#checkoutButton")?.addEventListener("click",checkoutWhatsApp);$("#clearFilterButton")?.addEventListener("click",()=>filterProducts({reset:true}));$("#applyPrice")?.addEventListener("click",()=>filterProducts());$("#sortSelect")?.addEventListener("change",()=>filterProducts());document.querySelectorAll("[data-category]").forEach(e=>e.addEventListener("click",()=>filterProducts({category:e.dataset.category})));document.querySelectorAll("[data-category-all]").forEach(e=>e.addEventListener("click",()=>filterProducts({reset:true})));document.querySelectorAll("[data-brand]").forEach(e=>e.addEventListener("click",a=>{a.preventDefault();filterProducts({brand:e.dataset.brand})}));document.querySelectorAll("[data-filter-all]").forEach(e=>e.addEventListener("click",a=>{a.preventDefault();filterProducts({reset:true})}));document.querySelectorAll("[data-brand-check]").forEach(e=>e.addEventListener("change",()=>filterProducts()));$("#closeQuick")?.addEventListener("click",closeQuickView);$("#quickView")?.addEventListener("click",e=>{if(e.target.id==="quickView")closeQuickView()});document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeCart();closeQuickView()}});}
 document.addEventListener("DOMContentLoaded",()=>{loadCart();bindNavigation();renderProducts(products);renderCart();});
+
+
+// Admin/Vercel catalog sync: loads administrator changes and uploaded Vercel Blob images.
+async function syncAdminCatalog(){
+  try{
+    const response=await fetch("/api/products?ts="+Date.now(),{cache:"no-store"});
+    if(!response.ok) return;
+    const remote=await response.json();
+    const deleted=new Set((remote.deleted||[]).map(Number));
+
+    for(let i=products.length-1;i>=0;i--){
+      if(deleted.has(Number(products[i].id))) products.splice(i,1);
+    }
+
+    Object.values(remote.overrides||{}).forEach(remoteProduct=>{
+      const id=Number(remoteProduct.id);
+      const local=products.find(p=>Number(p.id)===id);
+      if(local) Object.assign(local,remoteProduct);
+      else if(!deleted.has(id)) products.push(remoteProduct);
+    });
+
+    (remote.additions||[]).forEach(remoteProduct=>{
+      const id=Number(remoteProduct.id);
+      if(!deleted.has(id) && !products.some(p=>Number(p.id)===id)) products.push(remoteProduct);
+    });
+
+    products.forEach(p=>{
+      p.price=Number(p.price)||0;
+      p.oldPrice=Number(p.oldPrice)||p.price;
+      if(!p.badge) p.badge="NEW";
+    });
+
+    renderProducts(products);
+    renderCart();
+  }catch(error){
+    console.warn("Admin catalog sync unavailable",error);
+  }
+}
+
+function productImagePath(p){
+  if(p && p.image) return p.image;
+  const map={"power-bank":"assets/product-power.svg","charger":"assets/product-charger.svg","wireless":"assets/product-accessories.svg","cables":"assets/product-accessories.svg","hubs-docks":"assets/product-accessories.svg","power":"assets/product-accessories.svg","car":"assets/product-charger.svg","audio":"assets/product-audio.svg","security":"assets/product-security.svg","smart-home":"assets/product-smart.svg","projector":"assets/product-projector.svg","solar":"assets/product-solar.svg"};
+  return map[p?.category]||"assets/product-accessories.svg";
+}
+
+document.addEventListener("DOMContentLoaded",()=>{setTimeout(syncAdminCatalog,150);});
