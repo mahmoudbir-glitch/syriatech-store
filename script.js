@@ -165,9 +165,13 @@ function filterProducts({category=undefined,brand=undefined,reset=false}={}) {
     if($("#maxPrice"))$("#maxPrice").value="";
     if($("#searchInput"))$("#searchInput").value="";
   } else {
+    const viewChanged = category!==undefined || brand!==undefined;
     if(category!==undefined) currentView.category=category;
     if(brand!==undefined) currentView.brand=brand;
-    currentView.query="";
+    if(viewChanged){
+      currentView.query="";
+      if($("#searchInput"))$("#searchInput").value="";
+    }
   }
 
   let list=[...products];
