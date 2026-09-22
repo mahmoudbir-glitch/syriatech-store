@@ -366,3 +366,7 @@ body{font-family:"Segoe UI",Tahoma,"Geeza Pro","Noto Sans Arabic",Arial,sans-ser
 .toast.show{opacity:1;visibility:visible}
 /* Notice about stale prices */
 .stale-notice{background:#fff8e6;border:1px solid #f2d999;color:#7a5600;border-radius:var(--r-md);padding:12px 16px;margin-bottom:16px;font-size:13px;font-weight:700}
+
+/* The hero photo has a white studio background — frame it as a card on the dark hero */
+.hero-product-showcase img{background:#fff;border-radius:24px;padding:22px;box-shadow:0 30px 70px rgba(0,0,0,.45);filter:none;width:min(78%,420px);height:auto;aspect-ratio:1/1;object-fit:contain}
+@media(max-width:760px){.hero-product-showcase img{width:min(74%,260px);height:auto;padding:16px;border-radius:20px}}
