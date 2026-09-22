@@ -11,17 +11,11 @@ window.deleteProduct=async id=>{if(!confirm("حذف المنتج؟"))return;try{
 $("#loginBtn").onclick=async()=>{try{await api("login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({password:$("#password").value})});$("#loginView").hidden=true;$("#adminView").hidden=false;await load();render()}catch(e){$("#loginMsg").textContent=e.message}}
 $("#logoutBtn").onclick=async()=>{await api("logout",{method:"POST"});location.reload()}
 $("#uploadBtn").onclick=async()=>{
- const f=$("#imageFile").files[0]; if(!f)return alert("اختر صورة"); if(!f.type.startsWith("image/"))return alert("اختر ملف صورة");
+ const f=$("#imageFile").files[0];if(!f)return alert("اختر صورة");if(!f.type.startsWith("image/"))return alert("اختر ملف صورة");
  try{
-  $("#uploadBtn").disabled=true; $("#saveMsg").textContent="جاري ضغط الصورة...";
-  const img=new Image(), reader=new FileReader();
-  await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(new Error("تعذر قراءة الصورة"));reader.onload=()=>{img.src=reader.result};reader.onerror=()=>reject(new Error("تعذر قراءة الملف"));reader.readAsDataURL(f)});
-  const max=1400, scale=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight)), w=Math.max(1,Math.round(img.naturalWidth*scale)), h=Math.max(1,Math.round(img.naturalHeight*scale));
-  const canvas=document.createElement("canvas");canvas.width=w;canvas.height=h;canvas.getContext("2d").drawImage(img,0,0,w,h);
-  const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/jpeg",0.78));if(!blob)throw new Error("تعذر ضغط الصورة");
-  const dataUrl=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>reject(new Error("تعذر تجهيز الصورة"));r.readAsDataURL(blob)});
-  $("#saveMsg").textContent="جاري رفع الصورة إلى Vercel Blob...";
-  const result=await api("upload",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({data:dataUrl})});
+  $("#uploadBtn").disabled=true;$("#saveMsg").textContent="جاري الاتصال بخدمة رفع الصور...";
+  const mod=await import("https://esm.sh/@vercel/blob@2.7.0/client?bundle");
+  const result=await mod.upload("products/"+Date.now()+"-"+f.name.replace(/[^a-zA-Z0-9._-]/g,"-"),f,{access:"public",handleUploadUrl:"/api/blob-upload.js",multipart:true,onUploadProgress(e){$("#saveMsg").textContent="جاري رفع الصورة... "+Math.round(e.percentage)+"%";}});
   $("#image").value=result.url;$("#preview").src=result.url;$("#preview").hidden=false;$("#saveMsg").textContent="تم رفع الصورة بنجاح ✓";
  }catch(err){$("#saveMsg").textContent="فشل رفع الصورة: "+(err.message||"خطأ غير معروف")}finally{$("#uploadBtn").disabled=false}
 };
