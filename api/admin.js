@@ -41,7 +41,7 @@ export default async function handler(req,res){
    if(!type.startsWith("image/"))return fail(res,400,"Only image files are allowed");
    const ext=(name.split(".").pop()||"jpg").replace(/[^a-z0-9]/gi,"").toLowerCase()||"jpg";
    const pathname=`products/${Date.now()}-${crypto.randomBytes(5).toString("hex")}.${ext}`;
-   const signed=await issueSignedToken({operations:["put"]});
+   const signed=await issueSignedToken({operations:["put"],pathname});
    const {presignedUrl}=await presignUrl(signed,{pathname,operation:"put",validUntil:Date.now()+15*60*1000});
    return res.status(200).json({ok:true,presignedUrl,pathname});
   }
