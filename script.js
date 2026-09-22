@@ -136,11 +136,24 @@ function filterProducts({category=null,brand=null,reset=false}={}){
  const f=activeFilters();if(f.brands.length)list=list.filter(p=>f.brands.includes(p.brand));if(f.min)list=list.filter(p=>p.price>=f.min);if(f.max)list=list.filter(p=>p.price<=f.max);
  renderProducts(list,brand?brand+" — "+t().productsLabel:category?(t().categories[category]||t().productsLabel):t().productsTitle);document.querySelectorAll(".side-filter").forEach(x=>x.classList.toggle("active",category?x.dataset.category===category:x.hasAttribute("data-category-all")));$("#products")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
+function productImagePath(p){
+  const map={
+    "power-bank":"assets/product-power.svg",
+    "charger":"assets/product-charger.svg",
+    "accessories":"assets/product-accessories.svg",
+    "audio":"assets/product-audio.svg",
+    "security":"assets/product-security.svg",
+    "smart-home":"assets/product-smart.svg",
+    "projector":"assets/product-projector.svg",
+    "solar":"assets/product-solar.svg"
+  };
+  return map[p.category]||"assets/product-accessories.svg";
+}
 function renderProducts(list,label){
  const grid=$("#productsGrid");if(!grid)return;let items=[...(list||products)];const s=$("#sortSelect")?.value;if(s==="price-low")items.sort((a,b)=>a.price-b.price);if(s==="price-high")items.sort((a,b)=>b.price-a.price);if(s==="name")items.sort((a,b)=>a.name.localeCompare(b.name));
  setText("productsTitle",label||t().productsTitle);setText("resultCount",t().showing.replace("{n}",items.length));setText("allCount",products.length);
  if(!items.length){grid.innerHTML='<div class="empty-state">'+t().emptyProducts+"</div>";return;}
- grid.innerHTML=items.map(p=>'<article class="product"><span class="product-badge">'+(p.badge||"")+'</span><button class="quick-btn" data-quick="'+p.id+'" type="button">◉</button><div class="product-image">'+p.icon+'</div><div class="product-info"><small>'+p.brand+'</small><h3>'+p.name+'</h3><p>'+p.description+'</p><div class="product-bottom"><div><del>'+money(p.oldPrice)+'</del><strong>'+money(p.price)+'</strong><span class="discount-label">30% OFF</span></div><button class="add-product" data-id="'+p.id+'" type="button">🛍</button></div></div></article>').join("");
+ grid.innerHTML=items.map(p=>'<article class="product"><span class="product-badge">'+(p.badge||"")+'</span><button class="quick-btn" data-quick="'+p.id+'" type="button" aria-label="Quick view">⌕</button><div class="product-image"><img src="'+productImagePath(p)+'" alt="'+p.name+'" loading="lazy" onerror="this.onerror=null;this.src=\'assets/product-accessories.svg\'"></div><div class="product-info"><small>'+p.brand+'</small><h3>'+p.name+'</h3><p>'+p.description+'</p><div class="product-bottom"><div><del>'+money(p.oldPrice)+'</del><strong>'+money(p.price)+'</strong><span class="discount-label">30% OFF</span></div><button class="add-product" data-id="'+p.id+'" type="button" aria-label="'+t().addToCart+'">🛒</button></div></div></article>').join("");
  grid.querySelectorAll(".add-product").forEach(b=>b.onclick=()=>addToCart(+b.dataset.id));grid.querySelectorAll("[data-quick]").forEach(b=>b.onclick=()=>openQuickView(+b.dataset.quick));
 }
 function renderCart(){const box=$("#cartItems"),count=$("#cartCount"),total=$("#cartTotal");if(!box)return;count.textContent=cart.reduce((s,i)=>s+i.qty,0);total.textContent=cart.reduce((s,i)=>s+i.price*i.qty,0).toFixed(2);if(!cart.length){box.innerHTML='<div class="empty-state">'+t().emptyCart+"</div>";return;}box.innerHTML=cart.map(i=>'<div class="cart-item"><div><strong>'+i.name+'</strong><div class="cart-controls"><button class="qty-minus" data-id="'+i.id+'">−</button><span>'+i.qty+'</span><button class="qty-plus" data-id="'+i.id+'">+</button></div></div><div><strong>'+money(i.price*i.qty)+'</strong><button class="remove-item" data-id="'+i.id+'">'+t().remove+"</button></div></div>").join("");box.querySelectorAll(".qty-minus").forEach(b=>b.onclick=()=>changeQty(+b.dataset.id,-1));box.querySelectorAll(".qty-plus").forEach(b=>b.onclick=()=>changeQty(+b.dataset.id,1));box.querySelectorAll(".remove-item").forEach(b=>b.onclick=()=>removeFromCart(+b.dataset.id));}
