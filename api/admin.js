@@ -1,51 +1,209 @@
 import crypto from "crypto";
-import { get, put, issueSignedToken, presignUrl } from "@vercel/blob";
-const COOKIE="syriatech_admin"; const EMPTY={overrides:{},additions:[],deleted:[]};
-const secret=()=>process.env.ADMIN_SECRET||"";
-const sign=v=>crypto.createHmac("sha256",secret()).update(v).digest("hex");
-const token=()=>Buffer.from("admin").toString("base64url")+"."+sign("admin");
-function authed(req){const c=(req.headers.cookie||"").split(";").map(x=>x.trim()).find(x=>x.startsWith(COOKIE+"="));return !!secret()&&!!process.env.ADMIN_PASSWORD&&!!c&&c.slice(COOKIE.length+1)===token();}
-async function readState(){try{const b=await get("data/store-state.json",{access:"private",useCache:false});if(!b)return structuredClone(EMPTY);return {...EMPTY,...JSON.parse(await new Response(b.stream).text())};}catch{return structuredClone(EMPTY);}}
-async function writeState(s){await put("data/store-state.json",JSON.stringify(s),{access:"private",addRandomSuffix:false,allowOverwrite:true,contentType:"application/json"});}
-const fail=(res,c,m)=>res.status(c).json({ok:false,error:m});
-export default async function handler(req,res){
- try{
-  const action=(req.query&&req.query.action)||"";
-  if(req.method==="POST"&&action==="login"){
-   const body=typeof req.body==="string"?JSON.parse(req.body||"{}"):(req.body||{});
-   if(!process.env.ADMIN_PASSWORD||!process.env.ADMIN_SECRET)return fail(res,500,"Admin environment variables are missing");
-   if(String(body.password||"")!==String(process.env.ADMIN_PASSWORD))return fail(res,401,"Invalid password");
-   res.setHeader("Set-Cookie",COOKIE+"="+token()+"; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=43200");
-   return res.status(200).json({ok:true});
+import { get, put, issueSignedToken, presignUrl, parseStoreIdFromDelegationToken, BlobPreconditionFailedError } from "@vercel/blob";
+
+const COOKIE = "syriatech_admin";
+const STATE_PATH = "data/store-state.json";
+const SESSION_MS = 12 * 60 * 60 * 1000;
+const IMAGE_TYPES = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif" };
+const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
+
+const fail = (res, code, message) => res.status(code).json({ ok: false, error: message });
+const env = () => ({ password: process.env.ADMIN_PASSWORD || "", secret: process.env.ADMIN_SECRET || "" });
+const digest = (key, value) => crypto.createHmac("sha256", key).update(String(value)).digest();
+const safeEqual = (a, b) => crypto.timingSafeEqual(digest("compare", a), digest("compare", b));
+
+// Session = expiry + signature. The signing key includes the password, so changing
+// ADMIN_PASSWORD (or ADMIN_SECRET) in Vercel logs every open session out.
+function signSession(payload) {
+  const { password, secret } = env();
+  return digest(secret + "|" + digest("pw", password).toString("hex"), payload).toString("base64url");
+}
+function newSessionCookie() {
+  const payload = Buffer.from(JSON.stringify({ exp: Date.now() + SESSION_MS })).toString("base64url");
+  return `${COOKIE}=${payload}.${signSession(payload)}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${SESSION_MS / 1000}`;
+}
+function isAuthed(req) {
+  const { password, secret } = env();
+  if (!password || !secret) return false;
+  const raw = (req.headers.cookie || "").split(";").map(x => x.trim()).find(x => x.startsWith(COOKIE + "="));
+  const [payload, signature] = (raw ? raw.slice(COOKIE.length + 1) : "").split(".");
+  if (!payload || !signature || !safeEqual(signature, signSession(payload))) return false;
+  try { return JSON.parse(Buffer.from(payload, "base64url").toString()).exp > Date.now(); } catch { return false; }
+}
+
+function normalizeState(s) {
+  const state = s && typeof s === "object" ? s : {};
+  return {
+    overrides: state.overrides && typeof state.overrides === "object" && !Array.isArray(state.overrides) ? state.overrides : {},
+    additions: Array.isArray(state.additions) ? state.additions : [],
+    deleted: Array.isArray(state.deleted) ? state.deleted.map(Number).filter(Boolean) : [],
+    settings: state.settings && typeof state.settings === "object" ? state.settings : {}
+  };
+}
+
+// Missing file = empty store. Any other failure throws, so a temporary Blob error
+// can never be mistaken for "no data" and overwrite the saved products.
+async function readState() {
+  const blob = await get(STATE_PATH, { access: "private", useCache: false });
+  if (!blob) return { state: normalizeState({}), etag: null };
+  const text = await new Response(blob.stream).text();
+  let parsed;
+  try { parsed = JSON.parse(text); } catch { throw new Error("ملف بيانات المتجر تالف، لم يتم حفظ أي تغيير"); }
+  return { state: normalizeState(parsed), etag: blob.blob.etag || null };
+}
+
+// Read → change → write with an ETag check; retries if another save happened in between.
+async function mutate(change) {
+  for (let attempt = 0; ; attempt++) {
+    const { state, etag } = await readState();
+    change(state);
+    try {
+      await put(STATE_PATH, JSON.stringify(state), {
+        access: "private",
+        contentType: "application/json",
+        addRandomSuffix: false,
+        ...(etag ? { ifMatch: etag } : { allowOverwrite: false })
+      });
+      return state;
+    } catch (e) {
+      const conflict = e instanceof BlobPreconditionFailedError || (!etag && /exist/i.test(e?.message || ""));
+      if (conflict && attempt < 3) continue;
+      throw e;
+    }
   }
-  if(req.method==="POST"&&action==="logout"){res.setHeader("Set-Cookie",COOKIE+"=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0");return res.status(200).json({ok:true});}
-  if(!authed(req))return fail(res,401,"Unauthorized");
-  if(req.method==="GET"&&action==="state")return res.status(200).json(await readState());
-  if(req.method==="POST"&&action==="presign"){
-   const body=typeof req.body==="string"?JSON.parse(req.body||"{}"):(req.body||{});
-   const filename=String(body.filename||"").replace(/[^a-zA-Z0-9._-]/g,"-");
-   const contentType=String(body.contentType||"");
-   const size=Number(body.size||0);
-   if(!filename||!contentType.startsWith("image/"))return fail(res,400,"Invalid image file");
-   if(!size||size>10*1024*1024)return fail(res,400,"Image must be 10MB or smaller");
-   const pathname="products/"+Date.now()+"-"+filename;
-   const token=await issueSignedToken({pathname,operations:["put"]});
-   const {presignedUrl}=await presignUrl(token,{pathname,operation:"put",validUntil:Date.now()+15*60*1000});
-   return res.status(200).json({ok:true,pathname,presignedUrl});
+}
+
+const text = (value, max) => String(value ?? "").trim().slice(0, max);
+function money(value) {
+  const n = Number(value);
+  return Number.isFinite(n) && n >= 0 && n < 1e7 ? Math.round(n * 100) / 100 : NaN;
+}
+function cleanImage(value) {
+  const url = text(value, 1000);
+  if (!url) return "";
+  if (/^\/api\/image\?pathname=products%2F[\w.%-]+$/.test(url)) return url;
+  if (/^assets\/[\w./-]+$/.test(url) && !url.includes("..")) return url;
+  if (/^https:\/\/[^\s"'<>]+$/.test(url)) return url;
+  throw new Error("رابط الصورة غير صالح");
+}
+function cleanProduct(p) {
+  if (!p || typeof p !== "object") throw new Error("بيانات المنتج ناقصة");
+  const name = text(p.name, 200);
+  if (!name) throw new Error("اسم المنتج مطلوب");
+  const price = money(p.price);
+  if (Number.isNaN(price)) throw new Error("السعر غير صالح");
+  const old = money(p.oldPrice);
+  const category = text(p.category, 40);
+  if (!/^[a-z0-9-]+$/.test(category)) throw new Error("القسم غير صالح");
+  return {
+    name,
+    brand: text(p.brand, 60),
+    category,
+    price,
+    oldPrice: Number.isNaN(old) || old < price ? price : old,
+    description: text(p.description, 2000),
+    descriptionAr: text(p.descriptionAr, 2000),
+    badge: text(p.badge, 30),
+    image: cleanImage(p.image)
+  };
+}
+
+function readBody(req) {
+  if (typeof req.body === "string") { try { return JSON.parse(req.body || "{}"); } catch { return {}; } }
+  return req.body || {};
+}
+
+export default async function handler(req, res) {
+  res.setHeader("Cache-Control", "no-store");
+  try {
+    const action = String((req.query && req.query.action) || "");
+    const body = req.method === "POST" ? readBody(req) : {};
+
+    if (req.method === "POST" && action === "login") {
+      const { password, secret } = env();
+      if (!password || !secret) return fail(res, 500, "لم يتم ضبط ADMIN_PASSWORD و ADMIN_SECRET في إعدادات Vercel");
+      if (!safeEqual(String(body.password || ""), password)) {
+        await new Promise(r => setTimeout(r, 800));
+        return fail(res, 401, "كلمة المرور غير صحيحة");
+      }
+      res.setHeader("Set-Cookie", newSessionCookie());
+      return res.status(200).json({ ok: true });
+    }
+    if (req.method === "POST" && action === "logout") {
+      res.setHeader("Set-Cookie", `${COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`);
+      return res.status(200).json({ ok: true });
+    }
+
+    if (!isAuthed(req)) return fail(res, 401, "يجب تسجيل الدخول");
+
+    if (req.method === "GET" && action === "state") {
+      const { state } = await readState();
+      return res.status(200).json({ ok: true, state });
+    }
+
+    if (req.method === "POST" && action === "save") {
+      const product = cleanProduct(body.product);
+      const requestedId = Number(body.product && body.product.id);
+      let savedId = 0;
+      const state = await mutate(s => {
+        if (body.isNew || !requestedId) {
+          let id = Date.now();
+          while (s.additions.some(x => Number(x.id) === id)) id++;
+          savedId = id;
+          s.additions.push({ id, ...product });
+          return;
+        }
+        savedId = requestedId;
+        const index = s.additions.findIndex(x => Number(x.id) === requestedId);
+        if (index >= 0) {
+          s.additions[index] = { id: requestedId, ...product };
+          delete s.overrides[String(requestedId)];
+        } else {
+          s.overrides[String(requestedId)] = { id: requestedId, ...product };
+        }
+      });
+      return res.status(200).json({ ok: true, id: savedId, state });
+    }
+
+    if (req.method === "POST" && (action === "delete" || action === "restore" || action === "revert")) {
+      const id = Number(body.id);
+      if (!Number.isSafeInteger(id) || id <= 0) return fail(res, 400, "رقم المنتج غير صالح");
+      const state = await mutate(s => {
+        s.deleted = s.deleted.filter(x => x !== id);
+        if (action === "delete") s.deleted.push(id);
+        if (action === "revert") delete s.overrides[String(id)];
+      });
+      return res.status(200).json({ ok: true, state });
+    }
+
+    if (req.method === "POST" && action === "settings") {
+      const whatsapp = String(body.whatsapp || "").replace(/\D/g, "");
+      if (whatsapp.length < 8 || whatsapp.length > 15) return fail(res, 400, "رقم واتساب غير صالح — اكتبه مع رمز الدولة، مثال: 963949951985");
+      const email = text(body.email, 120);
+      if (email && !/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(email)) return fail(res, 400, "البريد الإلكتروني غير صالح");
+      const state = await mutate(s => { s.settings = { ...s.settings, whatsapp, email }; });
+      return res.status(200).json({ ok: true, state });
+    }
+
+    if (req.method === "POST" && action === "presign") {
+      const contentType = String(body.contentType || "").toLowerCase();
+      const ext = IMAGE_TYPES[contentType];
+      if (!ext) return fail(res, 400, "صيغة الصورة غير مدعومة. استخدم JPG أو PNG أو WEBP");
+      const size = Number(body.size || 0);
+      if (!size || size > MAX_IMAGE_BYTES) return fail(res, 400, "حجم الصورة يجب أن يكون أقل من 10MB");
+      const base = String(body.filename || "").replace(/\.[^.]*$/, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "image";
+      const pathname = `products/${Date.now()}-${crypto.randomBytes(3).toString("hex")}-${base}.${ext}`;
+      const validUntil = Date.now() + 15 * 60 * 1000;
+      const token = await issueSignedToken({ pathname, operations: ["put"], validUntil });
+      const { presignedUrl } = await presignUrl(token, { operation: "put", pathname, access: "private", validUntil });
+      let storeId = "";
+      try { storeId = parseStoreIdFromDelegationToken(token.delegationToken) || ""; } catch {}
+      return res.status(200).json({ ok: true, pathname, presignedUrl, storeId });
+    }
+
+    return fail(res, 404, "عملية غير معروفة");
+  } catch (e) {
+    console.error("admin api error", e);
+    return fail(res, e instanceof Error && /[؀-ۿ]/.test(e.message) ? 400 : 500, e?.message || "خطأ في الخادم");
   }
-  if(req.method==="POST"&&action==="save"){
-   const body=typeof req.body==="string"?JSON.parse(req.body||"{}"):(req.body||{});const p=body.product;
-   if(!p||!p.id||!p.name)return fail(res,400,"Product id and name are required");
-   p.id=Number(p.id);p.price=Number(p.price||0);p.oldPrice=Number(p.oldPrice||p.price);
-   const s=await readState();
-   if(body.mode==="add"){s.additions=s.additions.filter(x=>Number(x.id)!==p.id);s.additions.push(p);delete s.overrides[String(p.id)];s.deleted=s.deleted.filter(x=>Number(x)!==p.id);}
-   else{s.overrides[String(p.id)]=p;s.deleted=s.deleted.filter(x=>Number(x)!==p.id);}
-   await writeState(s);return res.status(200).json({ok:true,state:s});
-  }
-  if(req.method==="POST"&&action==="delete"){
-   const body=typeof req.body==="string"?JSON.parse(req.body||"{}"):(req.body||{});const id=Number(body.id);if(!id)return fail(res,400,"Product id required");
-   const s=await readState();s.additions=s.additions.filter(x=>Number(x.id)!==id);delete s.overrides[String(id)];if(!s.deleted.includes(id))s.deleted.push(id);await writeState(s);return res.status(200).json({ok:true,state:s});
-  }
-  return fail(res,404,"Unknown action");
- }catch(e){return res.status(500).json({ok:false,error:e?.message||"Server error"});}
 }

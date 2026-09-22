@@ -37,3 +37,31 @@ a{text-decoration:none;color:inherit}button,input,select{font:inherit}button{cur
 @media(max-width:1050px){.header-main{grid-template-columns:190px 1fr 150px}.products-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.brand-cards{grid-template-columns:repeat(3,1fr)}.footer-grid{grid-template-columns:2fr 1fr 1fr}.nav-mega{width:680px}}
 @media(max-width:760px){.container{width:min(100% - 24px,600px)}.notice-inner span:last-child{display:none}.header-main{grid-template-columns:1fr auto;gap:10px;min-height:72px}.search-form{grid-column:1/-1;grid-row:2;height:43px;margin-bottom:10px}.header-actions{grid-column:2;grid-row:1}.brand-logo{font-size:20px}.brand-logo .logo-mark{width:37px;height:37px}.main-nav{overflow:auto}.nav-inner{gap:20px;min-width:max-content}.hero{min-height:650px}.hero-content{min-height:650px;grid-template-columns:1fr;text-align:center;padding:55px 0}.hero-text{margin:auto}.hero-label{justify-content:center}.hero p{margin:auto}.hero-buttons{justify-content:center}.hero-product-showcase{min-height:300px}.hero-product-showcase img{height:300px;width:300px}.showcase-badge{right:8%;bottom:0}.benefit-grid{grid-template-columns:repeat(2,1fr)}.benefit-grid>div{border-bottom:1px solid var(--line)}.brand-cards{grid-template-columns:repeat(2,1fr)}.products-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product-image{height:210px}.product-image img{padding:4px}.product-info{padding:12px}.product-info h3{font-size:12px}.product-info p{font-size:9px}.product-bottom strong{font-size:16px}.add-product{width:36px;height:36px}.catalog-heading{align-items:start;flex-direction:column}.quick-brand-grid{grid-template-columns:repeat(2,1fr)}.sale-inner,.contact-inner{flex-direction:column;align-items:flex-start;padding:55px 0}.footer-grid{grid-template-columns:1fr 1fr;gap:25px}.nav-mega{display:none}}
 @media(max-width:430px){.products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-image{height:175px}.product-image img{padding:2px}.product-info h3{min-height:50px}.product-info p{display:none}.product-badge{top:8px;right:8px}.quick-btn{top:8px;left:8px}.hero h1{font-size:48px}.brand-cards{gap:9px}.brand-cards button{min-height:135px;padding:17px}.floating-whatsapp{right:14px;bottom:14px}}
+
+/* Previously injected by stability-fixes.js */
+@media(max-width:700px){.cart{width:min(420px,94vw)}.product-info h3{font-size:13px}.product-info p{min-height:0}.product-bottom strong{font-size:16px}.product-image{height:210px!important}}
+.product-badge:empty{display:none}
+.brand-cards button,.category-pill,.nav-mega button,.quick-brand-grid button,.brand-list button{touch-action:manipulation}
+[hidden]{display:none!important}
+
+/* Mega menu: brands + categories */
+.nav-mega{grid-template-columns:1fr 2fr}
+.mega-columns{display:grid;grid-template-columns:1fr 1fr;column-gap:20px}
+
+/* Quick view */
+.quick-product{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.quick-product-image{aspect-ratio:1/1;background:radial-gradient(circle at 50% 40%,#eef7ff,#f7f9fc 62%,#edf1f6);border-radius:18px;display:grid;place-items:center;overflow:hidden}
+.quick-product-image img{width:100%;height:100%;display:block;object-fit:contain;padding:14px}
+.quick-product small{color:var(--blue);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.1em}
+.quick-product h2{font-size:24px;line-height:1.3;margin:8px 0 12px}
+.quick-price{font-size:26px;font-weight:900}
+.quick-price del{font-size:14px;color:#a2afbd;font-weight:400;margin-inline-start:8px}
+.quick-desc{color:var(--muted);line-height:1.8;font-size:13px;margin:14px 0 20px}
+.main-button{border:0;border-radius:13px;padding:14px 22px;background:linear-gradient(100deg,var(--blue),#10b7ff);color:#fff;font-weight:900}
+.main-button:hover{filter:brightness(1.05)}
+.footer-bottom{width:min(1320px,calc(100% - 40px));margin:35px auto 0;padding-top:22px;border-top:1px solid #16233a;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:11px;color:#6f8199}
+@media(max-width:760px){.quick-product{grid-template-columns:1fr;gap:16px}.quick-panel{padding:18px}.quick-product h2{font-size:20px;padding-inline-end:40px}}
+
+/* Keep section tops clear of the sticky header when scrolling to them */
+main[id],section[id]{scroll-margin-top:140px}
+@media(max-width:760px){main[id],section[id]{scroll-margin-top:165px}}

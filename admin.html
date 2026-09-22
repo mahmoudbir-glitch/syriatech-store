@@ -1,1 +1,140 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Syriatech — لوحة التحكم</title><link rel="stylesheet" href="admin.css?v=3"></head><body><main class="wrap"><section id="loginView" class="panel login"><div class="logo">SYRIA<span>TECH</span></div><h1>لوحة تحكم المتجر</h1><p>دخول المدير فقط</p><input id="password" type="password" placeholder="كلمة مرور الأدمن"><button id="loginBtn">دخول</button><div id="loginMsg" class="msg"></div></section><section id="adminView" hidden><header class="top"><div><div class="logo">SYRIA<span>TECH</span></div><h1>إدارة المنتجات</h1></div><button id="logoutBtn" class="ghost">تسجيل الخروج</button></header><div class="grid"><section class="panel"><h2 id="formTitle">إضافة منتج</h2><form id="productForm"><input type="hidden" id="productId"><label>اسم المنتج<input id="name" required></label><label>الوصف<textarea id="description" rows="4" required></textarea></label><div class="two"><label>السعر<input id="price" type="number" min="0" step="0.01" required></label><label>السعر قبل الخصم<input id="oldPrice" type="number" min="0" step="0.01"></label></div><div class="two"><label>القسم<select id="category"><option value="power-bank">Power Bank</option><option value="charger">Chargers</option><option value="accessories">Accessories</option><option value="wireless">Wireless Charging</option><option value="cables">Cables</option><option value="hubs-docks">Hubs & Docks</option><option value="power">Power & Charging</option><option value="car">Car Charging</option><option value="audio">Audio</option><option value="security">Security</option><option value="smart-home">Smart Home</option><option value="projector">Projectors</option><option value="solar">Solar</option></select></label><label>العلامة<input id="brand" value="Anker"></label></div><label>رابط الصورة<input id="image" type="url"></label><div class="upload"><input id="imageFile" type="file" accept="image/*"><button type="button" id="uploadBtn" class="secondary">رفع الصورة إلى Vercel Blob</button></div><img id="preview" class="preview" hidden><div class="actions"><button type="submit">حفظ المنتج</button><button type="button" id="resetBtn" class="ghost">جديد</button></div><div id="saveMsg" class="msg"></div></form></section><section class="panel"><div class="listHead"><h2>المنتجات المضافة</h2><input id="filter" placeholder="بحث..."></div><div id="products"></div></section></div></section></main><script src="admin.js?v=9" defer></script></body></html>
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<title>Syriatech — لوحة التحكم</title>
+<link rel="stylesheet" href="admin.css?v=4">
+</head>
+<body>
+
+<div id="bootView" class="boot">جارٍ التحميل...</div>
+
+<section id="loginView" class="login-wrap" hidden>
+  <form id="loginForm" class="card login">
+    <div class="logo">SYRIA<span>TECH</span></div>
+    <h1>لوحة تحكم المتجر</h1>
+    <p class="muted">أدخل كلمة مرور المدير للدخول</p>
+    <input id="password" type="password" autocomplete="current-password" placeholder="كلمة المرور" required>
+    <button type="submit" class="btn primary block" id="loginBtn">دخول</button>
+    <div id="loginMsg" class="msg"></div>
+  </form>
+</section>
+
+<section id="adminView" hidden>
+  <header class="topbar">
+    <div class="logo">SYRIA<span>TECH</span> <small>لوحة التحكم</small></div>
+    <nav class="tabs">
+      <button type="button" class="tab active" data-tab="products">المنتجات</button>
+      <button type="button" class="tab" data-tab="settings">الإعدادات</button>
+      <button type="button" class="tab" data-tab="help">طريقة الاستخدام</button>
+    </nav>
+    <div class="top-actions">
+      <a href="/" target="_blank" rel="noopener" class="btn ghost">عرض المتجر ↗</a>
+      <button type="button" id="logoutBtn" class="btn ghost">خروج</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="tab-products">
+      <div class="toolbar">
+        <input id="filter" type="search" placeholder="ابحث باسم المنتج أو العلامة التجارية...">
+        <select id="catFilter" aria-label="القسم"><option value="">كل الأقسام</option></select>
+        <select id="brandFilter" aria-label="العلامة التجارية"><option value="">كل العلامات</option></select>
+        <button type="button" id="addBtn" class="btn primary">+ إضافة منتج جديد</button>
+      </div>
+      <p id="listInfo" class="muted small"></p>
+      <div id="products" class="product-list"></div>
+
+      <details id="deletedBox" class="card deleted" hidden>
+        <summary>المنتجات المحذوفة (<span id="deletedCount">0</span>) — يمكنك استعادتها</summary>
+        <div id="deletedList"></div>
+      </details>
+    </section>
+
+    <section id="tab-settings" hidden>
+      <form id="settingsForm" class="card narrow">
+        <h2>معلومات التواصل</h2>
+        <p class="muted small">تظهر في المتجر، وتصل إليها طلبات الزبائن عبر واتساب.</p>
+        <label>رقم واتساب <small>مع رمز الدولة، أرقام فقط — مثال: 963949951985</small>
+          <input id="setWhatsapp" inputmode="numeric" dir="ltr" required>
+        </label>
+        <label>البريد الإلكتروني <small>اختياري</small>
+          <input id="setEmail" type="email" dir="ltr">
+        </label>
+        <button type="submit" class="btn primary">حفظ الإعدادات</button>
+      </form>
+    </section>
+
+    <section id="tab-help" hidden>
+      <div class="card narrow help">
+        <h2>طريقة الاستخدام</h2>
+        <ol>
+          <li><b>تعديل منتج:</b> اضغط على المنتج من القائمة، غيّر الاسم أو السعر أو الوصف، ثم اضغط <b>حفظ</b>.</li>
+          <li><b>تغيير الصورة:</b> داخل نافذة المنتج اضغط <b>اختيار صورة من الجهاز</b>، انتظر رسالة "تم رفع الصورة"، ثم اضغط <b>حفظ</b>.</li>
+          <li><b>الخصم:</b> اكتب السعر الجديد في "السعر الحالي" والسعر القديم في "السعر قبل الخصم". نسبة الخصم تُحسب وتظهر تلقائياً. إذا تركت السعر القديم فارغاً لن يظهر خصم.</li>
+          <li><b>إضافة منتج:</b> اضغط <b>+ إضافة منتج جديد</b> واملأ البيانات.</li>
+          <li><b>حذف منتج:</b> افتح المنتج واضغط <b>حذف المنتج</b>. المنتج المحذوف يمكن استعادته من قائمة "المنتجات المحذوفة" أسفل الصفحة.</li>
+          <li><b>التراجع عن تعديل:</b> للمنتجات الأصلية يوجد زر <b>استرجاع البيانات الأصلية</b>.</li>
+        </ol>
+        <p class="muted small">كل تغيير يظهر في المتجر مباشرة بعد الحفظ (حدّث صفحة المتجر لرؤيته).</p>
+      </div>
+    </section>
+  </main>
+</section>
+
+<div id="editor" class="modal" hidden>
+  <form id="productForm" class="modal-card" novalidate>
+    <header class="modal-head">
+      <h2 id="formTitle">تعديل المنتج</h2>
+      <button type="button" class="icon-btn" data-close aria-label="إغلاق">×</button>
+    </header>
+    <div class="modal-body">
+      <div class="image-box">
+        <img id="preview" alt="" src="data:,">
+        <div class="image-actions">
+          <label class="btn primary file-btn">📷 اختيار صورة من الجهاز<input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/*"></label>
+          <button type="button" id="removeImage" class="btn ghost">إزالة الصورة</button>
+        </div>
+        <div id="uploadMsg" class="msg"></div>
+        <details class="advanced">
+          <summary>أو ضع رابط صورة من الإنترنت</summary>
+          <input id="image" type="text" dir="ltr" placeholder="https://...">
+        </details>
+      </div>
+      <div class="fields">
+        <label>اسم المنتج<input id="name" maxlength="200" required></label>
+        <div class="two">
+          <label>العلامة التجارية<input id="brand" list="brandList" maxlength="60" required></label>
+          <label>القسم<select id="category"></select></label>
+        </div>
+        <div class="two">
+          <label>السعر الحالي ($)<input id="price" type="number" min="0" step="0.01" inputmode="decimal" required></label>
+          <label>السعر قبل الخصم ($) <small>اختياري</small><input id="oldPrice" type="number" min="0" step="0.01" inputmode="decimal"></label>
+        </div>
+        <p id="discountHint" class="hint"></p>
+        <label>شارة على الصورة <small>اختياري — مثل: جديد، الأكثر مبيعاً. اتركها فارغة لعرض نسبة الخصم</small><input id="badge" maxlength="30"></label>
+        <label>الوصف بالعربية<textarea id="descriptionAr" rows="3" maxlength="2000" placeholder="إذا تركته فارغاً يظهر وصف عام حسب القسم"></textarea></label>
+        <label>الوصف بالإنجليزية <small>يظهر عند اختيار اللغة الإنجليزية</small><textarea id="description" rows="3" dir="ltr" maxlength="2000"></textarea></label>
+      </div>
+    </div>
+    <footer class="modal-foot">
+      <button type="submit" class="btn primary" id="saveBtn">حفظ</button>
+      <button type="button" class="btn ghost" data-close>إلغاء</button>
+      <span class="spacer"></span>
+      <button type="button" id="revertBtn" class="btn ghost" hidden>استرجاع البيانات الأصلية</button>
+      <button type="button" id="deleteBtn" class="btn danger">حذف المنتج</button>
+    </footer>
+  </form>
+</div>
+
+<datalist id="brandList"></datalist>
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script src="catalog.js?v=1"></script>
+<script src="product-images.js?v=2"></script>
+<script src="admin.js?v=10"></script>
+</body>
+</html>
