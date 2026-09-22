@@ -232,7 +232,111 @@ function searchProducts(){
   renderProducts(list,q?t().searchResults:t().productsTitle);
   $("#products")?.scrollIntoView({behavior:"smooth"});
 }
-const translations={ar:{top:"شحن سريع لجميع المناطق | اطلب الآن عبر واتساب",home:"الرئيسية",all:"كل المنتجات",brands:"العلامات التجارية",offers:"العروض",contactNav:"تواصل معنا",search:"بحث",shop:"تسوق الآن",heroTitle:"كل ما تحتاجه من التقنية في مكان واحد",heroSub:"منتجات تقنية أصلية بجودة عالية وأسعار مناسبة",productsEyebrow:"منتجات أصلية",productsTitle:"منتجات Anker ومجموعاتها",productsLabel:"المنتجات",allProducts:"عرض كل المنتجات",categoriesTitle:"الأقسام",priceFilter:"السعر",apply:"تطبيق",showing:"عرض {n} منتج",emptyProducts:"لا توجد منتجات مطابقة.",emptyCart:"السلة فارغة حالياً.",addToCart:"أضف للسلة",remove:"حذف",total:"المجموع:",checkout:"إتمام الطلب عبر واتساب",searchResults:"نتائج البحث",categories:{"power-bank":"Power Banks",charger:"Chargers",wireless:"Wireless Charging",cables:"Cables","hubs-docks":"Hubs & Docks",power:"Power & Charging Stations",car:"Car Charging",audio:"Audio & Headphones",security:"Security","smart-home":"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},offersEyebrow:"عروض Syriatech",offersTitle:"منتجات مختارة من Anker ومجموعاته",dealSub:"خصم 30% على المنتجات المحددة",order:"اطلب عبر واتساب",contactTitle:"تواصل معنا",contactSub:"للطلب والاستفسار تواصل معنا عبر واتساب",cartTitle:"سلة المشتريات",footerDesc:"متجرك الموثوق للمنتجات التقنية.",important:"روابط مهمة",footerContact:"تواصل معنا",whatsapp:"واتساب:"},en:{top:"Fast shipping to all areas | Order now on WhatsApp",home:"Home",all:"All Products",brands:"Brands",offers:"Offers",contactNav:"Contact Us",search:"Search",shop:"Shop Now",heroTitle:"Everything you need from technology in one place",heroSub:"Authentic technology products with quality and great prices",productsEyebrow:"Original Products",productsTitle:"Anker Products & Ecosystem",productsLabel:"Products",allProducts:"View All Products",categoriesTitle:"Categories",priceFilter:"Price",apply:"Apply",showing:"Showing {n} products",emptyProducts:"No matching products.",emptyCart:"Your cart is empty.",addToCart:"Add to cart",remove:"Remove",total:"Total:",checkout:"Checkout via WhatsApp",searchResults:"Search results",categories:{"power-bank":"Power Banks",charger:"Chargers",wireless:"Wireless Charging",cables:"Cables","hubs-docks":"Hubs & Docks",power:"Power & Charging Stations",car:"Car Charging",audio:"Audio & Headphones",security:"Security","smart-home":"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},offersEyebrow:"Syriatech Offers",offersTitle:"Selected products from Anker and its ecosystem",dealSub:"30% discount on selected products",order:"Order via WhatsApp",contactTitle:"Contact Us",contactSub:"For orders and inquiries, contact us on WhatsApp",cartTitle:"Shopping Cart",footerDesc:"Your trusted store for technology products.",important:"Important Links",footerContact:"Contact Us",whatsapp:"WhatsApp:"}};
+const translations={ar:{top:"شحن سريع لجميع المناطق | اطلب الآن عبر واتساب",home:"الرئيسية",all:"كل المنتجات",brands:"العلامات التجارية",offers:"العروض",contactNav:"تواصل معنا",search:"بحث",shop:"تسوق الآن",heroTitle:"كل ما تحتاجه من التقنية في مكان واحد",heroSub:"منتجات تقنية أصلية بجودة عالية وأسعار مناسبة",productsEyebrow:"منتجات أصلية",productsTitle:"منتجات Anker ومجموعاتها",productsLabel:"المنتجات",allProducts:"عرض كل المنتجات",categoriesTitle:"الأقسام",priceFilter:"السعر",apply:"تطبيق",showing:"عرض {n} منتج",emptyProducts:"لا توجد منتجات مطابقة.",emptyCart:"السلة فارغة حالياً.",addToCart:"أضف للسلة",remove:"حذف",total:"المجموع:",checkout:"إتمام الطلب عبر واتساب",searchResults:"نتائج البحث",categories:{"power-bank":"Power Banks",charger:"Chargers",wireless:"Wireless Charging",cables:"Cables","hubs-docks":"Hubs & Docks",power:"Power & Charging Stations",car:"Car Charging",audio:"Audio & Headphones",security:"Security","smart-home":"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},catPowerBank:"باور بانك",catChargers:"الشواحن",catWireless:"الشحن اللاسلكي",catCables:"الكابلات",catHubs:"المحطات والموزعات",catPower:"الطاقة ومحطات الشحن",catCar:"شحن السيارة",catAudio:"الصوتيات",catSecurity:"الأمان",catSmart:"المنزل الذكي",catProjector:"أجهزة العرض",catSolar:"طاقة SOLIX",sortFeatured:"مميز",sortLow:"السعر: من الأقل",sortHigh:"السعر: من الأعلى",sortName:"الاسم",offersEyebrow:"عروض Syriatech",offersTitle:"منتجات مختارة من Anker ومجموعاته",dealSub:"خصم 30% على المنتجات المحددة",order:"اطلب عبر واتساب",contactTitle:"تواصل معنا",contactSub:"للطلب والاستفسار تواصل معنا عبر واتساب",cartTitle:"سلة المشتريات",footerDesc:"متجرك الموثوق للمنتجات التقنية.",important:"روابط مهمة",footerContact:"تواصل معنا",whatsapp:"واتساب:"},en:{top:"Fast shipping to all areas | Order now on WhatsApp",home:"Home",all:"All Products",brands:"Brands",offers:"Offers",contactNav:"Contact Us",search:"Search",shop:"Shop Now",heroTitle:"Everything you need from technology in one place",heroSub:"Authentic technology products with quality and great prices",productsEyebrow:"Original Products",productsTitle:"Anker Products & Ecosystem",productsLabel:"Products",allProducts:"View All Products",categoriesTitle:"Categories",priceFilter:"Price",apply:"Apply",showing:"Showing {n} products",emptyProducts:"No matching products.",emptyCart:"Your cart is empty.",addToCart:"Add to cart",remove:"Remove",total:"Total:",checkout:"Checkout via WhatsApp",searchResults:"Search results",categories:{"power-bank":"Power Banks",charger:"Chargers",wireless:"Wireless Charging",cables:"Cables","hubs-docks":"Hubs & Docks",power:"Power & Charging Stations",car:"Car Charging",audio:"Audio & Headphones",security:"Security","smart-home":"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},offersEyebrow:"Syriatech Offers",offersTitle:"Selected products from Anker and its ecosystem",dealSub:"30% discount on selected products",order:"Order via WhatsApp",contactTitle:"Contact Us",contactSub:"For orders and inquiries, contact us on WhatsApp",cartTitle:"Shopping Cart",footerDesc:"Your trusted store for technology products.",important:"Important Links",footerContact:"Contact Us",whatsapp:"WhatsApp:"}};
+function setText(id,v){const e=$("#"+id);if(e)e.textContent=v;}
+function changeLanguage(){isEnglish=!isEnglish;const x=t();document.documentElement.lang=isEnglish?"en":"ar";document.documentElement.dir=isEnglish?"ltr":"rtl";document.querySelectorAll("[data-i18n]").forEach(e=>{if(x[e.dataset.i18n])e.textContent=x[e.dataset.i18n]});setText("languageButton",isEnglish?"🌐 AR":"🌐 EN");if($("#searchInput"))$("#searchInput").placeholder=isEnglish?"Search for a product or model...":"ابحث عن منتج أو موديل...";let list=[...products];
+if(currentView.category)list=list.filter(p=>p.category===currentView.category);
+if(currentView.brand)list=list.filter(p=>p.brand.toLowerCase()===currentView.brand.toLowerCase());
+if(currentView.query)list=list.filter(p=>[p.name,p.brand,p.description].some(v=>String(v).toLowerCase().includes(currentView.query)));
+renderProducts(list,currentView.query?t().searchResults:(currentView.brand?currentView.brand+" — "+t().productsLabel:(currentView.category?(t().categories[currentView.category]||t().productsLabel):t().productsTitle)));
+renderCart();}
+function checkoutWhatsApp(e){if(e)e.preventDefault();if(!cart.length){alert(t().emptyCart);return;}const lines=cart.map(i=>"• "+i.name+" × "+i.qty+" = "+money(i.price*i.qty));const total=cart.reduce((s,i)=>s+i.price*i.qty,0);window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent((isEnglish?"Hello Syriatech, I would like to order:":"مرحباً Syriatech، أريد طلب المنتجات التالية:")+"\n\n"+lines.join("\n")+"\n\n"+(isEnglish?"Total: ":"المجموع: ")+money(total)),"_blank");}
+function bindNavigation(){$("#languageButton")?.addEventListener("click",changeLanguage);$("#cartButton")?.addEventListener("click",openCart);$("#closeCartButton")?.addEventListener("click",closeCart);$("#overlay")?.addEventListener("click",closeCart);$("#searchForm")?.addEventListener("submit",e=>{e.preventDefault();searchProducts()});$("#checkoutButton")?.addEventListener("click",checkoutWhatsApp);$("#clearFilterButton")?.addEventListener("click",()=>filterProducts({reset:true}));$("#applyPrice")?.addEventListener("click",()=>filterProducts());$("#sortSelect")?.addEventListener("change",()=>filterProducts());document.querySelectorAll("[data-category]").forEach(e=>e.addEventListener("click",()=>filterProducts({category:e.dataset.category})));document.querySelectorAll("[data-category-all]").forEach(e=>e.addEventListener("click",()=>filterProducts({reset:true})));document.querySelectorAll("[data-brand]").forEach(e=>e.addEventListener("click",a=>{a.preventDefault();filterProducts({brand:e.dataset.brand})}));document.querySelectorAll("[data-filter-all]").forEach(e=>e.addEventListener("click",a=>{a.preventDefault();filterProducts({reset:true})}));document.querySelectorAll("[data-brand-check]").forEach(e=>e.addEventListener("change",()=>filterProducts()));$("#closeQuick")?.addEventListener("click",closeQuickView);$("#quickView")?.addEventListener("click",e=>{if(e.target.id==="quickView")closeQuickView()});document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeCart();closeQuickView()}});}
+document.addEventListener("DOMContentLoaded",()=>{loadCart();bindNavigation();renderProducts(products);renderCart();});function productText(p){
+  if(isEnglish) return {name:p.name,description:p.description};
+  const d={
+    "power-bank":"باور بانك أصلي من Anker للاستخدام اليومي والشحن السريع.",
+    "charger":"شاحن أصلي من Anker للشحن السريع والآمن.",
+    "wireless":"حل شحن لاسلكي أصلي من Anker للأجهزة المتوافقة.",
+    "cables":"كابل أصلي من Anker لنقل البيانات والشحن.",
+    "hubs-docks":"محطة أو موزع أصلي من Anker لتوسيع الاتصال والمنافذ.",
+    "power":"حل طاقة وشحن أصلي من Anker للمكتب والمنزل.",
+    "car":"حل شحن أصلي من Anker للسيارة.",
+    "audio":"منتج صوتي أصلي من منظومة soundcore.",
+    "security":"منتج أمان ذكي أصلي من منظومة eufy.",
+    "smart-home":"منتج منزل ذكي أصلي من منظومة eufy.",
+    "projector":"جهاز عرض أصلي من Nebula.",
+    "solar":"حل طاقة أصلي من Anker SOLIX."
+  };
+  return {name:p.name,description:d[p.category]||p.description};
+}
+function renderProducts(list,label){
+ const grid=$("#productsGrid");if(!grid)return;let items=[...(list||products)];const s=$("#sortSelect")?.value;if(s==="price-low")items.sort((a,b)=>a.price-b.price);if(s==="price-high")items.sort((a,b)=>b.price-a.price);if(s==="name")items.sort((a,b)=>a.name.localeCompare(b.name));
+ setText("productsTitle",label||t().productsTitle);setText("resultCount",t().showing.replace("{n}",items.length));setText("allCount",products.length);
+ if(!items.length){grid.innerHTML='<div class="empty-state">'+t().emptyProducts+"</div>";return;}
+ grid.innerHTML=items.map(p=>'<article class="product"><span class="product-badge">'+(p.badge||"")+'</span><button class="quick-btn" data-quick="'+p.id+'" type="button" aria-label="Quick view">⌕</button><div class="product-image"><img src="'+productImagePath(p)+'" alt="'+p.name+'" loading="lazy" onerror="this.onerror=null;this.src=\'assets/product-accessories.svg\'"></div><div class="product-info"><small>'+p.brand+'</small><h3>'+p.name+'</h3><p>'+p.description+'</p><div class="product-bottom"><div><del>'+money(p.oldPrice)+'</del><strong>'+money(p.price)+'</strong><span class="discount-label">30% OFF</span></div><button class="add-product" data-id="'+p.id+'" type="button" aria-label="'+t().addToCart+'"><i class="fa-solid fa-plus"></i></button></div></div></article>').join("");
+ grid.querySelectorAll(".add-product").forEach(b=>b.onclick=()=>addToCart(+b.dataset.id));grid.querySelectorAll("[data-quick]").forEach(b=>b.onclick=()=>openQuickView(+b.dataset.quick));
+}
+function renderCart() {
+  const box = $("#cartItems");
+  const count = $("#cartCount");
+  const total = $("#cartTotal");
+
+  if (!box) return;
+
+  const totalQty = cart.reduce((sum, item) => sum + Number(item.qty || 0), 0);
+  const totalPrice = cart.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.qty || 0), 0);
+
+  if (count) count.textContent = totalQty;
+  if (total) total.textContent = totalPrice.toFixed(2);
+
+  if (!cart.length) {
+    box.innerHTML = `<div class="empty-state">${t().emptyCart}</div>`;
+    return;
+  }
+
+  box.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div>
+        <strong>${item.name}</strong>
+        <div class="cart-controls">
+          <button class="qty-minus" data-id="${item.id}" type="button" aria-label="${isEnglish ? "Decrease quantity" : "إنقاص الكمية"}">−</button>
+          <span>${item.qty}</span>
+          <button class="qty-plus" data-id="${item.id}" type="button" aria-label="${isEnglish ? "Increase quantity" : "زيادة الكمية"}">+</button>
+        </div>
+      </div>
+      <div>
+        <strong>${money(Number(item.price) * Number(item.qty))}</strong>
+        <button class="remove-item" data-id="${item.id}" type="button" title="${t().remove}" aria-label="${t().remove}">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+      </div>
+    </div>
+  `).join("");
+
+  box.querySelectorAll(".qty-minus").forEach(button => {
+    button.addEventListener("click", () => changeQty(Number(button.dataset.id), -1));
+  });
+
+  box.querySelectorAll(".qty-plus").forEach(button => {
+    button.addEventListener("click", () => changeQty(Number(button.dataset.id), 1));
+  });
+
+  box.querySelectorAll(".remove-item").forEach(button => {
+    button.addEventListener("click", () => removeFromCart(Number(button.dataset.id)));
+  });
+}
+function addToCart(id){const p=products.find(x=>x.id===id);if(!p)return;const e=cart.find(x=>x.id===id);e?e.qty++:cart.push({id:p.id,name:p.name,price:p.price,qty:1});saveCart();renderCart();openCart();}
+function changeQty(id,d){const i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<1)cart=cart.filter(x=>x.id!==id);saveCart();renderCart();}
+function removeFromCart(id){cart=cart.filter(x=>x.id!==id);saveCart();renderCart();}
+function openCart(){$("#cart")?.classList.add("open");$("#overlay")?.classList.add("active");}function closeCart(){$("#cart")?.classList.remove("open");$("#overlay")?.classList.remove("active");}
+function openQuickView(id){const p=products.find(x=>x.id===id);if(!p)return;$("#quickContent").innerHTML='<div class="quick-product"><div class="quick-product-image"><img src="'+productImagePath(p)+'" alt="'+p.name+'"></div><div><small>'+p.brand+'</small><h2>'+p.name+'</h2><div class="quick-price">'+money(p.price)+' <del>'+money(p.oldPrice)+'</del></div><p class="quick-desc">'+p.description+'</p><button class="main-button" id="quickAdd">'+t().addToCart+'</button></div></div>';$("#quickView").classList.add("open");$("#quickAdd").onclick=()=>{addToCart(id);closeQuickView();};}
+function closeQuickView(){$("#quickView")?.classList.remove("open");}
+function searchProducts(){
+  const q=($("#searchInput")?.value||"").trim().toLowerCase();
+  currentView.query=q;
+  let list=[...products];
+  if(currentView.category)list=list.filter(p=>p.category===currentView.category);
+  if(currentView.brand)list=list.filter(p=>p.brand.toLowerCase()===currentView.brand.toLowerCase());
+  const f=activeFilters();
+  if(f.brands.length)list=list.filter(p=>f.brands.includes(p.brand));
+  if(f.min)list=list.filter(p=>p.price>=f.min);
+  if(f.max)list=list.filter(p=>p.price<=f.max);
+  if(q)list=list.filter(p=>[p.name,p.brand,p.description].some(v=>String(v).toLowerCase().includes(q)));
+  renderProducts(list,q?t().searchResults:t().productsTitle);
+  $("#products")?.scrollIntoView({behavior:"smooth"});
+}
+const translations={ar:{top:"شحن سريع لجميع المناطق | اطلب الآن عبر واتساب",home:"الرئيسية",all:"كل المنتجات",brands:"العلامات التجارية",offers:"العروض",contactNav:"تواصل معنا",search:"بحث",shop:"تسوق الآن",heroTitle:"كل ما تحتاجه من التقنية في مكان واحد",heroSub:"منتجات تقنية أصلية بجودة عالية وأسعار مناسبة",productsEyebrow:"منتجات أصلية",productsTitle:"منتجات Anker ومجموعاتها",productsLabel:"المنتجات",allProducts:"عرض كل المنتجات",categoriesTitle:"الأقسام",priceFilter:"السعر",apply:"تطبيق",showing:"عرض {n} منتج",emptyProducts:"لا توجد منتجات مطابقة.",emptyCart:"السلة فارغة حالياً.",addToCart:"أضف للسلة",remove:"حذف",total:"المجموع:",checkout:"إتمام الطلب عبر واتساب",searchResults:"نتائج البحث",categories:{"power-bank":"Power Banks",charger:"Chargers",wireless:"Wireless Charging",cables:"Cables","hubs-docks":"Hubs & Docks",power:"Power & Charging Stations",car:"Car Charging",audio:"Audio & Headphones",security:"Security","smart-home":"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},catPowerBank:"باور بانك",catChargers:"الشواحن",catWireless:"الشحن اللاسلكي",catCables:"الكابلات",catHubs:"المحطات والموزعات",catPower:"الطاقة ومحطات الشحن",catCar:"شحن السيارة",catAudio:"الصوتيات",catSecurity:"الأمان",catSmart:"المنزل الذكي",catProjector:"أجهزة العرض",catSolar:"طاقة SOLIX",sortFeatured:"مميز",sortLow:"السعر: من الأقل",sortHigh:"السعر: من الأعلى",sortName:"الاسم",offersEyebrow:"عروض Syriatech",offersTitle:"منتجات مختارة من Anker ومجموعاته",dealSub:"خصم 30% على المنتجات المحددة",order:"اطلب عبر واتساب",contactTitle:"تواصل معنا",contactSub:"للطلب والاستفسار تواصل معنا عبر واتساب",cartTitle:"سلة المشتريات",footerDesc:"متجرك الموثوق للمنتجات التقنية.",important:"روابط مهمة",footerContact:"تواصل معنا",whatsapp:"واتساب:"},en:{top:"Fast shipping to all areas | Order now on WhatsApp",home:"Home",all:"All Products",brands:"Brands",offers:"Offers",contactNav:"Contact Us",search:"Search",shop:"Shop Now",heroTitle:"Everything you need from technology in one place",heroSub:"Authentic technology products with quality and great prices",productsEyebrow:"Original Products",productsTitle:"Anker Products & Ecosystem",productsLabel:"Products",allProducts:"View All Products",categoriesTitle:"Categories",priceFilter:"Price",apply:"Apply",showing:"Showing {n} products",emptyProducts:"No matching products.",emptyCart:"Your cart is empty.",addToCart:"Add to cart",remove:"Remove",total:"Total:",checkout:"Checkout via WhatsApp",searchResults:"Search results",categories:{"power-bank":"Power Banks",charger:"Chargers",wireless:"Wireless Charging",cables:"Cables","hubs-docks":"Hubs & Docks",power:"Power & Charging Stations",car:"Car Charging",audio:"Audio & Headphones",security:"Security","smart-home":"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},offersEyebrow:"Syriatech Offers",offersTitle:"Selected products from Anker and its ecosystem",dealSub:"30% discount on selected products",order:"Order via WhatsApp",contactTitle:"Contact Us",contactSub:"For orders and inquiries, contact us on WhatsApp",cartTitle:"Shopping Cart",footerDesc:"Your trusted store for technology products.",important:"Important Links",footerContact:"Contact Us",whatsapp:"WhatsApp:"}};
 function setText(id,v){const e=$("#"+id);if(e)e.textContent=v;}
 function changeLanguage(){isEnglish=!isEnglish;const x=t();document.documentElement.lang=isEnglish?"en":"ar";document.documentElement.dir=isEnglish?"ltr":"rtl";document.querySelectorAll("[data-i18n]").forEach(e=>{if(x[e.dataset.i18n])e.textContent=x[e.dataset.i18n]});setText("languageButton",isEnglish?"🌐 AR":"🌐 EN");if($("#searchInput"))$("#searchInput").placeholder=isEnglish?"Search for a product or model...":"ابحث عن منتج أو موديل...";let list=[...products];
 if(currentView.category)list=list.filter(p=>p.category===currentView.category);
