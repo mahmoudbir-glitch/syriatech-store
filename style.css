@@ -485,3 +485,5 @@ footer a {
     font-size: 38px;
   }
   }
+
+.product{position:relative}.product-badge{position:absolute;top:10px;left:10px;padding:5px 8px;border-radius:5px;color:#fff;background:var(--blue);font-size:12px}.product-bottom strong{display:block}.product-bottom del{display:block;color:#94a3b8;font-size:12px}.empty-state{grid-column:1/-1;padding:45px;text-align:center;color:var(--gray);border:1px dashed var(--border);border-radius:12px}.cart-item-price{text-align:left}.cart-controls{display:flex;align-items:center;gap:8px;margin-top:8px}.cart-controls button{width:28px;height:28px;border-radius:5px;color:#fff!important;background:var(--dark)!important}.dropdown:hover .dropdown-content,.dropdown:focus-within .dropdown-content{display:grid}@media(max-width:800px){.header{gap:14px}.search-box{order:3}.header,.offer,footer{flex-direction:column}}
