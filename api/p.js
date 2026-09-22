@@ -87,6 +87,11 @@ export default async function handler(req, res) {
     const html = shell
       .replace(/<title>[^<]*<\/title>/, "<title>" + esc(title) + "</title>")
       .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="' + esc(description) + '">')
+      // Drop the site-wide preview tags: a crawler keeps the first one it sees,
+      // and this page must advertise the product, not the home page.
+      .replace(/[ \t]*<meta property="og:[^>]*>\r?\n?/g, "")
+      .replace(/[ \t]*<meta name="twitter:[^>]*>\r?\n?/g, "")
+      .replace(/[ \t]*<link rel="canonical"[^>]*>\r?\n?/g, "")
       .replace("</head>", tags + "</head>");
 
     res.setHeader("Content-Type", "text/html; charset=utf-8");
