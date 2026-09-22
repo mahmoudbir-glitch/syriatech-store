@@ -42,6 +42,16 @@ const products = [
 {id:41,category:"solar",icon:"☀️",brand:"Anker",name:"Anker SOLIX PS60 Portable Solar Panel",description:"لوح شمسي محمول من منظومة Anker SOLIX",oldPrice:null,price:149.99,badge:""}
 ];
 
+// Store promotion: all catalog items show a clear 30% promotional discount.
+// Base price = current catalog price (or existing original price when available).
+products.forEach(p => {
+  const base = Number(p.oldPrice || p.price);
+  p.oldPrice = Number(base.toFixed(2));
+  p.price = Number((base * 0.70).toFixed(2));
+  p.discount = 30;
+  p.badge = "30% OFF";
+});
+
 const WHATSAPP = "963949951985";
 const CART_KEY = "syriatech_cart";
 let cart = [];
