@@ -11,27 +11,21 @@ window.deleteProduct=async id=>{if(!confirm("حذف المنتج؟"))return;try{
 $("#loginBtn").onclick=async()=>{try{await api("login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({password:$("#password").value})});$("#loginView").hidden=true;$("#adminView").hidden=false;await load();render()}catch(e){$("#loginMsg").textContent=e.message}}
 $("#logoutBtn").onclick=async()=>{await api("logout",{method:"POST"});location.reload()}
 $("#uploadBtn").onclick=async()=>{
-  const f=$("#imageFile").files[0];
-  if(!f)return alert("اختر صورة");
-  if(!f.type.startsWith("image/"))return alert("اختر ملف صورة");
-  try{
-    $("#uploadBtn").disabled=true;
-    $("#saveMsg").textContent="جاري إنشاء رابط الرفع الآمن...";
-    const token=await api("upload",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:f.name,type:f.type})});
-    $("#saveMsg").textContent="جاري رفع الصورة مباشرة إلى Vercel Blob...";
-    const put=await fetch(token.presignedUrl,{method:"PUT",body:f,headers:{"Content-Type":f.type}});
-    if(!put.ok){const msg=await put.text().catch(()=>"");throw new Error("Vercel Blob رفض الرفع ("+put.status+") "+msg.slice(0,180))}
-    $("#saveMsg").textContent="تم رفع الملف، جاري تثبيت الرابط...";
-    let resolved=null;
-    for(let i=0;i<8;i++){
-      try{const d=await api("resolve&pathname="+encodeURIComponent(token.pathname),{method:"GET"});if(d.url){resolved=d.url;break}}catch(e){}
-      await new Promise(r=>setTimeout(r,700));
-    }
-    if(!resolved)throw new Error("تم رفع الصورة لكن تعذر الحصول على رابطها");
-    $("#image").value=resolved;$("#preview").src=resolved;$("#preview").hidden=false;
-    $("#saveMsg").textContent="تم رفع الصورة إلى Vercel Blob بنجاح";
-  }catch(e){$("#saveMsg").textContent="فشل رفع الصورة: "+(e.message||"خطأ غير معروف")}
-  finally{$("#uploadBtn").disabled=false}
+ const f=$("#imageFile").files[0]; if(!f)return alert("اختر صورة"); if(!f.type.startsWith("image/"))return alert("اختر ملف صورة");
+ try{
+  $("#uploadBtn").disabled=true; $("#saveMsg").textContent="جاري ضغط الصورة...";
+  const img=new Image(), reader=new FileReader();
+  await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(new Error("تعذر قراءة الصورة"));reader.onload=()=>{img.src=reader.result};reader.onerror=()=>reject(new Error("تعذر قراءة الملف"));reader.readAsDataURL(f)});
+  const max=1400, scale=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight)), w=Math.max(1,Math.round(img.naturalWidth*scale)), h=Math.max(1,Math.round(img.naturalHeight*scale));
+  const canvas=document.createElement("canvas");canvas.width=w;canvas.height=h;canvas.getContext("2d").drawImage(img,0,0,w,h);
+  const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/jpeg",0.78));if(!blob)throw new Error("تعذر ضغط الصورة");
+  const dataUrl=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>reject(new Error("تعذر تجهيز الصورة"));r.readAsDataURL(blob)});
+  $("#saveMsg").textContent="جاري رفع الصورة إلى Vercel Blob...";
+  const result=await api("upload",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({data:dataUrl})});
+  $("#image").value=result.url;$("#preview").src=result.url;$("#preview").hidden=false;$("#saveMsg").textContent="تم رفع الصورة بنجاح ✓";
+ }catch(err){$("#saveMsg").textContent="فشل رفع الصورة: "+(err.message||"خطأ غير معروف")}finally{$("#uploadBtn").disabled=false}
+};
+se}
 };
 $("#productForm").onsubmit=async e=>{e.preventDefault();const p={id:editing?Number(editing.id):Date.now(),name:$("#name").value.trim(),description:$("#description").value.trim(),price:Number($("#price").value),oldPrice:Number($("#oldPrice").value||$("#price").value),category:$("#category").value,brand:$("#brand").value.trim()||"Anker",image:$("#image").value.trim(),badge:"NEW"};try{await api("save",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({mode:editing?"edit":"add",product:p})});$("#saveMsg").textContent="تم حفظ المنتج";reset();await load();render()}catch(e){$("#saveMsg").textContent=e.message}}
 $("#resetBtn").onclick=reset;$("#filter").oninput=render;
