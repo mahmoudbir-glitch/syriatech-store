@@ -28,8 +28,15 @@ async function loadStore() {
   const nav = { languages: ["ar"] };
   const storage = { getItem: () => null, setItem: () => {} };
   const loc = { search: "" };
-  new Function("window", "navigator", "localStorage", "location", i18nSrc)(win, nav, storage, loc);
-  new Function("window", "navigator", "localStorage", "location", catalogSrc)(win, nav, storage, loc);
+  const doc = {
+    addEventListener() {}, removeEventListener() {},
+    querySelector: () => null, querySelectorAll: () => [],
+    documentElement: { dataset: {}, style: { setProperty() {} }, classList: { add() {}, remove() {} } },
+    body: null, title: ""
+  };
+  const run = src => new Function("window", "navigator", "localStorage", "location", "document", src)(win, nav, storage, loc, doc);
+  run(i18nSrc);
+  run(catalogSrc);
   store = win;
   return store;
 }

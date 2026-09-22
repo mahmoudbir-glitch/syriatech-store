@@ -1,4 +1,5 @@
 // End-to-end checks against the local dev server.
+import fs from "node:fs";
 const BASE = "http://127.0.0.1:" + (process.env.DEV_PORT || 3100);
 let cookie = "";
 let failures = 0;
@@ -100,7 +101,41 @@ await Promise.all([1, 2, 3, 4].map(n => call("save", { isNew: true, product: { n
 const after = (await call("state")).data.state.additions.length;
 check("4 concurrent saves all persisted", after === before + 4, { before, after });
 
-// 11. Logout
+// 11. Pages rendered on the server for crawlers and link previews.
+// catalog.js and i18n.js are evaluated without a DOM here; one line of page
+// code touching `document` used to turn every product link into a redirect to
+// the home page, and nothing caught it because the pages themselves were fine.
+// Loading the catalogue with document deliberately undefined is the contract:
+// the server builds these pages without a DOM.
+const catalogSrc = fs.readFileSync(new URL("../catalog.js", import.meta.url), "utf8");
+const i18nSrc = fs.readFileSync(new URL("../i18n.js", import.meta.url), "utf8");
+const win = {};
+const evalPage = src => new Function("window", "navigator", "localStorage", "location", "document", src)(
+  win, { languages: ["ar"] }, { getItem: () => null, setItem() {} }, { search: "" }, undefined);
+let domFree = true;
+try { evalPage(i18nSrc); evalPage(catalogSrc); } catch (e) { domFree = e.message; }
+check("catalog.js and i18n.js load without a DOM", domFree === true, domFree);
+const anyProduct = win.STORE.merge({})[0];
+const page = await fetch(`${BASE}/api/p?id=${anyProduct.id}`);
+const pageHtml = page.status === 200 ? await page.text() : "";
+check("a shared product link renders a page", page.status === 200, { status: page.status, id: anyProduct.id });
+check("the product page carries its own preview image", /<meta property="og:image" content="[^"]+"/.test(pageHtml));
+check("the product page carries the product name", pageHtml.includes(anyProduct.name), anyProduct.name);
+check("the product page drops the site-wide preview tags",
+  (pageHtml.match(/<meta property="og:title"/g) || []).length === 1);
+check("the product page ships structured data", /"@type":"Product"/.test(pageHtml));
+
+const unknown = await fetch(`${BASE}/api/p?id=999999999`, { redirect: "manual" });
+check("an unknown product redirects home", unknown.status === 302);
+
+const sitemap = await fetch(`${BASE}/api/sitemap`);
+const sitemapXml = await sitemap.text();
+check("the sitemap lists every product",
+  (sitemapXml.match(/<loc>/g) || []).length > 100,
+  (sitemapXml.match(/<loc>/g) || []).length);
+check("the sitemap links the product pages", sitemapXml.includes("/p/" + anyProduct.id));
+
+// 12. Logout
 await call("logout", {});
 check("state after logout is 401", (await call("state")).status === 401);
 

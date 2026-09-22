@@ -503,11 +503,15 @@
   function isKnownCategory(id) { return categoryIds.has(String(id)); }
 
   // Broken image → category artwork → generic placeholder (never loops).
-  // Bound once in the capture phase: 'error' does not bubble.
-  document.addEventListener("error", function (e) {
-    const img = e.target;
-    if (img && img.tagName === "IMG" && img.dataset.fallback !== undefined) window.storeImageFallback(img);
-  }, true);
+  // Bound once in the capture phase: 'error' does not bubble. This file is also
+  // evaluated on the server to build /p/<id> and the sitemap, where there is no
+  // DOM, so nothing here may touch the document while loading.
+  if (typeof document !== "undefined") {
+    document.addEventListener("error", function (e) {
+      const img = e.target;
+      if (img && img.tagName === "IMG" && img.dataset.fallback !== undefined) window.storeImageFallback(img);
+    }, true);
+  }
 
   window.storeImageFallback = function (img) {
     const next = img.dataset.fallback;
