@@ -1,22 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
-    "api/admin.js": {
-      "maxDuration": 30
-    },
-    "api/products.js": {
-      "maxDuration": 30
-    },
-    "api/image.js": {
-      "maxDuration": 30
-    },
-    "api/p.js": {
+    "api/*.js": {
       "maxDuration": 30,
       "includeFiles": "{catalog.js,i18n.js,index.html}"
-    },
-    "api/sitemap.js": {
-      "maxDuration": 30,
-      "includeFiles": "{catalog.js,i18n.js}"
     }
   },
   "rewrites": [

@@ -1,0 +1,106 @@
+/*
+ * Guards vercel.json, because a mistake here does not break a page — it stops
+ * the whole deployment, and the shop keeps serving the previous build while
+ * everything looks fine locally.
+ *
+ * The rule that bit us: Vercel walks the `functions` patterns in order and
+ * removes every file a pattern claims from the pool. A later pattern that is
+ * already covered by an earlier one ("api/*.js" then "api/p.js") matches
+ * nothing, and the build fails with
+ *   The pattern "api/p.js" defined in `functions` doesn't match any
+ *   Serverless Functions inside the `api` directory.
+ */
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const HERE = path.dirname(fileURLToPath(import.meta.url));
+const REPO = path.resolve(HERE, "..");
+
+let failures = 0;
+function check(name, ok, detail) {
+  console.log((ok ? "PASS " : "FAIL ") + name + (ok || detail === undefined ? "" : " -> " + JSON.stringify(detail)));
+  if (!ok) failures++;
+}
+
+const raw = fs.readFileSync(path.join(REPO, "vercel.json"), "utf8");
+let config = null;
+try {
+  config = JSON.parse(raw);
+  check("vercel.json is valid JSON", true);
+} catch (e) {
+  check("vercel.json is valid JSON", false, e.message);
+  process.exit(1);
+}
+
+/* A Vercel `functions` key is a glob, not a regular expression. */
+function globToRegExp(pattern) {
+  let out = "";
+  for (let i = 0; i < pattern.length; i++) {
+    const c = pattern[i];
+    if (c === "*") {
+      if (pattern[i + 1] === "*") { out += ".*"; i++; } else { out += "[^/]*"; }
+    } else if (c === "?") out += "[^/]";
+    else if (c === "{") out += "(";
+    else if (c === "}") out += ")";
+    else if (c === ",") out += "|";
+    else out += c.replace(/[.+^$()|[\]\\]/g, "\\$&");
+  }
+  return new RegExp("^" + out + "$");
+}
+
+const apiFiles = fs.readdirSync(path.join(REPO, "api"))
+  .filter(f => /\.(js|mjs|ts)$/.test(f) && !f.startsWith("_"))
+  .map(f => "api/" + f);
+
+check("the api directory holds functions", apiFiles.length > 0, apiFiles);
+
+/* Every pattern must still claim a file once the earlier ones have taken theirs. */
+const patterns = Object.keys(config.functions || {});
+const unclaimed = new Set(apiFiles);
+for (const pattern of patterns) {
+  const re = globToRegExp(pattern);
+  const mine = [...unclaimed].filter(f => re.test(f));
+  mine.forEach(f => unclaimed.delete(f));
+  check('functions pattern "' + pattern + '" matches a function no earlier pattern took', mine.length > 0, {
+    pattern,
+    alreadyClaimedBy: apiFiles.filter(f => re.test(f))
+  });
+}
+
+/* A function nobody configures silently falls back to the platform defaults. */
+check("every function is covered by a pattern", unclaimed.size === 0, [...unclaimed]);
+
+/* Anything a function reads from disk at runtime has to be bundled with it. */
+const readFromDisk = new Set();
+for (const file of apiFiles) {
+  const src = fs.readFileSync(path.join(REPO, file), "utf8");
+  for (const m of src.matchAll(/readSource\("([^"]+)"\)/g)) readFromDisk.add(m[1]);
+}
+const included = Object.values(config.functions || {})
+  .map(v => v.includeFiles)
+  .filter(Boolean)
+  .join(",");
+for (const name of readFromDisk) {
+  check('"' + name + '" is bundled via includeFiles', included.includes(name), { includeFiles: included });
+}
+
+/* maxDuration above the plan ceiling is rejected at build time. */
+for (const [pattern, value] of Object.entries(config.functions || {})) {
+  if (value.maxDuration === undefined) continue;
+  check('"' + pattern + '" maxDuration is within the Vercel limit',
+    Number.isInteger(value.maxDuration) && value.maxDuration >= 1 && value.maxDuration <= 60,
+    value.maxDuration);
+}
+
+/* A rewrite that points at a function that no longer exists returns 404. */
+for (const rule of config.rewrites || []) {
+  const target = String(rule.destination || "").split("?")[0].replace(/^\//, "");
+  if (!target.startsWith("api/")) continue;
+  check('rewrite "' + rule.source + '" points at a real function',
+    apiFiles.includes(target + ".js") || apiFiles.includes(target),
+    { destination: rule.destination, apiFiles });
+}
+
+console.log(failures ? "\n" + failures + " configuration problem(s)" : "\nDeployment configuration is sound");
+process.exit(failures ? 1 : 0);

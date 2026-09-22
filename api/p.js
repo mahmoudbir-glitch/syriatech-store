@@ -3,9 +3,10 @@
  * WhatsApp and Facebook never run JavaScript and never send the #fragment, so a
  * shared product link has to be a real URL that already carries its own tags.
  * Nothing is hard-coded here: the copy comes from i18n.js and catalog.js, which
- * this function loads over HTTP from the same deployment.
+ * are bundled with this function.
  */
 let store = null;
+let shellHtml = null;
 
 // The bundled files are read from disk. A request's Host header must never
 // decide where code is loaded from, so the HTTP fallback uses Vercel's own
@@ -110,7 +111,8 @@ export default async function handler(req, res) {
       '<script type="application/ld+json">' + JSON.stringify(jsonLd).replace(/</g, "\\u003c") + "</script>" +
       '<link rel="alternate" type="application/json" href="' + esc(url) + '">';
 
-    const shell = await fetch(origin + "/index.html").then(r => r.text());
+    if (!shellHtml) shellHtml = await readSource("index.html");
+    const shell = shellHtml;
     const html = shell
       .replace('<body>', () => '<body data-product-id="' + product.id + '">')
       .replace(/<title>[^<]*<\/title>/, () => "<title>" + esc(title) + "</title>")

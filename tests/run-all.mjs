@@ -57,7 +57,7 @@ if (!await ready()) {
   process.exit(1);
 }
 
-const suites = ["lang-test.mjs", "api-test.mjs", "ui-test.mjs", "compat-test.mjs"];
+const suites = ["config-test.mjs", "lang-test.mjs", "api-test.mjs", "ui-test.mjs", "compat-test.mjs"];
 const results = [];
 for (const suite of suites) {
   fs.rmSync(BLOB_DIR, { recursive: true, force: true });
