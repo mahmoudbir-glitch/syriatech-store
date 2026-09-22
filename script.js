@@ -167,11 +167,21 @@ function productImagePath(p){
   return map[p.category]||"assets/product-accessories.svg";
 }
 function renderProducts(list,label){
- const grid=$("#productsGrid");if(!grid)return;let items=[...(list||products)];const s=$("#sortSelect")?.value;if(s==="price-low")items.sort((a,b)=>a.price-b.price);if(s==="price-high")items.sort((a,b)=>b.price-a.price);if(s==="name")items.sort((a,b)=>a.name.localeCompare(b.name));
- setText("productsTitle",label||t().productsTitle);setText("resultCount",t().showing.replace("{n}",items.length));setText("allCount",products.length);
+ const grid=$("#productsGrid");if(!grid)return;
+ let items=[...(list||products)];
+ const sort=$("#sortSelect")?.value;
+ if(sort==="price-low")items.sort((a,b)=>a.price-b.price);
+ if(sort==="price-high")items.sort((a,b)=>b.price-a.price);
+ if(sort==="name")items.sort((a,b)=>String(a.name).localeCompare(String(b.name)));
+ setText("productsTitle",label||t().productsTitle);
+ setText("resultCount",t().showing.replace("{n}",items.length));
  if(!items.length){grid.innerHTML='<div class="empty-state">'+t().emptyProducts+"</div>";return;}
- grid.innerHTML=items.map(p=>'<article class="product"><span class="product-badge">'+(p.badge||"")+'</span><button class="quick-btn" data-quick="'+p.id+'" type="button" aria-label="Quick view">⌕</button><div class="product-image"><img src="'+productImagePath(p)+'" alt="'+p.name+'" loading="lazy" onerror="this.onerror=null;this.src=\'assets/product-accessories.svg\'"></div><div class="product-info"><small>'+p.brand+'</small><h3>'+p.name+'</h3><p>'+p.description+'</p><div class="product-bottom"><div><del>'+money(p.oldPrice)+'</del><strong>'+money(p.price)+'</strong><span class="discount-label">30% OFF</span></div><button class="add-product" data-id="'+p.id+'" type="button" aria-label="'+t().addToCart+'"><i class="fa-solid fa-plus"></i></button></div></div></article>').join("");
- grid.querySelectorAll(".add-product").forEach(b=>b.onclick=()=>addToCart(+b.dataset.id));grid.querySelectorAll("[data-quick]").forEach(b=>b.onclick=()=>openQuickView(+b.dataset.quick));
+ grid.innerHTML=items.map(p=>{
+   const tx=productText(p);
+   return '<article class="product"><span class="product-badge">'+(p.badge||"")+'</span><button class="quick-btn" data-quick="'+p.id+'" type="button" aria-label="Quick view">⌕</button><div class="product-image"><img src="'+productImagePath(p)+'" alt="'+tx.name+'" loading="lazy" onerror="this.onerror=null;this.src=&quot;assets/product-accessories.svg&quot;"></div><div class="product-info"><small>'+p.brand+'</small><h3>'+tx.name+'</h3><p>'+tx.description+'</p><div class="product-bottom"><div><del>'+money(p.oldPrice)+'</del><strong>'+money(p.price)+'</strong><span class="discount-label">30% OFF</span></div><button class="add-product" data-id="'+p.id+'" type="button" aria-label="'+t().addToCart+'"><i class="fa-solid fa-plus"></i></button></div></div></article>';
+ }).join("");
+ grid.querySelectorAll(".add-product").forEach(b=>b.onclick=()=>addToCart(+b.dataset.id));
+ grid.querySelectorAll("[data-quick]").forEach(b=>b.onclick=()=>openQuickView(+b.dataset.quick));
 }
 function renderCart() {
   const box = $("#cartItems");
