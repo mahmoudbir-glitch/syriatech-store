@@ -14,27 +14,22 @@ $("#uploadBtn").onclick=async()=>{
   const f=$("#imageFile").files[0];
   if(!f)return alert("اختر صورة");
   if(!f.type.startsWith("image/"))return alert("اختر ملف صورة");
-  if(f.size>8*1024*1024)return alert("حجم الصورة يجب أن يكون أقل من 8MB");
   try{
     $("#uploadBtn").disabled=true;
-    $("#saveMsg").textContent="جاري تجهيز الصورة...";
-    const canvas=document.createElement("canvas"),img=new Image(),url=URL.createObjectURL(f);
-    await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});
-    const max=1600,scale=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight));
-    canvas.width=Math.max(1,Math.round(img.naturalWidth*scale));
-    canvas.height=Math.max(1,Math.round(img.naturalHeight*scale));
-    canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);
-    URL.revokeObjectURL(url);
-    const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/jpeg",0.82));
-    if(!blob)throw new Error("تعذر تجهيز الصورة");
-    const buf=await blob.arrayBuffer(),bytes=new Uint8Array(buf);
-    let binary="";const chunk=0x8000;
-    for(let i=0;i<bytes.length;i+=chunk)binary+=String.fromCharCode(...bytes.subarray(i,i+chunk));
-    const data=btoa(binary);
-    $("#saveMsg").textContent="جاري رفع الصورة...";
-    const d=await api("upload",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:f.name.replace(/\.[^.]+$/,"")+".jpg",type:"image/jpeg",data})});
-    $("#image").value=d.url;$("#preview").src=d.url;$("#preview").hidden=false;
-    $("#saveMsg").textContent="تم رفع الصورة وحفظها على Vercel Blob بنجاح";
+    $("#saveMsg").textContent="جاري إنشاء رابط الرفع الآمن...";
+    const token=await api("upload",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:f.name,type:f.type})});
+    $("#saveMsg").textContent="جاري رفع الصورة مباشرة إلى Vercel Blob...";
+    const put=await fetch(token.presignedUrl,{method:"PUT",body:f,headers:{"Content-Type":f.type}});
+    if(!put.ok){const msg=await put.text().catch(()=>"");throw new Error("Vercel Blob رفض الرفع ("+put.status+") "+msg.slice(0,180))}
+    $("#saveMsg").textContent="تم رفع الملف، جاري تثبيت الرابط...";
+    let resolved=null;
+    for(let i=0;i<8;i++){
+      try{const d=await api("resolve&pathname="+encodeURIComponent(token.pathname),{method:"GET"});if(d.url){resolved=d.url;break}}catch(e){}
+      await new Promise(r=>setTimeout(r,700));
+    }
+    if(!resolved)throw new Error("تم رفع الصورة لكن تعذر الحصول على رابطها");
+    $("#image").value=resolved;$("#preview").src=resolved;$("#preview").hidden=false;
+    $("#saveMsg").textContent="تم رفع الصورة إلى Vercel Blob بنجاح";
   }catch(e){$("#saveMsg").textContent="فشل رفع الصورة: "+(e.message||"خطأ غير معروف")}
   finally{$("#uploadBtn").disabled=false}
 };
