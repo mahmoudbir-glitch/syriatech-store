@@ -137,16 +137,30 @@ function filterProducts({category=null,brand=null,reset=false}={}){
  renderProducts(list,brand?brand+" — "+t().productsLabel:category?(t().categories[category]||t().productsLabel):t().productsTitle);document.querySelectorAll(".side-filter").forEach(x=>x.classList.toggle("active",category?x.dataset.category===category:x.hasAttribute("data-category-all")));$("#products")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
 function productImagePath(p){
-  const map={
-    "power-bank":"assets/product-power.svg",
-    "charger":"assets/product-charger.svg",
-    "accessories":"assets/product-accessories.svg",
-    "audio":"assets/product-audio.svg",
-    "security":"assets/product-security.svg",
-    "smart-home":"assets/product-smart.svg",
-    "projector":"assets/product-projector.svg",
-    "solar":"assets/product-solar.svg"
+  const official={
+    1:"https://cdn.shopify.com/s/files/1/0493/9834/9974/files/B110AH11_Rich_image_TD01_V1.png?v=1767839667&width=1200",
+    2:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/19a0a5c9-8f75-46c6-ace7-81bb8f2142ec_category-146x146_3840x.png?v=1758176450",
+    3:"https://cdn.shopify.com/s/files/1/0493/9834/9974/files/A1638011_Richimage_TD01_US.png?v=1775967504&width=1200",
+    4:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/c7ac9dc3-72a0-4389-89ed-5cc026cc51b4_category-146x146-3_3840x.png?v=1758176486",
+    5:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/c7ac9dc3-72a0-4389-89ed-5cc026cc51b4_category-146x146-3_3840x.png?v=1758176486",
+    6:"https://cdn.shopify.com/s/files/1/0493/9834/9974/products/A1289011-Anker_737_Power_Bank_PowerCore_24K_1.png?v=1775967275&width=1200",
+    7:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/19a0a5c9-8f75-46c6-ace7-81bb8f2142ec_category-146x146_3840x.png?v=1758176450",
+    8:"https://cdn.shopify.com/s/files/1/0493/9834/9974/files/A1638011_Richimage_TD01_US.png?v=1775967504&width=1200",
+    9:"https://cdn.shopify.com/s/files/1/0595/4034/0926/files/2687_11_2.png?v=1762698489&width=1200",
+    10:"https://cdn.shopify.com/s/files/1/0493/9834/9974/files/Black-01_95991b41-dcac-41af-8f84-0036bf8bb161.png?v=1760083094&width=1200",
+    11:"https://cdn.shopify.com/s/files/1/0493/9834/9974/files/Black-01_95991b41-dcac-41af-8f84-0036bf8bb161.png?v=1760083094&width=1200",
+    12:"https://cdn.shopify.com/s/files/1/0595/4034/0926/files/2687_11_2.png?v=1762698489&width=1200",
+    13:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/be1630bf-16dd-4a6f-b271-6c8b1e0912c0_category-146x146-2_3840x.png?v=1758176504",
+    14:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/be1630bf-16dd-4a6f-b271-6c8b1e0912c0_category-146x146-2_3840x.png?v=1758176504",
+    15:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/be1630bf-16dd-4a6f-b271-6c8b1e0912c0_category-146x146-2_3840x.png?v=1758176504",
+    16:"https://cdn.shopify.com/s/files/1/0517/6767/3016/files/483c39d9-7b0e-4143-b9b1-c5a7ff6a07ee_image_535-1_3840x.png?v=1750061544",
+    17:"https://cdn.shopify.com/s/files/1/0517/6767/3016/files/483c39d9-7b0e-4143-b9b1-c5a7ff6a07ee_image_535-1_3840x.png?v=1750061544",
+    18:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/c7ac9dc3-72a0-4389-89ed-5cc026cc51b4_category-146x146-3_3840x.png?v=1758176486",
+    19:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/be1630bf-16dd-4a6f-b271-6c8b1e0912c0_category-146x146-2_3840x.png?v=1758176504",
+    20:"https://cdn.shopify.com/s/files/1/0516/3761/6830/files/A3957Z11_DTC_listing_image_TD01_US_V1_3840x.jpg?v=1746620470"
   };
+  if(official[p.id]) return official[p.id];
+  const map={"power-bank":"assets/product-power.svg","charger":"assets/product-charger.svg","accessories":"assets/product-accessories.svg","audio":"assets/product-audio.svg","security":"assets/product-security.svg","smart-home":"assets/product-smart.svg","projector":"assets/product-projector.svg","solar":"assets/product-solar.svg"};
   return map[p.category]||"assets/product-accessories.svg";
 }
 function renderProducts(list,label){
