@@ -123,6 +123,7 @@ const WHATSAPP = "963949951985";
 const CART_KEY = "syriatech_cart";
 let cart = [];
 let isEnglish = false;
+let currentView = { category: null, brand: null, query: "" };
 function $(selector){return document.querySelector(selector);}
 function money(value){return "$"+Number(value).toFixed(2);}
 function loadCart() {
@@ -156,37 +157,53 @@ function saveCart(){try{localStorage.setItem(CART_KEY,JSON.stringify(cart));}cat
 
 function t(){return isEnglish?translations.en:translations.ar;}
 function activeFilters(){return{brands:[...document.querySelectorAll("[data-brand-check]:checked")].map(x=>x.dataset.brandCheck),min:+($("#minPrice")?.value||0),max:+($("#maxPrice")?.value||0)}}
-function filterProducts({category=null,brand=null,reset=false}={}){
- if(reset){document.querySelectorAll("[data-brand-check]").forEach(x=>x.checked=false);if($("#minPrice"))$("#minPrice").value="";if($("#maxPrice"))$("#maxPrice").value="";}
- let list=[...products];if(category)list=list.filter(p=>p.category===category);if(brand)list=list.filter(p=>p.brand.toLowerCase()===brand.toLowerCase());
- const f=activeFilters();if(f.brands.length)list=list.filter(p=>f.brands.includes(p.brand));if(f.min)list=list.filter(p=>p.price>=f.min);if(f.max)list=list.filter(p=>p.price<=f.max);
- renderProducts(list,brand?brand+" — "+t().productsLabel:category?(t().categories[category]||t().productsLabel):t().productsTitle);document.querySelectorAll(".side-filter").forEach(x=>x.classList.toggle("active",category?x.dataset.category===category:x.hasAttribute("data-category-all")));$("#products")?.scrollIntoView({behavior:"smooth",block:"start"});
+function filterProducts({category=undefined,brand=undefined,reset=false}={}) {
+  if(reset){
+    currentView={category:null,brand:null,query:""};
+    document.querySelectorAll("[data-brand-check]").forEach(x=>x.checked=false);
+    if($("#minPrice"))$("#minPrice").value="";
+    if($("#maxPrice"))$("#maxPrice").value="";
+    if($("#searchInput"))$("#searchInput").value="";
+  } else {
+    if(category!==undefined) currentView.category=category;
+    if(brand!==undefined) currentView.brand=brand;
+    currentView.query="";
+  }
+
+  let list=[...products];
+  if(currentView.category) list=list.filter(p=>p.category===currentView.category);
+  if(currentView.brand) list=list.filter(p=>p.brand.toLowerCase()===currentView.brand.toLowerCase());
+
+  const f=activeFilters();
+  if(f.brands.length) list=list.filter(p=>f.brands.includes(p.brand));
+  if(f.min) list=list.filter(p=>p.price>=f.min);
+  if(f.max) list=list.filter(p=>p.price<=f.max);
+
+  const q=currentView.query;
+  if(q) list=list.filter(p=>[p.name,p.brand,p.description].some(v=>String(v).toLowerCase().includes(q)));
+
+  let label=t().productsTitle;
+  if(q) label=t().searchResults;
+  else if(currentView.brand) label=currentView.brand+" — "+t().productsLabel;
+  else if(currentView.category) label=(t().categories[currentView.category]||t().productsLabel);
+
+  renderProducts(list,label);
+  document.querySelectorAll(".side-filter").forEach(x=>x.classList.toggle("active",
+    currentView.category ? x.dataset.category===currentView.category : x.hasAttribute("data-category-all")
+  ));
+  $("#products")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
 function productImagePath(p){
-  const official={
-    1:"https://cdn.shopify.com/s/files/1/0493/9834/9974/files/B110AH11_Rich_image_TD01_V1.png?v=1767839667&width=1200",
-    2:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/19a0a5c9-8f75-46c6-ace7-81bb8f2142ec_category-146x146_3840x.png?v=1758176450",
-    3:"https://cdn.shopify.com/s/files/1/0493/9834/9974/files/A1638011_Richimage_TD01_US.png?v=1775967504&width=1200",
-    4:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/c7ac9dc3-72a0-4389-89ed-5cc026cc51b4_category-146x146-3_3840x.png?v=1758176486",
-    5:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/c7ac9dc3-72a0-4389-89ed-5cc026cc51b4_category-146x146-3_3840x.png?v=1758176486",
-    6:"https://cdn.shopify.com/s/files/1/0493/9834/9974/products/A1289011-Anker_737_Power_Bank_PowerCore_24K_1.png?v=1775967275&width=1200",
-    7:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/19a0a5c9-8f75-46c6-ace7-81bb8f2142ec_category-146x146_3840x.png?v=1758176450",
-    8:"https://cdn.shopify.com/s/files/1/0493/9834/9974/files/A1638011_Richimage_TD01_US.png?v=1775967504&width=1200",
-    9:"https://cdn.shopify.com/s/files/1/0595/4034/0926/files/2687_11_2.png?v=1762698489&width=1200",
-    10:"https://cdn.shopify.com/s/files/1/0493/9834/9974/files/Black-01_95991b41-dcac-41af-8f84-0036bf8bb161.png?v=1760083094&width=1200",
-    11:"https://cdn.shopify.com/s/files/1/0493/9834/9974/files/Black-01_95991b41-dcac-41af-8f84-0036bf8bb161.png?v=1760083094&width=1200",
-    12:"https://cdn.shopify.com/s/files/1/0595/4034/0926/files/2687_11_2.png?v=1762698489&width=1200",
-    13:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/be1630bf-16dd-4a6f-b271-6c8b1e0912c0_category-146x146-2_3840x.png?v=1758176504",
-    14:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/be1630bf-16dd-4a6f-b271-6c8b1e0912c0_category-146x146-2_3840x.png?v=1758176504",
-    15:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/be1630bf-16dd-4a6f-b271-6c8b1e0912c0_category-146x146-2_3840x.png?v=1758176504",
-    16:"https://cdn.shopify.com/s/files/1/0517/6767/3016/files/483c39d9-7b0e-4143-b9b1-c5a7ff6a07ee_image_535-1_3840x.png?v=1750061544",
-    17:"https://cdn.shopify.com/s/files/1/0517/6767/3016/files/483c39d9-7b0e-4143-b9b1-c5a7ff6a07ee_image_535-1_3840x.png?v=1750061544",
-    18:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/c7ac9dc3-72a0-4389-89ed-5cc026cc51b4_category-146x146-3_3840x.png?v=1758176486",
-    19:"https://cdn.shopify.com/s/files/1/0732/1187/1548/files/be1630bf-16dd-4a6f-b271-6c8b1e0912c0_category-146x146-2_3840x.png?v=1758176504",
-    20:"https://cdn.shopify.com/s/files/1/0516/3761/6830/files/A3957Z11_DTC_listing_image_TD01_US_V1_3840x.jpg?v=1746620470"
+  const map={
+    "power-bank":"assets/product-power.svg",
+    "charger":"assets/product-charger.svg",
+    "accessories":"assets/product-accessories.svg",
+    "audio":"assets/product-audio.svg",
+    "security":"assets/product-security.svg",
+    "smart-home":"assets/product-smart.svg",
+    "projector":"assets/product-projector.svg",
+    "solar":"assets/product-solar.svg"
   };
-  if(official[p.id]) return official[p.id];
-  const map={"power-bank":"assets/product-power.svg","charger":"assets/product-charger.svg","accessories":"assets/product-accessories.svg","audio":"assets/product-audio.svg","security":"assets/product-security.svg","smart-home":"assets/product-smart.svg","projector":"assets/product-projector.svg","solar":"assets/product-solar.svg"};
   return map[p.category]||"assets/product-accessories.svg";
 }
 function renderProducts(list,label){
@@ -251,10 +268,28 @@ function removeFromCart(id){cart=cart.filter(x=>x.id!==id);saveCart();renderCart
 function openCart(){$("#cart")?.classList.add("open");$("#overlay")?.classList.add("active");}function closeCart(){$("#cart")?.classList.remove("open");$("#overlay")?.classList.remove("active");}
 function openQuickView(id){const p=products.find(x=>x.id===id);if(!p)return;$("#quickContent").innerHTML='<div class="quick-product"><div class="quick-product-image"><img src="'+productImagePath(p)+'" alt="'+p.name+'"></div><div><small>'+p.brand+'</small><h2>'+p.name+'</h2><div class="quick-price">'+money(p.price)+' <del>'+money(p.oldPrice)+'</del></div><p class="quick-desc">'+p.description+'</p><button class="main-button" id="quickAdd">'+t().addToCart+'</button></div></div>';$("#quickView").classList.add("open");$("#quickAdd").onclick=()=>{addToCart(id);closeQuickView();};}
 function closeQuickView(){$("#quickView")?.classList.remove("open");}
-function searchProducts(){const q=($("#searchInput")?.value||"").trim().toLowerCase();renderProducts(q?products.filter(p=>[p.name,p.brand,p.description].some(v=>v.toLowerCase().includes(q))):products,q?t().searchResults:t().productsTitle);$("#products")?.scrollIntoView({behavior:"smooth"});}
+function searchProducts(){
+  const q=($("#searchInput")?.value||"").trim().toLowerCase();
+  currentView.query=q;
+  let list=[...products];
+  if(currentView.category)list=list.filter(p=>p.category===currentView.category);
+  if(currentView.brand)list=list.filter(p=>p.brand.toLowerCase()===currentView.brand.toLowerCase());
+  const f=activeFilters();
+  if(f.brands.length)list=list.filter(p=>f.brands.includes(p.brand));
+  if(f.min)list=list.filter(p=>p.price>=f.min);
+  if(f.max)list=list.filter(p=>p.price<=f.max);
+  if(q)list=list.filter(p=>[p.name,p.brand,p.description].some(v=>String(v).toLowerCase().includes(q)));
+  renderProducts(list,q?t().searchResults:t().productsTitle);
+  $("#products")?.scrollIntoView({behavior:"smooth"});
+}
 const translations={ar:{top:"شحن سريع لجميع المناطق | اطلب الآن عبر واتساب",home:"الرئيسية",all:"كل المنتجات",brands:"العلامات التجارية",offers:"العروض",contactNav:"تواصل معنا",search:"بحث",shop:"تسوق الآن",heroTitle:"كل ما تحتاجه من التقنية في مكان واحد",heroSub:"منتجات تقنية أصلية بجودة عالية وأسعار مناسبة",productsEyebrow:"منتجات أصلية",productsTitle:"منتجات Anker ومجموعاتها",productsLabel:"المنتجات",allProducts:"عرض كل المنتجات",categoriesTitle:"الأقسام",priceFilter:"السعر",apply:"تطبيق",showing:"عرض {n} منتج",emptyProducts:"لا توجد منتجات مطابقة.",emptyCart:"السلة فارغة حالياً.",addToCart:"أضف للسلة",remove:"حذف",total:"المجموع:",checkout:"إتمام الطلب عبر واتساب",searchResults:"نتائج البحث",categories:{"power-bank":"Power Banks",audio:"Headphones & Audio",charger:"Chargers",accessories:"Accessories",security:"Security","smart-home":"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},offersEyebrow:"عروض Syriatech",offersTitle:"منتجات مختارة من Anker ومجموعاته",dealSub:"خصم 30% على المنتجات المحددة",order:"اطلب عبر واتساب",contactTitle:"تواصل معنا",contactSub:"للطلب والاستفسار تواصل معنا عبر واتساب",cartTitle:"سلة المشتريات",footerDesc:"متجرك الموثوق للمنتجات التقنية.",important:"روابط مهمة",footerContact:"تواصل معنا",whatsapp:"واتساب:"},en:{top:"Fast shipping to all areas | Order now on WhatsApp",home:"Home",all:"All Products",brands:"Brands",offers:"Offers",contactNav:"Contact Us",search:"Search",shop:"Shop Now",heroTitle:"Everything you need from technology in one place",heroSub:"Authentic technology products with quality and great prices",productsEyebrow:"Original Products",productsTitle:"Anker Products & Ecosystem",productsLabel:"Products",allProducts:"View All Products",categoriesTitle:"Categories",priceFilter:"Price",apply:"Apply",showing:"Showing {n} products",emptyProducts:"No matching products.",emptyCart:"Your cart is empty.",addToCart:"Add to cart",remove:"Remove",total:"Total:",checkout:"Checkout via WhatsApp",searchResults:"Search results",categories:{"power-bank":"Power Banks",audio:"Headphones & Audio",charger:"Chargers",accessories:"Accessories",security:"Security","smart-home":"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},offersEyebrow:"Syriatech Offers",offersTitle:"Selected products from Anker and its ecosystem",dealSub:"30% discount on selected products",order:"Order via WhatsApp",contactTitle:"Contact Us",contactSub:"For orders and inquiries, contact us on WhatsApp",cartTitle:"Shopping Cart",footerDesc:"Your trusted store for technology products.",important:"Important Links",footerContact:"Contact Us",whatsapp:"WhatsApp:"}};
 function setText(id,v){const e=$("#"+id);if(e)e.textContent=v;}
-function changeLanguage(){isEnglish=!isEnglish;const x=t();document.documentElement.lang=isEnglish?"en":"ar";document.documentElement.dir=isEnglish?"ltr":"rtl";document.querySelectorAll("[data-i18n]").forEach(e=>{if(x[e.dataset.i18n])e.textContent=x[e.dataset.i18n]});setText("languageButton",isEnglish?"🌐 AR":"🌐 EN");if($("#searchInput"))$("#searchInput").placeholder=isEnglish?"Search for a product or model...":"ابحث عن منتج أو موديل...";renderProducts(products);renderCart();}
+function changeLanguage(){isEnglish=!isEnglish;const x=t();document.documentElement.lang=isEnglish?"en":"ar";document.documentElement.dir=isEnglish?"ltr":"rtl";document.querySelectorAll("[data-i18n]").forEach(e=>{if(x[e.dataset.i18n])e.textContent=x[e.dataset.i18n]});setText("languageButton",isEnglish?"🌐 AR":"🌐 EN");if($("#searchInput"))$("#searchInput").placeholder=isEnglish?"Search for a product or model...":"ابحث عن منتج أو موديل...";let list=[...products];
+if(currentView.category)list=list.filter(p=>p.category===currentView.category);
+if(currentView.brand)list=list.filter(p=>p.brand.toLowerCase()===currentView.brand.toLowerCase());
+if(currentView.query)list=list.filter(p=>[p.name,p.brand,p.description].some(v=>String(v).toLowerCase().includes(currentView.query)));
+renderProducts(list,currentView.query?t().searchResults:(currentView.brand?currentView.brand+" — "+t().productsLabel:(currentView.category?(t().categories[currentView.category]||t().productsLabel):t().productsTitle)));
+renderCart();}
 function checkoutWhatsApp(e){if(e)e.preventDefault();if(!cart.length){alert(t().emptyCart);return;}const lines=cart.map(i=>"• "+i.name+" × "+i.qty+" = "+money(i.price*i.qty));const total=cart.reduce((s,i)=>s+i.price*i.qty,0);window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent((isEnglish?"Hello Syriatech, I would like to order:":"مرحباً Syriatech، أريد طلب المنتجات التالية:")+"\n\n"+lines.join("\n")+"\n\n"+(isEnglish?"Total: ":"المجموع: ")+money(total)),"_blank");}
 function bindNavigation(){$("#languageButton")?.addEventListener("click",changeLanguage);$("#cartButton")?.addEventListener("click",openCart);$("#closeCartButton")?.addEventListener("click",closeCart);$("#overlay")?.addEventListener("click",closeCart);$("#searchForm")?.addEventListener("submit",e=>{e.preventDefault();searchProducts()});$("#checkoutButton")?.addEventListener("click",checkoutWhatsApp);$("#clearFilterButton")?.addEventListener("click",()=>filterProducts({reset:true}));$("#applyPrice")?.addEventListener("click",()=>filterProducts());$("#sortSelect")?.addEventListener("change",()=>filterProducts());document.querySelectorAll("[data-category]").forEach(e=>e.addEventListener("click",()=>filterProducts({category:e.dataset.category})));document.querySelectorAll("[data-category-all]").forEach(e=>e.addEventListener("click",()=>filterProducts({reset:true})));document.querySelectorAll("[data-brand]").forEach(e=>e.addEventListener("click",a=>{a.preventDefault();filterProducts({brand:e.dataset.brand})}));document.querySelectorAll("[data-filter-all]").forEach(e=>e.addEventListener("click",a=>{a.preventDefault();filterProducts({reset:true})}));document.querySelectorAll("[data-brand-check]").forEach(e=>e.addEventListener("change",()=>filterProducts()));$("#closeQuick")?.addEventListener("click",closeQuickView);$("#quickView")?.addEventListener("click",e=>{if(e.target.id==="quickView")closeQuickView()});document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeCart();closeQuickView()}});}
 document.addEventListener("DOMContentLoaded",()=>{loadCart();bindNavigation();renderProducts(products);renderCart();});
