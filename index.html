@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-  <div class="top-bar">شحن سريع لجميع المناطق | اطلب الآن عبر واتساب</div>
+  <div class="top-bar" data-i18n="top">شحن سريع لجميع المناطق | اطلب الآن عبر واتساب</div>
 
   <header class="header">
     <div class="logo"><span>S</span> Syriatech</div>
@@ -24,10 +24,10 @@
   </header>
 
   <nav class="navbar">
-    <a href="#home">الرئيسية</a>
-    <a href="#products" data-filter-all="true">كل المنتجات</a>
+    <a href="#home" data-i18n="home">الرئيسية</a>
+    <a href="#products" data-filter-all="true" data-i18n="all">كل المنتجات</a>
     <div class="dropdown">
-      <button type="button">العلامات التجارية ▾</button>
+      <button type="button" data-i18n="brands">العلامات التجارية ▾</button>
       <div class="dropdown-content">
         <a href="#products" data-brand="Anker">Anker</a>
         <a href="#products" data-brand="Anker soundcore">Anker soundcore</a>
@@ -35,8 +35,8 @@
         <a href="#products" data-brand="Nebula">Nebula</a>
       </div>
     </div>
-    <a href="#offers">العروض</a>
-    <a href="#contact">تواصل معنا</a>
+    <a href="#offers" data-i18n="offers">العروض</a>
+    <a href="#contact" data-i18n="contactNav">تواصل معنا</a>
   </nav>
 
   <main>
@@ -66,7 +66,7 @@
 
     <section id="products" class="section">
       <div class="section-title">
-        <p id="productsEyebrow">منتجات أصلية</p>
+        <p id="productsEyebrow" data-i18n="productsEyebrow">منتجات أصلية</p>
         <h2 id="productsTitle">منتجات Anker ومجموعاتها</h2>
         <button id="clearFilterButton" type="button" class="clear-filter">عرض كل المنتجات</button>
       </div>
@@ -79,7 +79,7 @@
     </section>
 
     <section class="brands section">
-      <div class="section-title"><p>علامات تجارية موثوقة</p><h2>تسوق حسب العلامة التجارية</h2></div>
+      <div class="section-title"><p data-i18n="brandsEyebrow">علامات تجارية موثوقة</p><h2 data-i18n="brandsTitle">تسوق حسب العلامة التجارية</h2></div>
       <div class="brand-list">
         <button type="button" data-brand="Anker">Anker</button>
         <button type="button" data-brand="Anker soundcore">Anker soundcore</button>
@@ -89,14 +89,14 @@
     </section>
 
     <section id="contact" class="contact">
-      <h2>تواصل معنا</h2>
-      <p>للطلب والاستفسار تواصل معنا عبر واتساب</p>
+      <h2 id="contactTitle" data-i18n="contactTitle">تواصل معنا</h2>
+      <p id="contactSub" data-i18n="contactSub">للطلب والاستفسار تواصل معنا عبر واتساب</p>
       <a href="https://wa.me/963949951985" target="_blank" rel="noopener noreferrer">+963 949 951 985</a>
     </section>
   </main>
 
   <aside id="cart" class="cart" aria-label="سلة المشتريات">
-    <div class="cart-header"><h2>سلة المشتريات</h2><button id="closeCartButton" type="button" aria-label="إغلاق">×</button></div>
+    <div class="cart-header"><h2 id="cartTitle" data-i18n="cartTitle">سلة المشتريات</h2><button id="closeCartButton" type="button" aria-label="إغلاق">×</button></div>
     <div id="cartItems"></div>
     <div class="cart-total">المجموع: $<span id="cartTotal">0.00</span></div>
     <a id="checkoutButton" href="https://wa.me/963949951985" target="_blank" rel="noopener noreferrer" class="checkout-button">إتمام الطلب عبر واتساب</a>
@@ -106,9 +106,9 @@
   <a class="whatsapp" href="https://wa.me/963949951985" target="_blank" rel="noopener noreferrer" aria-label="تواصل معنا عبر واتساب"><i class="fa-brands fa-whatsapp"></i></a>
 
   <footer>
-    <div><h3>Syriatech</h3><p>متجرك الموثوق للمنتجات التقنية.</p></div>
-    <div><h3>روابط مهمة</h3><a href="#home">الرئيسية</a><a href="#products" data-filter-all="true">المنتجات</a><a href="#contact">تواصل معنا</a></div>
-    <div><h3>تواصل معنا</h3><p>واتساب: +963 949 951 985</p></div>
+    <div><h3>Syriatech</h3><p data-i18n="footerDesc">متجرك الموثوق للمنتجات التقنية.</p></div>
+    <div><h3 data-i18n="important">روابط مهمة</h3><a href="#home">الرئيسية</a><a href="#products" data-filter-all="true">المنتجات</a><a href="#contact">تواصل معنا</a></div>
+    <div><h3 data-i18n="footerContact">تواصل معنا</h3><p><span data-i18n="whatsapp">واتساب:</span> +963 949 951 985</p></div>
   </footer>
 
   <script src="script.js" defer></script>
