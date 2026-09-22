@@ -487,3 +487,14 @@ footer a {
   }
 
 .product{position:relative}.product-badge{position:absolute;top:10px;left:10px;padding:5px 8px;border-radius:5px;color:#fff;background:var(--blue);font-size:12px}.product-bottom strong{display:block}.product-bottom del{display:block;color:#94a3b8;font-size:12px}.empty-state{grid-column:1/-1;padding:45px;text-align:center;color:var(--gray);border:1px dashed var(--border);border-radius:12px}.cart-item-price{text-align:left}.cart-controls{display:flex;align-items:center;gap:8px;margin-top:8px}.cart-controls button{width:28px;height:28px;border-radius:5px;color:#fff!important;background:var(--dark)!important}.dropdown:hover .dropdown-content,.dropdown:focus-within .dropdown-content{display:grid}@media(max-width:800px){.header{gap:14px}.search-box{order:3}.header,.offer,footer{flex-direction:column}}
+
+.category-card,.brand-list button{font:inherit;cursor:pointer;border:1px solid var(--border);background:white;color:var(--dark);transition:.2s}
+.category-card{display:grid;gap:8px;padding:25px;text-align:center;font-size:16px}
+.category-card .category-icon{font-size:30px}
+.category-card:hover,.category-card:focus,.brand-list button:hover,.brand-list button:focus{border-color:var(--blue);color:var(--blue);transform:translateY(-2px);box-shadow:0 8px 20px #0879e81a}
+.brand-list button{padding:28px;font-size:22px;font-weight:bold}
+.clear-filter{margin-top:12px;padding:8px 14px;border:1px solid var(--border);border-radius:6px;background:white;color:var(--blue);cursor:pointer}
+.clear-filter:hover{background:#f4f8fc}
+.product-badge:empty{display:none}
+.whatsapp{background:#25D366!important;color:#fff!important}
+.whatsapp i{font-size:30px;line-height:1}
