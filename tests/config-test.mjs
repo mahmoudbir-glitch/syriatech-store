@@ -102,5 +102,30 @@ for (const rule of config.rewrites || []) {
     { destination: rule.destination, apiFiles });
 }
 
+/*
+ * Cache busting. Every script and stylesheet link carries a hash of the file it
+ * points at, so a phone that cached the old shop is handed a new URL the moment
+ * we change anything. These used to be hand-typed numbers: catalog.js stayed at
+ * "?v=2" while it grew to the full supplier catalogue, and the site kept looking
+ * unchanged on devices that had already cached it.
+ */
+const { createRequire } = await import("node:module");
+const require = createRequire(import.meta.url);
+const stamper = require("../tools/stamp-assets.cjs");
+
+for (const page of stamper.PAGES) {
+  const source = fs.readFileSync(path.join(REPO, page), "utf8");
+  const links = stamper.stamps(source);
+  check(page + " links its scripts and styles", links.length > 0, links.length);
+  for (const link of links) {
+    check(page + " -> " + link.file + " carries the current content hash",
+      link.expected !== null && link.version === link.expected,
+      { inPage: link.version, expected: link.expected, fix: "node tools/stamp-assets.cjs" });
+  }
+  /* A link with no ?v= at all can never be busted. */
+  const bare = [...source.matchAll(/(?:href|src)="\/([A-Za-z0-9._-]+\.(?:css|js))"/g)].map(m => m[1]);
+  check(page + " leaves no unversioned script or style", bare.length === 0, bare);
+}
+
 console.log(failures ? "\n" + failures + " configuration problem(s)" : "\nDeployment configuration is sound");
 process.exit(failures ? 1 : 0);
