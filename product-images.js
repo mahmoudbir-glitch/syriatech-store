@@ -39,7 +39,6 @@
       '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
       '<stop stop-color="hsl(' + hue + ',85%,62%)"/><stop offset="1" stop-color="hsl(' + ((hue + 75) % 360) + ',85%,45%)"/>' +
       '</linearGradient></defs>' +
-      '<rect width="700" height="700" rx="52" fill="#f7f5f0"/>' +
       '<circle cx="570" cy="125" r="155" fill="url(#g)" opacity=".13"/>' +
       '<circle cx="110" cy="585" r="190" fill="url(#g)" opacity=".09"/>' +
       '<g fill="url(#g)"' + stroke + ' stroke-width="10">' + shape + "</g>" +
