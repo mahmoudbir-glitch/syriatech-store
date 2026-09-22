@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { get, put } from "@vercel/blob";
+import { get, put, list, issueSignedToken, presignUrl } from "@vercel/blob";
 const COOKIE="syriatech_admin"; const EMPTY={overrides:{},additions:[],deleted:[]};
 const secret=()=>process.env.ADMIN_SECRET||"";
 const sign=v=>crypto.createHmac("sha256",secret()).update(v).digest("hex");
@@ -36,18 +36,22 @@ export default async function handler(req,res){
   }
   if(req.method==="POST"&&action==="upload"){
    const body=typeof req.body==="string"?JSON.parse(req.body||"{}"):(req.body||{});
-   const name=String(body.name||"product.jpg");
+   const name=String(body.name||"product.jpg").replace(/[^a-zA-Z0-9._-]/g,"-");
    const type=String(body.type||"image/jpeg");
-   const data=String(body.data||"");
-   if(!data)return fail(res,400,"Image data is required");
    if(!type.startsWith("image/"))return fail(res,400,"Only image files are allowed");
-   const raw=data.includes(",")?data.split(",").pop():data;
-   const buffer=Buffer.from(raw,"base64");
-   if(buffer.length>8*1024*1024)return fail(res,400,"Maximum image size is 8MB");
    const ext=(name.split(".").pop()||"jpg").replace(/[^a-z0-9]/gi,"").toLowerCase()||"jpg";
    const pathname=`products/${Date.now()}-${crypto.randomBytes(5).toString("hex")}.${ext}`;
-   const b=await put(pathname,buffer,{access:"public",addRandomSuffix:false,contentType:type});
-   return res.status(200).json({ok:true,url:b.url});
+   const signed=await issueSignedToken({operations:["put"]});
+   const {presignedUrl}=await presignUrl(signed,{pathname,operation:"put",validUntil:Date.now()+15*60*1000});
+   return res.status(200).json({ok:true,presignedUrl,pathname});
+  }
+  if(req.method==="GET"&&action==="resolve"){
+   const pathname=String((req.query&&req.query.pathname)||"");
+   if(!pathname||!pathname.startsWith("products/"))return fail(res,400,"Invalid pathname");
+   const r=await list({prefix:pathname,limit:10});
+   const blob=(r.blobs||[]).find(x=>x.pathname===pathname);
+   if(!blob)return fail(res,404,"Uploaded image not found");
+   return res.status(200).json({ok:true,url:blob.url,pathname:blob.pathname});
   }
   return fail(res,404,"Unknown action");
  }catch(e){return res.status(500).json({ok:false,error:e?.message||"Server error"});}
