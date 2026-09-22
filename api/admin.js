@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { get, put, list, issueSignedToken, presignUrl } from "@vercel/blob";
+import { get, put } from "@vercel/blob";
 const COOKIE="syriatech_admin"; const EMPTY={overrides:{},additions:[],deleted:[]};
 const secret=()=>process.env.ADMIN_SECRET||"";
 const sign=v=>crypto.createHmac("sha256",secret()).update(v).digest("hex");
@@ -36,21 +36,11 @@ export default async function handler(req,res){
   }
   if(req.method==="POST"&&action==="upload"){
    const body=typeof req.body==="string"?JSON.parse(req.body||"{}"):(req.body||{});
-   const name=String(body.name||"product.jpg").replace(/[^a-zA-Z0-9._-]/g,"-");
-   const type=String(body.type||"image/jpeg");
-   if(!type.startsWith("image/"))return fail(res,400,"Only image files are allowed");
-   const ext=(name.split(".").pop()||"jpg").replace(/[^a-z0-9]/gi,"").toLowerCase()||"jpg";
-   const pathname=`products/${Date.now()}-${crypto.randomBytes(5).toString("hex")}.${ext}`;
-   const signed=await issueSignedToken({operations:["put"],pathname});
-   const {presignedUrl}=await presignUrl(signed,{pathname,operation:"put",validUntil:Date.now()+15*60*1000});
-   return res.status(200).json({ok:true,presignedUrl,pathname});
-  }
-  if(req.method==="GET"&&action==="resolve"){
-   const pathname=String((req.query&&req.query.pathname)||"");
-   if(!pathname||!pathname.startsWith("products/"))return fail(res,400,"Invalid pathname");
-   const r=await list({prefix:pathname,limit:10});
-   const blob=(r.blobs||[]).find(x=>x.pathname===pathname);
-   if(!blob)return fail(res,404,"Uploaded image not found");
+   const data=String(body.data||""); if(!data)return fail(res,400,"Image data is required");
+   const raw=data.includes(",")?data.split(",").pop():data; const buffer=Buffer.from(raw,"base64");
+   if(buffer.length>3*1024*1024)return fail(res,413,"الصورة بعد الضغط أكبر من 3MB. اختر صورة أصغر.");
+   const pathname=`products/${Date.now()}-${crypto.randomBytes(5).toString("hex")}.jpg`;
+   const blob=await put(pathname,buffer,{access:"public",addRandomSuffix:false,allowOverwrite:false,contentType:"image/jpeg"});
    return res.status(200).json({ok:true,url:blob.url,pathname:blob.pathname});
   }
   return fail(res,404,"Unknown action");
