@@ -10,6 +10,30 @@ window.editProduct=id=>{const p=merged().find(x=>Number(x.id)===Number(id));if(p
 window.deleteProduct=async id=>{if(!confirm("حذف المنتج؟"))return;try{await api("delete",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id})});await load();render()}catch(e){alert(e.message)}}
 $("#loginBtn").onclick=async()=>{try{await api("login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({password:$("#password").value})});$("#loginView").hidden=true;$("#adminView").hidden=false;await load();render()}catch(e){$("#loginMsg").textContent=e.message}}
 $("#logoutBtn").onclick=async()=>{await api("logout",{method:"POST"});location.reload()}
-$("#uploadBtn").onclick=async()=>{const f=$("#imageFile").files[0];if(!f)return alert("اختر صورة");if(!f.type.startsWith("image/"))return alert("اختر ملف صورة");if(f.size>8*1024*1024)return alert("حجم الصورة يجب أن يكون أقل من 8MB");try{const buf=await f.arrayBuffer();let bytes=new Uint8Array(buf),binary="";for(let i=0;i<bytes.length;i++)binary+=String.fromCharCode(bytes[i]);const data=btoa(binary);const d=await api("upload",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:f.name,type:f.type,data})});$("#image").value=d.url;$("#preview").src=d.url;$("#preview").hidden=false;$("#saveMsg").textContent="تم رفع الصورة إلى Vercel Blob وحفظ رابطها"}catch(e){$("#saveMsg").textContent=e.message}}
+$("#uploadBtn").onclick=async()=>{
+  const f=$("#imageFile").files[0];
+  if(!f)return alert("اختر صورة");
+  if(!f.type.startsWith("image/"))return alert("اختر ملف صورة");
+  if(f.size>8*1024*1024)return alert("حجم الصورة يجب أن يكون أقل من 8MB");
+  try{
+    $("#uploadBtn").disabled=true;
+    $("#saveMsg").textContent="جاري رفع الصورة مباشرة إلى Vercel Blob...";
+    const {upload}=await import("https://cdn.jsdelivr.net/npm/@vercel/blob@2.6.1/+esm");
+    const blob=await upload("products/"+Date.now()+"-"+f.name,f,{
+      access:"public",
+      handleUploadUrl:"/api/blob-upload",
+      multipart:true,
+      onUploadProgress(e){$("#saveMsg").textContent="جاري رفع الصورة... "+Math.round(e.percentage||0)+"%";}
+    });
+    $("#image").value=blob.url;
+    $("#preview").src=blob.url;
+    $("#preview").hidden=false;
+    $("#saveMsg").textContent="تم رفع الصورة بنجاح إلى Vercel Blob";
+  }catch(e){
+    $("#saveMsg").textContent="فشل رفع الصورة: "+(e.message||"خطأ غير معروف");
+  }finally{
+    $("#uploadBtn").disabled=false;
+  }
+};
 $("#productForm").onsubmit=async e=>{e.preventDefault();const p={id:editing?Number(editing.id):Date.now(),name:$("#name").value.trim(),description:$("#description").value.trim(),price:Number($("#price").value),oldPrice:Number($("#oldPrice").value||$("#price").value),category:$("#category").value,brand:$("#brand").value.trim()||"Anker",image:$("#image").value.trim(),badge:"NEW"};try{await api("save",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({mode:editing?"edit":"add",product:p})});$("#saveMsg").textContent="تم حفظ المنتج";reset();await load();render()}catch(e){$("#saveMsg").textContent=e.message}}
 $("#resetBtn").onclick=reset;$("#filter").oninput=render;
