@@ -244,6 +244,13 @@ function productImagePath(p){
   const map={"power-bank":"assets/product-power.svg","charger":"assets/product-charger.svg","wireless":"assets/product-accessories.svg","cables":"assets/product-accessories.svg","hubs-docks":"assets/product-accessories.svg","power":"assets/product-accessories.svg","car":"assets/product-charger.svg","audio":"assets/product-audio.svg","security":"assets/product-security.svg","smart-home":"assets/product-smart.svg","projector":"assets/product-projector.svg","solar":"assets/product-solar.svg"};
   return map[p.category]||"assets/product-accessories.svg";
 }
+function openImageLightbox(src, alt){
+ const box=document.getElementById("imageLightbox");
+ const image=document.getElementById("lightboxImage");
+ if(!box||!image)return;
+ image.src=src; image.alt=alt||"Product image"; box.hidden=false; document.body.classList.add("lightbox-open");
+}
+function closeImageLightbox(){const box=document.getElementById("imageLightbox");if(box){box.hidden=true;document.body.classList.remove("lightbox-open");}}
 function renderProducts(list,label){
  const grid=$("#productsGrid");if(!grid)return;
  let items=[...(list||products)];
@@ -258,6 +265,7 @@ function renderProducts(list,label){
    const tx=productText(p);
    return '<article class="product"><span class="product-badge">'+(p.badge||"")+'</span><button class="quick-btn" data-quick="'+p.id+'" type="button" aria-label="Quick view">⌕</button><div class="product-image"><img src="'+productImagePath(p)+'" alt="'+tx.name+'" loading="lazy" onerror="this.onerror=null;this.src=&quot;assets/product-accessories.svg&quot;"></div><div class="product-info"><small>'+p.brand+'</small><h3>'+tx.name+'</h3><p>'+tx.description+'</p><div class="product-bottom"><div><del>'+money(p.oldPrice)+'</del><strong>'+money(p.price)+'</strong><span class="discount-label">30% OFF</span></div><button class="add-product" data-id="'+p.id+'" type="button" aria-label="'+t().addToCart+'"><i class="fa-solid fa-plus"></i></button></div></div></article>';
  }).join("");
+ grid.querySelectorAll(".product-image img").forEach(img=>img.onclick=()=>openImageLightbox(img.src,img.alt));
  grid.querySelectorAll(".add-product").forEach(b=>b.onclick=()=>addToCart(+b.dataset.id));
  grid.querySelectorAll("[data-quick]").forEach(b=>b.onclick=()=>openQuickView(+b.dataset.quick));
 }
