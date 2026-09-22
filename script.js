@@ -184,11 +184,18 @@ function filterProducts({category=undefined,brand=undefined,reset=false}={}) {
   $("#products")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
 function productImagePath(p){
-  if (p && typeof p.image === "string" && p.image.trim()) return p.image.trim();
-  const featured={};
-  if(p&&featured[String(p.id)]) return featured[String(p.id)];
-  const map={"power-bank":"assets/new-power.svg","charger":"assets/new-charger.svg","wireless":"assets/new-charger.svg","cables":"assets/new-cables.svg","hubs-docks":"assets/new-dock.svg","power":"assets/new-charger.svg","car":"assets/new-charger.svg","audio":"assets/new-audio.svg","security":"assets/new-security.svg","smart-home":"assets/new-security.svg","projector":"assets/new-projector.svg","solar":"assets/new-solar.svg"};
-  return map[p.category]||"assets/new-power.svg";
+  // 1) Admin/Vercel image always has priority.
+  if (p && typeof p.image === "string" && p.image.trim()) {
+    return p.image.trim();
+  }
+
+  // 2) Central image file controlled from product-images.js.
+  const custom = window.PRODUCT_IMAGES && window.PRODUCT_IMAGES[String(p?.id)];
+  if (custom) return custom;
+
+  // 3) Category fallback prevents broken/empty product images.
+  const fallbacks = window.PRODUCT_IMAGE_FALLBACKS || {};
+  return fallbacks[p?.category] || window.PRODUCT_IMAGE_PLACEHOLDER || "assets/product-accessories.svg";
 }
 function openImageLightbox(src, alt){
  const box=document.getElementById("imageLightbox");
