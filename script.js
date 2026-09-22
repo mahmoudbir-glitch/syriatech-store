@@ -204,18 +204,13 @@ function renderCart() {
   if (!box) return;
 
   const totalQty = cart.reduce((sum, item) => sum + Number(item.qty || 0), 0);
-  const totalPrice = cart.reduce(
-    (sum, item) => sum + Number(item.price || 0) * Number(item.qty || 0),
-    0
-  );
+  const totalPrice = cart.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.qty || 0), 0);
 
   if (count) count.textContent = totalQty;
   if (total) total.textContent = totalPrice.toFixed(2);
 
   if (!cart.length) {
-    box.innerHTML = `
-      <div class="empty-state">${t().emptyCart}</div>
-    `;
+    box.innerHTML = `<div class="empty-state">${t().emptyCart}</div>`;
     return;
   }
 
@@ -224,17 +219,14 @@ function renderCart() {
       <div>
         <strong>${item.name}</strong>
         <div class="cart-controls">
-          <button class="qty-minus" data-id="${item.id}" type="button"
-            aria-label="${isEnglish ? "Decrease quantity" : "إنقاص الكمية"}">−</button>
+          <button class="qty-minus" data-id="${item.id}" type="button" aria-label="${isEnglish ? "Decrease quantity" : "إنقاص الكمية"}">−</button>
           <span>${item.qty}</span>
-          <button class="qty-plus" data-id="${item.id}" type="button"
-            aria-label="${isEnglish ? "Increase quantity" : "زيادة الكمية"}">+</button>
+          <button class="qty-plus" data-id="${item.id}" type="button" aria-label="${isEnglish ? "Increase quantity" : "زيادة الكمية"}">+</button>
         </div>
       </div>
       <div>
         <strong>${money(Number(item.price) * Number(item.qty))}</strong>
-        <button class="remove-item" data-id="${item.id}" type="button"
-          title="${t().remove}" aria-label="${t().remove}">
+        <button class="remove-item" data-id="${item.id}" type="button" title="${t().remove}" aria-label="${t().remove}">
           <i class="fa-solid fa-trash-can"></i>
         </button>
       </div>
