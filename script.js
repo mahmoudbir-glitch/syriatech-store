@@ -161,7 +161,57 @@ function removeFromCart(id){cart=cart.filter(x=>x.id!==id);saveCart();renderCart
 function openCart(){$("#cart")?.classList.add("open");$("#overlay")?.classList.add("active");}
 function closeCart(){$("#cart")?.classList.remove("open");$("#overlay")?.classList.remove("active");}
 function searchProducts(){const q=($("#searchInput")?.value||"").trim().toLowerCase();const list=!q?products:products.filter(p=>[p.name,p.brand,p.description].some(v=>v.toLowerCase().includes(q)));renderProducts(list,q?"نتائج البحث":"منتجات Anker ومجموعاتها");$("#products")?.scrollIntoView({behavior:"smooth"});}
-function changeLanguage(){isEnglish=!isEnglish;document.documentElement.lang=isEnglish?"en":"ar";document.documentElement.dir=isEnglish?"ltr":"rtl";const b=$("#languageButton");if(b)b.textContent=isEnglish?"AR":"EN";}
+const translations={
+  ar:{
+    top:"شحن سريع لجميع المناطق | اطلب الآن عبر واتساب",
+    home:"الرئيسية",all:"كل المنتجات",brands:"العلامات التجارية",offers:"العروض",contactNav:"تواصل معنا",
+    search:"بحث",searchPlaceholder:"ابحث عن منتج...",shop:"تسوق الآن",
+    heroEyebrow:"SYRIATECH × ANKER",heroTitle:"كل ما تحتاجه من التقنية في مكان واحد",heroSub:"منتجات تقنية أصلية بجودة عالية وأسعار مناسبة",
+    productsEyebrow:"منتجات أصلية",productsTitle:"منتجات Anker ومجموعاتها",allProducts:"عرض كل المنتجات",
+    categories:{power:"Power Banks",audio:"Headphones & Audio",charger:"Chargers",accessories:"Accessories",security:"Security",smart:"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},
+    offersTitle:"منتجات مختارة من Anker ومجموعاته",offersEyebrow:"عروض Syriatech",order:"اطلب عبر واتساب",
+    brandsEyebrow:"علامات تجارية موثوقة",brandsTitle:"تسوق حسب العلامة التجارية",
+    contactTitle:"تواصل معنا",contactSub:"للطلب والاستفسار تواصل معنا عبر واتساب",
+    cartTitle:"سلة المشتريات",empty:"السلة فارغة حالياً.",total:"المجموع:",checkout:"إتمام الطلب عبر واتساب",remove:"حذف",
+    footerDesc:"متجرك الموثوق للمنتجات التقنية.",important:"روابط مهمة",footerContact:"تواصل معنا",whatsapp:"واتساب:"
+  },
+  en:{
+    top:"Fast shipping to all areas | Order now on WhatsApp",
+    home:"Home",all:"All Products",brands:"Brands",offers:"Offers",contactNav:"Contact Us",
+    search:"Search",searchPlaceholder:"Search for a product...",shop:"Shop Now",
+    heroEyebrow:"SYRIATECH × ANKER",heroTitle:"Everything you need from technology in one place",heroSub:"Authentic technology products with quality and great prices",
+    productsEyebrow:"Original Products",productsTitle:"Anker Products & Ecosystem",allProducts:"View All Products",
+    categories:{power:"Power Banks",audio:"Headphones & Audio",charger:"Chargers",accessories:"Accessories",security:"Security",smart:"Smart Home",projector:"Projectors",solar:"SOLIX Energy"},
+    offersTitle:"Selected products from Anker and its ecosystem",offersEyebrow:"Syriatech Offers",order:"Order via WhatsApp",
+    brandsEyebrow:"Trusted Brands",brandsTitle:"Shop by Brand",
+    contactTitle:"Contact Us",contactSub:"For orders and inquiries, contact us on WhatsApp",
+    cartTitle:"Shopping Cart",empty:"Your cart is empty.",total:"Total:",checkout:"Checkout via WhatsApp",remove:"Remove",
+    footerDesc:"Your trusted store for technology products.",important:"Important Links",footerContact:"Contact Us",whatsapp:"WhatsApp:"
+  }
+};
+function setText(id,value){const el=$("#"+id);if(el)el.textContent=value;}
+function changeLanguage(){
+  isEnglish=!isEnglish;
+  const t=isEnglish?translations.en:translations.ar;
+  document.documentElement.lang=isEnglish?"en":"ar";
+  document.documentElement.dir=isEnglish?"ltr":"rtl";
+  document.documentElement.dataset.language=isEnglish?"en":"ar";
+  setText("languageButton",isEnglish?"AR":"EN");
+  setText("searchButton",t.search);
+  const input=$("#searchInput");if(input)input.placeholder=t.searchPlaceholder;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;if(t[key])el.textContent=t[key];});
+  setText("productsEyebrow",t.productsEyebrow);
+  setText("productsTitle",t.productsTitle);
+  setText("clearFilterButton",t.allProducts);
+  setText("offersEyebrow",t.offersEyebrow);
+  setText("offersTitle",t.offersTitle);
+  setText("contactTitle",t.contactTitle);
+  const contactSub=$("#contactSub");if(contactSub)contactSub.textContent=t.contactSub;
+  setText("cartTitle",t.cartTitle);
+  setText("checkoutButton",t.checkout);
+  renderCart();
+  renderProducts(products,isEnglish?t.productsTitle:"منتجات Anker ومجموعاتها");
+}
 function checkoutWhatsApp(e){if(e)e.preventDefault();if(!cart.length){alert("السلة فارغة.");return;}const lines=cart.map(i=>"• "+i.name+" × "+i.qty+" = "+money(i.price*i.qty));const total=cart.reduce((s,i)=>s+i.price*i.qty,0);const msg="مرحباً Syriatech، أريد طلب:\n\n"+lines.join("\n")+"\n\nالإجمالي: "+money(total);window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank","noopener,noreferrer");}
 function bindNavigation(){
   $("#languageButton")?.addEventListener("click",changeLanguage);
