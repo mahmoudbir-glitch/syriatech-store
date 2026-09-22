@@ -125,7 +125,33 @@ let cart = [];
 let isEnglish = false;
 function $(selector){return document.querySelector(selector);}
 function money(value){return "$"+Number(value).toFixed(2);}
-function loadCart(){try{const saved=localStorage.getItem(CART_KEY);const parsed=saved?JSON.parse(saved):[];cart=Array.isArray(parsed)?parsed.filter(i=>i&&Number.isFinite(Number(i.id))&&Number(i.qty)>0&&Number.isFinite(Number(i.price))).map(i=>({...i,id:Number(i.id),qty:Number(i.qty),price:Number(i.price)})):[]}catch(e){cart=[];try{localStorage.removeItem(CART_KEY);}catch(_) {}}}
+function loadCart() {
+  try {
+    const saved = localStorage.getItem(CART_KEY);
+    const parsed = saved ? JSON.parse(saved) : [];
+
+    cart = Array.isArray(parsed)
+      ? parsed
+          .filter(item =>
+            item &&
+            Number.isFinite(Number(item.id)) &&
+            Number(item.qty) > 0 &&
+            Number.isFinite(Number(item.price))
+          )
+          .map(item => ({
+            ...item,
+            id: Number(item.id),
+            qty: Number(item.qty),
+            price: Number(item.price)
+          }))
+      : [];
+  } catch (error) {
+    cart = [];
+    try {
+      localStorage.removeItem(CART_KEY);
+    } catch (_) {}
+  }
+}
 function saveCart(){try{localStorage.setItem(CART_KEY,JSON.stringify(cart));}catch(e){}}
 
 function t(){return isEnglish?translations.en:translations.ar;}
@@ -170,7 +196,63 @@ function renderProducts(list,label){
  grid.innerHTML=items.map(p=>'<article class="product"><span class="product-badge">'+(p.badge||"")+'</span><button class="quick-btn" data-quick="'+p.id+'" type="button" aria-label="Quick view">⌕</button><div class="product-image"><img src="'+productImagePath(p)+'" alt="'+p.name+'" loading="lazy" onerror="this.onerror=null;this.src=\'assets/product-accessories.svg\'"></div><div class="product-info"><small>'+p.brand+'</small><h3>'+p.name+'</h3><p>'+p.description+'</p><div class="product-bottom"><div><del>'+money(p.oldPrice)+'</del><strong>'+money(p.price)+'</strong><span class="discount-label">30% OFF</span></div><button class="add-product" data-id="'+p.id+'" type="button" aria-label="'+t().addToCart+'">🛒</button></div></div></article>').join("");
  grid.querySelectorAll(".add-product").forEach(b=>b.onclick=()=>addToCart(+b.dataset.id));grid.querySelectorAll("[data-quick]").forEach(b=>b.onclick=()=>openQuickView(+b.dataset.quick));
 }
-function renderCart(){const box=$("#cartItems"),count=$("#cartCount"),total=$("#cartTotal");if(!box)return;count.textContent=cart.reduce((s,i)=>s+i.qty,0);total.textContent=cart.reduce((s,i)=>s+i.price*i.qty,0).toFixed(2);if(!cart.length){box.innerHTML='<div class="empty-state">'+t().emptyCart+"</div>";return;}box.innerHTML=cart.map(i=>'<div class="cart-item"><div><strong>'+i.name+'</strong><div class="cart-controls"><button class="qty-minus" data-id="'+i.id+'" type="button">−</button><span>'+i.qty+'</span><button class="qty-plus" data-id="'+i.id+'" type="button">+</button></div></div><div><strong>'+money(i.price*i.qty)+'</strong><button class="remove-item" data-id="'+i.id+'" type="button" title="'+t().remove+'" aria-label="'+t().remove+'"><i class="fa-solid fa-trash-can"></i></button></div></div>').join("");box.querySelectorAll(".qty-minus").forEach(b=>b.onclick=()=>changeQty(+b.dataset.id,-1));box.querySelectorAll(".qty-plus").forEach(b=>b.onclick=()=>changeQty(+b.dataset.id,1));box.querySelectorAll(".remove-item").forEach(b=>b.onclick=()=>removeFromCart(+b.dataset.id));}
+function renderCart() {
+  const box = $("#cartItems");
+  const count = $("#cartCount");
+  const total = $("#cartTotal");
+
+  if (!box) return;
+
+  const totalQty = cart.reduce((sum, item) => sum + Number(item.qty || 0), 0);
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + Number(item.price || 0) * Number(item.qty || 0),
+    0
+  );
+
+  if (count) count.textContent = totalQty;
+  if (total) total.textContent = totalPrice.toFixed(2);
+
+  if (!cart.length) {
+    box.innerHTML = `
+      <div class="empty-state">${t().emptyCart}</div>
+    `;
+    return;
+  }
+
+  box.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div>
+        <strong>${item.name}</strong>
+        <div class="cart-controls">
+          <button class="qty-minus" data-id="${item.id}" type="button"
+            aria-label="${isEnglish ? "Decrease quantity" : "إنقاص الكمية"}">−</button>
+          <span>${item.qty}</span>
+          <button class="qty-plus" data-id="${item.id}" type="button"
+            aria-label="${isEnglish ? "Increase quantity" : "زيادة الكمية"}">+</button>
+        </div>
+      </div>
+      <div>
+        <strong>${money(Number(item.price) * Number(item.qty))}</strong>
+        <button class="remove-item" data-id="${item.id}" type="button"
+          title="${t().remove}" aria-label="${t().remove}">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+      </div>
+    </div>
+  `).join("");
+
+  box.querySelectorAll(".qty-minus").forEach(button => {
+    button.addEventListener("click", () => changeQty(Number(button.dataset.id), -1));
+  });
+
+  box.querySelectorAll(".qty-plus").forEach(button => {
+    button.addEventListener("click", () => changeQty(Number(button.dataset.id), 1));
+  });
+
+  box.querySelectorAll(".remove-item").forEach(button => {
+    button.addEventListener("click", () => removeFromCart(Number(button.dataset.id)));
+  });
+}
 function addToCart(id){const p=products.find(x=>x.id===id);if(!p)return;const e=cart.find(x=>x.id===id);e?e.qty++:cart.push({id:p.id,name:p.name,price:p.price,qty:1});saveCart();renderCart();openCart();}
 function changeQty(id,d){const i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<1)cart=cart.filter(x=>x.id!==id);saveCart();renderCart();}
 function removeFromCart(id){cart=cart.filter(x=>x.id!==id);saveCart();renderCart();}
