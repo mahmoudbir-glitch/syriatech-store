@@ -1,1 +1,8 @@
-{"name":"syriatech-store","private":true,"version":"1.0.0","dependencies":{"@vercel/blob":"^2.7.0"}}
+{
+  "name": "syriatech-store",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "@vercel/blob": "^2.7.0"
+  }
+}
