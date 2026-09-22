@@ -1,229 +1,168 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Syriatech | متجر التقنية</title>
-  <meta
-    name="description"
-    content="Syriatech - متجر المنتجات والإكسسوارات التقنية"
-  />
-
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syriatech Store</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+  <div class="top-bar">
+    شحن سريع لجميع المناطق | اطلب الآن عبر واتساب
+  </div>
+
   <header class="header">
-    <div class="container nav">
-      <a href="#" class="logo">
-        <span class="logo-icon">S</span>
-        <span>Syriatech</span>
-      </a>
+    <div class="logo">
+      <span>S</span> Syriatech
+    </div>
 
-      <nav class="menu">
-        <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
-        <a href="#products" data-ar="المنتجات" data-en="Products">المنتجات</a>
-        <a href="#offers" data-ar="العروض" data-en="Offers">العروض</a>
-        <a href="#about" data-ar="من نحن" data-en="About Us">من نحن</a>
-        <a href="#contact" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a>
-      </nav>
+    <div class="search-box">
+      <input id="searchInput" type="text" placeholder="ابحث عن منتج...">
+      <button onclick="searchProducts()">بحث</button>
+    </div>
 
-      <div class="nav-actions">
-        <button id="languageButton" class="language-button">EN</button>
-        <button id="cartButton" class="cart-button">
-          🛒 <span id="cartCount">0</span>
-        </button>
-      </div>
+    <div class="header-icons">
+      <button onclick="changeLanguage()">EN</button>
+      <button onclick="openCart()">🛒 <b id="cartCount">0</b></button>
     </div>
   </header>
 
+  <nav class="navbar">
+    <a href="#home">الرئيسية</a>
+    <a href="#products">كل المنتجات</a>
+
+    <div class="dropdown">
+      <button>العلامات التجارية ▾</button>
+      <div class="dropdown-content">
+        <a href="#products">Anker</a>
+        <a href="#products">Soundcore</a>
+        <a href="#products">eufy</a>
+        <a href="#products">Nebula</a>
+      </div>
+    </div>
+
+    <a href="#offers">العروض</a>
+    <a href="#contact">تواصل معنا</a>
+  </nav>
+
   <main>
+
     <section id="home" class="hero">
-      <div class="container hero-content">
-        <div>
-          <p class="hero-label" data-ar="تقنية بجودة تثق بها" data-en="Technology you can trust">
-            تقنية بجودة تثق بها
-          </p>
+      <div class="hero-text">
+        <p>SYRIATECH</p>
+        <h1>كل ما تحتاجه من التقنية في مكان واحد</h1>
+        <p>منتجات تقنية أصلية بجودة عالية وأسعار مناسبة</p>
+        <a href="#products" class="main-button">تسوق الآن</a>
+      </div>
 
-          <h1
-            data-ar="اكتشف أفضل المنتجات التقنية"
-            data-en="Discover the best tech products"
-          >
-            اكتشف أفضل المنتجات التقنية
-          </h1>
-
-          <p
-            class="hero-text"
-            data-ar="منتجات أصلية، أسعار مناسبة، وخدمة موثوقة من Syriatech."
-            data-en="Genuine products, competitive prices, and trusted service from Syriatech."
-          >
-            منتجات أصلية، أسعار مناسبة، وخدمة موثوقة من Syriatech.
-          </p>
-
-          <a href="#products" class="primary-button" data-ar="تسوق الآن" data-en="Shop Now">
-            تسوق الآن
-          </a>
-        </div>
-
-        <div class="hero-card">
-          <div class="hero-circle">S</div>
-          <h2>Syriatech</h2>
-          <p data-ar="عالمك التقني يبدأ من هنا" data-en="Your tech world starts here">
-            عالمك التقني يبدأ من هنا
-          </p>
-        </div>
+      <div class="hero-product">
+        <div class="circle">S</div>
       </div>
     </section>
 
-    <section class="features">
-      <div class="container feature-grid">
-        <div class="feature">
-          <span>✓</span>
-          <div>
-            <h3 data-ar="منتجات أصلية" data-en="Genuine Products">منتجات أصلية</h3>
-            <p data-ar="جودة موثوقة" data-en="Trusted quality">جودة موثوقة</p>
-          </div>
-        </div>
+    <section class="categories">
+      <div>🔋<span>Power Banks</span></div>
+      <div>🎧<span>Headphones</span></div>
+      <div>🔌<span>Chargers</span></div>
+      <div>📱<span>Accessories</span></div>
+    </section>
 
-        <div class="feature">
-          <span>⚡</span>
-          <div>
-            <h3 data-ar="شحن سريع" data-en="Fast Delivery">شحن سريع</h3>
-            <p data-ar="توصيل إلى مختلف المناطق" data-en="Delivery to different areas">
-              توصيل إلى مختلف المناطق
-            </p>
-          </div>
-        </div>
+    <section id="products" class="section">
+      <div class="section-title">
+        <p>منتجاتنا</p>
+        <h2>الأكثر مبيعًا</h2>
+      </div>
 
-        <div class="feature">
-          <span>💬</span>
-          <div>
-            <h3 data-ar="دعم عبر واتساب" data-en="WhatsApp Support">دعم عبر واتساب</h3>
-            <p data-ar="نحن جاهزون لمساعدتك" data-en="We are ready to help">
-              نحن جاهزون لمساعدتك
-            </p>
-          </div>
-        </div>
+      <div id="productsGrid" class="products-grid"></div>
+    </section>
+
+    <section id="offers" class="offer">
+      <div>
+        <p>عروض Syriatech</p>
+        <h2>خصومات مميزة على منتجات Anker</h2>
+      </div>
+
+      <a href="https://wa.me/963949951985" target="_blank" class="main-button">
+        اطلب عبر واتساب
+      </a>
+    </section>
+
+    <section class="brands section">
+      <div class="section-title">
+        <p>علامات تجارية موثوقة</p>
+        <h2>تسوق حسب العلامة التجارية</h2>
+      </div>
+
+      <div class="brand-list">
+        <div>Anker</div>
+        <div>Soundcore</div>
+        <div>eufy</div>
+        <div>Nebula</div>
       </div>
     </section>
 
-    <section id="products" class="products-section">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-label" data-ar="منتجاتنا" data-en="Our Products">منتجاتنا</p>
-          <h2 data-ar="منتجات مميزة" data-en="Featured Products">منتجات مميزة</h2>
-        </div>
-
-        <div id="productsGrid" class="products-grid"></div>
-      </div>
+    <section id="contact" class="contact">
+      <h2>تواصل معنا</h2>
+      <p>للطلب والاستفسار تواصل معنا عبر واتساب</p>
+      <a href="https://wa.me/963949951985" target="_blank">
+        +963 949 951 985
+      </a>
     </section>
 
-    <section id="offers" class="offer-section">
-      <div class="container offer-box">
-        <div>
-          <p class="section-label" data-ar="عرض خاص" data-en="Special Offer">عرض خاص</p>
-          <h2 data-ar="تواصل معنا واحصل على أفضل سعر" data-en="Contact us for the best price">
-            تواصل معنا واحصل على أفضل سعر
-          </h2>
-        </div>
-
-        <a
-          class="whatsapp-button"
-          href="https://wa.me/963949951985"
-          target="_blank"
-          rel="noopener"
-        >
-          <span>💬</span>
-          <span data-ar="اطلب عبر واتساب" data-en="Order via WhatsApp">
-            اطلب عبر واتساب
-          </span>
-        </a>
-      </div>
-    </section>
-
-    <section id="about" class="about-section">
-      <div class="container about-content">
-        <div>
-          <p class="section-label" data-ar="من نحن" data-en="About Us">من نحن</p>
-          <h2 data-ar="Syriatech شريكك في عالم التقنية" data-en="Syriatech, your tech partner">
-            Syriatech شريكك في عالم التقنية
-          </h2>
-        </div>
-
-        <p
-          data-ar="نقدم مجموعة مختارة من المنتجات والإكسسوارات التقنية لتلبية احتياجاتك اليومية، مع خدمة عملاء سريعة وتجربة شراء سهلة."
-          data-en="We offer a carefully selected range of technology products and accessories, with fast customer service and an easy shopping experience."
-        >
-          نقدم مجموعة مختارة من المنتجات والإكسسوارات التقنية لتلبية احتياجاتك اليومية،
-          مع خدمة عملاء سريعة وتجربة شراء سهلة.
-        </p>
-      </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-      <div class="container contact-box">
-        <h2 data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h2>
-
-        <p data-ar="للطلب والاستفسار تواصل معنا عبر واتساب:" data-en="For orders and inquiries, contact us on WhatsApp:">
-          للطلب والاستفسار تواصل معنا عبر واتساب:
-        </p>
-
-        <a href="https://wa.me/963949951985" target="_blank" rel="noopener">
-          +963 949 951 985
-        </a>
-      </div>
-    </section>
   </main>
 
-  <div id="cartPanel" class="cart-panel">
+  <aside id="cart" class="cart">
     <div class="cart-header">
-      <h2 data-ar="سلة المشتريات" data-en="Shopping Cart">سلة المشتريات</h2>
-      <button id="closeCart">×</button>
+      <h2>سلة المشتريات</h2>
+      <button onclick="closeCart()">×</button>
     </div>
 
-    <div id="cartItems" class="cart-items"></div>
+    <div id="cartItems"></div>
 
-    <div class="cart-footer">
-      <strong>
-        <span data-ar="المجموع:" data-en="Total:">المجموع:</span>
-        <span id="cartTotal">$0</span>
-      </strong>
-
-      <a
-        id="checkoutButton"
-        class="primary-button full-width"
-        href="https://wa.me/963949951985"
-        target="_blank"
-        rel="noopener"
-        data-ar="إتمام الطلب عبر واتساب"
-        data-en="Complete order via WhatsApp"
-      >
-        إتمام الطلب عبر واتساب
-      </a>
+    <div class="cart-total">
+      المجموع: $<span id="cartTotal">0</span>
     </div>
-  </div>
 
-  <div id="overlay" class="overlay"></div>
+    <a
+      href="https://wa.me/963949951985"
+      target="_blank"
+      class="checkout-button"
+    >
+      إتمام الطلب عبر واتساب
+    </a>
+  </aside>
+
+  <div id="overlay" onclick="closeCart()"></div>
 
   <a
-    class="floating-whatsapp"
+    class="whatsapp"
     href="https://wa.me/963949951985"
     target="_blank"
-    rel="noopener"
-    aria-label="WhatsApp"
   >
     💬
   </a>
 
-  <footer class="footer">
-    <div class="container footer-content">
-      <p>© 2026 Syriatech. All rights reserved.</p>
-      <p>+963 949 951 985</p>
+  <footer>
+    <div>
+      <h3>Syriatech</h3>
+      <p>متجرك الموثوق للمنتجات التقنية.</p>
+    </div>
+
+    <div>
+      <h3>روابط مهمة</h3>
+      <a href="#home">الرئيسية</a>
+      <a href="#products">المنتجات</a>
+      <a href="#contact">تواصل معنا</a>
+    </div>
+
+    <div>
+      <h3>تواصل معنا</h3>
+      <p>واتساب: +963 949 951 985</p>
     </div>
   </footer>
 
   <script src="script.js"></script>
 </body>
-  </html>
-  
+</html>
