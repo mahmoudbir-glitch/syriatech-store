@@ -8,9 +8,12 @@ export default async function handler(req,res){
     if(!pathname.startsWith("products/")||pathname.includes("..")) return res.status(400).json({error:"Invalid image"});
     const result=await get(pathname,{access:"private",useCache:false});
     if(!result) return res.status(404).end();
-    const type=result.blob?.contentType||"application/octet-stream";
+    const type=result.blob?.contentType||"image/jpeg";
     res.statusCode=200;
     res.setHeader("Content-Type",type);
+    if(result.blob?.size) res.setHeader("Content-Length",String(result.blob.size));
+    res.setHeader("Content-Disposition","inline; filename=\"product-image\"");
+    res.setHeader("X-Content-Type-Options","nosniff");
     res.setHeader("Cache-Control","public, max-age=31536000, immutable");
     Readable.fromWeb(result.stream).pipe(res);
   }catch(e){
