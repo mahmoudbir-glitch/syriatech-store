@@ -3,13 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
 <meta name="theme-color" content="#050a12">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<title></title>
+<!-- head:start (generated from i18n.js by tools/sync-head.cjs — do not edit by hand) -->
+<title>Syriatech | إلكترونيات وشواحن أصلية</title>
+<meta name="description" content="متجر Syriatech للإلكترونيات الأصلية: Anker وeufy وsoundcore وNebula وPITAKA. أسعار واضحة وطلب مباشر عبر واتساب.">
+<link rel="canonical" href="https://syriatech-store.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Syriatech">
+<meta property="og:url" content="https://syriatech-store.vercel.app/">
+<meta property="og:title" content="Syriatech | إلكترونيات وشواحن أصلية">
+<meta property="og:description" content="متجر Syriatech للإلكترونيات الأصلية: Anker وeufy وsoundcore وNebula وPITAKA. أسعار واضحة وطلب مباشر عبر واتساب.">
+<meta property="og:image" content="https://syriatech-store.vercel.app/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Syriatech | إلكترونيات وشواحن أصلية">
+<meta name="twitter:description" content="متجر Syriatech للإلكترونيات الأصلية: Anker وeufy وsoundcore وNebula وPITAKA. أسعار واضحة وطلب مباشر عبر واتساب.">
+<meta name="twitter:image" content="https://syriatech-store.vercel.app/assets/og-cover.png">
+<link rel="alternate" hreflang="ar" href="https://syriatech-store.vercel.app/?lang=ar">
+<link rel="alternate" hreflang="en" href="https://syriatech-store.vercel.app/?lang=en">
+<link rel="alternate" hreflang="tr" href="https://syriatech-store.vercel.app/?lang=tr">
+<link rel="alternate" hreflang="x-default" href="https://syriatech-store.vercel.app/">
+<!-- head:end -->
 <link rel="stylesheet" href="style.css?v=30">
 </head>
 <body>
+
+<a class="skip-link" href="#products" data-i18n="skipToProducts"></a>
 
 <div class="notice-bar">
   <div class="container notice-inner">
@@ -48,13 +72,13 @@
       <a href="#home" data-i18n="navHome"></a>
       <a href="#products" data-show-all="true" data-i18n="navShop"></a>
       <div class="nav-dropdown">
-        <button type="button"><span data-i18n="navBrands"></span><span data-icon="chevron" aria-hidden="true"></span></button>
+        <button type="button" aria-expanded="false" aria-haspopup="true"><span data-i18n="navBrands"></span><span data-icon="chevron" aria-hidden="true"></span></button>
         <div class="nav-mega">
           <div><strong data-i18n="navBrands"></strong><div id="megaBrands" class="mega-list"></div></div>
           <div><strong data-i18n="navCategories"></strong><div id="megaCategories" class="mega-list mega-columns"></div></div>
         </div>
       </div>
-      <a href="#offers" data-i18n="navOffers"></a>
+      <a href="#products" data-show-deals="true" data-i18n="navOffers"></a>
       <a href="#products" data-show-favorites="true" data-i18n="navFavorites"></a>
       <a href="#contact" data-i18n="navContact"></a>
     </div>
@@ -72,11 +96,11 @@
         <p data-i18n="heroSubtitle"></p>
         <div class="hero-buttons">
           <a href="#products" class="primary-button" data-show-all="true"><span data-i18n="heroShop"></span><span data-icon="arrow" aria-hidden="true"></span></a>
-          <a href="#offers" class="text-button" data-i18n="heroOffers"></a>
+          <a href="#products" class="text-button" data-show-deals="true" data-i18n="heroOffers"></a>
         </div>
       </div>
       <div class="hero-product-showcase"><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
-        <img src="assets/new-power.svg" data-i18n-attr="alt:heroImageAlt">
+        <img src="assets/products/35141.webp" width="700" height="700" data-i18n-attr="alt:heroImageAlt">
         <div class="showcase-badge"><strong data-i18n="heroBadgeTitle"></strong><small data-i18n="heroBadgeText"></small></div>
       </div>
     </div>
@@ -115,8 +139,8 @@
 
       <div class="catalog-toolbar">
         <div class="toolbar-left">
-          <button id="filtersToggle" type="button" class="filter-button"><span data-icon="filter" aria-hidden="true"></span><span data-i18n="filtersTitle"></span></button>
-          <span id="resultCount" class="result-count"></span>
+          <button id="filtersToggle" type="button" class="filter-button" aria-expanded="false" aria-controls="filtersPanel"><span data-icon="filter" aria-hidden="true"></span><span data-i18n="filtersTitle"></span></button>
+          <span id="resultCount" class="result-count" aria-live="polite" aria-atomic="true"></span>
         </div>
         <label class="sort-picker">
           <span class="visually-hidden" data-i18n="sortLabel"></span>
@@ -140,6 +164,10 @@
             <input id="minPrice" type="number" min="0" step="1" inputmode="numeric" data-i18n-attr="placeholder:priceFrom;aria-label:priceFrom">
             <input id="maxPrice" type="number" min="0" step="1" inputmode="numeric" data-i18n-attr="placeholder:priceTo;aria-label:priceTo">
           </div>
+        </div>
+        <div class="filter-group">
+          <strong data-i18n="filterStock"></strong>
+          <label class="check"><input id="inStockFilter" type="checkbox"><span data-i18n="inStockOnly"></span></label>
         </div>
         <button id="clearFiltersButton" type="button" class="outline-button" data-i18n="clearFilters"></button>
       </div>
@@ -203,7 +231,7 @@
         <a href="#contact" data-i18n="navContact"></a>
         <a href="#offers" data-i18n="navOffers"></a>
         <a href="#products" data-show-favorites="true" data-i18n="navFavorites"></a>
-        <a href="/admin.html" class="admin-link"><span data-icon="lock" aria-hidden="true"></span><span data-i18n="footerAdmin"></span></a>
+        <a href="/admin.html" class="admin-link" rel="nofollow"><span data-icon="lock" aria-hidden="true"></span><span data-i18n="footerAdmin"></span></a>
       </div>
     </div>
     <div><h3 data-i18n="footerBrands"></h3><p id="footerBrands"></p></div>
@@ -211,7 +239,7 @@
   <div class="footer-bottom"><span id="footerRights"></span><span data-i18n="footerNote"></span></div>
 </footer>
 
-<div id="toast" class="toast" role="status" hidden></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <script src="i18n.js?v=1" defer></script>
 <script src="catalog.js?v=2" defer></script>

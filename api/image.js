@@ -8,15 +8,20 @@ export default async function handler(req,res){
     if(!/^products\/[\w.-]+$/.test(pathname)||pathname.includes("..")) return res.status(400).json({error:"Invalid image"});
     const result=await get(pathname,{access:"private",useCache:false});
     if(!result) return res.status(404).end();
-    const type=result.blob?.contentType||"image/jpeg";
+    const ALLOWED=new Set(["image/jpeg","image/png","image/webp","image/gif"]);
+    const stored=result.blob?.contentType||"";
+    const type=ALLOWED.has(stored)?stored:"application/octet-stream";
     res.statusCode=200;
     res.setHeader("Content-Type",type);
     if(result.blob?.size) res.setHeader("Content-Length",String(result.blob.size));
     res.setHeader("Content-Disposition","inline; filename=\"product-image\"");
     res.setHeader("X-Content-Type-Options","nosniff");
     res.setHeader("Content-Security-Policy","default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; sandbox");
-    res.setHeader("Cache-Control","public, max-age=31536000, immutable");
-    Readable.fromWeb(result.stream).pipe(res);
+    res.setHeader("Cache-Control","public, max-age=31536000, s-maxage=31536000, immutable");
+    const stream=Readable.fromWeb(result.stream);
+    stream.on("error",()=>res.destroy());
+    res.on("close",()=>stream.destroy());
+    stream.pipe(res);
   }catch(e){
     return res.status(404).end();
   }

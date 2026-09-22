@@ -4,6 +4,7 @@ import { get, put, issueSignedToken, presignUrl, parseStoreIdFromDelegationToken
 const COOKIE = "syriatech_admin";
 const STATE_PATH = "data/store-state.json";
 const SESSION_MS = 12 * 60 * 60 * 1000;
+const CATEGORIES = new Set(["power-bank", "charger", "wireless", "cables", "hubs-docks", "power", "car", "audio", "security", "smart-home", "projector", "solar", "phone-cases", "accessories"]);
 const IMAGE_TYPES = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif" };
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
 
@@ -52,25 +53,37 @@ function normalizeState(s) {
 // can never be mistaken for "no data" and overwrite the saved products.
 async function readState() {
   const blob = await get(STATE_PATH, { access: "private", useCache: false });
-  if (!blob) return { state: normalizeState({}), etag: null };
-  const text = await new Response(blob.stream).text();
+  if (!blob) return { state: normalizeState({}), etag: null, exists: false };
+  const body = await new Response(blob.stream).text();
   let parsed;
-  try { parsed = JSON.parse(text); } catch { throw new Error("corrupt_state"); }
-  return { state: normalizeState(parsed), etag: blob.blob.etag || null };
+  try { parsed = JSON.parse(body); } catch { throw new Error("corrupt_state"); }
+  // A structurally wrong document must not be silently emptied and saved back.
+  const usable = parsed && typeof parsed === "object" && !Array.isArray(parsed) &&
+    ["overrides", "additions", "deleted", "settings"].some(k => k in parsed);
+  if (!usable) throw new Error("corrupt_state");
+  return { state: normalizeState(parsed), etag: blob.blob.etag || null, exists: true };
 }
 
 // Read → change → write with an ETag check; retries if another save happened in between.
 async function mutate(change) {
   for (let attempt = 0; ; attempt++) {
-    const { state, etag } = await readState();
+    const { state, etag, exists } = await readState();
     change(state);
+    const body = JSON.stringify(state);
     try {
-      await put(STATE_PATH, JSON.stringify(state), {
+      await put(STATE_PATH, body, {
         access: "private",
         contentType: "application/json",
         addRandomSuffix: false,
-        ...(etag ? { ifMatch: etag } : { allowOverwrite: false })
+        ...(etag ? { ifMatch: etag } : exists ? { allowOverwrite: true } : { allowOverwrite: false })
       });
+      try {
+        await put(STATE_PATH.replace(".json", "." + new Date().toISOString().slice(0, 10) + ".json"), body, {
+          access: "private", contentType: "application/json", addRandomSuffix: false, allowOverwrite: true
+        });
+      } catch (backupError) {
+        console.error("state backup failed", backupError);
+      }
       return state;
     } catch (e) {
       const conflict = e instanceof BlobPreconditionFailedError || (!etag && /exist/i.test(e?.message || ""));
@@ -81,9 +94,11 @@ async function mutate(change) {
 }
 
 const text = (value, max) => String(value ?? "").trim().slice(0, max);
-function money(value) {
-  const n = Number(value);
-  return Number.isFinite(n) && n >= 0 && n < 1e7 ? Math.round(n * 100) / 100 : NaN;
+function money(value, allowZero) {
+  const n = typeof value === "number" ? value : parseFloat(String(value ?? "").trim());
+  if (!Number.isFinite(n) || n < 0 || n > 1e6) return NaN;
+  if (!allowZero && n <= 0) return NaN;
+  return Math.round(n * 100) / 100;
 }
 function cleanImage(value) {
   const url = text(value, 1000);
@@ -99,9 +114,9 @@ function cleanProduct(p) {
   if (!name) throw new Error("name_required");
   const price = money(p.price);
   if (Number.isNaN(price)) throw new Error("invalid_price");
-  const old = money(p.oldPrice);
+  const old = money(p.oldPrice, true);
   const category = text(p.category, 40);
-  if (!/^[a-z0-9-]+$/.test(category)) throw new Error("invalid_category");
+  if (!CATEGORIES.has(category)) throw new Error("invalid_category");
   return {
     name,
     brand: text(p.brand, 60),
@@ -111,6 +126,7 @@ function cleanProduct(p) {
     description: text(p.description, 2000),
     descriptionAr: text(p.descriptionAr, 2000),
     descriptionTr: text(p.descriptionTr, 2000),
+    sku: text(p.sku, 60),
     badge: text(p.badge, 30),
     image: cleanImage(p.image),
     inStock: p.inStock !== false
@@ -130,7 +146,10 @@ export default async function handler(req, res) {
 
     if (req.method === "POST" && action === "login") {
       const { password, secret } = env();
-      if (!password || !secret) return fail(res, 500, "missing_env");
+      if (!password || !secret) {
+        console.error("ADMIN_PASSWORD / ADMIN_SECRET are not set");
+        return fail(res, 500, "missing_env");
+      }
       if (!safeEqual(String(body.password || ""), password)) {
         await new Promise(r => setTimeout(r, 800));
         return fail(res, 401, "invalid_password");
@@ -153,6 +172,7 @@ export default async function handler(req, res) {
     if (req.method === "POST" && action === "save") {
       const product = cleanProduct(body.product);
       const requestedId = Number(body.product && body.product.id);
+      if (requestedId && (!Number.isSafeInteger(requestedId) || requestedId <= 0)) return fail(res, 400, "invalid_id");
       let savedId = 0;
       const state = await mutate(s => {
         if (body.isNew || !requestedId) {
@@ -178,7 +198,7 @@ export default async function handler(req, res) {
       const id = Number(body.id);
       if (!Number.isSafeInteger(id) || id <= 0) return fail(res, 400, "invalid_id");
       const state = await mutate(s => {
-        s.deleted = s.deleted.filter(x => x !== id);
+        if (action !== "revert") s.deleted = s.deleted.filter(x => x !== id);
         if (action === "delete") s.deleted.push(id);
         if (action === "revert") delete s.overrides[String(id)];
       });
@@ -186,8 +206,8 @@ export default async function handler(req, res) {
     }
 
     if (req.method === "POST" && action === "settings") {
-      const whatsapp = String(body.whatsapp || "").replace(/\D/g, "");
-      if (whatsapp.length < 8 || whatsapp.length > 15) return fail(res, 400, "invalid_whatsapp");
+      const whatsapp = String(body.whatsapp || "").replace(/\D/g, "").replace(/^0+/, "");
+      if (whatsapp.length < 10 || whatsapp.length > 15) return fail(res, 400, "invalid_whatsapp");
       const email = text(body.email, 120);
       if (email && !/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(email)) return fail(res, 400, "invalid_email");
       const state = await mutate(s => { s.settings = { ...s.settings, whatsapp, email }; });
@@ -203,7 +223,10 @@ export default async function handler(req, res) {
       const base = String(body.filename || "").replace(/\.[^.]*$/, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "image";
       const pathname = `products/${Date.now()}-${crypto.randomBytes(3).toString("hex")}-${base}.${ext}`;
       const validUntil = Date.now() + 15 * 60 * 1000;
-      const token = await issueSignedToken({ pathname, operations: ["put"], validUntil });
+      const token = await issueSignedToken({
+        pathname, operations: ["put"], validUntil,
+        allowedContentTypes: [contentType], maximumSizeInBytes: MAX_IMAGE_BYTES
+      });
       const { presignedUrl } = await presignUrl(token, { operation: "put", pathname, access: "private", validUntil });
       let storeId = "";
       try { storeId = parseStoreIdFromDelegationToken(token.delegationToken) || ""; } catch {}

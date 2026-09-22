@@ -12,6 +12,7 @@ let list = [];
 let editing = null; // { product, isNew }
 let dirty = false;
 let uploading = false;
+let uploadAbort = null;
 
 /* ---------- Server ---------- */
 async function api(action, body) {
@@ -65,6 +66,9 @@ function showLogin(message) {
   $("#bootView").hidden = true;
   $("#adminView").hidden = true;
   $("#editor").hidden = true;
+  document.body.style.overflow = "";
+  editing = null;
+  dirty = false;
   $("#loginView").hidden = false;
   setMsg($("#loginMsg"), message || "", message ? "error" : "");
   $("#password").focus();
@@ -100,7 +104,8 @@ function renderFilters() {
   brand.value = brands.includes(brandValue) ? brandValue : "";
   const known = new Set(S.brands.concat(brands));
   $("#brandList").innerHTML = [...known].map(b => '<option value="' + esc(b) + '">').join("");
-  $("#category").innerHTML = S.categories.map(c => '<option value="' + c.id + '">' + esc(S.categoryLabel(c.id)) + "</option>").join("");
+  $("#category").innerHTML = '<option value="" disabled>' + esc(t("admin.chooseCategory")) + "</option>" +
+    S.categories.map(c => '<option value="' + c.id + '">' + esc(S.categoryLabel(c.id)) + "</option>").join("");
 }
 
 function renderList() {
@@ -121,11 +126,13 @@ function renderList() {
     if (p.added) tags.push('<span class="tag added">' + esc(t("admin.tagAdded")) + "</span>");
     if (p.edited) tags.push('<span class="tag edited">' + esc(t("admin.tagEdited")) + "</span>");
     if (!p.inStock) tags.push('<span class="tag out">' + esc(t("admin.tagOutOfStock")) + "</span>");
-    if (!p.image) tags.push('<span class="tag warn">' + esc(t("admin.tagAutoImage")) + "</span>");
-    return '<button type="button" class="row" data-edit="' + p.id + '">' + imgTag(p) +
+    if (!p.image) tags.push('<span class="tag">' + esc(t("admin.tagAutoImage")) + "</span>");
+    return '<div class="row-wrap"><button type="button" class="row" data-edit="' + p.id + '">' + imgTag(p) +
       "<div><strong>" + esc(p.name) + "</strong><small>" + esc(p.brand) + " · " + esc(S.categoryLabel(p.category)) + "</small>" +
       (tags.length ? '<div class="tags">' + tags.join("") + "</div>" : "") + "</div>" +
-      '<div class="price"><b>' + money(p.price) + "</b>" + (p.discount ? "<del>" + money(p.oldPrice) + "</del>" : "") + "</div></button>";
+      '<div class="price"><b>' + money(p.price) + "</b>" + (p.discount ? "<del>" + money(p.oldPrice) + "</del>" : "") + "</div></button>" +
+      '<button type="button" class="stock-toggle' + (p.inStock ? " on" : "") + '" data-stock="' + p.id + '">' +
+      esc(t(p.inStock ? "inStock" : "outOfStock")) + "</button></div>";
   }).join("") || '<div class="empty">' + esc(t("admin.noResults")) + "</div>";
 }
 
@@ -140,8 +147,16 @@ function renderDeleted() {
 
 function renderSettings() {
   const s = S.mergeSettings(state);
-  $("#setWhatsapp").value = s.whatsapp;
-  $("#setEmail").value = s.email;
+  if (document.activeElement !== $("#setWhatsapp")) $("#setWhatsapp").value = s.whatsapp;
+  if (document.activeElement !== $("#setEmail")) $("#setEmail").value = s.email;
+  updateWhatsappTest();
+}
+function updateWhatsappTest() {
+  const link = $("#waTest");
+  if (!link) return;
+  const number = S.cleanWhatsapp($("#setWhatsapp").value);
+  link.hidden = !number;
+  link.href = "https://wa.me/" + number;
 }
 
 function applyLanguage() {
@@ -161,7 +176,7 @@ function applyLanguage() {
 /* ---------- Editor ---------- */
 function openEditor(product) {
   const isNew = !product;
-  const p = product || { name: "", brand: "", category: S.categories[0].id, price: "", oldPrice: "", badge: "", description: "", descriptionAr: "", descriptionTr: "", image: "", inStock: true };
+  const p = product || { name: "", brand: "", category: "", price: "", oldPrice: "", badge: "", description: "", descriptionAr: "", descriptionTr: "", image: "", inStock: true };
   editing = { product: p, isNew };
   field("formTitle").textContent = t(isNew ? "admin.newTitle" : "admin.editTitle");
   field("name").value = p.name;
@@ -179,21 +194,29 @@ function openEditor(product) {
   setMsg(field("uploadMsg"), "");
   field("revertBtn").hidden = isNew || !p.edited;
   field("deleteBtn").hidden = isNew;
+  field("duplicateBtn").hidden = isNew;
   updatePreview();
   updateDiscountHint();
   dirty = false;
   field("editor").hidden = false;
   document.body.style.overflow = "hidden";
+  if (!history.state || !history.state.editor) history.pushState({ editor: true }, "");
   if (isNew) field("name").focus();
 }
 
 function closeEditor(force) {
-  if (!force && uploading) { toast(t("admin.waitUpload"), true); return; }
+  if (!force && uploading) {
+    if (!confirm(t("admin.confirmLeave"))) return;
+    if (uploadAbort) uploadAbort.abort();
+    uploading = false;
+    field("saveBtn").disabled = false;
+  }
   if (!force && dirty && !confirm(t("admin.confirmLeave"))) return;
   field("editor").hidden = true;
   document.body.style.overflow = "";
   editing = null;
   dirty = false;
+  if (history.state && history.state.editor) history.back();
 }
 
 function updatePreview() {
@@ -210,8 +233,9 @@ function updateDiscountHint() {
   const old = Number(field("oldPrice").value);
   const hint = field("discountHint");
   if (price > 0 && old > price) hint.textContent = t("admin.discountHint", { n: Math.round((1 - price / old) * 100) });
-  else if (old && price && old <= price) hint.textContent = t("admin.discountWarn");
+  else if (old && price && old <= price) { hint.textContent = t("admin.discountWarn"); hint.className = "hint warn"; return; }
   else hint.textContent = "";
+  hint.className = "hint";
 }
 
 function formProduct() {
@@ -267,10 +291,15 @@ async function uploadImage(file) {
     const headers = { "x-api-version": "12", "x-vercel-blob-access": "private", "x-content-type": img.type };
     if (prep.storeId) headers["x-vercel-blob-store-id"] = prep.storeId;
     let put;
+    uploadAbort = new AbortController();
+    const timer = setTimeout(() => uploadAbort && uploadAbort.abort(), 90000);
     try {
-      put = await fetch(prep.presignedUrl, { method: "PUT", body: img.blob, headers });
+      put = await fetch(prep.presignedUrl, { method: "PUT", body: img.blob, headers, signal: uploadAbort.signal });
     } catch (e) {
       throw new Error(t("admin.connectionError"));
+    } finally {
+      clearTimeout(timer);
+      uploadAbort = null;
     }
     if (!put.ok) throw new Error(t("admin.genericError") + " (" + put.status + ")");
     const result = await put.json().catch(() => ({}));
@@ -294,7 +323,10 @@ async function saveProduct(e) {
   const p = formProduct();
   if (!p.name) { toast(t("admin.needName"), true); field("name").focus(); return; }
   if (!p.brand) { toast(t("admin.needBrand"), true); field("brand").focus(); return; }
-  if (p.price === "" || !(Number(p.price) >= 0)) { toast(t("admin.needPrice"), true); field("price").focus(); return; }
+  if (!p.category) { toast(t("admin.chooseCategory"), true); field("category").focus(); return; }
+  if (p.price === "" || !(Number(p.price) > 0)) { toast(t("admin.needPrice"), true); field("price").focus(); return; }
+  const oldValue = Number(field("oldPrice").value);
+  if (oldValue && oldValue <= Number(p.price)) { toast(t("admin.discountWarn"), true); field("oldPrice").focus(); return; }
   const button = field("saveBtn");
   busy(button, true);
   try {
@@ -357,13 +389,33 @@ function bind() {
     ["products", "settings", "help"].forEach(name => { $("#tab-" + name).hidden = name !== tab.dataset.tab; });
   }));
 
-  $("#filter").addEventListener("input", renderList);
+  let filterTimer;
+  $("#filter").addEventListener("input", () => {
+    clearTimeout(filterTimer);
+    filterTimer = setTimeout(renderList, 160);
+  });
   $("#catFilter").addEventListener("change", renderList);
   $("#brandFilter").addEventListener("change", renderList);
   $("#addBtn").addEventListener("click", () => openEditor(null));
-  $("#products").addEventListener("click", e => {
+  $("#products").addEventListener("click", async e => {
+    const stock = e.target.closest("[data-stock]");
+    if (stock) {
+      const product = list.find(p => p.id === Number(stock.dataset.stock));
+      if (!product) return;
+      busy(stock, true, t("admin.working"));
+      try {
+        const payload = { ...product, inStock: !product.inStock };
+        delete payload.added; delete payload.edited; delete payload.discount;
+        const data = await api("save", { product: payload, isNew: false });
+        setState(data.state);
+        toast(t("admin.saved"));
+      } catch (err) { toast(err.message, true); busy(stock, false); }
+      return;
+    }
     const row = e.target.closest("[data-edit]");
-    if (row) openEditor(list.find(p => p.id === Number(row.dataset.edit)));
+    if (!row) return;
+    const product = list.find(p => p.id === Number(row.dataset.edit));
+    if (product) openEditor(product);
   });
   $("#deletedList").addEventListener("click", e => {
     const button = e.target.closest("[data-restore]");
@@ -387,6 +439,25 @@ function bind() {
     updatePreview();
     setMsg(field("uploadMsg"), t("admin.imageRemoved"));
   });
+  field("duplicateBtn").addEventListener("click", () => {
+    if (!editing) return;
+    const copy = { ...editing.product, name: editing.product.name + " (2)" };
+    delete copy.id; delete copy.added; delete copy.edited;
+    openEditor(null);
+    field("name").value = copy.name;
+    field("brand").value = copy.brand || "";
+    field("category").value = copy.category || "";
+    field("price").value = copy.price || "";
+    field("oldPrice").value = copy.oldPrice > copy.price ? copy.oldPrice : "";
+    field("descriptionAr").value = copy.descriptionAr || "";
+    field("description").value = copy.description || "";
+    field("descriptionTr").value = copy.descriptionTr || "";
+    field("image").value = copy.image || "";
+    field("inStock").checked = copy.inStock !== false;
+    dirty = true;
+    updatePreview();
+    updateDiscountHint();
+  });
   field("deleteBtn").addEventListener("click", async () => {
     if (!editing || !confirm(t("admin.confirmDelete", { name: editing.product.name }))) return;
     if (await simpleAction("delete", editing.product.id, "admin.deleted", field("deleteBtn"))) closeEditor(true);
@@ -396,6 +467,7 @@ function bind() {
     if (await simpleAction("revert", editing.product.id, "admin.reverted", field("revertBtn"))) closeEditor(true);
   });
 
+  $("#setWhatsapp").addEventListener("input", updateWhatsappTest);
   $("#settingsForm").addEventListener("submit", async e => {
     e.preventDefault();
     const button = e.submitter || $("#settingsForm button");
@@ -411,6 +483,15 @@ function bind() {
     }
   });
 
+  window.addEventListener("popstate", () => {
+    if (!$("#editor").hidden) {
+      // Already stepped back in history, so close without stepping again.
+      field("editor").hidden = true;
+      document.body.style.overflow = "";
+      editing = null;
+      dirty = false;
+    }
+  });
   window.addEventListener("beforeunload", e => { if (dirty || uploading) { e.preventDefault(); e.returnValue = ""; } });
 }
 

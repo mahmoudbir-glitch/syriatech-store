@@ -121,3 +121,15 @@ textarea{resize:vertical}
 }
 
 .icon-btn:before{content:"\00d7"}
+
+/* v9: one-tap stock toggle, duplicate, WhatsApp test link */
+.row-wrap{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.row-wrap .row{border:0;border-radius:0;background:none}
+.stock-toggle{border:0;border-top:1px solid var(--line);background:#fdecec;color:#b42318;padding:11px;font-weight:700;font-size:13px;cursor:pointer;min-height:44px}
+.stock-toggle.on{background:#eafbf2;color:#0a7a43}
+.stock-toggle:hover{filter:brightness(.97)}
+.hint.warn{color:#b42318;font-weight:700}
+.wa-test{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none}
+.wa-test:hover{text-decoration:underline}
+.btn.small{min-height:44px;padding:10px 14px}
+.icon-btn{width:44px;height:44px}

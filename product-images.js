@@ -31,20 +31,18 @@
   function artworkFor(product) {
     if (!product) return "";
     const id = Number(product.id) || 0;
-    const hue = (id * 41) % 360;
+    const hue = 196 + ((id * 23) % 74);
     const kind = SHAPE_BY_CATEGORY[product.category] || "tech";
     const shape = SHAPES[kind];
-    const stroke = kind === "cable" ? ' stroke="url(#g)"' : ' stroke="#111827"';
+    const stroke = kind === "cable" ? ' stroke="url(#g)"' : ' stroke="rgba(14,24,38,.18)"';
     const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700">' +
       '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
-      '<stop stop-color="hsl(' + hue + ',85%,62%)"/><stop offset="1" stop-color="hsl(' + ((hue + 75) % 360) + ',85%,45%)"/>' +
+      '<stop stop-color="hsl(' + hue + ',70%,58%)"/><stop offset="1" stop-color="hsl(' + (hue + 48) + ',66%,44%)"/>' +
       '</linearGradient></defs>' +
       '<circle cx="570" cy="125" r="155" fill="url(#g)" opacity=".13"/>' +
       '<circle cx="110" cy="585" r="190" fill="url(#g)" opacity=".09"/>' +
       '<g fill="url(#g)"' + stroke + ' stroke-width="10">' + shape + "</g>" +
       '<text x="350" y="82" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#111827">' + esc(shorten(product.brand, 22)) + "</text>" +
-      '<text x="350" y="610" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" fill="#374151">' + esc(shorten(product.name, 40)) + "</text>" +
-      '<text x="350" y="650" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" letter-spacing="4" fill="#6b7280">SYRIATECH • ' + id + "</text>" +
       "</svg>";
     return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
   }

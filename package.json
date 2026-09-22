@@ -3,6 +3,16 @@
   "private": true,
   "version": "1.0.0",
   "dependencies": {
-    "@vercel/blob": "^2.8.0"
+    "@vercel/blob": "2.8.0"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "test": "node tests/run-all.mjs",
+    "test:lang": "node tests/lang-test.mjs",
+    "test:ui": "node tests/ui-test.mjs",
+    "test:api": "node tests/api-test.mjs",
+    "test:compat": "node tests/compat-test.mjs"
   }
 }

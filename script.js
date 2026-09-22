@@ -5,17 +5,38 @@ const esc = S.esc;
 const t = (key, vars) => I.t(key, vars);
 const CART_KEY = "syriatech_cart";
 const FAV_KEY = "syriatech_favorites";
+const STATE_KEY = "syriatech_catalog_cache";
 
 let products = S.merge(null);
 let settings = S.mergeSettings(null);
-let catalogReady = true;
+let catalogReady = false;
 const PAGE_SIZE = 24;
 let shown = PAGE_SIZE;
 let cart = [];
 let favorites = [];
-let view = { category: null, brand: null, query: "", favorites: false };
-let filters = { brands: [], min: 0, max: 0 };
+let view = { category: null, brand: null, query: "", favorites: false, deals: false };
+let filters = { brands: [], min: 0, max: 0, inStock: false };
 let openProductId = null;
+let remoteState = null;
+let pushedProductHash = false;
+let lastFocused = null;
+const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const scrollBehavior = () => (reduceMotion() ? "auto" : "smooth");
+
+// Keeps the page behind an open overlay out of the keyboard and screen-reader order.
+function holdBackground() {
+  document.querySelectorAll("header.store-header, main#home, footer.footer").forEach(el => {
+    el.inert = true;
+    el.setAttribute("aria-hidden", "true");
+  });
+}
+function releaseBackground() {
+  if (!$("#productView").hidden || $("#cart").classList.contains("open")) return;
+  document.querySelectorAll("header.store-header, main#home, footer.footer").forEach(el => {
+    el.inert = false;
+    el.removeAttribute("aria-hidden");
+  });
+}
 
 function $(selector) { return document.querySelector(selector); }
 function money(value) { return "$" + Number(value).toFixed(2); }
@@ -66,7 +87,12 @@ function writeList(key, value) { try { localStorage.setItem(key, JSON.stringify(
 function loadCart() {
   cart = readList(CART_KEY)
     .filter(item => item && Number.isFinite(Number(item.id)) && Number(item.qty) > 0)
-    .map(item => ({ id: Number(item.id), name: String(item.name || ""), price: Number(item.price) || 0, qty: Math.floor(Number(item.qty)) }));
+    .map(item => ({
+      id: Number(item.id),
+      name: String(item.name || ""),
+      price: Number(item.price) || 0,
+      qty: Math.max(1, Math.min(99, Math.floor(Number(item.qty)) || 1))
+    }));
 }
 function saveCart() { writeList(CART_KEY, cart); }
 function loadFavorites() { favorites = readList(FAV_KEY).map(Number).filter(Number.isFinite); }
@@ -102,6 +128,7 @@ function renderCart() {
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
   const count = $("#cartCount");
   if (count) count.textContent = totalQty;
+  $("#cartButton")?.setAttribute("aria-label", t("cartLabel") + " (" + totalQty + ")");
   const total = $("#cartTotal");
   if (total) total.textContent = totalPrice.toFixed(2);
 
@@ -124,12 +151,13 @@ function renderCart() {
       "</div></div>";
   }).join("");
 }
-function addToCart(id) {
+function addToCart(id, qty) {
   const p = findProduct(id);
   if (!p || !p.inStock) return;
+  const amount = Math.max(1, Math.min(99, Number(qty) || 1));
   const existing = cart.find(x => x.id === p.id);
-  if (existing) existing.qty++;
-  else cart.push({ id: p.id, name: p.name, price: p.price, qty: 1 });
+  if (existing) existing.qty = Math.min(99, existing.qty + amount);
+  else cart.push({ id: p.id, name: p.name, price: p.price, qty: amount });
   saveCart();
   renderCart();
   toast(t("addedToCart"));
@@ -138,48 +166,96 @@ function addToCart(id) {
 function changeQty(id, delta) {
   const item = cart.find(x => x.id === id);
   if (!item) return;
-  item.qty += delta;
+  item.qty = Math.min(99, item.qty + delta);
   if (item.qty < 1) cart = cart.filter(x => x.id !== id);
   saveCart();
   renderCart();
 }
 function removeFromCart(id) { cart = cart.filter(x => x.id !== id); saveCart(); renderCart(); }
-function openCart() { $("#cart")?.classList.add("open"); $("#overlay")?.classList.add("open"); }
-function closeCart() { $("#cart")?.classList.remove("open"); $("#overlay")?.classList.remove("open"); }
+function openCart() {
+  const cart = $("#cart");
+  if (!cart) return;
+  lastFocused = document.activeElement;
+  cart.classList.add("open");
+  cart.inert = false;
+  cart.removeAttribute("aria-hidden");
+  $("#overlay")?.classList.add("open");
+  holdBackground();
+  $("#closeCartButton")?.focus();
+}
+function closeCart() {
+  const cart = $("#cart");
+  if (!cart) return;
+  cart.classList.remove("open");
+  cart.inert = true;
+  cart.setAttribute("aria-hidden", "true");
+  $("#overlay")?.classList.remove("open");
+  releaseBackground();
+  if (lastFocused && document.contains(lastFocused)) { try { lastFocused.focus(); } catch (e) {} }
+  lastFocused = null;
+}
 
 function toggleFavorite(id) {
   const value = Number(id);
-  if (isFavorite(value)) favorites = favorites.filter(x => x !== value);
-  else favorites.push(value);
+  const on = !isFavorite(value);
+  if (on) favorites.push(value);
+  else favorites = favorites.filter(x => x !== value);
   saveFavorites();
   renderFavoritesCount();
-  renderProducts();
-  if (openProductId === value) renderProductView(value);
+  if (view.favorites) { renderProducts(true); return; }
+  // Update the pressed button in place so keyboard focus survives.
+  document.querySelectorAll('[data-fav="' + value + '"]').forEach(el => {
+    el.classList.toggle("on", on);
+    el.setAttribute("aria-pressed", String(on));
+    el.setAttribute("aria-label", t(on ? "removeFavorite" : "addFavorite"));
+    const label = el.querySelector("span");
+    if (label) label.textContent = t(on ? "removeFavorite" : "addFavorite");
+  });
 }
 function renderFavoritesCount() {
   const el = $("#favoritesCount");
   if (el) el.textContent = favorites.length;
+  $("#favoritesButton")?.setAttribute("aria-label", t("favoritesLabel") + " (" + favorites.length + ")");
 }
 
 function whatsappLink(text) {
   return "https://wa.me/" + settings.whatsapp + "?text=" + encodeURIComponent(text);
 }
+function orderReference() {
+  const now = new Date();
+  return "SY-" + String(now.getFullYear()).slice(2) + String(now.getMonth() + 1).padStart(2, "0") +
+    String(now.getDate()).padStart(2, "0") + "-" + String(Math.floor(Math.random() * 9000) + 1000);
+}
 function checkoutWhatsApp(e) {
   if (e) e.preventDefault();
   if (!cart.length) { toast(t("cartEmptyAlert")); return; }
-  const lines = cart.map(i => "• " + i.name + " × " + i.qty + " = " + money(i.price * i.qty));
+  const lines = cart.map(i => {
+    const p = findProduct(i.id);
+    const code = p && p.sku ? " (" + p.sku + ")" : "";
+    return "• " + i.name + code + " × " + i.qty + " = " + money(i.price * i.qty);
+  });
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-  window.open(whatsappLink(t("orderIntro") + "\n\n" + lines.join("\n") + "\n\n" + t("orderTotal") + " " + money(total)), "_blank");
+  const text = t("orderIntro") + "\n\n" + lines.join("\n") +
+    "\n\n" + t("orderTotal") + " " + money(total) +
+    "\n" + t("orderRef") + ": " + orderReference() +
+    "\n\n" + t("orderFields");
+  window.open(whatsappLink(text), "_blank");
 }
 function productMessage(p, intro) {
-  const link = location.origin + location.pathname + "#product/" + p.id;
-  return intro + "\n\n" + p.name + " — " + money(p.price) + "\n" + t("orderLink") + " " + link;
+  const link = productLink(p);
+  return intro + "\n\n" + p.name + (p.sku ? " (" + p.sku + ")" : "") + " — " + money(p.price) +
+    "\n" + t("orderLink") + " " + link;
+}
+function productLink(p) {
+  return location.origin + "/p/" + p.id;
 }
 
 /* ---------- Catalog view ---------- */
 function visibleProducts() {
   let list = products;
   if (view.favorites) list = list.filter(p => isFavorite(p.id));
+  if (view.deals) list = list.filter(p => p.discount > 0);
+  if (filters.inStock) list = list.filter(p => p.inStock);
   if (view.category) list = list.filter(p => p.category === view.category);
   if (view.brand) list = list.filter(p => p.brand.toLowerCase() === view.brand.toLowerCase());
   if (filters.brands.length) list = list.filter(p => filters.brands.includes(p.brand));
@@ -200,6 +276,7 @@ function visibleProducts() {
 
 function viewTitle() {
   if (view.favorites) return t("favoritesTitle");
+  if (view.deals) return t("dealsTitle");
   if (view.query) return t("searchResults", { q: view.query });
   const cat = view.category ? S.categoryLabel(view.category) : "";
   if (view.brand && cat) return view.brand + " — " + cat;
@@ -209,19 +286,19 @@ function viewTitle() {
 }
 
 function priceBlock(p) {
-  return (p.discount ? "<del>" + money(p.oldPrice) + "</del>" : "") +
-    "<strong>" + money(p.price) + "</strong>" +
+  return "<strong>" + money(p.price) + "</strong>" +
+    (p.discount ? "<del>" + money(p.oldPrice) + "</del>" : "") +
     (p.discount ? '<span class="discount-label">' + esc(t("discountBadge", { n: p.discount })) + "</span>" : "");
 }
 
 function productCard(p) {
   const name = esc(p.name);
   const fav = isFavorite(p.id);
-  const badge = p.badge || (p.discount ? t("discountBadge", { n: p.discount }) : "");
+  const badge = p.badge || "";
   return '<article class="product' + (p.inStock ? "" : " is-out") + '" data-product="' + p.id + '">' +
     (badge ? '<span class="product-badge">' + esc(badge) + "</span>" : "") +
     '<button class="fav-btn' + (fav ? " on" : "") + '" data-fav="' + p.id + '" type="button" aria-pressed="' + fav + '" aria-label="' + esc(t(fav ? "removeFavorite" : "addFavorite")) + '">' + icon("heart", 17) + "</button>" +
-    '<a class="product-image" href="#product/' + p.id + '" data-open="' + p.id + '">' +
+    '<a class="product-image" href="#product/' + p.id + '" data-open="' + p.id + '" tabindex="-1" aria-hidden="true">' +
     '<img src="' + esc(S.imageFor(p)) + '" data-fallback="' + esc(S.fallbackFor(p)) + '" alt="' + name + '" loading="lazy" onerror="storeImageFallback(this)">' +
     (p.inStock ? "" : '<span class="stock-flag">' + esc(t("outOfStock")) + "</span>") +
     "</a>" +
@@ -235,8 +312,15 @@ function productCard(p) {
     "</div></div></article>";
 }
 
+// Identifies the current result set, so paging can append instead of rebuilding.
+function viewKey() {
+  return [view.category, view.brand, view.query, view.favorites, view.deals,
+    filters.brands.join("|"), filters.min, filters.max, filters.inStock, $("#sortSelect")?.value].join("~");
+}
+
 function renderProducts(resetPaging) {
   if (resetPaging) shown = PAGE_SIZE;
+  if (loadMoreObserver) { loadMoreObserver.disconnect(); loadMoreObserver = null; }
   const grid = $("#productsGrid");
   if (!grid) return;
   const title = $("#productsTitle");
@@ -253,10 +337,23 @@ function renderProducts(resetPaging) {
   }
   renderActiveFilters();
   if (!items.length) {
+    grid.dataset.count = "0";
+    grid.dataset.key = viewKey();
     grid.innerHTML = '<div class="empty-state">' + esc(t(view.favorites ? "emptyFavorites" : "emptyProducts")) + "</div>";
     return;
   }
   const page = items.slice(0, shown);
+  const sameView = grid.dataset.key === viewKey();
+  if (!resetPaging && sameView && Number(grid.dataset.count || 0) && Number(grid.dataset.count) < page.length) {
+    document.getElementById("loadMore")?.remove();
+    grid.insertAdjacentHTML("beforeend", page.slice(Number(grid.dataset.count)).map(productCard).join("") +
+      (items.length > page.length ? '<button type="button" id="loadMore" class="load-more">' + esc(t("loadMore")) + "</button>" : ""));
+    grid.dataset.count = String(page.length);
+    watchLoadMore();
+    return;
+  }
+  grid.dataset.count = String(page.length);
+  grid.dataset.key = viewKey();
   grid.innerHTML = page.map(productCard).join("") +
     (items.length > page.length
       ? '<button type="button" id="loadMore" class="load-more">' + esc(t("loadMore", { n: items.length - page.length })) + "</button>"
@@ -287,6 +384,8 @@ function renderActiveFilters() {
   if (!box) return;
   const chips = [];
   if (view.favorites) chips.push({ key: "favorites", label: t("favoritesTitle") });
+  if (view.deals) chips.push({ key: "deals", label: t("dealsTitle") });
+  if (filters.inStock) chips.push({ key: "instock", label: t("inStockOnly") });
   if (view.brand) chips.push({ key: "brand", label: view.brand });
   if (view.category) chips.push({ key: "category", label: S.categoryLabel(view.category) });
   if (view.query) chips.push({ key: "query", label: view.query });
@@ -294,12 +393,14 @@ function renderActiveFilters() {
   if (filters.min) chips.push({ key: "min", label: t("priceFrom") + " " + money(filters.min) });
   if (filters.max) chips.push({ key: "max", label: t("priceTo") + " " + money(filters.max) });
   box.innerHTML = chips.map(chip =>
-    '<button type="button" class="chip" data-chip="' + esc(chip.key) + '">' + esc(chip.label) + icon("close", 13) + "</button>").join("");
+    '<button type="button" class="chip" data-chip="' + esc(chip.key) + '" aria-label="' + esc(t("removeFilter", { name: chip.label })) + '">' + esc(chip.label) + icon("close", 13) + "</button>").join("");
   box.hidden = !chips.length;
 }
 
 function clearChip(key) {
   if (key === "favorites") view.favorites = false;
+  else if (key === "deals") view.deals = false;
+  else if (key === "instock") { filters.inStock = false; const box = document.querySelector("#inStockFilter"); if (box) box.checked = false; }
   else if (key === "brand") view.brand = null;
   else if (key === "category") view.category = null;
   else if (key === "query") { view.query = ""; const input = $("#searchInput"); if (input) input.value = ""; updateSearchClear(); }
@@ -371,15 +472,35 @@ function applyView(next, scroll) {
     category: next.category || null,
     brand: next.brand || null,
     query: next.query || "",
-    favorites: !!next.favorites
+    favorites: !!next.favorites,
+    deals: !!next.deals
   };
   if (!view.query) { const input = $("#searchInput"); if (input) input.value = ""; updateSearchClear(); }
   closeProductView();
   renderProducts(true);
-  if (scroll) $("#products")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (scroll) $("#products")?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
 }
 
 /* ---------- Product page (shareable link) ---------- */
+let detailsCache = null;
+async function loadDetails() {
+  if (detailsCache) return detailsCache;
+  try {
+    const response = await fetch("assets/details.json", { cache: "force-cache" });
+    detailsCache = response.ok ? await response.json() : {};
+  } catch (e) { detailsCache = {}; }
+  return detailsCache;
+}
+async function fillDetails(id) {
+  const box = document.getElementById("productDetails");
+  if (!box) return;
+  const all = await loadDetails();
+  const text = (all && all[id]) || "";
+  if (!text || openProductId !== Number(id)) return;
+  box.innerHTML = "<h2>" + esc(t("detailsTitle")) + "</h2><p>" + esc(text) + "</p>";
+  box.hidden = false;
+}
+
 function relatedProducts(p) {
   return products.filter(x => x.id !== p.id && (x.category === p.category || x.brand === p.brand)).slice(0, 4);
 }
@@ -389,9 +510,9 @@ function renderProductView(id) {
   const box = $("#productView");
   if (!box) return false;
   if (!p) return false;
-  openProductId = p.id;
   const fav = isFavorite(p.id);
   const related = relatedProducts(p);
+  const previous = openProductId;
   box.innerHTML =
     '<div class="product-page container">' +
     '<button type="button" class="back-link" data-close-product>' + icon("arrow", 16) + "<span>" + esc(t("backToProducts")) + "</span></button>" +
@@ -406,36 +527,62 @@ function renderProductView(id) {
     "<p>" + esc(S.descFor(p, lang())) + "</p>" +
     '<div class="product-page-actions">' +
     (p.inStock
-      ? '<button type="button" class="main-button" data-add="' + p.id + '">' + icon("cart", 18) + "<span>" + esc(t("addToCart")) + "</span></button>"
+      ? '<div class="qty-picker"><button type="button" data-step="-1" aria-label="' + esc(t("cartDecrease")) + '">&minus;</button>' +
+        '<input id="productQty" type="number" min="1" max="99" value="1" aria-label="' + esc(t("quantity")) + '">' +
+        '<button type="button" data-step="1" aria-label="' + esc(t("cartIncrease")) + '">+</button></div>' +
+        '<button type="button" class="main-button" data-add="' + p.id + '">' + icon("cart", 18) + "<span>" + esc(t("addToCart")) + "</span></button>"
       : '<span class="out-note">' + esc(t("outOfStockNote")) + "</span>") +
     '<a class="wa-button" href="' + esc(whatsappLink(productMessage(p, t("orderSingleIntro")))) + '" target="_blank" rel="noopener">' + icon("whatsapp", 18) + "<span>" + esc(t(p.inStock ? "orderThisProduct" : "askAboutProduct")) + "</span></a>" +
     "</div>" +
     '<div class="product-page-meta">' +
     '<button type="button" class="meta-btn' + (fav ? " on" : "") + '" data-fav="' + p.id + '">' + icon("heart", 16) + "<span>" + esc(t(fav ? "removeFavorite" : "addFavorite")) + "</span></button>" +
     '<button type="button" class="meta-btn" data-share="' + p.id + '">' + icon("share", 16) + "<span>" + esc(t("shareProduct")) + "</span></button>" +
-    '<span class="meta-code">' + esc(t("productCode")) + ": " + p.id + "</span>" +
+    '<span class="meta-code">' + esc(t("productCode")) + " <bdi>" + esc(p.sku || p.id) + "</bdi></span>" +
     "</div></div></div>" +
+    '<section id="productDetails" class="product-details" hidden></section>' +
     (related.length ? '<section class="related"><h2>' + esc(t("relatedTitle")) + '</h2><div class="products-grid">' + related.map(productCard).join("") + "</div></section>" : "") +
     "</div>";
+  const wasOpen = previous === p.id && !box.hidden;
+  openProductId = p.id;
   box.hidden = false;
   document.body.classList.add("product-open");
   document.title = p.name + " | " + t("brandName");
-  window.scrollTo({ top: 0, behavior: "auto" });
+  holdBackground();
+  if (!wasOpen) {
+    window.scrollTo({ top: 0, behavior: "auto" });
+    const heading = box.querySelector(".back-link");
+    if (heading) { try { heading.focus(); } catch (e) {} }
+  }
+  fillDetails(p.id);
   return true;
+}
+
+// Leaves the product page without relying on history.back(), which does nothing
+// for someone who opened a shared link directly.
+function exitProductView() {
+  if (pushedProductHash && history.length > 1) { history.back(); return; }
+  if (location.hash.startsWith("#product/")) history.replaceState(null, "", location.pathname + location.search);
+  closeProductView();
 }
 
 function closeProductView() {
   const box = $("#productView");
   if (!box || box.hidden) return;
+  if (location.hash.startsWith("#product/")) history.replaceState(null, "", location.pathname + location.search);
   box.hidden = true;
   box.innerHTML = "";
   openProductId = null;
   document.body.classList.remove("product-open");
   document.title = t(document.documentElement.dataset.titleKey || "pageTitle");
+  // Only now is the overlay really closed, so the page behind it can wake up.
+  releaseBackground();
+  if (lastFocused && document.contains(lastFocused)) { try { lastFocused.focus(); } catch (e) {} }
+  lastFocused = null;
 }
 
 function openProduct(id) {
-  if (location.hash !== "#product/" + id) location.hash = "#product/" + id;
+  lastFocused = document.activeElement;
+  if (location.hash !== "#product/" + id) { pushedProductHash = true; location.hash = "#product/" + id; }
   else handleRoute();
 }
 
@@ -444,7 +591,7 @@ function handleRoute() {
   if (match) {
     if (!renderProductView(Number(match[1]))) {
       closeProductView();
-      if (catalogReady) toast(t("emptyProducts"));
+      if (catalogReady) toast(t("productNotFound"));
     }
     return;
   }
@@ -454,7 +601,7 @@ function handleRoute() {
 async function shareProduct(id) {
   const p = findProduct(id);
   if (!p) return;
-  const url = location.origin + location.pathname + "#product/" + p.id;
+  const url = productLink(p);
   if (navigator.share) {
     try { await navigator.share({ title: p.name, url }); return; } catch (e) { if (e && e.name === "AbortError") return; }
   }
@@ -482,7 +629,11 @@ function closeImageLightbox() {
 function renderLanguageOptions() {
   const select = $("#languageSelect");
   if (!select) return;
-  select.innerHTML = I.languages.map(l => '<option value="' + l.code + '"' + (l.code === I.current ? " selected" : "") + ">" + esc(l.native) + "</option>").join("");
+  // Narrow screens get the short code (AR / EN / TR) so the label is never clipped.
+  const compact = window.innerWidth < 520;
+  select.innerHTML = I.languages.map(l =>
+    '<option value="' + l.code + '"' + (l.code === I.current ? " selected" : "") + ">" +
+    esc(compact ? l.code.toUpperCase() : l.native) + "</option>").join("");
 }
 
 function applyLanguage() {
@@ -528,6 +679,9 @@ function bindEvents() {
   const runSearch = () => {
     view.query = ($("#searchInput")?.value || "").trim().toLowerCase();
     view.favorites = false;
+    view.deals = false;
+    view.category = null;
+    view.brand = null;
     closeProductView();
     renderProducts(true);
   };
@@ -540,7 +694,7 @@ function bindEvents() {
     e.preventDefault();
     clearTimeout(searchTimer);
     runSearch();
-    $("#products")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    $("#products")?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
   });
   $("#searchClear")?.addEventListener("click", () => {
     const input = $("#searchInput");
@@ -549,9 +703,11 @@ function bindEvents() {
     runSearch();
   });
 
-  $("#filtersToggle")?.addEventListener("click", () => {
+  $("#filtersToggle")?.addEventListener("click", e => {
     const panel = $("#filtersPanel");
-    if (panel) panel.hidden = !panel.hidden;
+    if (!panel) return;
+    panel.hidden = !panel.hidden;
+    e.currentTarget.setAttribute("aria-expanded", String(!panel.hidden));
   });
   $("#brandFilters")?.addEventListener("change", () => {
     filters.brands = [...document.querySelectorAll("#brandFilters input:checked")].map(x => x.value);
@@ -563,10 +719,12 @@ function bindEvents() {
     filters.max = Number($("#maxPrice")?.value) || 0;
     renderProducts(true);
   };
+  $("#inStockFilter")?.addEventListener("change", e => { filters.inStock = e.target.checked; renderProducts(true); });
   $("#minPrice")?.addEventListener("input", priceChanged);
   $("#maxPrice")?.addEventListener("input", priceChanged);
   $("#clearFiltersButton")?.addEventListener("click", () => {
-    filters = { brands: [], min: 0, max: 0 };
+    filters = { brands: [], min: 0, max: 0, inStock: false };
+    const stock = $("#inStockFilter"); if (stock) stock.checked = false;
     document.querySelectorAll("#brandFilters input:checked").forEach(x => { x.checked = false; });
     const min = $("#minPrice"); if (min) min.value = "";
     const max = $("#maxPrice"); if (max) max.value = "";
@@ -581,8 +739,19 @@ function bindEvents() {
   document.addEventListener("click", e => {
     const open = e.target.closest("[data-open]");
     if (open) { e.preventDefault(); openProduct(Number(open.dataset.open)); return; }
+    const step = e.target.closest("[data-step]");
+    if (step) {
+      const input = document.getElementById("productQty");
+      if (input) input.value = String(Math.max(1, Math.min(99, (Number(input.value) || 1) + Number(step.dataset.step))));
+      return;
+    }
     const add = e.target.closest("[data-add]");
-    if (add) { addToCart(Number(add.dataset.add)); return; }
+    if (add) {
+      const input = document.getElementById("productQty");
+      const qty = add.classList.contains("main-button") && input ? Number(input.value) : 1;
+      addToCart(Number(add.dataset.add), qty);
+      return;
+    }
     const fav = e.target.closest("[data-fav]");
     if (fav) { toggleFavorite(Number(fav.dataset.fav)); return; }
     const share = e.target.closest("[data-share]");
@@ -595,15 +764,15 @@ function bindEvents() {
     }
     if (e.target.closest("[data-close-product]")) {
       e.preventDefault();
-      if (location.hash.startsWith("#product/")) history.back();
-      else closeProductView();
+      exitProductView();
       return;
     }
-    const nav = e.target.closest("[data-brand],[data-category],[data-show-all],[data-show-favorites]");
+    const nav = e.target.closest("[data-brand],[data-category],[data-show-all],[data-show-favorites],[data-show-deals]");
     if (!nav) return;
     e.preventDefault();
     if (nav.hasAttribute("data-show-all")) applyView({}, true);
     else if (nav.hasAttribute("data-show-favorites")) applyView({ favorites: true }, true);
+    else if (nav.hasAttribute("data-show-deals")) applyView({ deals: true }, true);
     else applyView({ brand: nav.dataset.brand, category: nav.dataset.category }, true);
   });
 
@@ -618,10 +787,40 @@ function bindEvents() {
     if (e.key !== "Escape") return;
     if (!$("#imageLightbox").hidden) return closeImageLightbox();
     if ($("#cart").classList.contains("open")) return closeCart();
-    if (openProductId) history.back();
+    if (openProductId) exitProductView();
   });
 
+  const dropdown = $(".nav-dropdown");
+  const dropdownButton = dropdown?.querySelector("button");
+  dropdownButton?.addEventListener("click", e => {
+    e.stopPropagation();
+    const open = dropdown.classList.toggle("open");
+    dropdownButton.setAttribute("aria-expanded", String(open));
+  });
+  document.addEventListener("click", e => {
+    if (dropdown && !dropdown.contains(e.target)) {
+      dropdown.classList.remove("open");
+      dropdownButton?.setAttribute("aria-expanded", "false");
+    }
+  });
+  $(".nav-mega")?.addEventListener("click", () => dropdown?.classList.remove("open"));
+
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(renderLanguageOptions, 200);
+  });
   window.addEventListener("hashchange", handleRoute);
+}
+
+function showStaleNotice() {
+  if (document.getElementById("staleNotice")) return;
+  const bar = document.createElement("div");
+  bar.id = "staleNotice";
+  bar.className = "stale-notice";
+  bar.setAttribute("role", "status");
+  bar.textContent = t("staleNotice");
+  document.querySelector("#products .container")?.prepend(bar);
 }
 
 async function loadCatalog() {
@@ -634,17 +833,52 @@ async function loadCatalog() {
       const state = await response.json();
       products = S.merge(state);
       settings = S.mergeSettings(state);
+      writeList(STATE_KEY, [state]);
+      remoteState = state;
+      catalogReady = true;
     }
   } catch (error) {
-    console.warn("Admin catalog unavailable, showing the default catalog", error);
+    // Fall back to the last catalog we saw rather than the bundled defaults,
+    // so an outage cannot bring deleted products back or revert the number.
+    const cached = readList(STATE_KEY)[0];
+    if (cached) {
+      products = S.merge(cached);
+      settings = S.mergeSettings(cached);
+      remoteState = cached;
+      catalogReady = true;
+    }
+    console.warn("Live catalog unavailable, using the last saved copy", error);
+    showStaleNotice();
   }
-  syncStoredData();
+  if (catalogReady) syncStoredData();
   applySettings();
   renderNavigation();
   renderProducts();
   renderCart();
   renderFavoritesCount();
   handleRoute();
+  injectStoreSchema();
+}
+
+function injectStoreSchema() {
+  if (document.getElementById("storeSchema")) return;
+  const el = document.createElement("script");
+  el.type = "application/ld+json";
+  el.id = "storeSchema";
+  el.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "OnlineStore",
+    name: t("brandName"),
+    url: location.origin + "/",
+    logo: location.origin + "/assets/favicon.svg",
+    description: t("metaDescription"),
+    telephone: "+" + settings.whatsapp,
+    email: settings.email,
+    currenciesAccepted: "USD",
+    areaServed: "SY",
+    sameAs: ["https://wa.me/" + settings.whatsapp]
+  });
+  document.head.appendChild(el);
 }
 
 loadCart();

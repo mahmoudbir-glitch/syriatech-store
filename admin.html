@@ -63,6 +63,7 @@
         <p class="muted small" data-i18n="admin.settingsHint"></p>
         <label><span data-i18n="admin.fieldWhatsapp"></span> <small data-i18n="admin.whatsappHint"></small>
           <input id="setWhatsapp" inputmode="numeric" dir="ltr" required>
+          <a id="waTest" class="wa-test" href="#" target="_blank" rel="noopener" hidden data-i18n="admin.testWhatsapp"></a>
         </label>
         <label><span data-i18n="admin.fieldEmail"></span>
           <input id="setEmail" type="email" dir="ltr">
@@ -130,6 +131,7 @@
       <button type="submit" class="btn primary" id="saveBtn" data-i18n="admin.save"></button>
       <button type="button" class="btn ghost" data-close data-i18n="admin.cancel"></button>
       <span class="spacer"></span>
+      <button type="button" id="duplicateBtn" class="btn ghost" hidden data-i18n="admin.duplicate"></button>
       <button type="button" id="revertBtn" class="btn ghost" hidden data-i18n="admin.revert"></button>
       <button type="button" id="deleteBtn" class="btn danger" data-i18n="admin.deleteProduct"></button>
     </footer>
