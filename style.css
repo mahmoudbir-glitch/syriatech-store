@@ -500,3 +500,12 @@ footer a {
 .whatsapp i{font-size:30px;line-height:1}
 
 .discount-label{display:inline-block;margin-right:6px;padding:2px 5px;border-radius:4px;color:#fff;background:#dc2626;font-size:11px;font-weight:bold;vertical-align:middle}
+
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#05070a 0%,#0b111b 45%,#0879e8 100%)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 45%,#ffffff18 0 2%,transparent 22%),linear-gradient(90deg,transparent,#0879e833);pointer-events:none}
+.hero-anker-brand-banner{position:absolute;top:28px;right:7%;z-index:1;display:flex;align-items:baseline;gap:14px;padding:10px 18px;border:1px solid #ffffff30;border-radius:10px;background:#0008;box-shadow:0 12px 35px #0005;backdrop-filter:blur(8px)}
+.hero-anker-brand-banner span{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:3px;color:#fff}
+.hero-anker-brand-banner small{color:#70b9ff;font-weight:bold;letter-spacing:2px}
+.hero-text,.hero-product{position:relative;z-index:1}
+.discount-label{font-weight:800}
+@media(max-width:800px){.hero-anker-brand-banner{top:15px;right:50%;transform:translateX(50%);white-space:nowrap}.hero{padding-top:100px}}
