@@ -63,6 +63,18 @@ const products = [
 {id:62,category:"solar",brand:"Anker SOLIX",name:"Anker SOLIX PS100 Portable Solar Panel",description:"Portable solar panel",oldPrice:249.99,price:249.99,badge:""}
 ];
 
+// New 2026-style featured drop for the redesigned storefront.
+products.push(
+{id:2001,category:"power-bank",brand:"Anker",name:"Anker Prime Portable Power Hub",description:"Premium high-output portable charging concept for phones and laptops",oldPrice:229.99,price:229.99,badge:"NEW DROP"},
+{id:2002,category:"charger",brand:"Anker",name:"Anker Prime Desktop Charger",description:"Premium multi-port GaN charging station",oldPrice:129.99,price:129.99,badge:"NEW DROP"},
+{id:2003,category:"cables",brand:"Anker",name:"Anker Prime Ultra Cable",description:"High-power braided USB-C cable",oldPrice:34.99,price:34.99,badge:"NEW DROP"},
+{id:2004,category:"audio",brand:"soundcore",name:"soundcore Signature Headphones",description:"Immersive wireless audio experience",oldPrice:179.99,price:179.99,badge:"NEW DROP"},
+{id:2005,category:"security",brand:"eufy",name:"eufy Vision Smart Camera",description:"Smart home monitoring concept",oldPrice:189.99,price:189.99,badge:"NEW DROP"},
+{id:2006,category:"projector",brand:"Nebula",name:"Nebula Cinema One",description:"Portable smart cinema experience",oldPrice:699.99,price:699.99,badge:"NEW DROP"},
+{id:2007,category:"solar",brand:"Anker SOLIX",name:"Anker SOLIX Power Station",description:"Portable backup energy solution",oldPrice:999.99,price:999.99,badge:"NEW DROP"},
+{id:2008,category:"hubs-docks",brand:"Anker",name:"Anker Prime Pro Dock",description:"Premium workstation connectivity hub",oldPrice:249.99,price:249.99,badge:"NEW DROP"}
+);
+
 // Six additional products for every storefront category, using the matching Anker ecosystem brand.
 products.push(
 {id:1001,category:"power-bank",brand:"Anker",name:"Anker Prime Power Bank (27,650mAh, 250W)",description:"High-capacity portable power bank with high-speed charging",oldPrice:249.99,price:249.99,badge:"New"},
@@ -239,8 +251,9 @@ function filterProducts({category=undefined,brand=undefined,reset=false}={}) {
   $("#products")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
 function productImagePath(p){
-  // Admin-uploaded product images must take priority over category placeholders.
   if (p && typeof p.image === "string" && p.image.trim()) return p.image.trim();
+  const featured={"2001":"assets/new-power.svg","2002":"assets/new-charger.svg","2003":"assets/new-cables.svg","2004":"assets/new-audio.svg","2005":"assets/new-security.svg","2006":"assets/new-projector.svg","2007":"assets/new-solar.svg","2008":"assets/new-dock.svg"};
+  if(p&&featured[String(p.id)]) return featured[String(p.id)];
   const map={"power-bank":"assets/new-power.svg","charger":"assets/new-charger.svg","wireless":"assets/new-charger.svg","cables":"assets/new-cables.svg","hubs-docks":"assets/new-dock.svg","power":"assets/new-charger.svg","car":"assets/new-charger.svg","audio":"assets/new-audio.svg","security":"assets/new-security.svg","smart-home":"assets/new-security.svg","projector":"assets/new-projector.svg","solar":"assets/new-solar.svg"};
   return map[p.category]||"assets/new-power.svg";
 }
