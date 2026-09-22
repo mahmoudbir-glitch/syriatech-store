@@ -272,6 +272,10 @@
   function descFor(p, lang) {
     if (lang === "en") return p.description || p.descriptionAr || "";
     if (p.descriptionAr) return p.descriptionAr;
+    // Text the admin typed wins over the generic line — older admin versions
+    // stored it in the single "description" field, often in Arabic.
+    if ((p.added || p.edited) && p.description) return p.description;
+    if (/[\u0600-\u06FF]/.test(p.description || "")) return p.description;
     const c = categoryMap[p.category];
     return c ? c.descAr.replace("{brand}", p.brand || "") : p.description || "";
   }
