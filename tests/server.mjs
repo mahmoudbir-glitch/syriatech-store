@@ -10,7 +10,40 @@ const BLOB_DIR = process.env.DEV_BLOB_DIR;
 // The api functions refuse a Host-derived origin; give them the local one.
 if (!process.env.SITE_ORIGIN) process.env.SITE_ORIGIN = "http://127.0.0.1:" + PORT;
 
-const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml", ".json": "application/json", ".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg", ".gif": "image/gif", ".ico": "image/x-icon" };
+const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml", ".json": "application/json", ".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg", ".gif": "image/gif", ".ico": "image/x-icon", ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8", ".xml": "application/xml" };
+
+/*
+ * Rewrites, read from vercel.json so local and production cannot drift.
+ *
+ * They were not implemented here at all, which meant /p/<id> and /sitemap.xml
+ * 404'd locally while working in production — so the one class of bug that has
+ * actually taken this shop down twice, a function that behaves differently on
+ * Vercel, was also the one class nothing local could reproduce.
+ *
+ * Vercel's source syntax is `/c/:dept/:cat` with an optional inline pattern in
+ * parentheses, e.g. `/p/:id(\d+)`.
+ */
+const REWRITES = (() => {
+  let config = {};
+  try { config = JSON.parse(fs.readFileSync(path.join(REPO, "vercel.json"), "utf8")); } catch (e) {}
+  return (config.rewrites || []).map(rule => {
+    const names = [];
+    const pattern = rule.source.replace(/:([A-Za-z_][\w]*)(\(((?:[^()\\]|\\.|\([^()]*\))*)\))?/g,
+      (whole, name, group, inner) => { names.push(name); return "(" + (inner || "[^/]+") + ")"; });
+    return { re: new RegExp("^" + pattern + "$"), names, destination: rule.destination };
+  });
+})();
+
+function rewrite(pathname) {
+  for (const rule of REWRITES) {
+    const m = pathname.match(rule.re);
+    if (!m) continue;
+    let out = rule.destination;
+    rule.names.forEach((name, i) => { out = out.split(":" + name).join(m[i + 1]); });
+    return out;
+  }
+  return null;
+}
 
 function makeRes(res) {
   const api = {
@@ -39,7 +72,24 @@ async function readBody(req) {
 }
 
 const server = http.createServer(async (req, res) => {
-  const url = new URL(req.url, `http://127.0.0.1:${PORT}`);
+  let url = new URL(req.url, `http://127.0.0.1:${PORT}`);
+
+  /* A rewrite is server-side and invisible to the browser, so the address bar
+     keeps the pretty URL and the function sees the query it expects. Only a
+     path that is not already a real file is rewritten, so /assets/... always
+     wins. */
+  if (!url.pathname.startsWith("/api/")) {
+    const onDisk = path.join(REPO, decodeURIComponent(url.pathname).replace(/^\/+/, ""));
+    const isFile = onDisk.startsWith(REPO) && fs.existsSync(onDisk) && !fs.statSync(onDisk).isDirectory();
+    if (!isFile) {
+      const target = rewrite(url.pathname);
+      if (target) {
+        const next = new URL(target, `http://127.0.0.1:${PORT}`);
+        for (const [k, v] of url.searchParams) if (!next.searchParams.has(k)) next.searchParams.set(k, v);
+        url = next;
+      }
+    }
+  }
 
   // Stand-in for the Vercel Blob upload endpoint that presigned URLs point at.
   if (url.pathname === "/__blob/put") {

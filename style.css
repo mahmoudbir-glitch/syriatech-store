@@ -1,782 +1,3083 @@
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#f4f7fb;--card:#fff;--ink:#07111f;--muted:#5a6980;--line:#dfe7f1;--line-strong:#c3cfdd;--blue:#1264ff;--cyan:#19d5ff;--violet:#7047ff;--dark:#050a12;--green:#25d366;--green-ink:#0a7a43;--green-btn:#0f7a36;--shadow:0 18px 55px rgba(7,17,31,.09)}
-html{scroll-behavior:smooth}
-body{color:var(--ink);background:radial-gradient(circle at 15% 15%,#eaf8ff 0,transparent 25%),var(--bg);overflow-x:hidden}
+/* tokens:start — generated from assets/tokens.css by tools/build-css.cjs — do not edit here */
+:root {
+  color-scheme: light;
 
-a{text-decoration:none;color:inherit}button,input,select{font:inherit}button{cursor:pointer}.container{width:min(1320px,calc(100% - 40px));margin:auto}
+  --n-0:   #FFFFFF;
+  --n-25:  #FDFAF8;
+  --n-50:  #F8F5F2;
+  --n-100: #F0ECE8;
+  --n-200: #E4DFDA;
+  --n-300: #D1CBC6;
+  --n-400: #A9A39E;
+  --n-450: #968F8A;
+  --n-500: #77716B;
+  --n-600: #625C57;
+  --n-700: #47413D;
+  --n-800: #2D2824;
+  --n-900: #1A1613;
+  --n-950: #100D0A;
 
-.notice-bar{background:#030812;color:#dce8f8;border-bottom:1px solid rgba(255,255,255,.08);font-size:12px;letter-spacing:.03em}.notice-inner{min-height:34px;padding:5px 0;display:flex;align-items:center;justify-content:space-between;gap:20px}.notice-inner span:first-child:before{content:"●";color:#63b3ff;margin-inline-end:7px}.notice-inner span:last-child{color:#7f93ad}
+  --brand-subtle: #FFF0E4;
+  --brand-soft:   #FDD7BD;
+  --brand-line:   #EEB793;
+  --brand:        #A45118;
+  --brand-hover:  #8F410E;
+  --brand-active: #79350F;
+  --brand-ink:    #893E0A;
+  --brand-tint:   #E08A4A;
 
-.store-header{position:sticky;top:0;z-index:40;background:#050a12;border-bottom:1px solid rgba(255,255,255,.08);color:#fff}.header-main{min-height:82px;display:grid;grid-template-columns:235px 1fr 190px;align-items:center;gap:28px}.brand-logo{display:flex;align-items:center;gap:11px;font-size:24px;font-weight:900;letter-spacing:-.04em}.logo-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--cyan),var(--blue) 55%,var(--violet));color:#fff;font-size:18px;box-shadow:0 8px 30px rgba(25,213,255,.25)}.search-form{min-height:46px;display:flex;border:1px solid #2a3950;border-radius:14px;background:#0d1625;overflow:hidden}.search-form input{flex:1;border:0;padding:0 17px;min-width:0;color:#fff;background:transparent}.search-form input::placeholder{color:#718096}.search-form button{border:0;background:linear-gradient(90deg,var(--blue),#0a72e8);color:#fff;padding:0 18px;font-weight:800}.header-actions{display:flex;justify-content:flex-end;gap:8px}.icon-action{min-height:42px;border:1px solid #29374d;background:#0d1625;padding:0 12px;border-radius:12px;color:#dce8f8;display:flex;align-items:center;gap:7px}.icon-action:hover{border-color:#20cfff;color:#fff}.cart-action{position:relative}#cartCount{display:grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:99px;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#fff;font-size:10px}
+  --success:      #1B6738;  --success-bg: #E7F7EB;  --success-line: #B7DCC0;
+  --warning:      #6D5900;  --warning-bg: #FCF4D8;  --warning-line: #EBCD9C;
+  --danger:       #A4283A;  --danger-bg:  #FFECEC;  --danger-line:  #F6C2C4;
+  --danger-solid: #BE2F42;
 
-.main-nav{background:#080f1b;border-top:1px solid #182437}.nav-inner{min-height:48px;display:flex;align-items:center;gap:30px}.nav-inner>a,.nav-dropdown>button{border:0;background:none;color:#aebdd0;font-size:13px;font-weight:800}.nav-inner>a:hover,.nav-dropdown>button:hover{color:#fff}.nav-dropdown{position:relative}.nav-dropdown>button{display:flex;align-items:center;gap:6px}.nav-dropdown i{font-size:9px}.nav-mega{position:absolute;inset-inline-start:0;top:38px;width:800px;padding:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;background:#0a1422;border:1px solid #24344c;border-radius:0 0 18px 18px;box-shadow:0 25px 60px rgba(0,0,0,.35);opacity:0;visibility:hidden;transform:translateY(8px);transition:.2s}.nav-mega strong{display:block;color:#fff;font-size:13px;margin-bottom:10px}.nav-mega button{display:block;border:0;background:none;padding:6px 0;color:#8395ac;font-size:11px;text-align:start}.nav-mega button:hover{color:#63b3ff}
+  --wa-green: #25D366;
+  --wa-ink:   #0B7A3B;
+  --wa-btn:   #0A6B34;
 
-.hero{position:relative;min-height:650px;overflow:hidden;background:#030812}.hero-bg{position:absolute;inset:0;background:radial-gradient(circle at 72% 45%,rgba(20,157,255,.3),transparent 27%),radial-gradient(circle at 50% 110%,rgba(112,71,255,.24),transparent 38%),linear-gradient(100deg,#030812 0%,#071326 52%,#06101e 100%)}.hero-bg:after{content:"";position:absolute;inset:0;background:url("assets/new-power.svg") 82% 48%/500px no-repeat;opacity:.22}.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,8,18,.92),rgba(3,8,18,.42),rgba(3,8,18,.1))}.hero-content{position:relative;z-index:1;min-height:650px;display:grid;grid-template-columns:1fr .9fr;align-items:center;gap:35px}.hero-text{color:#fff;max-width:690px}.hero-label{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}.hero-label span{padding:7px 11px;border:1px solid rgba(89,211,255,.25);border-radius:99px;color:#b6f0ff;background:rgba(20,145,255,.06);font-size:11px}.hero h1{font-size:clamp(48px,7vw,86px);line-height:.98;letter-spacing:-.055em;margin-bottom:22px}.hero h1 em{font-style:normal;background:linear-gradient(90deg,#fff,#61e3ff,#9275ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:600px;color:#aebed1;line-height:1.9;font-size:17px}.hero-buttons{display:flex;align-items:center;gap:16px;margin-top:30px}.primary-button{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(100deg,var(--blue),#0a72e8);color:#fff;padding:15px 22px;border-radius:13px;font-weight:900;box-shadow:0 12px 35px rgba(18,100,255,.3)}.primary-button:hover{transform:translateY(-2px)}.text-button{color:#dce8f8;font-weight:800;padding:12px}.hero-product-showcase{position:relative;min-height:500px;display:grid;place-items:center}.hero-product-showcase img{position:relative;width:min(82%,480px);height:430px;object-fit:contain;filter:drop-shadow(0 35px 50px rgba(0,0,0,.6));z-index:2}.hero-product-showcase:after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,#159eff 0,rgba(21,158,255,.12) 35%,transparent 68%);filter:blur(12px)}.hero-orbit{position:absolute;border:1px solid rgba(35,205,255,.22);border-radius:50%;z-index:1}.orbit-one{width:500px;height:300px;transform:rotate(-18deg)}.orbit-two{width:360px;height:520px;transform:rotate(35deg)}.showcase-badge{position:absolute;bottom:28px;inset-inline-end:0;z-index:4;min-width:210px;padding:15px 17px;background:rgba(255,255,255,.94);color:var(--ink);border:1px solid #fff;border-radius:15px;box-shadow:0 15px 45px rgba(0,0,0,.3)}.showcase-badge strong{display:block;font-size:21px;letter-spacing:.08em}.showcase-badge small{display:block;margin-top:4px;color:var(--muted);font-size:12px}
+  --font: "Cairo", "Cairo Fallback", "Cairo Fallback 2", system-ui, sans-serif;
 
-.benefits{background:#fff;border-bottom:1px solid var(--line);box-shadow:0 8px 30px rgba(7,17,31,.04)}.benefit-grid{display:grid;grid-template-columns:repeat(4,1fr)}.benefit-grid>div{min-height:82px;display:flex;align-items:center;justify-content:center;gap:12px;border-inline-start:1px solid var(--line);font-weight:800;font-size:12px}.benefit-grid>div:first-child{border-inline-start:0}.benefit-grid i{font-size:19px;color:var(--blue)}
+  --t-100: 0.8125rem;
+  --t-200: 0.875rem;
+  --t-300: 0.9375rem;
+  --t-400: clamp(1rem, 0.979rem + 0.093vw, 1.0625rem);
+  --t-500: clamp(1.1875rem, 1.146rem + 0.185vw, 1.3125rem);
+  --t-600: clamp(1.375rem, 1.292rem + 0.370vw, 1.625rem);
+  --t-700: clamp(1.625rem, 1.479rem + 0.648vw, 2.0625rem);
+  --t-800: clamp(1.9375rem, 1.708rem + 1.019vw, 2.625rem);
+  --t-900: clamp(2.25rem, 1.875rem + 1.667vw, 3.375rem);
 
-.brand-section,.catalog-section,.quick-brands{padding:82px 0}.section-head.centered{text-align:center}.section-head>span,.catalog-heading span,.sale-inner span,.contact-inner span{font-size:12px;font-weight:900;color:var(--blue)}.section-head h2,.catalog-heading h2{font-size:clamp(30px,4vw,46px);letter-spacing:-.04em;margin-top:10px}.brand-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:30px}.brand-cards button{position:relative;text-align:start;min-height:160px;padding:24px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#fff,#f2f6fb);box-shadow:var(--shadow);overflow:hidden}.brand-cards button:before{content:"";position:absolute;width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,rgba(25,213,255,.16),rgba(112,71,255,.13));right:-30px;bottom:-45px}.brand-cards b{display:block;font-size:21px;position:relative}.brand-cards small{display:block;color:var(--muted);font-size:12px;margin-top:9px;position:relative}.brand-cards i{position:absolute;bottom:20px;left:22px;color:var(--blue)}
+  --lh-100: 20px;
+  --lh-200: 24px;
+  --lh-300: 24px;
+  --lh-400: 28px;
+  --lh-500: 28px;
+  --lh-600: 32px;
+  --lh-700: 36px;
+  --lh-tight: 1.30;
+  --lh-body: 1.70;
 
-.catalog-section{padding-top:10px}.catalog-heading{display:flex;align-items:end;justify-content:space-between;gap:20px}.outline-button{border:1px solid #b9c9dc;background:#fff;border-radius:12px;padding:11px 16px;font-weight:800}.category-pills{display:flex;gap:8px;overflow:auto;padding:25px 0 17px;scrollbar-width:none}.category-pill{white-space:nowrap;border:1px solid var(--line);background:#fff;color:#5e7087;border-radius:99px;padding:9px 14px;font-size:11px;font-weight:800}.category-pill:hover,.category-pill.active{color:#fff;border-color:var(--blue);background:linear-gradient(100deg,var(--blue),#0a72e8);box-shadow:0 8px 22px rgba(18,100,255,.2)}.catalog-toolbar{display:flex;align-items:center;justify-content:space-between;margin:5px 0 17px;color:var(--muted);font-size:11px}.catalog-toolbar select{border:1px solid var(--line-strong);background:#fff;border-radius:10px;padding:9px 12px;min-height:38px}.products-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.product{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 10px 35px rgba(7,17,31,.055);transition:.25s}.product:hover{transform:translateY(-5px);box-shadow:0 22px 55px rgba(7,17,31,.12);border-color:#bfd1e8}.product-image{height:275px;aspect-ratio:1/1;background:radial-gradient(circle at 50% 40%,#eef7ff,#f7f9fc 62%,#edf1f6);display:grid;place-items:center;overflow:hidden;border-bottom:1px solid #edf1f5}.product-image img{width:100%;height:100%;object-fit:contain;object-position:center;padding:8px;transition:.35s;cursor:zoom-in}.product:hover .product-image img{transform:scale(1.04)}.product-info{padding:17px}.product-info small{color:var(--blue);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.1em}.product-info h3{font-size:14px;line-height:1.4;margin:7px 0;color:#0b1728;min-height:40px}.product-info p{font-size:12px;color:var(--muted);line-height:1.6;min-height:34px}.product-bottom{display:flex;align-items:end;justify-content:space-between;margin-top:15px}.product-bottom del{display:block;color:#6b7785;font-size:11px}.product-bottom strong{font-size:20px;display:block}.discount-label{display:inline-block;background:#eafbf2;color:var(--green-ink);border-radius:6px;padding:3px 6px;font-size:11px;font-weight:900;margin-top:4px}.add-product{width:40px;height:40px;border:0;border-radius:12px;background:#07111f;color:#fff}.add-product:hover{background:linear-gradient(135deg,var(--blue),var(--violet))}.product-badge{position:absolute;top:13px;inset-inline-end:13px;z-index:3;background:#07111f;color:#fff;border-radius:99px;padding:6px 10px;font-size:11px;font-weight:900}.quick-btn:hover{background:#07111f;color:#fff}
+  --w-normal: 400;
+  --w-medium: 600;
+  --w-bold:   700;
 
-.sale-banner{margin:35px 0 0;background:linear-gradient(110deg,#06101d,#0a1d36 55%,#10112c);color:#fff;overflow:hidden}.sale-inner{min-height:250px;display:flex;align-items:center;justify-content:space-between;gap:30px;position:relative}.sale-inner:after{content:"30%";position:absolute;font-size:170px;font-weight:900;right:40%;color:rgba(255,255,255,.025);transform:skew(-8deg)}.sale-inner h2{font-size:clamp(28px,4vw,46px);margin:9px 0;position:relative;z-index:1}.sale-inner p{color:#9fb1c7;font-size:13px}.whatsapp-button{position:relative;z-index:2;display:flex;align-items:center;gap:10px;background:var(--green-btn);color:#fff;padding:14px 19px;border-radius:13px;font-weight:900;white-space:nowrap}.whatsapp-button:hover{filter:brightness(.94)}
+  --measure: 52ch;
 
-.quick-brand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.quick-brand-grid button{min-height:125px;text-align:start;padding:22px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow)}.quick-brand-grid strong{display:block;font-size:20px}.quick-brand-grid span{display:block;color:var(--muted);font-size:12px;margin-top:8px}.quick-brand-grid button:hover{border-color:#9ec8ff;transform:translateY(-2px)}
+  --s-1: 4px;  --s-2: 8px;   --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px;  --s-8: 64px; --s-9: 96px;
 
-.contact{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:70px 0}.contact-inner{display:flex;justify-content:space-between;align-items:center;gap:30px}.contact-inner h2{font-size:40px;margin:8px 0}.contact-inner p{color:var(--muted);font-size:13px}.contact-actions{display:flex;gap:10px;flex-wrap:wrap}.contact-actions a{display:flex;align-items:center;gap:10px;padding:13px 16px;border:1px solid var(--line);border-radius:13px;background:#f8fafc;font-size:12px;font-weight:800}.contact-actions a:first-child i{color:var(--green)}
+  --inset: 16px;
+  --container: 1280px;
 
-.footer{background:#050a12;color:#aebdd0;padding:55px 0}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}.footer-logo{color:#fff}.footer h3{color:#fff;font-size:13px;margin-bottom:14px}.footer a{display:block;font-size:12px;margin:8px 0}.footer a:hover{color:#63b3ff}.footer p{font-size:12px;line-height:1.8;margin-top:13px}.admin-link{margin-top:15px!important;color:#93a6bd!important}.admin-link:hover{color:#fff!important}
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+  --r-pill: 999px;
+  --r-circle: 50%;
 
-.cart{position:fixed;top:0;inset-inline-end:-430px;width:min(430px,100%);height:100vh;background:#fff;z-index:80;box-shadow:0 0 60px rgba(0,0,0,.2);transition:.3s;padding:22px}.cart.open{inset-inline-end:0}.cart-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px}.cart-header h2{font-size:23px;margin-top:4px}.cart-header span{font-size:11px;color:var(--blue);font-weight:900}.cart-header button{border:0;background:#eef2f6;border-radius:50%;width:35px;height:35px;font-size:25px}.cart-item{display:flex;justify-content:space-between;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);font-size:12px}.cart-controls{display:flex;align-items:center;gap:9px;margin-top:9px}.cart-controls button,.remove-item{border:1px solid var(--line-strong);background:#fff;border-radius:8px;width:34px;height:34px}.remove-item{color:#d63b3b;margin-inline-start:6px;width:34px;height:34px}.cart-total{display:flex;justify-content:space-between;padding:20px 0;font-size:14px}.checkout-button{display:flex;justify-content:center;align-items:center;gap:9px;background:var(--green-btn);color:#fff;padding:15px;border-radius:12px;font-weight:900}.empty-state{padding:40px 10px;text-align:center;color:var(--muted)}#overlay{position:fixed;inset:0;background:rgba(3,8,18,.62);z-index:70;opacity:0;visibility:hidden;transition:.25s}#overlay.open{opacity:1;visibility:visible}
+  --bd-hair: 1px solid var(--n-200);
+  --bd-line: 1px solid var(--n-300);
+  --bd-field: 1px solid var(--n-450);
+
+  --sh-1: 0 1px 2px rgba(16,13,10,.05), 0 8px 20px rgba(16,13,10,.05);
+  --sh-2: 0 2px 6px rgba(16,13,10,.06), 0 18px 40px rgba(16,13,10,.10);
+  --sh-3: 0 8px 20px rgba(16,13,10,.10), 0 40px 80px rgba(16,13,10,.18);
+
+  --focus-ink:  #100D0A;
+  --focus-halo: #FFFFFF;
+
+  --d-1: 120ms;
+  --d-2: 200ms;
+  --d-3: 260ms;
+  --e-out: cubic-bezier(.2, 0, 0, 1);
+  --e-in:  cubic-bezier(.4, 0, 1, 1);
+  --travel-sm: 12px;
+  --travel-md: 24px;
+
+  --z-sticky: 20;
+  --z-bottombar: 30;
+  --z-backdrop: 100;
+  --z-sheet: 200;
+  --z-toast: 300;
+
+  --chrome: 56px;
+  --bottombar: 0px;
+
+  --flip: 1;
+}
+
+html[dir="rtl"] { --flip: -1; }
+
+@media (min-width: 768px) {
+  :root { --inset: 24px; --chrome: 56px; }
+}
+@media (min-width: 1280px) {
+  :root { --inset: 32px; --chrome: 64px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --d-1: 1ms;
+    --d-3: 1ms;
+    --travel-sm: 0px;
+    --travel-md: 0px;
+  }
+  html { scroll-behavior: auto; }
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("/assets/fonts/cairo-arabic.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+200C-200F, U+2066-2069, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/assets/fonts/cairo-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+2013-2014, U+2019, U+201C-201D, U+2026, U+2033, U+20AC, U+2122, U+2190, U+2192, U+2248;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/assets/fonts/cairo-latin-ext.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+011E-011F, U+0130, U+015E-015F;
+}
+
+@font-face {
+  font-family: "Cairo Fallback";
+  src: local("Segoe UI");
+  size-adjust: 98.1%;
+  ascent-override: 130.3%;
+  descent-override: 57.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Cairo Fallback 2";
+  src: local("Tahoma");
+  size-adjust: 96.8%;
+  ascent-override: 130.3%;
+  descent-override: 57.1%;
+  line-gap-override: 0%;
+}
+/* tokens:end */
+
+/* ===========================================================================
+   SYRIATECH — the storefront stylesheet.  One file, one request.
+   ---------------------------------------------------------------------------
+   The token block above is inlined from assets/tokens.css by
+   tools/build-css.cjs. Nothing below invents a colour, size, space, radius,
+   shadow or duration; the only literals are four alphas of --n-0 and --n-950
+   (header hover/hairline, sheet backdrop).
+
+   Five rules, each a measured failure of the sheet this replaces:
+   1 Logical properties only — no left/right/margin-left/float/text-align:left.
+     Icons flip with scaleX(var(--flip)); the one [dir] rule is Arabic tracking.
+   2 No font-size in px. Only var(--t-*). Floor 13; 14 inside a link, button,
+     select or label; 16 on every text input — below 16, iOS Safari zooms the
+     page on focus, a layout jump the 0.05 CLS budget cannot absorb.
+   3 Only transform and opacity transition, plus colour at --d-1. Never `all`.
+     Nothing that appears more than 12 times on a screen transitions at all:
+     that excludes cards, chips, brand tiles and badges at 7 brands and at 40.
+   4 Every target ≥ 44×44. Smaller ink grows its hit area with a ::before
+     inside the control, so the ring still draws on the visible box.
+   5 One focus ring, two tones, so one half is visible against a white card and
+     against a black power bank alike.
+
+   Sections: 1 reset/base · 2 type · 3 utilities+focus · 4 buttons/controls ·
+   5 header · 6 bottom bar · 7 home · 8 card+grid · 9 listing · 10 product ·
+   11 sheets · 12 cart · 13 checkout · 14 toast · 15 footer · 16 empty/error ·
+   17 print.
+   ======================================================================== */
 
 
+/* ===========================================================================
+   1. RESET AND BASE
+   ======================================================================== */
 
-.floating-whatsapp{position:fixed;inset-inline-end:20px;bottom:20px;z-index:50;width:60px;height:60px;display:grid;place-items:center;background:var(--green-btn);color:#fff;border-radius:50%;font-size:28px;box-shadow:0 12px 35px rgba(37,211,102,.35)}.floating-whatsapp:hover{transform:scale(1.06)}
-.image-lightbox{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}.image-lightbox[hidden]{display:none}.image-lightbox img{display:block;max-width:94vw;max-height:90vh;width:auto;height:auto;object-fit:contain;border-radius:18px;background:#fff;padding:10px;box-shadow:0 25px 90px #000}.lightbox-close{position:absolute;top:18px;inset-inline-end:22px;width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:#111;font-size:34px;line-height:1;cursor:pointer}.product-image img{cursor:zoom-in}.lightbox-open{overflow:hidden}
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
-@media(max-width:1050px){.header-main{grid-template-columns:190px 1fr 150px}.products-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.brand-cards{grid-template-columns:repeat(3,1fr)}.footer-grid{grid-template-columns:2fr 1fr 1fr}.nav-mega{width:680px}}
-@media(max-width:760px){.container{width:min(100% - 24px,600px)}.notice-inner span:last-child{font-size:11px;opacity:.85}.header-main{grid-template-columns:1fr auto;gap:10px;min-height:72px}.search-form{grid-column:1/-1;grid-row:2;height:43px;margin-bottom:10px}.header-actions{grid-column:2;grid-row:1}.brand-logo{font-size:20px}.brand-logo .logo-mark{width:37px;height:37px}.main-nav{overflow:auto}.nav-inner{gap:20px;min-width:max-content}.hero{min-height:650px}.hero-content{min-height:650px;grid-template-columns:1fr;text-align:center;padding:55px 0}.hero-text{margin:auto}.hero-label{justify-content:center}.hero p{margin:auto}.hero-buttons{justify-content:center}.hero-product-showcase{min-height:300px}.hero-product-showcase img{height:300px;width:300px}.showcase-badge{inset-inline-end:8%;bottom:0}.benefit-grid{grid-template-columns:repeat(2,1fr)}.benefit-grid>div{border-bottom:1px solid var(--line)}.brand-cards{grid-template-columns:repeat(2,1fr)}.products-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product-image{height:210px}.product-image img{padding:4px}.product-info{padding:12px}.product-info h3{font-size:13px}.product-info p{font-size:12px}.product-bottom strong{font-size:16px}.add-product{width:36px;height:36px}.catalog-heading{align-items:start;flex-direction:column}.quick-brand-grid{grid-template-columns:repeat(2,1fr)}.sale-inner,.contact-inner{flex-direction:column;align-items:flex-start;padding:55px 0}.footer-grid{grid-template-columns:1fr 1fr;gap:25px}.nav-mega{display:none}
-/* The phone rule lives at the end of this file, anchored to the viewport. */}
-@media(max-width:430px){.products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-image{height:175px}.product-image img{padding:2px}.product-info h3{min-height:50px}.product-info p{display:none}.product-badge{top:8px;inset-inline-end:8px}.quick-btn{top:8px;left:8px}.hero h1{font-size:48px}.brand-cards{gap:9px}.brand-cards button{min-height:135px;padding:17px}.floating-whatsapp{inset-inline-end:14px;bottom:14px}}
+html,
+body,
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd, ol, ul,
+fieldset, legend { margin: 0; padding: 0; }
 
-/* Previously injected by stability-fixes.js */
-@media(max-width:700px){.cart{width:min(420px,94vw)}.product-info h3{font-size:13px}.product-info p{min-height:0}.product-bottom strong{font-size:16px}}
-.product-badge:empty{display:none}
-.brand-cards button,.category-pill,.nav-mega button,.quick-brand-grid button,.brand-list button{touch-action:manipulation}
+ol, ul { list-style: none; }
+
+html {
+  /* Document-scope smooth scroll measured 1,856ms at 11fps to the footer. It
+     survives only in core.js's one helper. */
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--t-400);
+  font-weight: var(--w-normal);
+  line-height: var(--lh-400);
+  color: var(--n-900);
+  background: var(--n-50);
+  /* The bottom bar permanently covers the last 56px of every phone page. */
+  padding-block-end: calc(var(--bottombar) + env(safe-area-inset-bottom, 0px));
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 767px) {
+  :root { --bottombar: 56px; }
+}
+
+/* Arabic joins along the baseline; any tracking tears the joins apart. The
+   !important is deliberate — the old rule won on specificity alone and any
+   future #id would have beaten it. */
+:root[dir="rtl"] *,
+:lang(ar) * { letter-spacing: normal !important; }
+
+img, svg, video, canvas { display: block; max-inline-size: 100%; }
+img { block-size: auto; }
+
+a { color: inherit; text-decoration: none; }
+/* Only a link in running prose is underlined. A footer column or a nav row is
+   a list of destinations, not a sentence. */
+:where(p, dd, li, .prose, .empty__text) a:not([class]) {
+  color: var(--brand-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+:where(footer, nav) :where(p, li) a:not([class]) { text-decoration: none; color: inherit; }
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+button { background: none; border: 0; cursor: pointer; }
+
+hr {
+  border: 0;
+  border-block-start: var(--bd-hair);
+  margin-block: var(--s-5);
+}
+
+del { text-decoration-line: line-through; }
+
+::selection { background: var(--brand-soft); color: var(--n-950); }
+
+/* `main`/`footer` take the gutter themselves unless the markup supplies a
+   `.container`: the emitters put sections straight into <main>. */
+.container,
+main:not(:has(> .container)),
+footer:not(:has(> .container)) {
+  inline-size: 100%;
+  max-inline-size: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--inset);
+}
+main { display: block; padding-block-end: var(--s-7); }
+/* One token between blocks, never a sum. The phone stack is budgeted to the
+   pixel — 48 header + 40 store line + 244 departments + 40 rail head — so the
+   store line sits directly under the header and the directory directly under
+   the store line. */
+main > * + * { margin-block-start: var(--s-5); }
+main > .vh + * { margin-block-start: 0; }
+main > .storeline { margin-block-start: 0; }
+main > .storeline + * { margin-block-start: var(--s-2); }
+@media (min-width: 768px) { main > * + * { margin-block-start: var(--s-6); } }
+.listing > * + * { margin-block-start: var(--s-4); }
+
+/* 52ch holds 64 Arabic characters and 68 Latin — one value, three languages. */
+.prose { max-inline-size: var(--measure); }
+
+/* Anchors land clear of the sticky chrome. */
+:target,
+[id] { scroll-margin-block-start: calc(var(--chrome) + var(--s-2)); }
+
+
+/* ===========================================================================
+   2. TYPOGRAPHY ROLES
+   ---------------------------------------------------------------------------
+   Nine steps, three weights. Line boxes are px per step so the 4px rhythm and
+   the Arabic floor stay together: Arabic needs 1.355 em of vertical ink where
+   Latin needs 0.953, and 54.8% of the summaries carry diacritics.
+   ======================================================================== */
+
+h1, h2, h3, h4, h5, h6 { font-weight: var(--w-bold); color: var(--n-900); }
+
+h1 {
+  font-size: var(--t-700);
+  line-height: var(--lh-700);
+  text-wrap: balance;
+  max-inline-size: 22ch;
+}
+h2 {
+  font-size: var(--t-600);
+  line-height: var(--lh-600);
+  text-wrap: balance;
+}
+h3 {
+  font-size: var(--t-500);
+  line-height: var(--lh-500);
+  font-weight: var(--w-medium);
+}
+
+p { max-inline-size: var(--measure); }
+p + p { margin-block-start: 1em; }
+:where(p, ul, ol, dl) + :where(h2, h3) { margin-block-start: 2em; }
+:where(h1, h2, h3) + :where(p, ul, ol, dl) { margin-block-start: .5em; }
+
+small,
+.storeline,
+.trust__item,
+.pager,
+figcaption {
+  font-size: var(--t-200);
+  line-height: var(--lh-200);
+}
+
+/* Never 700 at this size: Arabic counters close below 15px above 600. */
+.meta {
+  font-size: var(--t-100);
+  line-height: var(--lh-100);
+  font-weight: var(--w-medium);
+  color: var(--n-600);
+}
+
+
+/* ===========================================================================
+   3. UTILITIES AND FOCUS
+   ======================================================================== */
+
+/* The only visually-hidden utility. clip-path, never display:none /
+   visibility:hidden / opacity:0 — those take the node out of the accessibility
+   tree, and a live region that is not in the tree is silent. */
+.vh {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  inset-block-start: var(--s-2);
+  inset-inline-start: var(--s-2);
+  z-index: var(--z-toast);
+  transform: translateY(calc(-100% - var(--s-5)));
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+  padding-inline: var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--n-0);
+  color: var(--brand-ink);
+  font-size: var(--t-200);
+  font-weight: var(--w-bold);
+  box-shadow: var(--sh-2);
+}
+/* :focus, not :focus-visible — it must appear for a mouse user who tabbed in
+   from the URL bar. */
+.skip-link:focus { transform: none; }
+
+.icon {
+  inline-size: 24px;
+  block-size: 24px;
+  flex: none;
+  pointer-events: none;
+}
+/* The only direction switch: anything that depicts motion. */
+.icon--flip { transform: scaleX(var(--flip)); }
+
+/* --- the ring ------------------------------------------------------------
+   One declaration, no per-region overrides. The 2px white halo sits in the 2px
+   outline offset: edge → 2px white → 3px near-black. Whichever half the surface
+   swallows, the other is visible — worst case 3.48:1 (ink on copper), and the
+   halves contrast 19.37:1 with each other. Anything focusable inside a clipping
+   box is inset ≥ 6px or draws the ring inward (see .pcard__hit). */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--focus-ink);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--focus-halo);
+  border-radius: inherit;
+}
+
+@media (forced-colors: active) {
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline-color: Highlight;
+    box-shadow: none;
+  }
+  .btn,
+  .chip,
+  .pcard,
+  .sheet { border: 1px solid CanvasText; }
+}
+
+/* Inward variant, for a box clipped by paint containment or overflow. */
+.ring-inset:focus-visible {
+  outline: 3px solid var(--focus-ink);
+  outline-offset: -5px;
+  box-shadow: inset 0 0 0 2px var(--focus-halo);
+}
+
+/* One token between sections, never a sum. */
+.section { padding-block: var(--s-6); }
+@media (min-width: 768px)  { .section { padding-block: var(--s-7); } }
+@media (min-width: 1280px) { .section { padding-block: var(--s-8); } }
+
+
+/* ===========================================================================
+   4. BUTTONS AND CONTROLS
+   ---------------------------------------------------------------------------
+   `opacity:.5` is banned as a disabled style: it drags the label below 3:1
+   and compounds when nested. Disabled is an explicit fill and ink, and on a
+   chip a dashed border as well, so the state never depends on colour.
+   ======================================================================== */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-block-size: 44px;
+  padding-inline: var(--s-4);
+  border: 1px solid transparent;
+  border-radius: var(--r-md);
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+  line-height: var(--lh-200);
+  text-align: center;
+  white-space: nowrap;
+  touch-action: manipulation;
+  transition: background-color var(--d-1) linear,
+              border-color var(--d-1) linear,
+              color var(--d-1) linear,
+              transform var(--d-1) var(--e-out);
+}
+.btn:active { transform: scale(.98); }
+
+/* A primary action is 48 tall, label at the body step. */
+.btn--primary,
+.btn--wa {
+  min-block-size: 48px;
+  padding-inline: var(--s-5);
+  font-size: var(--t-400);
+  line-height: var(--lh-400);
+}
+
+.btn--primary { background: var(--brand); color: var(--n-0); }
+@media (hover: hover) and (pointer: fine) {
+  .btn--primary:hover { background: var(--brand-hover); }
+}
+.btn--primary:active { background: var(--brand-active); }
+
+.btn--secondary {
+  background: var(--n-0);
+  color: var(--n-900);
+  border-color: var(--n-450);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn--secondary:hover { background: var(--n-25); border-color: var(--n-600); }
+}
+.btn--secondary:active { background: var(--n-100); }
+
+.btn--ghost { background: none; color: var(--brand-ink); }
+@media (hover: hover) and (pointer: fine) {
+  .btn--ghost:hover { background: var(--brand-subtle); }
+}
+.btn--ghost:active { background: var(--brand-soft); }
+
+/* Green is reserved. Only a control that opens WhatsApp may carry it. */
+.btn--wa { background: var(--wa-btn); color: var(--n-0); }
+@media (hover: hover) and (pointer: fine) {
+  /* --wa-ink, not an invented green: white on it is 5.44:1. */
+  .btn--wa:hover { background: var(--wa-ink); }
+}
+
+/* Never a solid red button: nothing here is destructive enough to earn one,
+   and solid red beside a filled primary is a mis-tap generator. */
+.btn--danger {
+  background: var(--n-0);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn--danger:hover { background: var(--danger-bg); }
+}
+
+.btn--block { inline-size: 100%; }
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  background: var(--n-100);
+  color: var(--n-600);
+  border-color: var(--n-300);
+  cursor: default;
+  transform: none;
+}
+.btn[aria-busy="true"] { cursor: progress; }
+
+/* Icon-only: 40px of ink, 44px of target. The ::before is inside the button,
+   so the ring still draws on the 40px box, which is what the eye expects. */
+.btn--icon,
+.hdr__actions > button,
+.hdr__actions > a,
+.hdr__search > button,
+.sheet__head button {
+  inline-size: 40px;
+  min-inline-size: 40px;
+  block-size: 40px;
+  min-block-size: 40px;
+  padding-inline: 0;
+  border-radius: var(--r-sm);
+}
+.btn--icon::before,
+.hdr__actions > button::before,
+.hdr__actions > a::before,
+.hdr__search > button::before,
+.sheet__head button::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+}
+
+/* A chip appears more than twelve times on a facet bar: no transition. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  min-block-size: 44px;
+  padding-inline: var(--s-4);
+  border: var(--bd-field);
+  border-radius: var(--r-pill);
+  background: var(--n-0);
+  color: var(--n-700);
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+  line-height: var(--lh-200);
+  white-space: nowrap;
+  touch-action: manipulation;
+}
+.chip .icon { inline-size: 16px; block-size: 16px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover { background: var(--brand-subtle); border-color: var(--brand-line); }
+}
+
+/* A full inversion plus the emitter's check glyph — never colour alone. */
+.chip.is-on,
+.chip[aria-pressed="true"],
+.chip[aria-current="true"] {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--n-0);
+  font-weight: var(--w-bold);
+}
+
+/* Dashed is the non-colour signal. Never opacity. */
+.chip.is-out,
+.chip[aria-disabled="true"],
+.chip:disabled {
+  background: var(--n-100);
+  color: var(--n-600);
+  border-style: dashed;
+  border-color: var(--n-450);
+  cursor: default;
+}
+
+.chip--count {
+  min-block-size: 0;
+  padding-inline: var(--s-2);
+  border: 0;
+  background: none;
+  color: var(--n-600);
+}
+
+/* .count is the one name added to the contract's vocabulary; the emitters use
+   .hdr__badge / .bottombar__badge for the same thing. */
+.count,
+.hdr__badge,
+.bottombar__badge {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  min-inline-size: 22px;
+  block-size: 22px;
+  padding-inline: var(--s-1);
+  border-radius: var(--r-pill);
+  background: var(--brand);
+  color: var(--n-0);
+  /* 14, not 13: the floor inside a control is 14. */
+  font-size: var(--t-200);
+  font-weight: var(--w-bold);
+  line-height: 1;
+}
+.count:empty,
+.hdr__badge:empty,
+.bottombar__badge:empty,
+.hdr__badge[hidden],
+.bottombar__badge[hidden] { display: none; }
+
+/* The old #C8D3E0 field border was 1.52:1 — every form control on the site
+   failed WCAG 1.4.11. --bd-field is --n-450 at 3.19:1. */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="search"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+  inline-size: 100%;
+  min-block-size: 48px;
+  padding-inline: var(--s-3);
+  border: var(--bd-field);
+  border-radius: var(--r-sm);
+  background: var(--n-0);
+  color: var(--n-900);
+  /* 16px minimum. Below it iOS Safari zooms the page on focus. */
+  font-size: var(--t-400);
+  line-height: var(--lh-400);
+  transition: border-color var(--d-1) linear;
+}
+textarea {
+  padding-block: var(--s-2);
+  min-block-size: 96px;
+  resize: vertical;
+  line-height: var(--lh-body);
+}
+select {
+  /* 16px, like every other control that takes focus. A select's label would
+     sit better at the chrome step, but iOS Safari zooms the page on focus for
+     a select under 16px exactly as it does for an input — and a viewport jump
+     the shopper did not ask for costs more than two pixels of type. */
+  font-size: var(--t-400);
+  font-weight: var(--w-medium);
+  line-height: 1.45;
+  padding-inline-end: var(--s-6);
+}
+input::placeholder,
+textarea::placeholder { color: var(--n-500); opacity: 1; }
+
+@media (hover: hover) and (pointer: fine) {
+  input:hover, textarea:hover, select:hover { border-color: var(--n-600); }
+}
+
+/* The border never changes on focus: the ring is the signal. */
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background: var(--n-100);
+  color: var(--n-600);
+  border-color: var(--n-300);
+  cursor: default;
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border-width: 2px;
+  border-color: var(--danger);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  inline-size: 22px;
+  min-inline-size: 22px;
+  block-size: 22px;
+  min-block-size: 22px;
+  padding: 0;
+  border: 2px solid var(--n-450);
+  background: var(--n-0);
+}
+input[type="checkbox"] { border-radius: var(--r-xs); }
+input[type="radio"]    { border-radius: var(--r-circle); }
+input[type="checkbox"] { display: inline-grid; place-items: center; }
+input[type="checkbox"]:checked,
+input[type="radio"]:checked { background: var(--brand); border-color: var(--brand); }
+/* A drawn check: no dictionary string to go missing, no file to 404. clip-path
+   rather than two rotated borders, which mirror under RTL. */
+input[type="checkbox"]:checked::after {
+  content: "";
+  inline-size: 12px;
+  block-size: 12px;
+  background: var(--n-0);
+  clip-path: polygon(14% 44%, 0 62%, 40% 100%, 100% 24%, 84% 8%, 38% 70%);
+}
+input[type="radio"]:checked { box-shadow: inset 0 0 0 4px var(--n-0); }
+
+
+/* ===========================================================================
+   5. HEADER
+   ---------------------------------------------------------------------------
+   Static on a phone at 48px — it scrolls away and never comes back. Sticky at
+   --chrome from 768 up. Phone sticky chrome is 56px, the bottom bar, against
+   200px (23.7% of 844) before. The emitter's own sub-elements are named
+   alongside the contract's: a sheet that styles only the contract's names
+   and not the DOM's styles nothing.
+   ======================================================================== */
+
+.hdr {
+  background: var(--n-950);
+  color: var(--n-0);
+  padding-inline: var(--inset);
+}
+.hdr,
+.hdr > .container,
+.hdr__in {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-block-size: 48px;
+}
+.hdr > .container,
+.hdr__in {
+  flex: 1;
+  min-inline-size: 0;
+  max-inline-size: var(--container);
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+.hdr a,
+.hdr button { color: var(--n-0); }
+
+/* The lockup never shrinks; everything else in the row gives way first. */
+.hdr__brand,
+.hdr__lockup,
+.hdr__mark {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex: none;
+  min-block-size: 44px;
+  color: var(--brand-tint);   /* 8.6:1 on the dark slab */
+}
+.hdr__brand { min-inline-size: 0; }
+svg.hdr__mark,
+.hdr__mark svg,
+.hdr__lockup > svg,
+.ftr__lockup > svg {
+  display: block;
+  inline-size: 24px;
+  block-size: 24px;
+  flex: none;
+  min-block-size: 0;
+}
+
+.hdr__word {
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: var(--t-500);
+  font-weight: var(--w-bold);
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--n-0);
+}
+
+/* One control at both sizes. On a phone it is the 44×44 magnifier and the
+   field has zero inline size — focusable and in the accessibility tree, NOT
+   display:none, so the bottom bar's search slot can still focus() it and
+   :focus-within opens it in place. From 768 up it is a real field, capped. */
+.hdr__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex: 0 1 auto;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  padding-inline: var(--s-2);
+  border-radius: var(--r-md);
+}
+.hdr__searchicon,
+.hdr__search > button:first-child .icon { flex: none; color: var(--n-400); }
+.hdr__search > button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.hdr__field,
+.hdr__search input {
+  inline-size: 0;
+  min-inline-size: 0;
+  padding-inline: 0;
+  border: 0;
+  background: none;
+  color: var(--n-0);
+  min-block-size: 44px;
+}
+.hdr__field::placeholder,
+.hdr__search input::placeholder { color: var(--n-400); }
+.hdr__search:focus-within {
+  flex: 1 1 auto;
+  background: rgba(255, 255, 255, .1);
+}
+.hdr__search:focus-within .hdr__field,
+.hdr__search:focus-within input { inline-size: 100%; }
+.hdr__clear { flex: none; }
+.hdr__clear[hidden] { display: none; }
+
+/* Hangs off the field; never part of the 48px row. */
+.suggest {
+  position: absolute;
+  inset-block-start: calc(100% + var(--s-1));
+  inset-inline: 0;
+  z-index: var(--z-sticky);
+  max-block-size: min(60vh, 420px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: var(--bd-hair);
+  border-radius: var(--r-md);
+  background: var(--n-0);
+  color: var(--n-900);
+  box-shadow: var(--sh-2);
+}
+.suggest[hidden] { display: none; }
+.suggest__kind {
+  display: block;
+  padding: var(--s-2) var(--s-3) var(--s-1);
+  font-size: var(--t-100);
+  font-weight: var(--w-medium);
+  line-height: var(--lh-100);
+  color: var(--n-600);
+}
+.suggest__row {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  inline-size: 100%;
+  min-block-size: 48px;
+  padding-inline: var(--s-3);
+  text-align: start;
+  color: var(--n-900);
+}
+.suggest__row img { inline-size: 40px; block-size: 40px; object-fit: contain; flex: none; }
+@media (hover: hover) and (pointer: fine) {
+  .suggest__row:hover { background: var(--brand-subtle); }
+}
+.suggest__row[aria-selected="true"] { background: var(--brand-subtle); }
+.suggest__text {
+  flex: 1;
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+}
+.suggest__meta { flex: none; font-size: var(--t-200); color: var(--n-600); }
+
+/* --- actions --------------------------------------------------------------- */
+.hdr__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-1);
+  margin-inline-start: auto;
+  flex: 0 1 auto;
+  min-inline-size: 0;
+}
+.hdr__actions > button,
+.hdr__actions > a,
+.hdr__act {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+@media (hover: hover) and (pointer: fine) {
+  .hdr__actions > button:hover,
+  .hdr__actions > a:hover { background: rgba(255, 255, 255, .12); }
+}
+
+.hdr__lang { display: flex; align-items: center; flex: 0 1 auto; min-inline-size: 0; }
+.hdr__actions select {
+  min-block-size: 44px;
+  min-inline-size: 0;
+  max-inline-size: 104px;
+  padding-inline: var(--s-2) var(--s-5);
+  border-color: rgba(255, 255, 255, .28);
+  background: transparent;
+  color: var(--n-0);
+}
+.hdr__actions select option { color: var(--n-900); background: var(--n-0); }
+
+@media (min-width: 768px) {
+  .hdr {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: var(--z-sticky);
+  }
+  .hdr,
+  .hdr > .container,
+  .hdr__in { min-block-size: var(--chrome); gap: var(--s-4); }
+  .hdr__search {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    max-inline-size: 560px;
+    background: rgba(255, 255, 255, .1);
+    padding-inline: var(--s-3);
+  }
+  .hdr__search .hdr__field,
+  .hdr__search input { inline-size: 100%; }
+  .hdr__actions select { max-inline-size: none; }
+}
+
+/* ===========================================================================
+   6. BOTTOM BAR
+   ---------------------------------------------------------------------------
+   Four slots, phone only: departments · search · cart · WhatsApp. It exists in
+   exchange for deleting the sticky top bar and the floating WhatsApp disc,
+   which covered a product link at all six measured breakpoints.
+   ======================================================================== */
+
+.bottombar {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: var(--z-bottombar);
+  display: flex;
+  background: var(--n-0);
+  border-block-start: var(--bd-hair);
+  padding-block-end: env(safe-area-inset-bottom, 0px);
+  transition: transform var(--d-2) var(--e-out);
+}
+.bottombar[hidden] { display: none; }
+/* Steps aside for any sheet: two chromes at once is worse than one. */
+html.has-overlay .bottombar { transform: translateY(100%); }
+
+.bottombar__slot {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-inline-size: 0;
+  min-block-size: 56px;
+  padding-block: var(--s-1);
+  color: var(--n-700);
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+  line-height: 20px;
+  text-align: center;
+  touch-action: manipulation;
+}
+.bottombar__slot .icon { inline-size: 22px; block-size: 22px; }
+.bottombar__slot span {
+  max-inline-size: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Pinned to the icon's edge, not the slot's: a badge at the corner of a
+   fifth-width slot reads as belonging to the next slot. */
+.bottombar__slot .count,
+.bottombar__slot .bottombar__badge {
+  inset-block-start: var(--s-1);
+  inset-inline-end: calc(50% - 22px);
+}
+
+/* Copper ink plus a 2px block-start rule, so the state survives greyscale. A
+   pseudo-element, not a box-shadow, which would overwrite the focus halo. */
+.bottombar__slot.is-current {
+  color: var(--brand-ink);
+  font-weight: var(--w-bold);
+}
+.bottombar__slot.is-current::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: 2px;
+  background: var(--brand);
+}
+/* The one coloured slot. Green is reserved for WhatsApp. */
+.bottombar__slot--wa,
+.bottombar__slot.btn--wa {
+  background: none;
+  color: var(--wa-ink);          /* 5.44:1 */
+  border-radius: 0;
+}
+
+@media (min-width: 768px) {
+  .bottombar { display: none; }
+}
+
+
+/* ===========================================================================
+   7. HOME SECTIONS
+   ---------------------------------------------------------------------------
+   No hero. noon, jarir and amazon.ae put their first category tile at y=168,
+   ≈200 and 245; ours was at 2,137 behind a 794px hero selling one power bank
+   in a shop that will sell inverters. The budget is a product card above the
+   fold on a 390×844 phone.
+   ======================================================================== */
+
+/* One line of scale and authority in place of the benefits strip and the
+   hero's three chips: 179px of claims become 40px of fact. */
+.storeline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 var(--s-1);
+  min-block-size: 40px;
+  max-inline-size: none;
+  color: var(--n-600);
+  font-size: var(--t-200);
+  line-height: var(--lh-200);
+}
+.storeline__n { font-weight: var(--w-bold); color: var(--n-900); }
+.storeline__dot { color: var(--n-400); }
+
+/* --- the department directory -------------------------------------------
+   Eight tiles now, twelve to fourteen later. `auto-fill` means the count is not
+   a layout parameter: the grid reflows and the tile does not move. */
+.depts {
+  display: grid;
+  /* auto-FIT, not auto-fill: identical on a phone, but at 1280 auto-fill leaves
+     two empty 1fr tracks and the eight departments bunch at one end. The count
+     is still not a layout parameter. */
+  grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
+  gap: var(--s-2);
+}
+/* Icon block, label and count INLINE, so they flow as one centred run. Three
+   stacked rows do not fit a 76px tile once the label gets the two lines that
+   "Telefon Aksesuarları" needs; one wrapped run does, count still visible. */
+.depts__tile {
+  display: block;
+  align-content: center;
+  min-block-size: 76px;
+  padding: var(--s-1);
+  border: var(--bd-hair);
+  border-radius: var(--r-md);
+  background: var(--n-0);
+  color: var(--n-900);
+  /* On the tile, not only on the inline label: the block's own strut sets the
+     line box, and the body's 28px strut made a two-line label 54px instead of
+     40 — which took the one 16-character department from 76 to 88 and the whole
+     directory from 244 to 256. */
+  font-size: var(--t-200);
+  line-height: 20px;
+  text-align: center;
+  touch-action: manipulation;
+}
+@media (hover: hover) and (pointer: fine) {
+  .depts__tile:hover { border-color: var(--brand-line); background: var(--brand-subtle); }
+}
+.depts__tile[aria-current="page"],
+.depts__tile.is-on {
+  border-color: var(--brand);
+  background: var(--brand-subtle);
+  color: var(--brand-ink);
+}
+.depts__icon {
+  display: block;
+  inline-size: 22px;
+  block-size: 22px;
+  margin-inline: auto;
+  color: var(--n-700);
+}
+.depts__tile[aria-current="page"] .depts__icon,
+.depts__tile.is-on .depts__icon { color: var(--brand); }
+.depts__label {
+  display: inline;
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+  line-height: 20px;
+}
+.depts__count {
+  display: inline;
+  margin-inline-start: var(--s-1);
+  font-size: var(--t-200);
+  font-weight: var(--w-normal);
+  line-height: 20px;
+  color: var(--n-600);
+  white-space: nowrap;
+}
+/* Under 768 the count is clipped, not removed: it stays in the accessibility
+   tree and a screen reader still hears "62". Two of the eight Arabic labels and
+   five of the eight Turkish ones already need two lines in a 106px tile, and a
+   third line takes the tile from 76 to 88 and the directory from 244 to 280 —
+   which is 36px of the 372px budget that has to hold a product card above an
+   844px fold. From 768 up the label fits one line and the count returns. */
+@media (max-width: 767px) {
+  .depts > .depts__tile .depts__count {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    margin-inline-start: 0;
+  }
+}
+
+/* --- a rail -------------------------------------------------------------- */
+.rail { display: block; }
+.rail__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  min-block-size: 40px;
+  margin-block-end: var(--s-3);
+}
+.rail__head h2 {
+  font-size: var(--t-500);
+  line-height: var(--lh-500);
+  font-weight: var(--w-bold);
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rail__more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  flex: none;
+  min-block-size: 44px;
+  padding-inline: var(--s-2);
+  color: var(--brand-ink);
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+}
+.rail__more .icon { inline-size: 18px; block-size: 18px; }
+
+/* A scroller, not a grid: height must not depend on the card count. */
+.rail__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 46%;
+  gap: var(--s-3);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  /* Without this the track parks 6px off and clips the first card. */
+  scroll-padding: 6px;
+  scrollbar-width: none;
+  /* The ring on the first and last card must not be clipped by the scroller. */
+  padding: 6px;
+  margin: -6px;
+}
+.rail__track::-webkit-scrollbar { display: none; }
+.rail__track > * { scroll-snap-align: start; }
+
+@media (min-width: 768px) {
+  .rail__track { grid-auto-columns: 31%; gap: var(--s-4); }
+}
+@media (min-width: 1280px) {
+  .rail__track { grid-auto-columns: 23%; gap: var(--s-5); }
+}
+@media (min-width: 1600px) {
+  .rail__track { grid-auto-columns: 19%; }
+}
+
+/* Nine tiles, never more, at seven brands or forty: the block height is a
+   constant and the home page does not grow with the registry. */
+.brandstrip[hidden] { display: none; }
+.brandstrip__track,
+.brandstrip:not(:has(.brandstrip__track)) {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-2);
+}
+@media (min-width: 768px) {
+  .brandstrip__track,
+  .brandstrip:not(:has(.brandstrip__track)) { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@media (min-width: 1280px) {
+  .brandstrip__track,
+  .brandstrip:not(:has(.brandstrip__track)) { grid-template-columns: repeat(9, minmax(0, 1fr)); }
+}
+
+.brandtile {
+  display: grid;
+  place-items: center;
+  min-block-size: 64px;
+  padding: var(--s-2);
+  border: var(--bd-hair);
+  border-radius: var(--r-md);
+  background: var(--n-0);
+  color: var(--n-900);
+  touch-action: manipulation;
+}
+@media (hover: hover) and (pointer: fine) {
+  .brandtile:hover { border-color: var(--brand-line); }
+}
+.brandtile img {
+  max-block-size: 32px;
+  max-inline-size: 100%;
+  object-fit: contain;
+}
+.brandtile--all { border-style: dashed; border-color: var(--n-450); }
+/* `logo:null` means render a wordmark, not an error: a brand added with only a
+   catalogue entry looks deliberate on day one. */
+.brandtile__word {
+  display: grid;
+  place-items: center;
+  max-inline-size: 14ch;
+  font-size: var(--t-300);
+  font-weight: var(--w-bold);
+  line-height: 1.2;
+  text-align: center;
+  text-transform: none;    /* never uppercase a proper noun */
+  overflow-wrap: anywhere;
+}
+
+/* --- the trust block ----------------------------------------------------- */
+.trust {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-3);
+}
+@media (min-width: 768px) {
+  .trust { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); }
+}
+.trust__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  border: var(--bd-hair);
+  border-radius: var(--r-lg);
+  background: var(--n-0);
+}
+.trust__item .icon { color: var(--brand); }
+.trust__item { flex-wrap: wrap; }
+.trust__item strong,
+.trust__item b {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  font-size: var(--t-300);
+  font-weight: var(--w-bold);
+  line-height: var(--lh-300);
+  color: var(--n-900);
+}
+.trust__item > span,
+.trust__item > span,
+.trust__item span,
+.trust__item p {
+  flex: 1 1 100%;
+  display: block;
+  margin-block-start: var(--s-1);
+  font-size: var(--t-200);
+  line-height: var(--lh-body);
+  color: var(--n-600);
+  max-inline-size: var(--measure);
+}
+.trust__item .icon { flex: none; }
+/* The strongest thing the shop can say, and the product page never said it. */
+.trust__note {
+  grid-column: 1 / -1;
+  margin-block-start: var(--s-3);
+  font-size: var(--t-200);
+  line-height: var(--lh-body);
+  color: var(--n-600);
+  max-inline-size: var(--measure);
+}
+
+
+/* ===========================================================================
+   8. CARD AND GRID
+   ---------------------------------------------------------------------------
+   The text block below the photo is a FIXED height — 146px on a phone, 154
+   from 768 up — composed row by row:
+     brand 30 · name 52 (2×24, clamped) · price 34 · note 30 = 146
+     brand 32 · name 54 (2×25, clamped) · price 36 · note 32 = 154
+   176 of 312 Arabic titles run past two lines; without the reserved box the
+   grid had seven row heights and a 74px spread inside one row. Fixed by
+   construction, so CLS from the grid is zero.
+   ======================================================================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3);
+}
+@media (min-width: 768px)  { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); } }
+@media (min-width: 1280px) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-5); } }
+@media (min-width: 1600px) { .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+
+.pcard {
+  position: relative;
+  display: block;
+  background: var(--n-0);
+  border: var(--bd-hair);
+  border-radius: var(--r-lg);
+  /* Safe only because the height above is deterministic: a wrong
+     contain-intrinsic-size is what causes scrollbar jitter. */
+  content-visibility: auto;
+  /* Measured heights: 304@360 · 319@390 · 343@430 · 383@768 · 468@1024 ·
+     554@1279 · 443 at every width 1280-1599 (the container caps at 1280) ·
+     381 at 1600+. Five steps, because an estimate more than ~60px out is what
+     makes the scrollbar jump as a card comes into view. */
+  contain-intrinsic-size: auto 310px;
+}
+@media (min-width: 768px)  { .pcard { contain-intrinsic-size: auto 425px; } }
+@media (min-width: 1024px) { .pcard { contain-intrinsic-size: auto 510px; } }
+@media (min-width: 1280px) { .pcard { contain-intrinsic-size: auto 443px; } }
+@media (min-width: 1600px) { .pcard { contain-intrinsic-size: auto 381px; } }
+
+/* No hover lift, no image zoom, no shadow transition: a 5px lift on 24 cards
+   is what made the old scroll feel complicated, and on touch the state sticks
+   after the tap and leaves a card permanently raised. */
+@media (hover: hover) and (pointer: fine) {
+  .pcard:hover { border-color: var(--n-300); }
+  .pcard:hover .pcard__name { color: var(--brand-ink); }
+}
+
+.pcard__hit {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  touch-action: manipulation;
+  border-radius: var(--r-lg);
+}
+/* The link fills a paint-contained card, so the ring draws inward. */
+.pcard__hit:focus-visible {
+  outline: 3px solid var(--focus-ink);
+  outline-offset: -5px;
+  box-shadow: inset 0 0 0 2px var(--focus-halo);
+}
+
+/* Pure white: the 1,616 supplier cut-outs are on opaque white, and any other
+   plate colour draws a visible rectangle around every product. */
+.pcard__photo {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  background: var(--n-0);
+  border-block-end: var(--bd-hair);
+  border-start-start-radius: var(--r-lg);
+  border-start-end-radius: var(--r-lg);
+  overflow: hidden;
+}
+.pcard__photo img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: contain;
+  object-position: center;
+  /* Percentage, not pixels: same apparent size on a 162px and a 315px card. */
+  padding: 10%;
+}
+/* Behind the photo, and both the waiting state and the missing-photo state —
+   neither is an error. Brand-neutral, unlike the sixteen deleted drawings that
+   had ANKER, soundcore, eufy, NEBULA or SOLIX baked in as SVG text. No fade:
+   24 decoding photos would be 24 animating layers per scroll. */
+.pcard__glyph {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  inline-size: 38%;
+  block-size: 38%;
+  color: var(--n-200);
+}
+.pcard__photo img { position: relative; z-index: 1; }
+/* core.js removes a 404'd <img> and marks the holder. */
+.pcard__photo.is-missing { background: var(--n-50); }
+
+.pcard__brand {
+  display: block;
+  block-size: 30px;
+  padding: var(--s-2) var(--s-3) 0;
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+  line-height: 22px;
+  color: var(--n-600);
+  text-transform: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pcard__name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  /* 48px of line boxes plus 4px above and 4px below. The bottom 4 is not
+     decoration: two lines of Arabic put descenders and diacritics about 2px
+     past the last line box, and with overflow:hidden the box clipped them on
+     32 of 36 cards — sheared Arabic descenders being the most visible sign
+     that a page was not built for the language. */
+  block-size: 56px;
+  min-block-size: 56px;            /* reserved, so a 1-line title is the same height */
+  padding: var(--s-1) var(--s-3);
+  font-size: var(--t-300);
+  font-weight: var(--w-medium);
+  line-height: 24px;               /* 2 Arabic lines need 23.5px at 15px */
+  color: var(--n-900);
+}
+.pcard__name bdi { unicode-bidi: isolate; }
+
+/* One line, never two: the struck price wrapped on all 25 discounted cards in
+   the old grid, which made a discounted card 34px taller. */
+.pcard__price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  block-size: 34px;
+  padding: var(--s-2) var(--s-3) 0;
+  line-height: 26px;
+}
+.pcard__price b {
+  flex: none;
+  /* 16px on a phone, 19–21 from 768. $1,099.99 must sit beside $1,399.99 in
+     132px on a 360px card and nine products are four figures; at --t-500 the
+     pair is 171px and the old price loses its leading "$1", which reads as a
+     LOWER number than the live one. */
+  font-size: var(--t-400);
+  font-weight: var(--w-bold);
+  color: var(--n-950);
+}
+.pcard__price del {
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* An LTR price in an RTL paragraph: without this the ellipsis eats the
+     leading "$1" instead of the trailing decimals. */
+  direction: ltr;
+  text-align: start;
+  font-size: var(--t-200);
+  font-weight: var(--w-normal);
+  color: var(--n-500);                    /* 4.82:1 */
+  text-decoration-line: line-through;
+  text-decoration-thickness: 1px;
+  text-decoration-color: currentColor;
+}
+
+/* Always rendered, even empty: reserving it is what makes every card the same
+   height in stock, discounted, or offered in four colours. */
+.pcard__note {
+  display: block;
+  block-size: 30px;
+  padding: 0 var(--s-3) var(--s-2);
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+  line-height: 22px;
+  color: var(--brand-ink);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 768 up: 32 + 54 + 36 + 32 = 154. Nothing else changes, so one design holds
+   from a 162px card to a 315px one. */
+@media (min-width: 768px) {
+  .pcard__brand {
+    block-size: 32px;
+    padding: var(--s-2) var(--s-4) 0;
+    line-height: 24px;
+  }
+  .pcard__name {
+    block-size: 58px;            /* 2 × 25 line boxes + 4 above + 4 below */
+    min-block-size: 58px;
+    padding: var(--s-1) var(--s-4);
+    font-size: var(--t-400);
+    line-height: 25px;
+  }
+  .pcard__price {
+    block-size: 36px;
+    padding: var(--s-2) var(--s-4) 0;
+    line-height: 28px;
+  }
+  .pcard__price b { font-size: var(--t-500); }
+  .pcard__note {
+    block-size: 32px;
+    padding: 0 var(--s-4) var(--s-2);
+    line-height: 24px;
+  }
+}
+
+/* The photo is not greyed and not barred: greying makes the product look
+   defective, and a black bar is the loudest thing in a 226-card grid on the one
+   card that cannot convert. The price steps back, the note says so, the card
+   sorts last. The emitter puts `is-out` on the note, hence the :has(). */
+.pcard.is-out .pcard__price b,
+.pcard:has(.pcard__note.is-out) .pcard__price b {
+  color: var(--n-600);
+  font-weight: var(--w-medium);
+}
+.pcard.is-out .pcard__note,
+.pcard__note.is-out {
+  color: var(--warning);
+  font-weight: var(--w-bold);
+  border-inline-start: 3px solid var(--warning-line);
+  padding-inline-start: var(--s-2);
+  margin-inline-start: var(--s-3);
+}
+@media (min-width: 768px) {
+  .pcard.is-out .pcard__note,
+  .pcard__note.is-out { margin-inline-start: var(--s-4); }
+}
+
+/* The price fell: solid --danger-solid, white text, at the reading-start
+   corner — opposite the favourite, so the old collision (88% of discounted
+   cards) is structurally impossible rather than patched. */
+.pcard__off {
+  position: absolute;
+  z-index: 2;
+  inset-block-start: var(--s-2);
+  inset-inline-start: var(--s-2);
+  padding: 3px 7px;
+  border-radius: var(--r-xs);
+  background: var(--danger-solid);
+  color: var(--n-0);
+  font-size: var(--t-100);
+  font-weight: var(--w-medium);
+  line-height: 1.3;
+}
+.pcard__off:empty { display: none; }
+
+/* 44×44 around a 36px circle, inset 8px so the halo is never clipped. A miss
+   opens the product — benign, not a silent cart mutation. */
+.pcard__fav {
+  position: absolute;
+  z-index: 3;
+  inset-block-start: var(--s-2);
+  inset-inline-end: var(--s-2);
+  inline-size: 44px;
+  block-size: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-circle);
+  color: var(--n-600);
+  touch-action: manipulation;
+}
+.pcard__fav::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: var(--r-circle);
+  background: var(--n-0);
+  border: var(--bd-hair);
+}
+.pcard__fav .icon { position: relative; inline-size: 20px; block-size: 20px; }
+.pcard__fav[aria-pressed="true"] { color: var(--danger); }
+.pcard__fav[aria-pressed="true"]::before {
+  background: var(--danger-bg);
+  border-color: var(--danger-line);
+}
+
+
+/* ===========================================================================
+   9. LISTING SURFACES — facet bar, pager
+   ---------------------------------------------------------------------------
+   Paging, not infinite scroll. The old page fired "load more" from a scroll
+   observer AND a rAF handler: one flick grew the document to 49,772px with
+   230 images in one DOM, measured CLS 0.546 against a budget of 0.05.
+   ======================================================================== */
+
+.facetbar {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-sticky);
+  background: var(--n-25);
+  border-block-end: var(--bd-hair);
+}
+@media (min-width: 768px) {
+  .facetbar { inset-block-start: var(--chrome); }
+}
+/* The bar is the row; its background bleeds through the parent's gutter. */
+.facetbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  min-block-size: 52px;
+  padding-block: var(--s-2);
+  margin-inline: calc(var(--inset) * -1);
+  padding-inline: var(--inset);
+}
+.facetbar[hidden] { display: none; }
+.facetbar > .container {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  inline-size: 100%;
+  padding-inline: 0;
+}
+.facetbar__chips {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex: 1 1 100%;
+  min-inline-size: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  padding: 6px;
+  margin: -6px;
+}
+.facetbar__chips::-webkit-scrollbar { display: none; }
+.facetbar__chips:empty { display: none; }
+.facetbar__sort { display: flex; align-items: center; flex: none; }
+.facetbar__sort select { min-inline-size: 140px; min-block-size: 44px; }
+.facetbar__result {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  max-inline-size: none;
+  margin-inline-start: auto;
+  text-align: end;
+  color: var(--n-600);
+  font-size: var(--t-200);
+  line-height: var(--lh-200);
+}
+
+.facetbar__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  flex: none;
+  min-block-size: 44px;
+  padding-inline: var(--s-3);
+  border: var(--bd-field);
+  border-radius: var(--r-pill);
+  background: var(--n-0);
+  color: var(--n-700);
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+  white-space: nowrap;
+  touch-action: manipulation;
+}
+.facetbar__chip.is-on,
+.facetbar__chip[aria-pressed="true"] {
+  background: var(--brand-subtle);
+  border-color: var(--brand);
+  color: var(--brand-ink);
+  font-weight: var(--w-bold);
+}
+.facetbar__chip .icon { inline-size: 16px; block-size: 16px; }
+
+.facetbar__count {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  min-inline-size: 22px;
+  block-size: 22px;
+  padding-inline: var(--s-1);
+  border-radius: var(--r-pill);
+  background: var(--brand);
+  color: var(--n-0);
+  font-size: var(--t-200);
+  font-weight: var(--w-bold);
+  line-height: 1;
+}
+.facetbar__count[hidden] { display: none; }
+
+/* --- the pager ----------------------------------------------------------- */
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  padding-block: var(--s-5);
+}
+.pager__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-1);
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  padding-inline: var(--s-3);
+  border: var(--bd-field);
+  border-radius: var(--r-sm);
+  background: var(--n-0);
+  color: var(--n-900);
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+  touch-action: manipulation;
+}
+.pager__link[aria-current="page"] {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--n-0);
+  font-weight: var(--w-bold);
+}
+.pager__link[aria-disabled="true"] {
+  background: var(--n-100);
+  border-color: var(--n-300);
+  color: var(--n-600);
+  cursor: default;
+}
+.pager__link .icon { inline-size: 18px; block-size: 18px; }
+.pager__nav { font-weight: var(--w-bold); }
+.pager__gap {
+  display: inline-grid;
+  place-items: center;
+  min-inline-size: 24px;
+  min-block-size: 44px;
+  color: var(--n-500);
+  font-size: var(--t-200);
+}
+/* One optional "show 24 more" to 48, then the numbered pager takes over. */
+.pager__more { flex: 1 1 100%; }
+
+
+/* ===========================================================================
+   10. PRODUCT PAGE
+   ---------------------------------------------------------------------------
+   An in-flow page with the site's own header, not a fixed overlay. The colour
+   chooser sits ABOVE both buttons in DOM order: it was 419px below "add to
+   cart", and tapping a colour reset the scroll from 1000 to 0.
+   ======================================================================== */
+
+.pdp {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-5);
+  padding-block-end: var(--s-8);
+}
+@media (min-width: 900px) {
+  .pdp {
+    grid-template-columns: minmax(0, 507px) minmax(0, 1fr);
+    gap: var(--s-7);
+    align-items: start;
+  }
+}
+
+/* Full-bleed 1:1 snap carousel, box reserved from first paint. */
+.pdp__gallery {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  margin-inline: calc(var(--inset) * -1);
+  background: var(--n-0);
+}
+.pdp__gallery::-webkit-scrollbar { display: none; }
+@media (min-width: 900px) {
+  .pdp__gallery {
+    margin-inline: 0;
+    border: var(--bd-hair);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+}
+
+.pdp__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background: var(--n-0);
+}
+.pdp__slide img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: contain;
+  padding: 8%;
+}
+
+.pdp__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  min-inline-size: 0;
+}
+.pdp__info > .meta:first-child { color: var(--brand-ink); }
+.pdp__info h1 {
+  font-size: var(--t-700);
+  line-height: var(--lh-700);
+  font-weight: var(--w-bold);
+  max-inline-size: 22ch;
+}
+.pdp__info > p {
+  font-size: var(--t-300);
+  line-height: var(--lh-body);
+  color: var(--n-600);
+  max-inline-size: var(--measure);
+}
+
+/* Price, old price, discount and availability on ONE line: merging them
+   removed a 32px row and a 48px gap and lifted the trust row above the fold. */
+.pdp__price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-3);
+}
+.pdp__price b {
+  font-size: var(--t-600);
+  font-weight: var(--w-bold);
+  line-height: var(--lh-600);
+  color: var(--n-950);
+}
+.pdp__price del {
+  font-size: var(--t-200);
+  color: var(--n-500);
+  text-decoration-line: line-through;
+  text-decoration-thickness: 1px;
+  text-decoration-color: currentColor;
+}
+.pdp__price .chip {
+  min-block-size: 28px;
+  padding-inline: var(--s-3);
+  font-size: var(--t-100);
+  font-weight: var(--w-medium);
+}
+/* The only place --success may appear. */
+.pdp__price .chip.is-on {
+  background: var(--success-bg);
+  border-color: var(--success-line);
+  color: var(--success);
+}
+.pdp__price .chip.is-out {
+  background: var(--warning-bg);
+  border-color: var(--warning-line);
+  border-style: dashed;
+  color: var(--warning);
+}
+.pdp__price .pcard__off { position: static; }
+
+/* A rail, not wrapping chips: thirteen swatches are 668px and scroll, so the
+   block is 48px instead of the 439px eight-row grid it replaces. */
+.pdp__variants {
+  display: flex;
+  gap: var(--s-2);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scroll-padding: 6px;
+  scrollbar-width: none;
+  padding: 6px;
+  margin: -6px;
+}
+.pdp__variants::-webkit-scrollbar { display: none; }
+
+.swatch {
+  position: relative;
+  flex: none;
+  inline-size: 44px;
+  block-size: 44px;
+  padding: 0;
+  border: 1px solid var(--n-450);
+  border-radius: var(--r-md);
+  background: var(--n-0);
+  overflow: hidden;
+  scroll-snap-align: center;
+  touch-action: manipulation;
+}
+.swatch img { inline-size: 100%; block-size: 100%; object-fit: contain; }
+.swatch[aria-pressed="true"],
+.swatch[aria-current="true"],
+.swatch.is-on {
+  border-color: var(--brand);
+  border-width: 2px;
+}
+/* Dashed plus a struck diagonal, never opacity. */
+.swatch[aria-disabled="true"],
+.swatch.is-out {
+  border-style: dashed;
+  border-color: var(--n-450);
+}
+.swatch[aria-disabled="true"]::after,
+.swatch.is-out::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right,
+    transparent calc(50% - 1px), var(--n-600) calc(50% - 1px),
+    var(--n-600) calc(50% + 1px), transparent calc(50% + 1px));
+}
+
+.pdp__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+}
+.pdp__actions .btn--primary,
+.pdp__actions .btn--wa { flex: 1 1 200px; }
+.pdp__actions .btn--secondary { flex: 1 1 100%; }
+
+/* The 3px accent rule is the anti-wall device: at 4.73 pairs per product the
+   reader gets five anchored blocks instead of a 546px run. */
+.pdp__specs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-3);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
+}
+@media (min-width: 640px) {
+  .pdp__specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.spec-card {
+  padding: var(--s-3) var(--s-4);
+  border: var(--bd-hair);
+  border-radius: var(--r-md);
+  background: var(--n-0);
+}
+.spec-card dt {
+  margin-block-end: var(--s-1);
+  padding-inline-start: var(--s-2);
+  border-inline-start: 3px solid var(--brand);
+  font-size: var(--t-300);
+  font-weight: var(--w-medium);
+  line-height: 24px;
+  color: var(--n-900);
+}
+.spec-card dd {
+  font-size: var(--t-200);
+  font-weight: var(--w-normal);
+  line-height: var(--lh-body);
+  color: var(--n-600);
+  max-inline-size: var(--measure);
+}
+
+
+/* ===========================================================================
+   11. SHEETS AND DIALOGS
+   ---------------------------------------------------------------------------
+   Travel is `transform`, never `inset-inline-end`: the old cart animated a
+   430px surface with a layout property for 300ms. The UA constrains <dialog>
+   with its own max-width, max-height, border and padding, so all four reset.
+   ======================================================================== */
+
+dialog.sheet {
+  max-inline-size: none;
+  max-block-size: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  inline-size: 100%;
+  background: var(--n-0);
+  color: var(--n-900);
+  z-index: var(--z-sheet);
+  overflow: visible;
+
+  /* Default: a bottom sheet. The phone case, and the fallback for .sheet--end
+     below 768 where a 440px side drawer is the whole viewport anyway. */
+  position: fixed;
+  inset-block: auto 0;
+  inset-inline: 0;
+  max-block-size: min(88vh, calc(100dvh - 56px));
+  border-start-start-radius: var(--r-xl);
+  border-start-end-radius: var(--r-xl);
+  box-shadow: var(--sh-3);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform var(--d-3) var(--e-in),
+              opacity var(--d-2) linear,
+              overlay var(--d-3) allow-discrete,
+              display var(--d-3) allow-discrete;
+}
+dialog.sheet[open] {
+  display: flex;
+  flex-direction: column;
+  transform: none;
+  opacity: 1;
+  transition-timing-function: var(--e-out);
+}
+@starting-style {
+  dialog.sheet[open] { transform: translateY(100%); opacity: 0; }
+}
+
+dialog.sheet::backdrop {
+  background: rgba(16, 13, 10, .48);
+  opacity: 0;
+  transition: opacity var(--d-2) linear,
+              overlay var(--d-2) allow-discrete,
+              display var(--d-2) allow-discrete;
+}
+dialog.sheet[open]::backdrop { opacity: 1; }
+@starting-style {
+  dialog.sheet[open]::backdrop { opacity: 0; }
+}
+
+/* --- the side drawer, ≥768 only ----------------------------------------- */
+@media (min-width: 768px) {
+  dialog.sheet--end {
+    /* Logical, not `inset: 0 0 0 auto`: the shorthand's fourth value is the
+       physical left, which pinned the drawer to the right edge in Arabic too. */
+    inset-block: 0;
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+    inline-size: min(440px, 100%);
+    max-inline-size: min(440px, 100%);
+    max-block-size: none;
+    block-size: 100%;
+    border-radius: 0;
+    /* +1 in LTR (end is the right), −1 in RTL (end is the left). */
+    transform: translateX(calc(var(--flip) * 100%));
+  }
+  @starting-style {
+    dialog.sheet--end[open] { transform: translateX(calc(var(--flip) * 100%)); }
+  }
+}
+
+/* --- the full-screen sheet ---------------------------------------------- */
+dialog.sheet--full {
+  inset-block: 0;
+  inset-inline: 0;
+  max-inline-size: none;
+  max-block-size: none;
+  block-size: 100%;
+  border-radius: 0;
+}
+
+/* --- the grab handle ----------------------------------------------------- */
+.sheet__handle {
+  flex: none;
+  inline-size: 36px;
+  block-size: 4px;
+  margin: var(--s-2) auto 0;
+  border-radius: var(--r-pill);
+  background: var(--n-300);
+}
+.sheet--end .sheet__handle,
+.sheet--full .sheet__handle { display: none; }
+@media (max-width: 767px) {
+  .sheet--end .sheet__handle { display: block; }
+}
+
+.sheet__head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-block-size: 56px;
+  padding-inline: var(--s-4);
+  border-block-end: var(--bd-hair);
+}
+.sheet__head h2,
+.sheet__head h3 {
+  flex: 1;
+  min-inline-size: 0;
+  font-size: var(--t-500);
+  line-height: var(--lh-500);
+  font-weight: var(--w-bold);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sheet__head button,
+.sheet__close,
+.sheet__back { flex: none; position: relative; display: grid; place-items: center; }
+.sheet__back[hidden] { display: none; }
+.sheet__head h2:focus-visible,
+.sheet__head h3:focus-visible { outline-offset: -2px; }
+
+.sheet__body {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--s-4);
+}
+
+.sheet__foot {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-4);
+  padding-block-end: max(var(--s-4), env(safe-area-inset-bottom, 0px));
+  border-block-start: var(--bd-hair);
+  background: var(--n-0);
+}
+
+/* A drilldown, never a grid of columns: height is rows × 56px and stays
+   bounded. Nine departments is 504px, fourteen is 784px and one scroll. */
+.deptrow {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  inline-size: 100%;
+  min-block-size: 56px;
+  padding-inline: var(--s-4);
+  border-block-end: var(--bd-hair);
+  background: var(--n-0);
+  color: var(--n-900);
+  text-align: start;
+  touch-action: manipulation;
+}
+@media (hover: hover) and (pointer: fine) {
+  .deptrow:hover { background: var(--brand-subtle); }
+}
+.deptrow[aria-current="page"],
+.deptrow.is-on { background: var(--brand-subtle); color: var(--brand-ink); }
+.deptrow .icon { flex: none; color: var(--n-500); }
+.deptrow .icon:first-child { color: var(--n-700); }
+.deptrow__label {
+  flex: 1;
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+}
+.deptrow__n { flex: none; font-size: var(--t-200); color: var(--n-600); }
+/* Pinned rows, not categories. */
+.deptrow--more { font-weight: var(--w-bold); color: var(--brand-ink); }
+
+.sheet .depts { grid-template-columns: minmax(0, 1fr); gap: 0; }
+.sheet .depts__tile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--s-3);
+  min-block-size: 56px;
+  padding-inline: var(--s-4);
+  border: 0;
+  border-block-end: var(--bd-hair);
+  border-radius: 0;
+  text-align: start;
+}
+.sheet .depts__icon { margin-inline: 0; flex: none; }
+.sheet .depts__label {
+  display: block;
+  flex: 1;
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: start;
+}
+.sheet .depts__count { display: block; flex: none; margin-inline-start: 0; }
+.sheet .depts__tile > .icon:last-child { flex: none; color: var(--n-500); }
+
+/* --- the filter sheet ---------------------------------------------------- */
+.facet { border-block-end: var(--bd-hair); padding-block: var(--s-3); }
+.facet:last-child { border-block-end: 0; }
+.facet > summary,
+.facet > h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+  min-block-size: 44px;
+  cursor: pointer;
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+  line-height: var(--lh-200);
+  color: var(--n-900);
+}
+.facet > summary::-webkit-details-marker { display: none; }
+.facet__row {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-block-size: 44px;
+  cursor: pointer;
+  font-size: var(--t-200);
+  line-height: var(--lh-200);
+}
+.facet__row input { flex: none; }
+.facet__row > span:first-of-type {
+  flex: 1;
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.facet__n { flex: none; color: var(--n-600); font-size: var(--t-200); }
+.facet__range { display: flex; align-items: center; gap: var(--s-3); }
+.facet__range input { min-inline-size: 0; }
+
+/* --- the lightbox -------------------------------------------------------- */
+#lightbox {
+  background: var(--n-950);
+  color: var(--n-0);
+}
+#lightbox .sheet__head { border-block-end-color: rgba(255, 255, 255, .12); }
+#lightbox .sheet__head button { color: var(--n-0); }
+#lightbox .sheet__body {
+  display: grid;
+  place-items: center;
+  padding: var(--s-2);
+  background: var(--n-950);
+}
+#lightbox img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+  object-fit: contain;
+}
+
+
+/* ===========================================================================
+   12. CART
+   ---------------------------------------------------------------------------
+   The steppers were 34×34, adjacent, with no gap between hit areas and
+   opposite outcomes — the highest-risk mis-tap on the site. 44×44 now, with
+   the quantity readout between them.
+   ======================================================================== */
+
+.cart__line {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: var(--s-3);
+  padding-block: var(--s-3);
+  border-block-end: var(--bd-hair);
+}
+.cart__line > a,
+.cart__line > .pcard__photo {
+  grid-row: span 2;
+  inline-size: 64px;
+  block-size: 64px;
+  border: var(--bd-hair);
+  border-radius: var(--r-sm);
+  background: var(--n-0);
+  overflow: hidden;
+}
+.cart__line img { inline-size: 100%; block-size: 100%; object-fit: contain; padding: 8%; }
+.cart__line strong,
+.cart__line .pcard__name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  block-size: auto;
+  min-block-size: 48px;
+  padding: 0;
+  font-size: var(--t-300);
+  font-weight: var(--w-medium);
+  line-height: 24px;
+  color: var(--n-900);
+}
+.cart__line .meta { display: block; }
+.cart__line b { font-size: var(--t-400); font-weight: var(--w-bold); color: var(--n-950); }
+.cart__line.is-out b { color: var(--n-600); }
+.cart__line.is-out .pcard__note,
+.cart__line .pcard__note { block-size: auto; padding: 0; white-space: normal; }
+
+.cart__line > .stepper { grid-column: 2; }
+
+/* 44×44 each, separated by the readout, so two opposite outcomes never share
+   a hit-area edge. */
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: var(--bd-field);
+  border-radius: var(--r-sm);
+  background: var(--n-0);
+  overflow: hidden;
+  inline-size: fit-content;
+}
+.stepper button {
+  position: relative;
+  inline-size: 44px;
+  block-size: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--n-900);
+  touch-action: manipulation;
+  transition: background-color var(--d-1) linear;
+}
+@media (hover: hover) and (pointer: fine) {
+  .stepper button:hover { background: var(--n-100); }
+}
+.stepper button:disabled,
+.stepper button[aria-disabled="true"] { color: var(--n-450); background: var(--n-100); cursor: default; }
+.stepper button:focus-visible { outline-offset: -4px; box-shadow: inset 0 0 0 2px var(--focus-halo); }
+.stepper .icon { inline-size: 18px; block-size: 18px; }
+.stepper output,
+.stepper input,
+.stepper span {
+  inline-size: 48px;
+  min-inline-size: 48px;
+  min-block-size: 44px;
+  display: grid;
+  place-items: center;
+  padding-inline: 0;
+  border: 0;
+  border-inline: var(--bd-hair);
+  border-radius: 0;
+  background: var(--n-0);
+  text-align: center;
+  font-size: var(--t-400);
+  font-weight: var(--w-bold);
+  line-height: var(--lh-400);
+}
+
+/* A destructive control never shares an edge with a quantity control. */
+.cart__line .btn--danger,
+.cart__line [data-remove] {
+  margin-inline-start: auto;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+}
+
+.cart__foot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  font-size: var(--t-300);
+  line-height: var(--lh-300);
+}
+.cart__foot > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  color: var(--n-600);
+}
+.cart__foot > div:last-of-type {
+  padding-block-start: var(--s-2);
+  border-block-start: var(--bd-hair);
+  color: var(--n-900);
+}
+.cart__foot b {
+  font-size: var(--t-500);
+  font-weight: var(--w-bold);
+  color: var(--n-950);
+}
+
+
+/* ===========================================================================
+   13. CHECKOUT
+   ---------------------------------------------------------------------------
+   Four required fields. The grand total is an expression, not a number —
+   "$559.94 + delivery" — truthful, impossible to misread, and not a warning,
+   so it frightens nobody.
+   ======================================================================== */
+
+.checkout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-5);
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .checkout { grid-template-columns: minmax(0, 1fr) minmax(0, 360px); gap: var(--s-7); }
+}
+
+.field { display: block; margin-block-end: var(--s-4); }
+.field__label {
+  display: block;
+  margin-block-end: var(--s-1);
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+  line-height: var(--lh-200);
+  color: var(--n-900);
+}
+.field__label[data-optional]::after,
+.field__label .meta { color: var(--n-600); font-weight: var(--w-normal); }
+
+.field__error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-1);
+  margin-block-start: var(--s-1);
+  font-size: var(--t-100);
+  line-height: var(--lh-100);
+  font-weight: var(--w-medium);
+  color: var(--danger);
+}
+.field__error:empty { display: none; }
+.field__error .icon { inline-size: 16px; block-size: 16px; flex: none; }
+
+/* One method, presented as a choice: not paying a stranger up front is a
+   reassurance the shopper is looking for. A second method is a second <label>
+   in the same radiogroup and the layout does not change. */
+.paymethod {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: var(--s-1) var(--s-3);
+  align-items: start;
+  padding: var(--s-4);
+  border: var(--bd-field);
+  border-radius: var(--r-md);
+  background: var(--n-0);
+  cursor: pointer;
+  transition: border-color var(--d-1) linear, background-color var(--d-1) linear;
+}
+.paymethod + .paymethod { margin-block-start: var(--s-3); }
+/* Both selectors, deliberately. :has() needs Chrome 105 / Safari 15.4, and
+   this shop's market is full of phones older than that — a shopper who cannot
+   see which payment method is selected cannot check out. checkout.js sets
+   .is-on, so the class carries it everywhere and :has() is the enhancement
+   that keeps working if the script fails. */
+.paymethod.is-on,
+.paymethod:has(input:checked) {
+  border-color: var(--brand);
+  border-width: 2px;
+  padding: calc(var(--s-4) - 1px);
+  background: var(--brand-subtle);
+}
+.paymethod strong {
+  font-size: var(--t-300);
+  font-weight: var(--w-bold);
+  line-height: var(--lh-300);
+}
+.paymethod span,
+.paymethod p {
+  grid-column: 2;
+  font-size: var(--t-200);
+  line-height: var(--lh-body);
+  color: var(--n-600);
+  max-inline-size: var(--measure);
+}
+.paymethod input:focus-visible { outline-offset: 2px; }
+
+
+/* ===========================================================================
+   14. TOAST AND LIVE REGIONS
+   ---------------------------------------------------------------------------
+   No transient may overlap the primary action of the surface it reports on.
+   The old toast covered 22px of the checkout button and 25px of the delivery
+   notice, at 390 and at 768.
+   ======================================================================== */
+
+.toast {
+  position: fixed;
+  inset-inline: var(--s-4);
+  inset-block-end: calc(var(--bottombar) + var(--s-3) + env(safe-area-inset-bottom, 0px));
+  z-index: var(--z-toast);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  max-inline-size: 400px;
+  min-block-size: 48px;
+  margin-inline: auto;
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--n-950);
+  color: var(--n-0);
+  box-shadow: var(--sh-2);
+  transform: translateY(var(--travel-sm));
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity var(--d-2) var(--e-out),
+              transform var(--d-2) var(--e-out),
+              visibility 0s linear var(--d-2);
+}
+.toast.is-shown {
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.toast__text {
+  flex: 1;
+  min-inline-size: 0;
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+  line-height: var(--lh-200);
+}
+.toast__action {
+  flex: none;
+  min-block-size: 44px;
+  padding-inline: var(--s-3);
+  border-radius: var(--r-sm);
+  color: var(--brand-tint);
+  font-size: var(--t-200);
+  font-weight: var(--w-bold);
+}
+.toast__close {
+  position: relative;
+  flex: none;
+  inline-size: 40px;
+  block-size: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-sm);
+  color: var(--n-0);
+}
+.toast__close::before { content: ""; position: absolute; inset: -2px; }
+
+
+/* ===========================================================================
+   15. FOOTER
+   ======================================================================== */
+
+footer {
+  background: var(--n-950);
+  color: var(--n-100);
+  padding-block: var(--s-7);
+  /* The bottom bar hides the last 56px; without this the last row of links is
+     unreachable. */
+  padding-block-end: calc(var(--s-7) + var(--bottombar));
+  font-size: var(--t-200);
+  line-height: var(--lh-body);
+}
+footer .container,
+.ftr__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-5);
+}
+@media (min-width: 768px) {
+  footer .container,
+  .ftr__grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--s-6); }
+}
+/* One link per row, each a 44px target. */
+.ftr__col { display: flex; flex-direction: column; }
+.ftr__lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  color: var(--brand-tint);
+  margin-block-end: var(--s-3);
+}
+.ftr__lockup .hdr__word { color: var(--n-0); }
+.ftr__admin { color: var(--n-400) !important; }
+.ftr__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-3);
+  max-inline-size: none;
+  margin-block-start: var(--s-6);
+  padding-block-start: var(--s-4);
+  border-block-start: 1px solid rgba(255, 255, 255, .12);
+  color: var(--n-400);
+  font-size: var(--t-200);
+}
+footer h2,
+footer h3 {
+  margin-block-end: var(--s-2);
+  font-size: var(--t-100);
+  font-weight: var(--w-medium);
+  line-height: var(--lh-100);
+  color: var(--n-400);
+}
+footer ul { display: flex; flex-direction: column; gap: var(--s-1); }
+/* A short footer link is 25–42px of ink; the ::before widens the hit area to
+   44 without moving the text or the ring. */
+footer a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+  color: var(--n-100);
+  font-size: var(--t-200);
+  transition: color var(--d-1) linear;
+}
+footer li a::before,
+.ftr__col > a::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline: -12px;
+}
+@media (hover: hover) and (pointer: fine) {
+  footer a:hover { color: var(--brand-tint); }
+}
+footer p { color: var(--n-400); max-inline-size: var(--measure); }
+footer .hdr__mark { color: var(--brand-tint); }
+footer small { color: var(--n-400); font-size: var(--t-200); }
+
+
+/* ===========================================================================
+   16. EMPTY AND ERROR STATES
+   ---------------------------------------------------------------------------
+   An icon, a heading, one sentence, and at least one thing to do. Never a
+   bare sentence in grey, which is what all of them were.
+   ======================================================================== */
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-2);
+  max-inline-size: 420px;
+  margin-inline: auto;
+  padding-block: var(--s-7);
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .empty { padding-block: var(--s-8); }
+}
+.empty__glyph {
+  inline-size: 48px;
+  block-size: 48px;
+  margin-block-end: var(--s-2);
+  color: var(--n-600);
+}
+.empty__title {
+  font-size: var(--t-500);
+  font-weight: var(--w-bold);
+  line-height: var(--lh-500);
+  color: var(--n-900);
+  text-wrap: balance;
+}
+.empty__text {
+  font-size: var(--t-300);
+  line-height: var(--lh-body);
+  color: var(--n-600);
+  max-inline-size: 46ch;
+}
+.empty .btn,
+.empty > div,
+.empty__actions,
+.empty__chips,
+.empty__near { margin-block-start: var(--s-3); }
+.empty > div,
+.empty__actions,
+.empty__chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--s-3);
+  inline-size: 100%;
+}
+.empty__chips { gap: var(--s-2); }
+.empty__chips b,
+.empty__near b {
+  inline-size: 100%;
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+  color: var(--n-600);
+}
+/* A merchandising slot, not a dead end. */
+.empty__near { inline-size: 100%; text-align: start; }
+.empty__near .grid { margin-block-start: var(--s-3); }
+@media (max-width: 429px) {
+  .empty > div,
+  .empty__actions { flex-direction: column; }
+}
+
+/* The same shell in danger ink, and only ever for a real failure — an empty
+   category and an out-of-stock product are neither. */
+.empty.is-error .empty__glyph { color: var(--danger); }
+.empty.is-error .empty__title { color: var(--danger); }
+
+/* Stale data is a warning, not an error: only the freshness is in doubt. */
+.empty.is-busy .empty__glyph { color: var(--warning); }
+
+/* /browse: every department and category as a real link. */
+.browse__dept { margin-block-start: var(--s-6); }
+.browse__dept > h2 {
+  font-size: var(--t-500);
+  line-height: var(--lh-500);
+  margin-block-end: var(--s-3);
+}
+.browse__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--s-2);
+}
+.browse__list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+  min-block-size: 44px;
+  padding-inline: var(--s-3);
+  border: var(--bd-hair);
+  border-radius: var(--r-sm);
+  background: var(--n-0);
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+}
+@media (hover: hover) and (pointer: fine) {
+  .browse__list a:hover { border-color: var(--brand-line); background: var(--brand-subtle); }
+}
+.browse__n { flex: none; color: var(--n-600); font-weight: var(--w-normal); }
+
+/* Asked for, not open by default under every empty result. */
+.similar__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-block-size: 44px;
+  padding-inline: var(--s-3);
+  color: var(--brand-ink);
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+}
+
+/* Waiting is a reserved box, never a spinner and never a shimmer: the card's
+   text comes from catalog.js and the photo box is already square. */
+.grid[aria-busy="true"] { min-block-size: 50vh; }
+
+
+/* ===========================================================================
+   17. PRINT — the order confirmation and the admin invoice
+   ---------------------------------------------------------------------------
+   No chrome, no bottom bar, black on white. Paper has no sticky header, no
+   sheet and no target size.
+   ======================================================================== */
+
+@media print {
+  :root { --bottombar: 0px; --chrome: 0px; }
+
+  html, body {
+    background: var(--n-0);
+    color: var(--n-950);
+    padding: 0;
+    overflow: visible;
+  }
+
+  .hdr,
+  .bottombar,
+  .facetbar,
+  .toast,
+  .skip-link,
+  .rail,
+  .depts,
+  .brandstrip,
+  .pager,
+  .pdp__variants,
+  .pdp__actions,
+  .btn,
+  dialog,
+  footer nav,
+  [hidden] { display: none !important; }
+
+  a { color: var(--n-950); text-decoration: none; }
+
+  .container { max-inline-size: none; padding-inline: 0; }
+
+  .pcard,
+  .spec-card,
+  .trust__item,
+  .paymethod,
+  .paymethod.is-on,
+  .paymethod:has(input:checked) {
+    border: 1px solid var(--n-950);
+    border-radius: 0;
+    background: var(--n-0);
+    break-inside: avoid;
+  }
+
+  .cart__line {
+    border-block-end: 1px solid var(--n-950);
+    break-inside: avoid;
+  }
+  .cart__foot b,
+  .pdp__price b,
+  .pcard__price b { color: var(--n-950); }
+
+  .pcard { content-visibility: visible; }
+
+  h1, h2, h3 { break-after: avoid; color: var(--n-950); }
+  table { border-collapse: collapse; inline-size: 100%; }
+  th, td { border: 1px solid var(--n-950); padding: 4px 6px; text-align: start; }
+
+  footer {
+    background: var(--n-0);
+    color: var(--n-950);
+    padding-block: 0;
+    border-block-start: 1px solid var(--n-950);
+  }
+  footer a, footer p, footer small { color: var(--n-950); }
+}
+
+
+/* ---------------------------------------------------------------------------
+ * 10b. Product page — the names the renderer emits
+ *
+ * Folded in from product.js, which carried these as an injected <style> while
+ * this sheet was being written. Every measured decision that was recorded
+ * there is kept below, because each one cost a round of testing to find.
+ * --------------------------------------------------------------------------- */
+
+/* `hidden` has to mean hidden. The user-agent rule [hidden]{display:none}
+   lives in the UA origin and loses to ANY author `display`, so .storeline,
+   .depts and the three .rail sections — all display:grid or flex, all hidden
+   on the product route — still occupied 626px of layout above #productView
+   and put the primary action at y=1456 instead of 830. */
 [hidden]{display:none!important}
-
-/* Mega menu: brands + categories */
-.nav-mega{grid-template-columns:1fr 2fr}
-.mega-columns{display:grid;grid-template-columns:1fr 1fr;column-gap:20px}
-
-/* Quick view */
-.quick-product{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-.quick-product-image{aspect-ratio:1/1;background:radial-gradient(circle at 50% 40%,#eef7ff,#f7f9fc 62%,#edf1f6);border-radius:18px;display:grid;place-items:center;overflow:hidden}
-.quick-product-image img{width:100%;height:100%;display:block;object-fit:contain;padding:14px}
-.quick-product small{color:var(--blue);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.1em}
-.quick-product h2{font-size:24px;line-height:1.3;margin:8px 0 12px}
-.quick-price{font-size:26px;font-weight:900}
-.quick-price del{font-size:14px;color:#a2afbd;font-weight:400;margin-inline-start:8px}
-.quick-desc{color:var(--muted);line-height:1.8;font-size:13px;margin:14px 0 20px}
-.main-button{border:0;border-radius:13px;padding:14px 22px;background:linear-gradient(100deg,var(--blue),#0a72e8);color:#fff;font-weight:900}
-.main-button:hover{filter:brightness(1.05)}
-.footer-bottom{width:min(1320px,calc(100% - 40px));margin:35px auto 0;padding-top:22px;border-top:1px solid #16233a;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:12px;color:#93a6bd}
-@media(max-width:760px){.quick-product{grid-template-columns:1fr;gap:16px}.quick-panel{padding:18px}.quick-product h2{font-size:20px;padding-inline-end:40px}}
-
-/* Keep section tops clear of the sticky header when scrolling to them */
-main[id],section[id]{scroll-margin-top:140px}
-@media(max-width:760px){main[id],section[id]{scroll-margin-top:165px}}
-
-/* ============ v30: icons, filters, favourites, product page ============ */
-svg{display:block}
-.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.search-form{position:relative;align-items:center;gap:0}
-.search-form .search-icon{display:grid;place-items:center;padding-inline-start:14px;color:#61738c}
-.search-form input{padding:0 12px}
-.search-clear{display:grid;place-items:center;border:0;background:none;color:#8fa2ba;padding:0 8px}
-.search-clear:hover{color:#fff}
-.header-actions{align-items:center}
-.lang-picker{position:relative;display:flex;align-items:center;gap:6px;min-height:42px;padding:0 10px;border:1px solid #29374d;background:#0d1625;border-radius:12px;color:#dce8f8}
-.lang-picker:hover{border-color:#20cfff}
-.lang-picker .lang-icon{display:grid;place-items:center;color:#8fa2ba}
-.lang-picker select{border:0;background:none;color:#fff;font-weight:800;font-size:12px;padding-inline-end:4px}
-.lang-picker option{color:#07111f}
-.icon-action{gap:7px}
-.icon-action svg{width:19px;height:19px}
-#favoritesCount,#cartCount{display:grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:99px;background:var(--blue);color:#fff;font-size:11px}
-.benefit-grid>div{gap:10px;padding:14px 10px;text-align:start}
-.benefit-grid>div>span{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#eef4ff;color:var(--blue);flex:none}
-.benefit-grid b{display:block;font-size:12px}
-.benefit-grid small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
-.brand-cards button{min-height:150px}
-.brand-count{display:block;position:relative;margin-top:10px;font-size:11px;font-weight:900;color:var(--blue)}
-.catalog-toolbar{gap:12px;flex-wrap:wrap}
-.toolbar-left{display:flex;align-items:center;gap:10px}
-.filter-button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:9px 13px;font-size:12px;font-weight:800}
-.filter-button:hover{border-color:var(--blue);color:var(--blue)}
-.filter-button svg{width:15px;height:15px}
-.result-count{font-size:13px;color:var(--muted)}
-.sort-picker{display:flex;align-items:center}
-.filters-panel{display:grid;grid-template-columns:2fr 1fr auto;gap:18px;align-items:end;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px}
-.filter-group strong{display:block;font-size:11px;margin-bottom:9px}
-.brand-filters{display:flex;flex-wrap:wrap;gap:8px}
-.check{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-strong);border-radius:99px;padding:6px 11px;font-size:11px;font-weight:700;cursor:pointer;background:#fff}
-.check.on,.check:has(input:checked){border-color:var(--blue);background:#eef4ff;color:var(--blue)}
-.check input{accent-color:var(--blue)}
-.price-inputs{display:flex;gap:8px}
-.price-inputs input{width:100%;border:1px solid var(--line-strong);border-radius:10px;padding:9px 11px;font-size:12px}
-.active-filters{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
-.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #9cc2f3;background:#eef4ff;color:#0a52cc;border-radius:99px;padding:6px 11px;font-size:12px;font-weight:800}
-.chip:hover{background:var(--blue);color:#fff}
-.chip svg{width:12px;height:12px}
-.product-image{position:relative;display:block}
-.product h3 a{color:inherit}
-.product h3 a:hover{color:var(--blue)}
-.fav-btn{position:absolute;top:11px;inset-inline-start:11px;z-index:3;width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line-strong);background:rgba(255,255,255,.95);border-radius:50%;color:#5f6d80}
-.fav-btn:hover{color:#e5484d;border-color:#f3c3c5}
-.fav-btn.on{color:#e5484d;border-color:#f3c3c5;background:#fff1f1}
-.stock-flag{position:absolute;inset-inline:0;bottom:0;padding:7px;text-align:center;background:rgba(7,17,31,.88);color:#fff;font-size:12px;font-weight:800}
-.product.is-out .product-image img{opacity:.55}
-.ask-product{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--green-btn);color:#fff}
-.add-product{display:grid;place-items:center}
-.load-more{grid-column:1/-1;margin:14px auto 0;border:1px solid var(--line);background:#fff;border-radius:12px;padding:13px 26px;font-weight:800;color:var(--ink)}
-.load-more:hover{border-color:var(--blue);color:var(--blue)}
-.cart{display:flex;flex-direction:column}
-#cartItems{flex:1;overflow:auto;margin:0 -4px;padding:0 4px}
-.cart-item{display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center}
-.cart-item img{width:52px;height:52px;object-fit:contain;background:#f4f7fb;border-radius:10px;padding:4px}
-.cart-line-end{text-align:end}
-.cart-foot{border-top:1px solid var(--line);padding-top:12px}
-.cart-note{display:block;margin-top:9px;text-align:center;color:var(--muted);font-size:12px}
-.quick-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.text-link{font-weight:800;color:var(--blue);font-size:12px}
-.product-view{position:fixed;inset:0;z-index:95;background:var(--bg);overflow:auto;padding:26px 0 60px}
-body.product-open{overflow:hidden}
-.product-page{max-width:1100px}
-.back-link{display:inline-flex;align-items:center;gap:8px;border:0;background:none;color:var(--muted);font-weight:800;font-size:12px;margin-bottom:18px}
-.back-link:hover{color:var(--blue)}
-html[dir="ltr"] .back-link svg{transform:scaleX(-1)}
-html[dir="rtl"] .primary-button svg,html[dir="rtl"] .brand-cards i{transform:scaleX(-1)}
-.product-page-main{display:grid;grid-template-columns:1fr 1fr;gap:32px;background:#fff;border:1px solid var(--line);border-radius:26px;padding:26px;box-shadow:var(--shadow)}
-.product-page-image{position:relative;background:radial-gradient(circle at 50% 40%,#eef7ff,#f7f9fc 62%,#edf1f6);border-radius:20px;aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden}
-.product-page-image img{width:100%;height:100%;object-fit:contain;padding:18px}
-.zoom-btn{position:absolute;bottom:14px;inset-inline-end:14px;width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);background:#fff;border-radius:50%;color:var(--ink)}
-.product-page-info h1{font-size:clamp(22px,3vw,34px);line-height:1.25;letter-spacing:-.03em;margin:6px 0 12px}
-.brand-link{border:0;background:none;padding:0;color:var(--blue);font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
-.stock-line{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;border-radius:99px;padding:5px 11px}
-.stock-line.in{background:#eafbf2;color:var(--green-ink)}
-.stock-line.out{background:#fdecec;color:#dc2626}
-.product-page-price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:16px 0}
-.product-page-price strong{font-size:32px}
-.product-page-price del{color:#a2afbd;font-size:15px}
-.product-page-info p{color:var(--muted);line-height:1.9;font-size:14px}
-.product-page-actions{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 16px}
-.product-page-actions .main-button,.wa-button{display:inline-flex;align-items:center;gap:9px}
-.wa-button{background:var(--green-btn);color:#fff;border-radius:13px;padding:14px 20px;font-weight:900}
-.out-note{flex:1 1 100%;background:#fff6f6;border:1px solid #f5d5d5;color:#b42318;border-radius:12px;padding:12px 14px;font-size:12px;line-height:1.7}
-.product-page-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px}
-.meta-btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:9px 13px;font-size:12px;font-weight:800}
-.meta-btn:hover{border-color:var(--blue);color:var(--blue)}
-.meta-btn.on{color:#e5484d;border-color:#f3c3c5;background:#fff1f1}
-.meta-code{margin-inline-start:auto;color:var(--muted);font-size:11px}
-.related{margin-top:36px}
-.related h2{font-size:22px;margin-bottom:16px}
-.footer-links{display:flex;flex-direction:column}
-.footer-links a{display:flex;align-items:center;gap:7px}
-.footer-links svg{width:13px;height:13px}
-.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:120;background:#07111f;color:#fff;padding:12px 18px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.28);font-weight:800;font-size:13px;max-width:calc(100% - 30px)}
-@media(max-width:900px){
-.filters-panel{grid-template-columns:1fr}
-.product-page-main{grid-template-columns:1fr;gap:20px;padding:16px;border-radius:20px}
-.product-view{padding:14px 0 50px}
+.pdp-page{max-inline-size:1100px;margin-inline:auto;padding-block-end:var(--s-8,64px)}
+.pdp__crumbs{display:flex;align-items:center;gap:var(--s-1,4px);min-block-size:32px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;font-size:var(--t-100,.8125rem);font-weight:var(--w-medium,600);color:var(--n-600,#625C57)}
+.pdp__crumbs::-webkit-scrollbar{display:none}
+.pdp__crumbs a{position:relative;color:inherit;text-decoration:none}
+.pdp__crumbs a::before{content:"";position:absolute;inset-block:-8px;inset-inline:-4px;min-block-size:44px}
+.pdp__crumbs a:last-child{color:var(--n-900,#1A1613)}
+.pdp__crumbs span{color:var(--n-300,#D1CBC6);padding-inline:var(--s-1,4px)}
+.pdp__media{min-inline-size:0}
+.pdp__brand{position:relative;align-self:start}
+.pdp__brand::before{content:"";position:absolute;inset-block:-12px;inset-inline:-4px;min-block-size:44px}
+.pdp__info>.prose{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.pdp__badge{position:absolute;inset-block-start:10px;inset-inline-start:10px;padding:3px 9px;border-radius:var(--r-pill,999px);background:rgba(16,13,10,.72);color:#fff;font-size:var(--t-100,.8125rem);font-weight:var(--w-medium,600);line-height:1.4}
+.pdp__counter{position:absolute;inset-block-end:10px;inset-inline-end:10px;padding:4px 10px;border-radius:var(--r-pill,999px);background:rgba(16,13,10,.72);color:#fff;font-size:var(--t-100,.8125rem);font-weight:var(--w-medium,600);line-height:1.4}
+.pdp__band{position:absolute;inset-inline:0;inset-block-end:0;min-block-size:32px;display:grid;place-items:center;background:rgba(16,13,10,.82);color:#fff;font-size:var(--t-100,.8125rem);font-weight:var(--w-medium,600)}
+.pdp__slide.is-missing{background:var(--n-100,#F0ECE8)}
+.pdp__blank{display:grid;place-items:center;gap:var(--s-3,12px);padding:var(--s-4,16px)}
+.pdp__glyph{inline-size:64px;block-size:64px;color:var(--n-300,#D1CBC6)}
+.pdp__blankword{font-size:var(--t-200,.875rem);font-weight:var(--w-medium,600);color:var(--n-500,#77716B);text-align:center}
+.swatch__word{display:grid;place-items:center;inline-size:100%;block-size:100%;font-size:var(--t-100,.8125rem);font-weight:var(--w-medium,600);color:var(--n-600,#625C57)}
+.pdp__thumbs{display:none;gap:10px;padding-block-start:10px;min-block-size:80px}
+@media(min-width:900px){.pdp__thumbs{display:flex}
 }
-@media(max-width:760px){
-.hide-sm{display:none}
-.lang-picker{padding:0 7px;height:40px}
-.benefit-grid>div{justify-content:flex-start}
-.product-page-price strong{font-size:26px}
-.meta-code{margin-inline-start:0;flex:1 1 100%}
+.pdp__thumb{inline-size:72px;block-size:72px;padding:2px;border:var(--bd-hair,1px solid #E4DFDA);border-radius:var(--r-sm,10px);background:var(--n-0,#fff)}
+.pdp__thumb.is-on{border-color:var(--brand,#A45118);border-width:2px}
+.pdp__thumb[data-kind="scene"]{border-block-end:2px solid var(--n-500,#77716B)}
+.pdp__thumb img{inline-size:100%;block-size:100%;object-fit:contain}
+.pdp__trust{display:flex;gap:var(--s-2,8px);overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding:6px 2px;margin:-6px -2px}
+.pdp__trust::-webkit-scrollbar{display:none}
+.pdp__trust .chip{flex:none}
+button.chip{cursor:pointer}
+.pdp__colour{display:flex;flex-direction:column;gap:var(--s-1,4px)}
+.pdp__colour .meta{line-height:var(--lh-100,20px)}
+.pdp__meta{display:flex;align-items:center;gap:var(--s-2,8px)}
+.pdp__hint{flex:1 1 100%;margin:0}
+.pdp__details,.pdp__related{margin-block-start:var(--s-6,32px)}
+.pdp__details>h2,.pdp__related>h2{font-size:var(--t-500,1.1875rem);font-weight:var(--w-bold,700);margin-block-end:var(--s-3,12px)}
+.pdp__box{margin-block-start:var(--s-4,16px)}
+.pdp__box h3{font-size:var(--t-300,.9375rem);font-weight:var(--w-medium,600);margin-block-end:var(--s-1,4px)}
+.pdp__notes{margin-block-start:var(--s-4,16px)}
+.pdp__notes p{margin-block-start:var(--s-1,4px)}
+.pdp__policy dt{font-weight:var(--w-medium,600);margin-block-start:var(--s-3,12px)}
+.pdp__policy dd{margin:var(--s-1,4px) 0 0;color:var(--n-600,#625C57);line-height:var(--lh-body,1.7);max-inline-size:var(--measure,52ch)}
+.pdp__related .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:761px){.pdp__related .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+.pdp__buybar{position:fixed;inset-inline:0;inset-block-end:0;z-index:var(--z-bottombar,30);display:flex;align-items:center;gap:var(--s-3,12px);block-size:64px;padding:6px var(--s-4,16px);padding-block-end:calc(6px + env(safe-area-inset-bottom,0px));background:var(--n-0,#fff);border-block-start:var(--bd-hair,1px solid #E4DFDA);transform:translateY(100%);visibility:hidden;transition:transform 180ms cubic-bezier(.2,.8,.2,1)}
+.pdp__buybar.is-shown{transform:translateY(0);visibility:visible}
+.pdp__buybar img{flex:none;inline-size:40px;block-size:40px;object-fit:contain}
+.pdp__buybar-price{flex:none;font-weight:var(--w-bold,700)}
+.pdp__buybar .btn{flex:1 1 auto;block-size:52px}
+@media(prefers-reduced-motion:reduce){.pdp__buybar{transition:none}
+}
+@media(min-width:900px){.pdp__buybar{display:none}
 }
 
-/* Mobile header must fit the smallest phones */
-@media(max-width:760px){
-.header-main{grid-template-columns:minmax(0,1fr) auto;column-gap:8px}
-.brand-logo{min-width:0;font-size:18px;gap:8px}
-.brand-logo span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.header-actions{gap:6px;flex-wrap:nowrap;min-width:0}
-.lang-picker{gap:3px;padding:0 6px;height:40px}
-.lang-picker select{max-width:64px;font-size:11px}
-.icon-action{padding:0 9px;height:40px}
-.search-form{min-width:0}
-.main-nav{overflow-x:auto;overflow-y:hidden}
+/* The 761–900px band. Collapsing the product page to one column below 900
+   makes the photo 720×720 at 768 and pushes the product's name to y=938 — a
+   whole viewport of photograph and nothing else. Two columns from 761 up,
+   with the image capped, puts the price back at roughly y=270. */
+@media (min-width: 761px) and (max-width: 900px) {
+  .pdp__main { grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: var(--s-5); align-items: start; }
 }
 
-/* Comfortable tap targets on touch screens */
-.search-form input,.search-form button,.search-form .search-icon,.search-clear{align-self:stretch}
-.search-form button{display:flex;align-items:center;gap:7px}
-.lang-picker select{align-self:stretch;height:100%}
-.nav-inner>a,.nav-dropdown>button{padding:15px 0;display:inline-flex;align-items:center}
-.footer-links a{padding:7px 0;margin:0}
-.category-pill{min-height:34px}
-.chip{min-height:30px}
+/* ---------------------------------------------------------------------------
+ * 10c. The server-written seed
+ *
+ * api/c.js writes a real <h1>, a description, a count, a breadcrumb and 24
+ * product links into the document before any script runs, so that a crawler
+ * that does not execute JavaScript still sees the aisle and can walk to every
+ * product in it. script.js replaces the list on hydrate; everything else
+ * stays, which is why it has to be styled like the rest of the page rather
+ * than left as browser defaults.
+ * --------------------------------------------------------------------------- */
 
-/* ===================== v31: calmer palette, rebuilt header & navigation ===================== */
-:root{
-  --ink:#0e1826;--muted:#5a6980;--line:#e2e8f0;--line-strong:#c8d3e0;
-  --blue:#1256e0;--blue-dark:#0b3fa8;--blue-soft:#eef3ff;
-  --surface:#fff;--bg:#f6f8fb;
-  --r-sm:10px;--r-md:14px;--r-lg:22px;
-  --sh-1:0 1px 2px rgba(14,24,38,.04),0 8px 24px rgba(14,24,38,.06);
-  --sh-2:0 2px 4px rgba(14,24,38,.05),0 22px 48px rgba(14,24,38,.12);
+.crumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--s-1);
+  min-block-size: 32px;
+  margin-block-end: var(--s-2);
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  font-size: var(--t-100);
+  font-weight: var(--w-medium);
+  color: var(--n-600);
 }
-body{background:var(--bg)}
-body:before{display:none}
+.crumbs::-webkit-scrollbar { display: none; }
+.crumbs a { position: relative; color: inherit; text-decoration: none; }
+/* 44px of target around a 32px row: the hit area grows, the fold does not. */
+.crumbs a::before {
+  content: "";
+  position: absolute;
+  inset-block: -8px;
+  inset-inline: -4px;
+  min-block-size: 44px;
+}
+.crumbs a:hover { color: var(--brand-ink); }
+.crumbs > span { color: var(--n-300); padding-inline: var(--s-1); }
+.crumbs [aria-current] { color: var(--n-900); }
 
-/* --- Header: one calm dark slab, no blur, no competing gradients --- */
-.notice-bar{background:#0b1524;color:#a9bdd6;font-size:12px;border-bottom:0}
-.notice-inner{min-height:32px}
-.store-header{background:#0e1a2b;border-bottom:1px solid rgba(255,255,255,.07);box-shadow:0 1px 0 rgba(0,0,0,.2)}
-.header-main{min-height:70px;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center}
-.brand-logo{font-size:20px;gap:10px;flex:0 1 auto;min-width:0}
-.brand-logo span:last-child{overflow:visible;text-overflow:clip;white-space:nowrap}
-.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--blue);box-shadow:none;font-size:17px}
-
-.search-form{min-height:44px;border:1px solid #2b3b52;border-radius:var(--r-md);background:#16243a}
-.search-form:focus-within{border-color:#4d7fe0;background:#1a2b45}
-.search-form input{font-size:14px}
-.search-form input::placeholder{color:#8296b0}
-.search-form button[type="submit"]{background:transparent;color:#cfe0f5;padding:0 16px;font-weight:700;border-inline-start:1px solid #2b3b52;border-radius:0}
-.search-form button[type="submit"]:hover{color:#fff;background:rgba(255,255,255,.05)}
-
-.header-actions{gap:8px;flex:none}
-.icon-action{min-height:40px;border:1px solid #2b3b52;background:#16243a;border-radius:var(--r-md);color:#dbe7f5;padding:0 11px;gap:7px}
-.icon-action:hover{border-color:#4d7fe0;color:#fff}
-#cartCount,#favoritesCount{min-width:18px;height:18px;font-size:10px;background:var(--blue);box-shadow:none;font-weight:700}
-.lang-picker{min-height:40px;border:1px solid #2b3b52;background:#16243a;border-radius:var(--r-md);padding:0 9px;gap:5px}
-.lang-picker:hover{border-color:#4d7fe0}
-.lang-picker select{font-size:12px;font-weight:700}
-
-/* Navigation: part of the same slab, quieter, scrolls cleanly on phones */
-.main-nav{background:#0b1524;border-top:1px solid rgba(255,255,255,.06)}
-.nav-inner{min-height:46px;gap:26px}
-.nav-inner>a,.nav-dropdown>button{color:#b9c9dd;font-size:13px;font-weight:700;padding:13px 0}
-.nav-inner>a:hover,.nav-dropdown>button:hover,.nav-dropdown.open>button{color:#fff}
-.nav-mega{background:#0e1a2b;border-color:#24344c;max-width:calc(100vw - 32px)}
-.nav-dropdown.open .nav-mega{opacity:1;visibility:visible;transform:none}
-
-
-/* --- Hero: shorter, one accent colour, no ghost image, no gradient text --- */
-.hero{min-height:clamp(420px,54vh,520px);background:#0b1524}
-.hero-content{min-height:clamp(420px,54vh,520px)}
-.hero-bg{background:radial-gradient(circle at 75% 35%,rgba(18,86,224,.30),transparent 45%),linear-gradient(160deg,#0b1524,#102135 60%,#0b1524)}
-.hero-bg:after{display:none}
-.hero-shade{background:linear-gradient(90deg,rgba(11,21,36,.9),rgba(11,21,36,.35),transparent)}
-.hero h1{font-size:clamp(34px,5vw,60px);line-height:1.18;letter-spacing:-.02em;margin-bottom:18px}
-.hero h1 em{font-style:normal;background:none;-webkit-text-fill-color:currentColor;color:#63b3ff}
-.hero p{font-size:15px;line-height:1.85;color:#b9c9dd}
-.hero-label span{font-size:11px;letter-spacing:0;color:#9ec9ff;border-color:rgba(99,179,255,.3);background:rgba(18,86,224,.12)}
-.hero-orbit{border-color:rgba(99,179,255,.14)}
-.hero-product-showcase:after{background:radial-gradient(circle,rgba(18,86,224,.45) 0,rgba(18,86,224,.10) 42%,transparent 70%);filter:none}
-.hero-product-showcase img{height:340px}
-.showcase-badge{border-radius:var(--r-md);box-shadow:var(--sh-2)}
-
-/* --- Buttons: solid, one blue --- */
-.primary-button,.main-button,.category-pill:hover,.category-pill.active,.search-form button[type="submit"]:focus-visible{box-shadow:none}
-.primary-button,.main-button{background:var(--blue);border-radius:var(--r-md)}
-.primary-button:hover,.main-button:hover{background:var(--blue-dark);transform:none}
-.category-pill:hover,.category-pill.active{background:var(--blue);border-color:var(--blue)}
-.add-product{background:var(--blue);border-radius:var(--r-md)}
-.add-product:hover{background:var(--blue-dark)}
-.outline-button,.filter-button{border-radius:var(--r-md);border-color:var(--line-strong)}
-.chip{border-color:#b9cdf0;color:var(--blue-dark);background:var(--blue-soft)}
-
-/* --- Cards & sections --- */
-.product{border-radius:var(--r-lg);box-shadow:var(--sh-1)}
-.product:hover{box-shadow:var(--sh-2);border-color:#b9cdf0}
-.product-image{height:auto;aspect-ratio:1/1;background:#f4f7fb}
-.product-info h3{font-size:14px;min-height:38px}
-.brand-cards button,.quick-brand-grid button,.filters-panel,.contact-actions a{border-radius:var(--r-lg)}
-.brand-cards button{box-shadow:var(--sh-1);background:#fff}
-.brand-cards button:before{background:linear-gradient(135deg,rgba(18,86,224,.10),rgba(18,86,224,.04))}
-.benefits{box-shadow:none;border-bottom:1px solid var(--line)}
-.sale-banner{background:linear-gradient(120deg,#0b1524,#123055)}
-.sale-inner:after{display:none}
-.footer{background:#0b1524}
-
-/* --- Focus visibility (was missing entirely) --- */
-:focus-visible{outline:3px solid #2f7dff;outline-offset:2px}
-.store-header :focus-visible,.main-nav :focus-visible,.footer :focus-visible{outline-color:#8fd0ff}
-.skip-link{position:absolute;inset-inline-start:-9999px;top:0;z-index:200;background:#fff;color:var(--ink);padding:12px 18px;border-radius:0 0 var(--r-md) 0;font-weight:800}
-.skip-link:focus{inset-inline-start:0}
-
-/* --- Arabic typography: cursive script needs its own rules --- */
-html[dir="rtl"] .hero h1{line-height:1.3;letter-spacing:0}
-html[dir="rtl"] .section-head h2,html[dir="rtl"] .catalog-heading h2,html[dir="rtl"] .sale-inner h2,
-html[dir="rtl"] .contact-inner h2,html[dir="rtl"] .product-page-info h1,html[dir="rtl"] .showcase-badge strong{letter-spacing:0;line-height:1.35}
-html[dir="rtl"] .section-head>span,html[dir="rtl"] .catalog-heading span,html[dir="rtl"] .sale-inner span,
-html[dir="rtl"] .contact-inner span,html[dir="rtl"] .hero-label span,html[dir="rtl"] .cart-header span{letter-spacing:0;word-spacing:.1em}
-body{font-family:"Segoe UI",Tahoma,"Geeza Pro","Noto Sans Arabic",Arial,sans-serif}
-
-/* --- Motion: respect the visitor's preference --- */
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  .product:hover,.floating-whatsapp:hover,.quick-brand-grid button:hover{transform:none}
+.seo-desc {
+  margin: var(--s-2) 0 0;
+  max-inline-size: var(--measure);
+  color: var(--n-600);
+  font-size: var(--t-300);
+  line-height: var(--lh-body);
+}
+.seo-count {
+  display: block;
+  margin-block-start: var(--s-1);
+  color: var(--n-500);
+  font-size: var(--t-100);
+  font-weight: var(--w-medium);
 }
 
-/* --- Phones --- */
-@media(max-width:760px){
-  .header-main{min-height:64px;grid-template-columns:minmax(0,1fr) auto;row-gap:8px;padding-bottom:10px}
-  .brand-logo{font-size:18px}
-  .search-form{grid-column:1/-1;grid-row:2;min-height:42px;margin:0}
-  .header-actions{justify-self:end}
-  .icon-action{padding:0 10px}
-  .search-form button[type="submit"] span{display:none}
-  .search-form button[type="submit"]{padding:0 13px}
-  .nav-inner{gap:20px}
-  .hero{min-height:auto}
-  .hero-content{min-height:auto;padding:34px 0 40px;gap:24px}
-  .hero-product-showcase{min-height:240px}
-  .hero-product-showcase img{height:230px;width:230px}
-  .benefit-grid{grid-template-columns:repeat(2,1fr)}
-  .product-image{height:auto}
+/* The crawlable list. It is not hidden — hiding links a crawler is meant to
+   follow is the oldest way to look like you are cloaking — but once the grid
+   has hydrated it is redundant, so script.js removes it. Until then it reads
+   as an ordinary list of links. */
+.seo-list {
+  margin: var(--s-4) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--s-1);
 }
-@media(max-width:430px){
-  .lang-picker select{max-width:52px}
-  .product-image{height:auto}
-  .product-info p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:12px}
+.seo-list a { color: var(--brand-ink); text-decoration: none; font-size: var(--t-200); }
+.seo-list a:hover { text-decoration: underline; }
+
+.seo-aisles { margin-block-start: var(--s-5); }
+.seo-aisles h2 {
+  font-size: var(--t-500);
+  font-weight: var(--w-bold);
+  margin-block-end: var(--s-2);
 }
 
-/* Mega menu is anchored to the nav bar, so it can never run off a tablet screen */
-.main-nav{position:relative}
-.nav-dropdown{position:static}
-.nav-mega{inset-inline-start:0;width:min(760px,calc(100vw - 32px))}
-/* The language control must stay a comfortable target at every width */
-.lang-picker{align-items:stretch}
-.lang-picker select{align-self:stretch;height:auto;min-height:40px;padding-inline:4px}
-.lang-picker .visually-hidden,.lang-picker .lang-icon{align-self:center}
-
-/* Smallest phones: keep the header on one line */
-@media(max-width:360px){
-.brand-logo span:last-child{display:none}
-.header-actions{gap:4px}
-.icon-action{padding:0 8px}
-.lang-picker{padding:0 5px}
-.lang-picker select{max-width:46px}
-.notice-bar{font-size:11px}
-.notice-inner span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.browse__dept { margin-block-end: var(--s-6); }
+.browse__dept h2 {
+  font-size: var(--t-600);
+  font-weight: var(--w-bold);
+  margin-block-end: var(--s-3);
+  padding-block-end: var(--s-2);
+  border-block-end: var(--bd-hair);
 }
-/* The hero badge must not sit on top of the product on a phone */
-@media(max-width:760px){
-.showcase-badge{position:static;inset:auto;margin-top:14px;width:100%;text-align:center}
+.browse__dept ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--s-2);
 }
+.browse__dept li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+  min-block-size: 44px;
+  padding-inline: var(--s-3);
+  border: var(--bd-hair);
+  border-radius: var(--r-sm);
+  background: var(--n-0);
+  color: var(--n-900);
+  text-decoration: none;
+  font-size: var(--t-200);
+  font-weight: var(--w-medium);
+}
+.browse__dept li a:hover { border-color: var(--brand-line); }
 
-/* Quantity picker on the product page */
-.qty-picker{display:inline-flex;align-items:center;border:1px solid var(--line-strong);border-radius:var(--r-md);overflow:hidden;background:#fff}
-.qty-picker button{width:46px;height:50px;border:0;background:#fff;font-size:20px;color:var(--ink);cursor:pointer}
-.qty-picker button:hover{background:var(--blue-soft);color:var(--blue)}
-.qty-picker input{width:56px;height:50px;border:0;border-inline:1px solid var(--line-strong);text-align:center;font-weight:800;font-size:15px;-moz-appearance:textfield}
-.qty-picker input::-webkit-outer-spin-button,.qty-picker input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-/* Product details block under the buy area */
-.product-details{max-width:1100px;margin:28px auto 0;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;box-shadow:var(--sh-1)}
-.product-details h2{font-size:20px;margin-bottom:12px}
-.product-details p{max-width:72ch;color:var(--muted);font-size:14px;line-height:1.9;white-space:pre-line}
-/* Toast stays in the accessibility tree; only its visibility changes */
-.toast{opacity:0;visibility:hidden;transition:opacity .2s}
-.toast.show{opacity:1;visibility:visible}
-/* Notice about stale prices */
-.stale-notice{background:#fff8e6;border:1px solid #f2d999;color:#7a5600;border-radius:var(--r-md);padding:12px 16px;margin-bottom:16px;font-size:13px;font-weight:700}
+/* ---------------------------------------------------------------------------
+ * 18. Chrome that has to hold three languages
+ *
+ * The same control carries "العربية", "English" and "Türkçe", and the bottom
+ * bar carries labels that are one word in Arabic and two in Turkish. Sizing
+ * either to the language it was designed in clips the other two.
+ * --------------------------------------------------------------------------- */
 
-/* The hero photo has a white studio background — frame it as a card on the dark hero */
-.hero-product-showcase img{background:#fff;border-radius:24px;padding:22px;box-shadow:0 30px 70px rgba(0,0,0,.45);filter:none;width:min(78%,420px);height:auto;aspect-ratio:1/1;object-fit:contain}
-@media(max-width:760px){.hero-product-showcase img{width:min(74%,260px);height:auto;padding:16px;border-radius:20px}}
-
-/* --- Brands panel on a phone -------------------------------------------
-   The nav strip scrolls sideways, so a panel placed inside it slides off
-   the screen with the strip. Anchor it to the viewport instead: --mega-top
-   is written by script.js from the real position of the nav bar. */
-@media(max-width:860px){
-  .nav-dropdown.open .nav-mega{
-    display:grid;position:fixed;top:var(--mega-top,124px);inset-inline:12px;
-    width:auto;max-width:none;grid-template-columns:1fr;gap:14px;
-    max-height:min(64vh,540px);overflow-y:auto;overscroll-behavior:contain;
-    z-index:60;padding:16px 18px;border-radius:16px;
-    box-shadow:0 26px 60px rgba(0,0,0,.5)
-  }
-  .nav-dropdown.open .nav-mega strong{position:sticky;top:-16px;background:#0e1a2b;padding:6px 0;margin:0 0 4px;z-index:1}
-  .nav-dropdown.open .nav-mega button{font-size:14px;padding:11px 0}
-  /* A backdrop so it reads as a sheet over the page, and taps outside close it. */
-  .nav-dropdown.open::after{content:"";position:fixed;inset:0;background:rgba(3,8,16,.55);z-index:59}
+.hdr__lang select,
+#langSelect {
+  /* Wide enough for the longest endonym plus the chevron. "Türkçe" was
+     rendering as "Türk". */
+  min-inline-size: 7.5em;
+  text-overflow: ellipsis;
 }
 
-/* Hero photo crossfade while the showcase walks the catalogue */
-.hero-product-showcase img{transition:opacity .22s ease}
-.hero-product-showcase img.is-fading{opacity:0}
-@media(prefers-reduced-motion:reduce){.hero-product-showcase img{transition:none}}
-
-/* --- Product gallery ---------------------------------------------------
-   Studio pack shots first, then the product in use. The strip scrolls
-   sideways on a phone and each thumb is a real button for keyboard use. */
-.gallery-thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:thin;scroll-snap-type:x proximity}
-.gallery-thumb{flex:0 0 auto;width:72px;height:72px;padding:4px;border:1px solid var(--line-strong,#dbe3ec);border-radius:12px;background:#fff;cursor:pointer;scroll-snap-align:start;transition:border-color .15s,box-shadow .15s}
-.gallery-thumb img{width:100%;height:100%;object-fit:contain;display:block}
-.gallery-thumb:hover{border-color:var(--blue,#1264ff)}
-.gallery-thumb.on{border-color:var(--blue,#1264ff);box-shadow:0 0 0 2px rgba(18,100,255,.22)}
-.gallery-thumb:focus-visible{outline:3px solid #0a5fd6;outline-offset:2px}
-.product-page-image{touch-action:pan-y}
-@media(max-width:760px){.gallery-thumb{width:64px;height:64px}}
-
-/* ======================================================================
-   TYPOGRAPHY AND SCALE
-   Arial and Tahoma were never designed for Arabic screen text, which is why
-   the shop read as amateurish. Cairo is a variable Arabic face built for
-   interfaces; one file per script covers every weight from 400 to 800, and
-   both are served from this repository — nothing is fetched from a font CDN.
-   ====================================================================== */
-@font-face{
-  font-family:"Cairo";
-  font-style:normal;
-  font-weight:400 800;
-  font-display:swap;
-  src:url("/assets/fonts/cairo-arabic.woff2") format("woff2");
-  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC;
+.bottombar__slot {
+  min-inline-size: 0;   /* a flex child will not shrink below its content without this */
 }
-@font-face{
-  font-family:"Cairo";
-  font-style:normal;
-  font-weight:400 800;
-  font-display:swap;
-  src:url("/assets/fonts/cairo-latin.woff2") format("woff2");
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+.bottombar__slot span,
+.bottombar__slot small {
+  display: block;
+  max-inline-size: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
 }
-/* Turkish needs U+011E/011F, U+0130 and U+015E/015F, which the plain Latin
-   subset does not carry — "Mağaza" and "İletişim" were breaking mid-word. */
-@font-face{
-  font-family:"Cairo";
-  font-style:normal;
-  font-weight:400 800;
-  font-display:swap;
-  src:url("/assets/fonts/cairo-latin-ext.woff2") format("woff2");
-  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+/* No size step at the narrowest phone. 13px would be below the 14px floor
+   that applies inside a link, and a label nobody can read is worse than one
+   that ends in an ellipsis — the icon above it already carries the meaning. */
+
+/* The rail's track reserves one row of cards. Without it the section grows
+   when the cards land, and everything below it — the trust block, the footer —
+   moves: measured, a cumulative layout shift of 0.59 against a 0.05 budget.
+   The values are the card heights from section 8, which are deterministic. */
+.rail__track { min-block-size: 327px; }
+@media (min-width: 768px)  { .rail__track { min-block-size: 439px; } }
+@media (min-width: 1280px) { .rail__track { min-block-size: 457px; } }
+@media (min-width: 1600px) { .rail__track { min-block-size: 440px; } }
+
+/* The brand strip reserves its rows for the same reason, and can: it never
+   shows more than nine tiles whether the shop carries seven brands or forty,
+   which is the whole point of the "top eight plus all brands" rule. Measured
+   empty it was 56px and full 264px, and those 208px pushed the trust block
+   and the footer down — 0.52 of layout shift on their own. */
+#brandstrip { min-block-size: 264px; }
+@media (min-width: 768px)  { #brandstrip { min-block-size: 192px; } }
+@media (min-width: 1280px) { #brandstrip { min-block-size: 120px; } }
+
+/* ---------------------------------------------------------------------------
+ * 19. Which surface a route shows
+ *
+ * The server writes `data-route` on <body> before a byte of script runs, so
+ * the page can lay itself out correctly on the first paint. script.js sets the
+ * same `hidden` flags a moment later and the two agree; what matters is that
+ * the stylesheet does not wait for it. It used to: on a category or a product
+ * URL the home sections occupied space until the script hid them, and the
+ * measured cumulative layout shift was 1.8 against a budget of 0.05.
+ *
+ * `[hidden]` is honoured here with !important because the UA rule lives in the
+ * user-agent origin and loses to any author `display` — and these sections are
+ * all display:grid or flex.
+ * --------------------------------------------------------------------------- */
+
+[hidden] { display: none !important; }
+
+body[data-route]:not([data-route="home"]) #storeline,
+body[data-route]:not([data-route="home"]) #deptGrid,
+body[data-route]:not([data-route="home"]) #railPopular,
+body[data-route]:not([data-route="home"]) #railOffers,
+body[data-route]:not([data-route="home"]) #railNew,
+body[data-route]:not([data-route="home"]) #brandstrip,
+body[data-route]:not([data-route="home"]) #homeTitle { display: none; }
+
+body[data-route="product"] #trust,
+body[data-route="home"] #listing,
+body[data-route="home"] #indexView,
+body[data-route="home"] #facetbar,
+body[data-route="home"] #productView,
+body[data-route="product"] #listing,
+body[data-route="product"] #facetbar,
+body[data-route="browse"] #facetbar,
+body[data-route="brands"] #facetbar { display: none; }
+
+body:not([data-route="product"]) #productView { display: none; }
+
+/* A label that grows when the language changes drags everything below it.
+   The store line is one line of facts and the tile is a fixed box; both hold
+   their height whichever of the three languages is in them. */
+.storeline {
+  min-block-size: 40px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
-
-:root{
-  --font:"Cairo","Segoe UI","Noto Sans Arabic",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
-  /* A fluid scale, so a 320px phone and a 1920px desktop both read well. */
-  --t-xs:clamp(12px,.72rem + .1vw,13px);
-  --t-sm:clamp(13px,.78rem + .15vw,14px);
-  --t-md:clamp(15px,.9rem + .2vw,16px);
-  --t-lg:clamp(17px,1rem + .35vw,19px);
-  --t-xl:clamp(20px,1.1rem + .8vw,26px);
-  --t-2xl:clamp(25px,1.3rem + 1.6vw,38px);
-  --t-3xl:clamp(31px,1.5rem + 2.6vw,52px);
-  /* Arabic needs more leading than Latin at the same size. */
-  --lh-tight:1.28;
-  --lh-body:1.8;
-}
-
-body{
-  font-family:var(--font);
-  font-size:var(--t-md);
-  line-height:var(--lh-body);
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-
-/* Letter spacing breaks the joins between Arabic letters. Never apply it to
-   Arabic text, however tempting it looks on a Latin headline. */
-html[dir="rtl"] body,html[dir="rtl"] body *{letter-spacing:normal}
-
-h1,h2,h3,h4{line-height:var(--lh-tight);text-wrap:balance}
-h1{font-size:var(--t-2xl);font-weight:800}
-h2{font-size:var(--t-xl);font-weight:800}
-h3{font-size:var(--t-lg);font-weight:700}
-p{max-width:74ch}
-
-/* Prices line up column to column and never reflow as digits change. */
-.product-bottom strong,.product-page-price strong,.cart-total strong,.price,
-.product-page-price,.cart-line-price{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
-
-/* Nothing user-facing below 13px: at 12px Arabic diacritics disappear. */
-.product-info h3{font-size:var(--t-sm)}
-.product-info p{font-size:var(--t-sm);line-height:1.75;color:var(--muted)}
-.product-bottom strong{font-size:var(--t-lg)}
-.notice-inner{font-size:var(--t-xs)}
-.nav-inner>a,.nav-dropdown>button{font-size:var(--t-sm)}
-.showcase-badge small,.quick-brand-grid span,.quick-product small,
-#favoritesCount,#cartCount,.cart-header span{font-size:var(--t-xs)}
-
-/* The muted grey was too light for body text on the page background. */
-:root{--muted:#4d5c73}
-
-/* Feature list on the product page: a title and its explanation, per language */
-.spec-list{display:grid;gap:14px;margin:0}
-.spec-list dt{font-weight:800;font-size:var(--t-md);color:var(--ink);margin-bottom:2px}
-.spec-list dd{margin:0;color:var(--muted);font-size:var(--t-sm);line-height:1.85;max-width:74ch}
-.spec-list dt+dd{margin-top:-6px}
-@media(min-width:900px){.spec-list{grid-template-columns:1fr 1fr;gap:16px 40px}.spec-list dd{margin-bottom:6px}}
-
-/* --- Brand cards -------------------------------------------------------
-   The wordmarks run from 2.1:1 (eufy) to 8.4:1 (Anker SOLIX), so they are
-   bounded on both axes; height alone would leave the wide ones tiny and the
-   narrow ones overbearing. */
-.brand-cards button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;min-height:148px;padding:20px 16px}
-.brand-mark{display:grid;place-items:center;height:38px;width:100%}
-.brand-mark img{max-height:34px;max-width:132px;width:auto;height:auto;object-fit:contain}
-.brand-cards button small{color:var(--muted);font-size:var(--t-sm);line-height:1.6;max-width:24ch}
-.brand-count{color:var(--blue);font-weight:800;font-size:var(--t-xs)}
-@media(max-width:760px){.brand-mark{height:32px}.brand-mark img{max-height:28px;max-width:108px}.brand-cards button{min-height:132px;padding:16px 12px}}
-
-/* --- Delivery, warranty and returns ------------------------------------ */
-.info-section{padding:56px 0}
-.info-section h2{margin-bottom:22px}
-.info-blocks{display:grid;gap:12px;max-width:980px}
-.info-block{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg,18px);overflow:hidden}
-.info-block summary{cursor:pointer;padding:18px 22px;font-weight:800;font-size:var(--t-lg);list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.info-block summary::-webkit-details-marker{display:none}
-.info-block summary:after{content:"+";font-size:22px;font-weight:700;color:var(--blue);line-height:1}
-
-.info-block summary:focus-visible{outline:3px solid #0a5fd6;outline-offset:-3px}
-.info-intro{padding:0 22px;color:var(--muted);font-size:var(--t-sm)}
-.info-list{padding:6px 22px 20px;margin:0;display:grid;gap:14px}
-.info-list dt{font-weight:700;font-size:var(--t-md)}
-.info-list dd{margin:4px 0 0;color:var(--muted);font-size:var(--t-sm);line-height:1.85;max-width:74ch}
-
-/* ---- Review round 1: contrast and control boundaries ---- */
-/* The eyebrow rule was bleeding blue onto the green WhatsApp button: 1.12:1 */
-.whatsapp-button span,.wa-button span{color:#fff}
-/* Struck-through prices are information, not decoration */
-.product-page-price del,.quick-price del{color:#5b6b80}
-/* A control identified only by its border needs 3:1 against its background */
-.price-inputs input,.catalog-toolbar select,.qty-picker,.gallery-thumb{border-color:#8a99ad}
-.search-form,.icon-action,.lang-picker{border-color:#4a5f7d}
-.stock-line.out{color:#b42318}
-/* The open marker was a mangled minus sign and rendered as the digit 2 */
-.info-block[open] summary:after{content:"−"}
-/* WCAG 2.2 target size */
-.back-link{min-height:28px;padding:3px 6px}
-.brand-link{min-height:24px;padding:2px 4px}
-
-/* ======================================================================
-   REVIEW ROUND 1 — the punch list that separates 'finished' from 'template'
-   ====================================================================== */
-
-/* The eyebrow colour was inherited by the icon as well as the label. */
-.whatsapp-button,.whatsapp-button *,.wa-button,.wa-button *{color:#fff}
-
-/* Every card in a row ends on the same baseline, whatever the title length. */
-.product{display:flex;flex-direction:column}
-.product-info{flex:1;display:flex;flex-direction:column}
-.product-info h3{min-height:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:var(--t-md);line-height:1.45}
-.product-info p{min-height:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.product-bottom{margin-top:auto;align-items:center}
-/* Price and the struck-through price sit on one line, not stacked three deep. */
-.price-row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-.price-row strong{display:inline}
-.price-row del{display:inline;font-size:var(--t-sm)}
-/* The discount moves onto the photo, where there is room for it. */
-.price-row .discount-label{position:absolute;inset-inline-start:10px;top:10px;margin:0;z-index:2}
-.product{position:relative}
-
-/* Horizontal strips: a gutter so nothing sits flush against the edge, and a
-   fade so a cut-off item reads as 'scrollable' rather than 'broken'. */
-.main-nav{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%)}
-.nav-inner{padding-inline:16px;scroll-padding-inline:16px}
-#categoryPills{padding-inline:16px;scroll-padding-inline:16px;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%)}
-@media(min-width:1100px){.main-nav,#categoryPills{-webkit-mask-image:none;mask-image:none}}
-
-/* A 27px empty box next to the search field looked like a rendering failure. */
-@media(max-width:760px){.search-form button[type=submit]{display:none}.search-form{border-inline-end:1px solid #2b3b52}}
-
-/* The notice bar was ellipsised mid-sentence on small phones. */
-@media(max-width:520px){.notice-inner{justify-content:center}.notice-inner span:last-child{display:none}.notice-inner span:first-child{overflow:visible;text-overflow:clip;white-space:normal;text-align:center}}
-
-/* One optical box for seven wordmarks of very different proportions. */
-.brand-mark{height:34px}
-.brand-mark img{max-height:26px;max-width:120px}
-
-/* RTL: the decorative blob used a physical edge and landed under the text. */
-.brand-cards button:before{right:auto;inset-inline-end:-30px}
-.brand-cards i{left:auto;inset-inline-start:22px}
-
-/* The hero badge overlapped the white photo card in a near-identical white. */
-@media(min-width:1100px){.showcase-badge{inset-inline-end:-18px;bottom:-10px;border:1px solid var(--line);box-shadow:0 18px 40px rgba(7,17,31,.16)}}
-
-/* The toast was landing on top of the cart's checkout button. */
-body.cart-open .toast{bottom:auto;top:84px}
-
-/* Nothing user-facing below 13px — the stylesheet said so and then broke it. */
-.category-pill,.catalog-toolbar,.catalog-toolbar select,.discount-label,.hero-label span,.brand-cards button small{font-size:var(--t-sm)}
-
-/* A middle tier so section headings stop shouting as loud as the page title. */
-.section-head h2{font-size:clamp(21px,1.1rem + 1.4vw,34px);font-weight:700}
-
-/* Less empty air before the first product on a phone. */
-@media(max-width:760px){
-  .brand-section,.catalog-section{padding:40px 0}
-  .contact{padding:40px 0}.contact-inner{padding:28px 0}
-  .info-section{padding:36px 0}
-  .hero-content{padding:36px 0}
-}
-
-/* ---- Review round 1: compatibility ---- */
-
-/* The product page grid has three children now that the thumbnail strip is
-   there, so the buy column was being pushed onto a second row and off the
-   fold on every desktop width. Name the areas instead of counting columns. */
-@media(min-width:901px){
-  .product-page-main{grid-template-areas:'image info' 'thumbs info';grid-template-rows:auto 1fr;align-items:start}
-  .product-page-image{grid-area:image}
-  #galleryThumbs{grid-area:thumbs;align-self:start}
-  .product-page-info{grid-area:info}
-}
-
-/* Chrome's automatic dark theme was repainting the brand cards dark and
-   leaving three black wordmarks invisible on them. Declaring the scheme
-   opts the page out of the automatic inversion. */
-:root{color-scheme:only light}
-
-/* A hover rule with no guard means a tap opens the brands panel and a second
-   tap cannot close it, on every touch screen wide enough to get the desktop
-   layout. */
-
-
-/* The floating WhatsApp button sat on top of a product's add button. */
-.products-grid{padding-bottom:88px}
-@media(min-width:1100px){.products-grid{padding-bottom:0}}
-
-/* 100vh is taller than the visible area once the mobile toolbar is showing,
-   which hid the checkout button with no way to scroll to it. */
-.cart{height:100vh;height:100dvh}
-#cartItems{overscroll-behavior:contain}
-body.cart-open{overflow:hidden}
-
-/* Targets below the platform minimum */
-.cart-line button,#closeCartButton,.remove-item{min-width:40px;min-height:40px}
-
-/* The reassurance belongs where the decision is made, not only on the home page. */
-.trust-strip{display:flex;flex-wrap:wrap;gap:10px 18px;list-style:none;margin:18px 0 0;padding:14px 0 0;border-top:1px solid var(--line)}
-.trust-strip li{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:var(--t-sm);font-weight:700}
-.trust-strip svg{color:var(--blue);flex:0 0 auto}
-/* The erase button was the loudest control in the header. */
-#searchClear{background:transparent;color:#8fa3bd}
-#searchClear:hover{color:#fff}
-
-/* --- Colour variants ---------------------------------------------------
-   One card per product instead of one per colour, and a real chooser on the
-   product page. */
-.variant-note{display:inline-block;margin:2px 0 8px;color:var(--blue);font-size:var(--t-xs);font-weight:800}
-.variant-picker{margin:18px 0 0;padding-top:16px;border-top:1px solid var(--line)}
-.variant-title{display:block;font-weight:800;font-size:var(--t-sm);margin-bottom:10px}
-.variant-list{display:flex;flex-wrap:wrap;gap:8px}
-.variant-chip{border:1px solid var(--line-strong);background:#fff;border-radius:999px;padding:8px 14px;font-size:var(--t-sm);font-weight:700;min-height:40px;color:var(--ink)}
-.variant-chip:hover{border-color:var(--blue);color:var(--blue)}
-.variant-chip.on{border-color:var(--blue);background:var(--blue);color:#fff}
-.variant-chip.out{opacity:.5;text-decoration:line-through}
-.variant-chip:focus-visible{outline:3px solid #0a5fd6;outline-offset:2px}
-
-/* The cart shows its own arithmetic, and is honest that delivery is extra. */
-.cart-unit{display:block;color:var(--muted);font-size:var(--t-xs);margin-top:2px;font-variant-numeric:tabular-nums}
-.cart-delivery{color:#7a5600;background:#fff8e6;border:1px solid #f2d999;border-radius:var(--r-md,12px);padding:10px 12px;font-size:var(--t-xs);font-weight:700;margin-bottom:8px}
-
-/* Seven brands never fill a five- or two-column grid, leaving empty cells. */
-.brand-cards{grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}
-@media(max-width:760px){.brand-cards{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}}
-
-/* An Arabic comma between Latin spec tokens reorders them badly, and the
-   bracket can split across a line. Isolate the run. */
-.product-info h3 bdi,.product-page-info h1 bdi{unicode-bidi:isolate}
-
-/* 'See deals' had no border or background, so it did not read as tappable. */
-.text-button{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:12px 20px;min-height:44px;display:inline-flex;align-items:center}
-.text-button:hover{border-color:#fff;background:rgba(255,255,255,.08)}
-
-/* Chrome draws its own clear button in a search field, next to ours. */
-.search-form input::-webkit-search-cancel-button,.search-form input::-webkit-search-decoration{-webkit-appearance:none;appearance:none}
-/* The confirmation was landing on the first line of the cart it confirmed. */
-body.cart-open .toast{top:auto;bottom:96px}
-
-/* The live region has to stay in the accessibility tree, and visibility:hidden
-   takes it out of it — so nothing was ever announced. Clip it instead. */
-.toast{visibility:visible;opacity:0;pointer-events:none;clip-path:inset(50%)}
-.toast.show{opacity:1;clip-path:none}
-/* An out-of-stock colour at 50% opacity reads at 3.41:1 */
-.variant-chip.out{opacity:1;color:#6b7785;border-style:dashed}
-.trust-strip{list-style:none}
-
-/* ---- Design round 2 -------------------------------------------------- */
-
-/* A — the picture and anything drawn over it share one box. */
-.product-media{position:relative;display:block}
-.product-media .stock-flag{position:absolute;inset-inline:0;bottom:0;z-index:2}
-
-/* C — the discount badge and the wishlist heart were 1px apart in the same
-   corner, so every sale price was half-eaten by the heart. Opposite ends. */
-.price-row .discount-label{inset-inline-start:auto;inset-inline-end:11px;top:11px}
-
-/* B/H — the add and ask buttons were under the platform minimum, and the
-   round one hung outside the card's clipped corner. */
-.add-product,.ask-product{min-width:44px;min-height:44px;flex:0 0 auto}
-.product-bottom{gap:10px;padding-bottom:2px}
-
-/* D — the pill row still overflowed at desktop with no fade and no
-   scrollbar, hiding five categories from anyone on a laptop. */
-@media(min-width:1100px){
-  #categoryPills{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%);flex-wrap:wrap;overflow:visible;mask-image:none;-webkit-mask-image:none}
-}
-
-/* The nav gutter that was specified for the strip but only landed on the pills. */
-.main-nav .nav-inner{padding-inline:16px}
-
-/* G — the shop's own name disappeared at 360, leaving a bare blue square. */
-@media(max-width:360px){.brand-logo span:last-child{display:inline}}
-@media(max-width:339px){.brand-logo span:last-child{display:none}}
-
-/* I — a fixed button cannot be cleared with padding on the grid. Keep it
-   away from the card controls instead. */
-@media(max-width:760px){.floating-whatsapp{width:52px;height:52px;bottom:14px}}
-
-/* N — the brand card's product count sat at a different height per card. */
-.brand-cards button{justify-content:flex-start}
-.brand-cards .brand-count{margin-block-start:auto}
-
-/* E/F/L/O — very wide viewports were stretching single rows across the
-   whole screen, leaving hundreds of pixels of void between two items. */
-@media(min-width:1100px){
-  .search-form{max-width:520px;margin-inline:auto}
-  .notice-inner{justify-content:center;gap:14px}
-  .notice-inner span:first-child:after{content:'·';margin-inline-start:14px;opacity:.5}
-  .contact-inner{max-width:980px;margin-inline:auto}
-  .hero-content{gap:40px}
-}
-
-/* The footer wrapped 'Anker SOLIX' across two lines mid-name. */
-.footer-brands button,.footer-brands a{white-space:nowrap}
-.footer{padding-bottom:96px}
-
-/* P — anchors landed under the sticky header. */
-section[id]{scroll-margin-top:170px}
-@media(max-width:760px){section[id]{scroll-margin-top:190px}}
-
-/* #14 — the stated 13px floor, actually enforced. */
-:root{--t-xs:clamp(13px,.78rem + .1vw,13px)}
-.product-info small,.nav-mega button{font-size:var(--t-sm)}
-
-/* #15 — one heading ramp, not a hard-coded 40px on the contact block. */
-.contact h2{font-size:clamp(21px,1.1rem + 1.4vw,34px);font-weight:700}
-
-/* ---- Top navigation: wrap instead of scroll ---------------------------
-   Measured need vs. available: ar 611px, tr 575px, en 501px against a
-   320-430px phone. One line is impossible, so the row wraps and every link
-   stays reachable. The single row returns once there is room for it. */
-@media(max-width:820px){
-  .main-nav{overflow:visible;-webkit-mask-image:none;mask-image:none}
-  .nav-inner{
-    flex-wrap:wrap;
-    justify-content:center;
-    min-width:0;
-    gap:2px 18px;
-    padding-block:6px;
-    padding-inline:12px;
-  }
-  .nav-inner>a,.nav-dropdown>button{padding-block:9px;white-space:nowrap}
-  /* The brands panel is anchored to the viewport, so a wrapped row does not
-     move it — but the anchor point does change height, and placeMega()
-     re-reads it on every open, scroll and resize. */
-}
-@media(max-width:380px){
-  .nav-inner{gap:0 14px}
-  .nav-inner>a,.nav-dropdown>button{font-size:var(--t-xs)}
-}
-
-/* The add buttons sit at the inline-start of each card, so the floating
-   button belongs at the inline-end where nothing else lives. Padding on the
-   grid could never clear it — it is fixed, not in flow. */
-.floating-whatsapp{inset-inline-start:auto;inset-inline-end:16px}
-@media(max-width:760px){.floating-whatsapp{inset-inline-end:12px;bottom:12px}}
-/* While the page behind an overlay is inert the button is still painted, so
-   taps on it fell through to whatever was underneath. */
-.floating-whatsapp[inert]{display:none}
-
-/* Reserve the hero's height so injected text does not shove the page down. */
-@media(min-width:1100px){.hero-text{min-height:300px}}
+.depts__tile { block-size: 76px; }
+@media (min-width: 768px) { .depts__tile { block-size: 96px; } }

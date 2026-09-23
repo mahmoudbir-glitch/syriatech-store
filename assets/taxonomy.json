@@ -1,0 +1,255 @@
+{
+  "version": 1,
+  "updated": "2026-09-23",
+  "nodes": [
+    {
+      "id": "charging",
+      "parent": null,
+      "order": 10,
+      "icon": "dept-charging",
+      "count": 62
+    },
+    {
+      "id": "power-banks",
+      "parent": "charging",
+      "order": 10,
+      "count": 14
+    },
+    {
+      "id": "wall-chargers",
+      "parent": "charging",
+      "order": 20,
+      "count": 17
+    },
+    {
+      "id": "cables",
+      "parent": "charging",
+      "order": 30,
+      "count": 19
+    },
+    {
+      "id": "wireless-chargers",
+      "parent": "charging",
+      "order": 40,
+      "count": 4
+    },
+    {
+      "id": "car-charging",
+      "parent": "charging",
+      "order": 50,
+      "count": 6
+    },
+    {
+      "id": "solar-chargers",
+      "parent": "charging",
+      "order": 60,
+      "count": 2
+    },
+    {
+      "id": "phone-acc",
+      "parent": null,
+      "order": 20,
+      "icon": "dept-phone-acc",
+      "count": 118
+    },
+    {
+      "id": "cases",
+      "parent": "phone-acc",
+      "order": 10,
+      "count": 109
+    },
+    {
+      "id": "wallets-grips",
+      "parent": "phone-acc",
+      "order": 20,
+      "count": 8
+    },
+    {
+      "id": "watch-bands",
+      "parent": "phone-acc",
+      "order": 30,
+      "count": 1
+    },
+    {
+      "id": "sound-vision",
+      "parent": null,
+      "order": 30,
+      "icon": "dept-sound-vision",
+      "count": 33
+    },
+    {
+      "id": "earbuds",
+      "parent": "sound-vision",
+      "order": 10,
+      "count": 10
+    },
+    {
+      "id": "headphones",
+      "parent": "sound-vision",
+      "order": 20,
+      "count": 6
+    },
+    {
+      "id": "speakers",
+      "parent": "sound-vision",
+      "order": 30,
+      "count": 8
+    },
+    {
+      "id": "projectors",
+      "parent": "sound-vision",
+      "order": 40,
+      "count": 3
+    },
+    {
+      "id": "av-accessories",
+      "parent": "sound-vision",
+      "order": 50,
+      "count": 6
+    },
+    {
+      "id": "security",
+      "parent": null,
+      "order": 40,
+      "icon": "dept-security",
+      "count": 26
+    },
+    {
+      "id": "cameras",
+      "parent": "security",
+      "order": 10,
+      "count": 17
+    },
+    {
+      "id": "doorbells",
+      "parent": "security",
+      "order": 20,
+      "count": 2
+    },
+    {
+      "id": "locks",
+      "parent": "security",
+      "order": 30,
+      "count": 3
+    },
+    {
+      "id": "sensors",
+      "parent": "security",
+      "order": 40,
+      "count": 2
+    },
+    {
+      "id": "recorders",
+      "parent": "security",
+      "order": 50,
+      "count": 2
+    },
+    {
+      "id": "home",
+      "parent": null,
+      "order": 50,
+      "icon": "dept-home",
+      "count": 18
+    },
+    {
+      "id": "vacuums",
+      "parent": "home",
+      "order": 10,
+      "count": 4
+    },
+    {
+      "id": "health-baby",
+      "parent": "home",
+      "order": 20,
+      "count": 6
+    },
+    {
+      "id": "makers",
+      "parent": "home",
+      "order": 30,
+      "count": 6
+    },
+    {
+      "id": "smart-living",
+      "parent": "home",
+      "order": 40,
+      "count": 2
+    },
+    {
+      "id": "energy",
+      "parent": null,
+      "order": 60,
+      "icon": "dept-energy",
+      "count": 9
+    },
+    {
+      "id": "power-stations",
+      "parent": "energy",
+      "order": 10,
+      "count": 6
+    },
+    {
+      "id": "solar-panels",
+      "parent": "energy",
+      "order": 20,
+      "count": 2
+    },
+    {
+      "id": "off-grid",
+      "parent": "energy",
+      "order": 30,
+      "count": 1
+    },
+    {
+      "id": "computing",
+      "parent": null,
+      "order": 70,
+      "icon": "dept-computing",
+      "count": 10
+    },
+    {
+      "id": "hubs-docks",
+      "parent": "computing",
+      "order": 10,
+      "count": 7
+    },
+    {
+      "id": "storage",
+      "parent": "computing",
+      "order": 20,
+      "count": 3
+    },
+    {
+      "id": "parts",
+      "parent": null,
+      "order": 80,
+      "icon": "dept-parts",
+      "count": 36
+    },
+    {
+      "id": "vacuum-parts",
+      "parent": "parts",
+      "order": 10,
+      "count": 34
+    },
+    {
+      "id": "batteries",
+      "parent": "parts",
+      "order": 20,
+      "count": 2
+    }
+  ],
+  "aliases": {
+    "power-bank": "power-banks",
+    "charger": "wall-chargers",
+    "wireless": "wireless-chargers",
+    "car": "car-charging",
+    "phone-cases": "cases",
+    "smart-home": "home",
+    "solar": "energy",
+    "audio": "sound-vision",
+    "projector": "projectors",
+    "accessories": "parts",
+    "power": "wall-chargers"
+  }
+}

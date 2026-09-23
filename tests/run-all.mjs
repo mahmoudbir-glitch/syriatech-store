@@ -60,7 +60,16 @@ if (!await ready()) {
   process.exit(1);
 }
 
-const suites = ["config-test.mjs", "content-test.mjs", "lang-test.mjs", "api-test.mjs", "ui-test.mjs", "compat-test.mjs"];
+const suites = [
+  "config-test.mjs",   // vercel.json — a mistake here stops the whole deployment
+  "design-test.mjs",   // the design system, statically: tokens, floors, taxonomy, assets
+  "content-test.mjs",
+  "lang-test.mjs",
+  "api-test.mjs",
+  "shop-test.mjs",     // the redesign's measured claims, in a real browser
+  "ui-test.mjs",
+  "compat-test.mjs"
+];
 const results = [];
 for (const suite of suites) {
   fs.rmSync(BLOB_DIR, { recursive: true, force: true });

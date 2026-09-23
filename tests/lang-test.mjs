@@ -12,7 +12,8 @@ const REPO = process.env.DEV_REPO || "D:/bir/syriatech-store";
 const BASE = "http://127.0.0.1:" + (process.env.DEV_PORT || 3100);
 let failures = 0;
 const check = (name, ok, detail) => {
-  console.log((ok ? "PASS " : "FAIL ") + name + (ok ? "" : " -> " + JSON.stringify(detail).slice(0, 400)));
+  const shown = detail === undefined ? "(nothing found)" : JSON.stringify(detail).slice(0, 400);
+  console.log((ok ? "PASS " : "FAIL ") + name + (ok ? "" : " -> " + shown));
   if (!ok) failures++;
 };
 
@@ -20,9 +21,26 @@ const check = (name, ok, detail) => {
 const read = f => fs.readFileSync(path.join(REPO, f), "utf8");
 const i18nSource = read("i18n.js");
 
-// Load the dictionaries the same way a browser would.
+/* Load the dictionaries the way a browser would — and both of them.
+   The admin console's copy lives in i18n-admin.js, which merges into the same
+   window.I18N. It was split out because it is 41% of the file and every
+   shopper was downloading 6 KB gzipped of admin panel strings, a tenth of the
+   whole JavaScript budget, to read a product page. The console still has to
+   resolve every key it references, so the check loads both. */
 const sandbox = { window: {}, navigator: { languages: ["ar"] }, localStorage: { getItem: () => null, setItem: () => {} } };
-new Function("window", "navigator", "localStorage", i18nSource)(sandbox.window, sandbox.navigator, sandbox.localStorage);
+const run = src => new Function("window", "navigator", "localStorage", src)(
+  sandbox.window, sandbox.navigator, sandbox.localStorage);
+run(i18nSource);
+/* Every chunk of the split dictionary. The shop's words are divided by the
+   surface that renders them — the checkout's labels, the category
+   descriptions, the product page's own strings and the whole admin console
+   each travel with the file that shows them, so the home page stops
+   downloading 14 KB gzipped of words it never displays. They all merge into
+   the same window.I18N.dict, and the language rules apply to all of them
+   together: one key set, three languages, nothing untranslated. */
+for (const chunk of ["i18n-cat.js", "i18n-order.js", "i18n-pdp.js", "i18n-admin.js"]) {
+  if (fs.existsSync(path.join(REPO, chunk))) run(read(chunk));
+}
 const I18N = sandbox.window.I18N;
 const LANGS = I18N.languages.map(l => l.code);
 
@@ -50,10 +68,15 @@ LANGS.slice(1).forEach(code => {
   });
   check(`[${code}] placeholders match ar`, !mismatched.length, mismatched);
 });
-// Untranslated copies (same string in ar and another language) are only allowed for names/brands.
+/* The same string in ar and another language is almost always a translation
+   somebody forgot. It is legitimate for a proper noun, and for a value with no
+   letters in it at all — "{who} · {area} · {action}" is a layout, and
+   an em dash meaning "nothing recorded" is an em dash in every language. */
 const SAME_ALLOWED = new Set(["brandName", "heroTagBrand", "footerRights"]);
+const hasLetters = v => /\p{L}/u.test(String(v).replace(/\{\w+\}/g, ""));
 LANGS.slice(1).forEach(code => {
-  const copied = keys.ar.filter(k => !SAME_ALLOWED.has(k) && !k.startsWith("brandTagline.") && maps.ar[k] === maps[code][k]);
+  const copied = keys.ar.filter(k => !SAME_ALLOWED.has(k) && !k.startsWith("brandTagline.")
+    && hasLetters(maps.ar[k]) && maps.ar[k] === maps[code][k]);
   check(`[${code}] nothing left untranslated`, !copied.length, copied);
 });
 
@@ -62,7 +85,14 @@ const ARABIC = /[\u0600-\u06FF]/;
 const TURKISH = /[ğĞşŞıİçÇöÖüÜ]/;
 // index.html is generated from the dictionary by tools/sync-body.cjs and is
 // checked against it below, which is a stronger guarantee than being empty.
-const SOURCES = ["admin.html", "script.js", "admin.js", "catalog.js", "product-images.js", "api/admin.js", "api/products.js", "api/image.js"];
+/* Every file that could smuggle a visible string past the dictionary.
+   checkout.html is listed with the pages because it is a page; the
+   deleted product-images.js is not listed because it is deleted. */
+const SOURCES = ["admin.html", "core.js", "script.js",
+  "product.js", "cart.js", "checkout.js", "admin.js", "catalog.js",
+  "api/admin.js", "api/products.js", "api/image.js", "api/c.js",
+  "api/p.js", "api/order.js", "api/o.js", "api/orders.js", "api/sitemap.js"]
+  .filter(f => fs.existsSync(path.join(REPO, f)));
 SOURCES.forEach(file => {
   const src = file.endsWith(".html") ? read(file).replace(/<head>[\s\S]*?<\/head>/, "") : read(file);
   const code = file.endsWith(".html") ? src : src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
@@ -76,7 +106,8 @@ SOURCES.forEach(file => {
  * readable; every one of those strings has to match its data-i18n key exactly,
  * which catches both hand-written copy and a stale generated file.
  */
-["index.html", "admin.html"].forEach(file => {
+["index.html", "checkout.html", "admin.html"]
+  .filter(f => fs.existsSync(path.join(REPO, f))).forEach(file => {
   const raw = read(file).replace(/<head>[\s\S]*?<\/head>/, "").replace(/<script[\s\S]*?<\/script>/g, "").replace(/<style[\s\S]*?<\/style>/g, "").replace(/<!--[\s\S]*?-->/g, "");
   const dictionary = maps.ar;
   const lookup = key => key.split(".").reduce((n, part) => (n && n[part] !== undefined ? n[part] : undefined), I18N.dict.ar);
@@ -95,7 +126,18 @@ SOURCES.forEach(file => {
     });
   check(`${file} generated copy matches the dictionary`, !stale.length, stale);
 
-  const leftovers = stripped.split(/<[^>]*>/).map(s => s.trim()).filter(s => s && !/^[\s&;#0-9.,:$+×−-]*$/.test(s) && s !== "SYRIA" && s !== "TECH" && s !== "S");
+    /* Two things in the markup are deliberately not from the dictionary.
+     An <option> in the language switch carries its language's OWN endonym —
+     "English" stays English in an Arabic page, and each option declares its
+     own lang so a screen reader pronounces it correctly rather than reading
+     Türkçe with Arabic phonetics. And an element marked aria-hidden is
+     decoration: a separator dot is not copy. Punctuation that only ever
+     separates — · — – / | — is allowed for the same reason. */
+  const exempt = new Set(["العربية", "English", "Türkçe", "SYRIA", "TECH", "S"]);
+  const decorative = raw.replace(/<([\w-]+)[^>]*aria-hidden="true"[^>]*>[\s\S]*?<\/>/g, "");
+  const leftovers = stripped.split(/<[^>]*>/).map(s => s.trim())
+    .filter(s => s && !/^[\s&;#0-9.,:$+/|·—–×−-]*$/.test(s) && !exempt.has(s))
+    .filter(s => decorative.includes(s));
   check(`${file} contains no hard-coded text`, !leftovers.length, leftovers);
 });
 
@@ -113,19 +155,52 @@ SOURCES.forEach(file => {
 // Every key referenced by the markup or the scripts must exist, and every key must be used.
 // index.html is left out of the Arabic-text scan because it is generated from
 // the dictionary, but it still references keys and counts towards what is used.
-const usage = ["index.html"].concat(SOURCES).map(read).join(String.fromCharCode(10));
+/* Every file that references a key, including the pages whose Arabic is
+   generated and therefore left out of the no-Arabic scan. */
+const usage = ["index.html", "checkout.html"]
+  .concat(SOURCES)
+  .filter(f => fs.existsSync(path.join(REPO, f)))
+  .map(read).join(String.fromCharCode(10));
+/* Keys the code builds rather than writes: `t("cat." + node.id)`,
+   `t("admin.area" + screen)`, `t("routeCount" + pluralShape)`. A scan of the
+   source cannot see them, so a prefix vouches for the family. Everything
+   outside a listed prefix must appear literally somewhere, which is what
+   catches a key nobody uses and a key nobody defined. */
+const DYNAMIC_PREFIXES = [
+  "cat.", "catDesc.", "city.", "brandTagline.", "error.",
+  "admin.area", "admin.act", "admin.st", "admin.pay",
+  "routeCount", "cartCount", "variantCount", "pdpMoreBrands"
+];
 const referenced = new Set();
 [...usage.matchAll(/data-i18n(?:-html)?="([\w.]+)"/g)].forEach(m => referenced.add(m[1]));
 [...usage.matchAll(/data-i18n-attr="([^"]+)"/g)].forEach(m => m[1].split(";").forEach(pair => referenced.add(pair.split(":")[1].trim())));
 [...usage.matchAll(/\bt\("([\w.]+)"/g)].forEach(m => referenced.add(m[1]));
 [...usage.matchAll(/I\.t\("([\w.]+)"/g)].forEach(m => referenced.add(m[1]));
+/* `SY.plural("cartItems", n)` asks for cartItemsOne / Two / Few / Many —
+   Arabic has four shapes and the dictionary carries all of them. Expanding
+   the call is exact, where a blanket prefix would hide a family that is
+   genuinely dead. */
+[...usage.matchAll(/[Pp]lural(?:Text)?\("([\w.]+)"/g)].forEach(m => {
+  for (const shape of ["One", "Two", "Few", "Many"]) referenced.add(m[1] + shape);
+});
 const quoted = new Set([...usage.matchAll(/"([\w.]+)"/g)].map(m => m[1]));
-const unknown = [...referenced].filter(k => !k.endsWith(".") && !keys.ar.includes(k));
+const unknown = [...referenced].filter(k => !k.endsWith(".") && !keys.ar.includes(k) &&
+  !DYNAMIC_PREFIXES.includes(k));
 check("every referenced key exists", !unknown.length, unknown);
 
-const DYNAMIC_PREFIXES = ["category.", "categoryDesc.", "brandTagline.", "error."];
-const unused = keys.ar.filter(k => !referenced.has(k) && !quoted.has(k) && !DYNAMIC_PREFIXES.some(p => k.startsWith(p)) && !["pageTitle", "adminPageTitle", "metaDescription"].includes(k));
-check("no unused keys in the dictionary", !unused.length, unused);
+
+/* The storefront is held strictly: every key it defines must be referenced
+   somewhere, or the dictionary rots and three languages of dead copy ship to
+   every shopper. The console is not, and cannot be — `admin.js` composes its
+   keys (`t("admin." + name)`, `t("admin.act" + verb)`), so no scan of the
+   source can tell a live key from a dead one. Its copy is also loaded only by
+   the console, so a stale entry there costs the shopper nothing. */
+const unused = keys.ar.filter(k =>
+  !referenced.has(k) && !quoted.has(k) &&
+  !k.startsWith("admin.") &&
+  !DYNAMIC_PREFIXES.some(p => k.startsWith(p)) &&
+  !["pageTitle", "adminPageTitle", "metaDescription"].includes(k));
+check("no unused keys in the storefront dictionary", !unused.length, unused);
 
 /* ---------------- Runtime checks ---------------- */
 const browser = await puppeteer.launch({
@@ -134,7 +209,10 @@ const browser = await puppeteer.launch({
   args: ["--no-sandbox", "--disable-dev-shm-usage"]
 });
 
-const SIGNATURE = { ar: "cartTitle", en: "cartTitle", tr: "cartTitle" };
+/* A string the home page definitely renders, in the page's own language.
+   It used to be cartTitle, which moved into the chunk that travels with
+   cart.js — a key the home page does not load is a poor signature. */
+const SIGNATURE = { ar: "homeAuthorised", en: "homeAuthorised", tr: "homeAuthorised" };
 
 for (const page of ["/", "/admin.html"]) {
   for (const code of LANGS) {
@@ -236,17 +314,30 @@ for (const page of ["/", "/admin.html"]) {
 {
   const tab = await browser.newPage();
   await tab.goto(BASE, { waitUntil: "networkidle0" });
-  await tab.select("#languageSelect", "tr");
+  await tab.select("#langSelect", "tr");
   await new Promise(r => setTimeout(r, 400));
   const afterSwitch = await tab.evaluate(() => ({
     dir: document.documentElement.dir,
     title: document.title,
-    heading: document.querySelector("#productsTitle").textContent,
-    card: document.querySelector(".product p").textContent,
-    cart: document.querySelector('[data-i18n="cartTitle"]').textContent,
+    heading: (document.querySelector("#homeTitle") || {}).textContent,
+    card: (document.querySelector(".pcard__name") || {}).textContent,
     stored: localStorage.getItem("syriatech_lang")
   }));
-  check("switching to tr updates page + products", afterSwitch.dir === "ltr" && afterSwitch.heading === maps.tr.productsTitle && !ARABIC.test(afterSwitch.card), afterSwitch);
+  check("switching to tr updates the page", afterSwitch.dir === "ltr" &&
+    afterSwitch.heading === maps.tr.homeTitle && afterSwitch.title === maps.tr.pageTitle, afterSwitch);
+  check("switching to tr updates the products", !ARABIC.test(afterSwitch.card || ""), afterSwitch.card);
+  /* The cart sheet is empty markup until cart.js writes it, and its words
+     travel in a chunk that is fetched at the same moment. Opening it is the
+     only way to find out whether that chunk actually arrived and arrived in
+     the language the shopper chose — nothing else on the page reads those
+     keys, so a chunk that failed to load would otherwise go unnoticed. */
+  await tab.click("#cartBtn");
+  await new Promise(r => setTimeout(r, 600));
+  const sheet = await tab.evaluate(() => {
+    const el = document.querySelector("#cart-title");
+    return { title: el ? el.textContent : null, markers: document.querySelector("#cart").innerHTML.includes("⟦") };
+  });
+  check("the cart sheet arrives in tr", sheet.title === maps.tr.cartTitle && !sheet.markers, sheet);
   check("language choice is remembered", afterSwitch.stored === "tr", afterSwitch.stored);
   await tab.reload({ waitUntil: "networkidle0" });
   const afterReload = await tab.evaluate(() => document.documentElement.lang);

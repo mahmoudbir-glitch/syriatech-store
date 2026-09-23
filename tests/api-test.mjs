@@ -21,6 +21,16 @@ async function call(action, body, method) {
   return { status: res.status, data };
 }
 const products = async () => (await fetch(`${BASE}/api/products`)).json();
+/* `save` answers {ok, id} now, not the whole state — reading a megabyte
+   back on every price edit does not scale. Fetch the state when a check
+   needs to see it.
+
+   `state` no longer carries it either: the console's dashboard needs counts
+   and settings, not a megabyte of catalogue, so that action returns a summary
+   and the whole state comes from `export` — the same call the owner's backup
+   button makes. A check that wants to see what was actually written reads it
+   from there. */
+const stateNow = async () => (await call("export")).data.state;
 
 // 1. Authentication
 check("state without login is 401", (await call("state")).status === 401);
@@ -39,17 +49,28 @@ cookie = good;
 
 // 3. Add a product
 const add = await call("save", { isNew: true, product: { name: "منتج تجريبي", brand: "TestBrand", category: "cables", price: 10.5, oldPrice: 21, descriptionAr: "وصف عربي", description: "English desc" } });
-check("add product", add.status === 200 && add.data.state.additions.length === 1, add.data);
+const afterAdd = await stateNow();
+check("add product", add.status === 200 && afterAdd.additions.length === 1, { add: add.data, additions: afterAdd.additions.length });
 const newId = add.data.id;
-check("public api shows addition", (await products()).additions.some(p => p.id === newId));
+/* A new product is born a draft: the owner types a name, the phone rings,
+   and a half-finished product must not be in the shop when they come back.
+   So it is hidden until it is published — and that is worth asserting in
+   both directions, because "hidden" is the part that protects the owner and
+   "appears once published" is the part that makes the console usable. */
+check("a new product is a draft", (await stateNow()).additions.find(p => p.id === newId).status === "draft");
+check("a draft is not in the shop", !(await products()).additions.some(p => p.id === newId));
+await call("save", { product: { id: newId, name: "منتج تجريبي", brand: "TestBrand", category: "cables", price: 10.5, oldPrice: 21, status: "published" } });
+check("publishing puts it in the shop", (await products()).additions.some(p => p.id === newId));
 
 // 4. Edit that product -> stays in additions, no duplicate
-const edit = await call("save", { product: { id: newId, name: "منتج معدل", brand: "TestBrand", category: "cables", price: 9 } });
-check("edit added product keeps one copy", edit.data.state.additions.length === 1 && edit.data.state.additions[0].name === "منتج معدل" && !edit.data.state.overrides[newId], edit.data.state);
+await call("save", { product: { id: newId, name: "منتج معدل", brand: "TestBrand", category: "cables", price: 9 } });
+const afterEdit = await stateNow();
+check("edit added product keeps one copy", afterEdit.additions.length === 1 && afterEdit.additions[0].name === "منتج معدل" && !afterEdit.overrides[newId], afterEdit);
 
 // 5. Edit a built-in product -> override
-const ovr = await call("save", { product: { id: 1001, name: "Anker edited", brand: "Anker", category: "power-bank", price: 100, oldPrice: 200 } });
-check("edit built-in creates override", ovr.data.state.overrides["1001"]?.price === 100, ovr.data.state.overrides);
+await call("save", { product: { id: 1001, name: "Anker edited", brand: "Anker", category: "power-bank", price: 100, oldPrice: 200 } });
+const afterOvr = await stateNow();
+check("edit built-in creates override", afterOvr.overrides["1001"]?.price === 100, afterOvr.overrides);
 
 // 6. Validation
 check("empty name rejected", (await call("save", { isNew: true, product: { name: "", price: 5, category: "cables" } })).status === 400);
@@ -58,20 +79,24 @@ check("bad category rejected", (await call("save", { isNew: true, product: { nam
 check("javascript: image rejected", (await call("save", { isNew: true, product: { name: "x", price: 5, category: "cables", image: "javascript:alert(1)" } })).status === 400);
 const okImg = await call("save", { isNew: true, product: { name: "img ok", price: 5, category: "cables", image: "/api/image?pathname=products%2F123-abc.webp" } });
 check("uploaded image url accepted", okImg.status === 200, okImg.data);
-const longName = await call("save", { isNew: true, product: { name: "n".repeat(500), price: 5, category: "cables" } });
-check("long name trimmed to 200", longName.data.state.additions.find(p => p.name.length === 200) !== undefined);
+await call("save", { isNew: true, product: { name: "n".repeat(500), price: 5, category: "cables" } });
+check("long name trimmed to 200", (await stateNow()).additions.find(p => p.name.length === 200) !== undefined);
 
 // 7. Delete + restore
-check("delete built-in", (await call("delete", { id: 1002 })).data.state.deleted.includes(1002));
+await call("delete", { id: 1002 });
+check("delete built-in", (await stateNow()).deleted.includes(1002));
 check("public api hides deleted", (await products()).deleted.includes(1002));
-check("restore built-in", !(await call("restore", { id: 1002 })).data.state.deleted.includes(1002));
-check("revert clears override", !(await call("revert", { id: 1001 })).data.state.overrides["1001"]);
+await call("restore", { id: 1002 });
+check("restore built-in", !(await stateNow()).deleted.includes(1002));
+await call("revert", { id: 1001 });
+check("revert clears override", !(await stateNow()).overrides["1001"]);
 
 // 8. Settings
 check("bad whatsapp rejected", (await call("settings", { whatsapp: "12" })).status === 400);
 check("bad email rejected", (await call("settings", { whatsapp: "963111222333", email: "not-an-email" })).status === 400);
-const settings = await call("settings", { whatsapp: "963 111 222 333", email: "shop@example.com" });
-check("settings saved and digits cleaned", settings.data.state.settings.whatsapp === "963111222333", settings.data.state.settings);
+await call("settings", { whatsapp: "963 111 222 333", email: "shop@example.com" });
+const afterSettings = await stateNow();
+check("settings saved and digits cleaned", afterSettings.settings.whatsapp === "963111222333", afterSettings.settings);
 
 // 9. Image upload through the presigned URL
 const presign = await call("presign", { filename: "my photo!.webp", contentType: "image/webp", size: 2048 });
@@ -96,9 +121,9 @@ check("image path traversal blocked", (await fetch(`${BASE}/api/image?pathname=$
 check("image outside products blocked", (await fetch(`${BASE}/api/image?pathname=data%2Fstore-state.json`)).status === 400);
 
 // 10. Concurrent saves must not lose data
-const before = (await call("state")).data.state.additions.length;
+const before = (await stateNow()).additions.length;
 await Promise.all([1, 2, 3, 4].map(n => call("save", { isNew: true, product: { name: "concurrent " + n, brand: "B", category: "cables", price: n } })));
-const after = (await call("state")).data.state.additions.length;
+const after = (await stateNow()).additions.length;
 check("4 concurrent saves all persisted", after === before + 4, { before, after });
 
 // 11. Pages rendered on the server for crawlers and link previews.
@@ -135,9 +160,11 @@ check("an unknown product answers 404, not a redirect", unknown.status === 404, 
 
 const sitemap = await fetch(`${BASE}/api/sitemap`);
 const sitemapXml = await sitemap.text();
-check("the sitemap lists every product",
-  (sitemapXml.match(/<loc>/g) || []).length > 100,
-  (sitemapXml.match(/<loc>/g) || []).length);
+const locs = (sitemapXml.match(/<loc>/g) || []).length;
+check("the sitemap lists the catalogue, the aisles and the brands", locs > 200, locs);
+check("the sitemap declares a language alternate for every url",
+  (sitemapXml.match(/<xhtml:link/g) || []).length === locs * 4,
+  { locs, alternates: (sitemapXml.match(/<xhtml:link/g) || []).length });
 check("the sitemap links the product pages", sitemapXml.includes("/p/" + anyProduct.id));
 
 // 12. Logout

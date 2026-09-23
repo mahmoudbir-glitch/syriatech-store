@@ -1,0 +1,271 @@
+/* SYRIATECH — design tokens
+ * =========================
+ * The single source of truth for every colour, size, space, radius, shadow
+ * and duration in the shop and in the admin console. Nothing else may invent
+ * one. `tools/build-css.cjs` inlines this block into style.css and admin.css
+ * so each page still costs one stylesheet request; edit it here, never there.
+ *
+ * The identity is "Damascus Copper": warm paper, near-black ink, and one
+ * copper accent. Copper because the brand colour has to avoid every hue a
+ * supplier already owns — Anker's and soundcore's cyan, UGREEN's green,
+ * Kingston's and Joyroom's red, WhatsApp's green — and still be dark enough
+ * to carry white text on a button, be a link on paper, and be a focus ring,
+ * from one value. #A45118 is 5.57:1 on white, so it does all three.
+ *
+ * Every ratio quoted below was measured, not estimated.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ---------------------------------------------------------------- colour */
+  /* Neutral ramp: OKLCH hue 62, chroma 0.004–0.012. Warm paper, not blue-grey
+     — the blue-grey neutrals were most of why the old page read as a template.
+     Fourteen steps. There is no fifteenth; every grey must be one of these. */
+  --n-0:   #FFFFFF;   /* card, product plate, input fill                     */
+  --n-25:  #FDFAF8;   /* raised alternate, sub-bar                           */
+  --n-50:  #F8F5F2;   /* page                                                */
+  --n-100: #F0ECE8;   /* subtle fill, skeleton, disabled fill                */
+  --n-200: #E4DFDA;   /* hairline (cards, dividers) — decorative             */
+  --n-300: #D1CBC6;   /* strong line                                         */
+  --n-400: #A9A39E;   /* icon on dark                                        */
+  --n-450: #968F8A;   /* FIELD BORDER — 3.19:1 on white, WCAG 1.4.11         */
+  --n-500: #77716B;   /* meta, struck price — 4.82:1                         */
+  --n-600: #625C57;   /* muted ink — 6.59:1                                  */
+  --n-700: #47413D;   /* secondary heading                                   */
+  --n-800: #2D2824;   /* out-of-stock plate                                  */
+  --n-900: #1A1613;   /* body ink — 17.98:1                                  */
+  --n-950: #100D0A;   /* price, header slab, footer — 19.37:1                */
+
+  /* Brand — Damascus Copper */
+  --brand-subtle: #FFF0E4;  /* tinted chip, active filter background         */
+  --brand-soft:   #FDD7BD;  /* hover on a tint                               */
+  --brand-line:   #EEB793;  /* border of a tinted chip                       */
+  --brand:        #A45118;  /* primary action, focus, current department     */
+  --brand-hover:  #8F410E;
+  --brand-active: #79350F;
+  --brand-ink:    #893E0A;  /* brand-coloured TEXT on paper — 7.62:1         */
+  --brand-tint:   #E08A4A;  /* the mark on the dark slab — 8.6:1             */
+
+  /* Semantic. Each colour means exactly one thing; see the map below. */
+  --success:      #1B6738;  --success-bg: #E7F7EB;  --success-line: #B7DCC0;
+  --warning:      #6D5900;  --warning-bg: #FCF4D8;  --warning-line: #EBCD9C;
+  --danger:       #A4283A;  --danger-bg:  #FFECEC;  --danger-line:  #F6C2C4;
+  --danger-solid: #BE2F42;  /* the −17% badge fill, white text — 5.2:1       */
+
+  /* WhatsApp is an external constant. It is never re-tinted, never themed,
+     and no control that is not a WhatsApp control may borrow it. */
+  --wa-green: #25D366;  /* the official glyph only. 1.7:1 — never carries text */
+  --wa-ink:   #0B7A3B;  /* WhatsApp-coloured text on white — 5.44:1            */
+  --wa-btn:   #0A6B34;  /* WhatsApp button fill, white text — 6.63:1           */
+
+  /* ---- what each colour is allowed to mean -------------------------------
+     --n-950      the price, and the header/footer slab. Nothing else in a card.
+     --danger     the price fell (badge, struck price) — and genuine errors.
+     --success    in stock. Only the stock pill.
+     --warning    low stock, and a figure the shop has not published yet.
+     --brand      interaction: action, focus, current department, link, mark.
+     --wa-btn     only a control that opens WhatsApp.
+     greys        structure. No grey carries meaning.
+     -------------------------------------------------------------------- */
+
+  /* ------------------------------------------------------------------ type */
+  /* Cairo, self-hosted. Kept over eight alternatives because it is the only
+     face whose Arabic short-letter height equals its Latin x-height exactly
+     (500/1000 em both) — and 307 of 312 Arabic product names contain Latin
+     characters, so that one property decides it. */
+  --font: "Cairo", "Cairo Fallback", "Cairo Fallback 2", system-ui, sans-serif;
+
+  /* Nine steps. The four smallest are FIXED: UI chrome must not grow with the
+     viewport, and fluid chrome is what produced 13.02 / 15.12 / 17.26px sizes.
+     Every gap is between 7% and 29%; nothing sits in a dead band. */
+  --t-100: 0.8125rem;                                                  /* 13 */
+  --t-200: 0.875rem;                                                   /* 14 */
+  --t-300: 0.9375rem;                                                  /* 15 */
+  --t-400: clamp(1rem, 0.979rem + 0.093vw, 1.0625rem);            /* 16 → 17 */
+  --t-500: clamp(1.1875rem, 1.146rem + 0.185vw, 1.3125rem);       /* 19 → 21 */
+  --t-600: clamp(1.375rem, 1.292rem + 0.370vw, 1.625rem);         /* 22 → 26 */
+  --t-700: clamp(1.625rem, 1.479rem + 0.648vw, 2.0625rem);        /* 26 → 33 */
+  --t-800: clamp(1.9375rem, 1.708rem + 1.019vw, 2.625rem);        /* 31 → 42 */
+  --t-900: clamp(2.25rem, 1.875rem + 1.667vw, 3.375rem);          /* 36 → 54 */
+
+  /* Line boxes, snapped to the 4px grid. Arabic needs 1.355 em of vertical ink
+     where Latin needs 0.953 — 42% more — and 54.8% of our summaries carry
+     diacritics, so the absolute floor is 1.36 and the working floor 1.45.
+     The tightest value here is the page title at 36/26 = 1.38, and that role
+     is single-line by construction. */
+  --lh-100: 20px;   /* 13 × 1.54 */
+  --lh-200: 24px;   /* 14 × 1.71 */
+  --lh-300: 24px;   /* 15 × 1.60 */
+  --lh-400: 28px;   /* 16 × 1.75 */
+  --lh-500: 28px;   /* 19 × 1.47 */
+  --lh-600: 32px;   /* 22 × 1.45 */
+  --lh-700: 36px;   /* 26 × 1.38, single line */
+  --lh-tight: 1.30; /* display only */
+  --lh-body: 1.70;
+
+  /* Three weights. The variable axis is not linear: 500 is invisible against
+     400, and 800 over 700 adds mass without clarity and closes Arabic
+     counters below 15px. 900 was a silent no-op — the face clamps at 800. */
+  --w-normal: 400;
+  --w-medium: 600;
+  --w-bold:   700;
+
+  /* Arabic reading measure. 52ch holds 64 Arabic characters and 68 Latin —
+     one value for all three languages. The old 74ch held 90 Arabic. */
+  --measure: 52ch;
+
+  /* --------------------------------------------------------------- spacing */
+  /* 4px base. Nothing vertical may be a value that is not on this scale. */
+  --s-1: 4px;  --s-2: 8px;   --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px;  --s-8: 64px; --s-9: 96px;
+
+  --inset: 16px;          /* page gutter, phone                              */
+  --container: 1280px;
+
+  /* ---------------------------------------------------------------- shape */
+  /* Seven radii, down from twenty. A radius scales with its box, not taste. */
+  --r-xs: 6px;    /* badge, tag, discount chip            */
+  --r-sm: 10px;   /* input, select, small or icon button  */
+  --r-md: 14px;   /* button, inner chip, search, dialog   */
+  --r-lg: 18px;   /* product card, brand card, panel      */
+  --r-xl: 24px;   /* full-bleed block, modal sheet        */
+  --r-pill: 999px;
+  --r-circle: 50%;
+
+  --bd-hair: 1px solid var(--n-200);   /* card edge, divider — decorative    */
+  --bd-line: 1px solid var(--n-300);   /* table rule, section separator      */
+  --bd-field: 1px solid var(--n-450);  /* INPUT, SELECT — must clear 3:1     */
+
+  /* Three shadows, down from twenty. The shadow colour is the ink colour,
+     never a brand colour: a coloured glow under a button is the loudest
+     "free template" cue there is. */
+  --sh-1: 0 1px 2px rgba(16,13,10,.05), 0 8px 20px rgba(16,13,10,.05);
+  --sh-2: 0 2px 6px rgba(16,13,10,.06), 0 18px 40px rgba(16,13,10,.10);
+  --sh-3: 0 8px 20px rgba(16,13,10,.10), 0 40px 80px rgba(16,13,10,.18);
+
+  /* ---------------------------------------------------------------- focus */
+  /* One ring, everywhere, two tones. A single colour cannot clear 3:1 against
+     both a white card and a black product photo; a near-black ring with a
+     white halo always has one half visible. Worst measured case 3.48:1 (the
+     ink half on copper); the two halves contrast 19.37:1 with each other. */
+  --focus-ink:  #100D0A;
+  --focus-halo: #FFFFFF;
+
+  /* --------------------------------------------------------------- motion */
+  /* Three durations, two curves, and every travel distance is a token so
+     reduced motion can zero the movement while keeping the cross-fades that
+     carry meaning. */
+  --d-1: 120ms;   /* state under the finger               */
+  --d-2: 200ms;   /* a region fades, a small surface lands */
+  --d-3: 260ms;   /* a full-screen sheet travels          */
+  --e-out: cubic-bezier(.2, 0, 0, 1);
+  --e-in:  cubic-bezier(.4, 0, 1, 1);
+  --travel-sm: 12px;
+  --travel-md: 24px;
+
+  /* ---------------------------------------------------------------- layers */
+  /* One ladder. Nothing may invent a z-index outside it. */
+  --z-sticky: 20;
+  --z-bottombar: 30;
+  --z-backdrop: 100;
+  --z-sheet: 200;
+  --z-toast: 300;
+
+  /* --------------------------------------------------------------- chrome */
+  --chrome: 56px;    /* sticky header height; anchors scroll clear of it     */
+  --bottombar: 0px;  /* set to 56px by the phone media query                 */
+
+  /* Direction. The only RTL switch in the stylesheet: icons that depict
+     motion flip with scaleX(var(--flip)); everything else uses logical
+     properties and needs no [dir] rule at all. */
+  --flip: 1;
+}
+
+html[dir="rtl"] { --flip: -1; }
+
+@media (min-width: 768px) {
+  :root { --inset: 24px; --chrome: 56px; }
+}
+@media (min-width: 1280px) {
+  :root { --inset: 32px; --chrome: 64px; }
+}
+
+/* Reduced motion removes movement, not information. --d-2 stays, because it
+   is only ever used on opacity and a cross-fade is the accessible substitute
+   for a slide — deleting it makes surfaces snap into existence unexplained,
+   which is a different failure, not a fix. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --d-1: 1ms;
+    --d-3: 1ms;
+    --travel-sm: 0px;
+    --travel-md: 0px;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* Cairo itself. These declarations were missing: the stylesheet named the
+   family and never loaded it, so every visitor fell through to the metric
+   fallback below — and it looked correct on any machine with Cairo installed,
+   which is every machine this was built on.
+
+   Three files, split by script so a visitor downloads only what their
+   language writes. Each `unicode-range` names exactly what is in its file:
+   the last time a range promised a character the file did not have — `ı`,
+   declared here and absent — the browser chose this face for 167 Turkish
+   strings, found nothing, and fell through to a system font.
+
+   `font-weight: 400 700` matches the instanced axis. The design system uses
+   400, 600 and 700 and nothing else: 500 is invisible against 400, and 800
+   closes the counters of ه م و ع at card sizes.
+
+   `font-display: swap` paints text immediately in the fallback above, which
+   is metric-matched, so the swap does not move the page. */
+@font-face {
+  font-family: "Cairo";
+  src: url("/assets/fonts/cairo-arabic.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+200C-200F, U+2066-2069, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/assets/fonts/cairo-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+2013-2014, U+2019, U+201C-201D, U+2026, U+2033, U+20AC, U+2122, U+2190, U+2192, U+2248;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/assets/fonts/cairo-latin-ext.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+011E-011F, U+0130, U+015E-015F;
+}
+
+/* Metric-matched fallbacks. Cairo's Arabic bah is 0.500 em; Tahoma's is
+   0.340. Without these the Arabic re-sizes by 47% in place the moment the
+   swap fires, which is the largest remaining CLS source in RTL. The numbers
+   come from the measured advance of the same 48-character Arabic sentence at
+   100px: Cairo 2172.6, Segoe UI 2214.8, Tahoma 2245.6. No network cost —
+   local() only. */
+@font-face {
+  font-family: "Cairo Fallback";
+  src: local("Segoe UI");
+  size-adjust: 98.1%;
+  ascent-override: 130.3%;
+  descent-override: 57.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Cairo Fallback 2";
+  src: local("Tahoma");
+  size-adjust: 96.8%;
+  ascent-override: 130.3%;
+  descent-override: 57.1%;
+  line-gap-override: 0%;
+}

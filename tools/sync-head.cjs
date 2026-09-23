@@ -12,9 +12,14 @@ const REPO = process.argv[2] || "D:/bir/syriatech-store";
 const SITE = "https://syriatech-store.vercel.app";
 
 const win = {};
-new Function("window", "navigator", "localStorage", "location",
-  fs.readFileSync(path.join(REPO, "i18n.js"), "utf8")
-)(win, { languages: ["ar"] }, { getItem: () => null, setItem: () => {} }, { search: "" });
+/* Every chunk of the split dictionary, so a key that moved is still found. */
+const DICTS = ["i18n.js", "i18n-cat.js", "i18n-order.js", "i18n-pdp.js"]
+  .filter(f => fs.existsSync(path.join(REPO, f)));
+for (const dict of DICTS) {
+  new Function("window", "navigator", "localStorage", "location",
+    fs.readFileSync(path.join(REPO, dict), "utf8")
+  )(win, { languages: ["ar"] }, { getItem: () => null, setItem: () => {} }, { search: "" });
+}
 
 const ar = win.I18N.dict.ar;
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");

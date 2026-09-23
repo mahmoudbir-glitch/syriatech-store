@@ -1,0 +1,51 @@
+{
+  "anker": {
+    "name": "Anker",
+    "logo": "anker.svg",
+    "order": 10,
+    "count": 69,
+    "hidden": false
+  },
+  "eufy": {
+    "name": "eufy",
+    "logo": "eufy.svg",
+    "order": 20,
+    "count": 78,
+    "hidden": false
+  },
+  "soundcore": {
+    "name": "soundcore",
+    "logo": "soundcore.svg",
+    "order": 30,
+    "count": 24,
+    "hidden": false
+  },
+  "nebula": {
+    "name": "Nebula",
+    "logo": "nebula.svg",
+    "order": 40,
+    "count": 8,
+    "hidden": false
+  },
+  "anker-solix": {
+    "name": "Anker SOLIX",
+    "logo": "anker-solix.svg",
+    "order": 50,
+    "count": 9,
+    "hidden": false
+  },
+  "pitaka": {
+    "name": "PITAKA",
+    "logo": "pitaka.svg",
+    "order": 60,
+    "count": 121,
+    "hidden": false
+  },
+  "kingston": {
+    "name": "Kingston",
+    "logo": "kingston.svg",
+    "order": 70,
+    "count": 3,
+    "hidden": false
+  }
+}

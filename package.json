@@ -15,6 +15,9 @@
     "test:lang": "node tests/lang-test.mjs",
     "test:ui": "node tests/ui-test.mjs",
     "test:api": "node tests/api-test.mjs",
-    "test:compat": "node tests/compat-test.mjs"
+    "test:compat": "node tests/compat-test.mjs",
+    "test:design": "node tests/design-test.mjs",
+    "test:shop": "node tests/shop-test.mjs",
+    "build": "node tools/build-taxonomy.cjs && node tools/build-brands.cjs && node tools/build-css.cjs && node tools/sync-head.cjs && node tools/sync-body.cjs && node tools/stamp-assets.cjs && node tools/stamp-csp.cjs"
   }
 }

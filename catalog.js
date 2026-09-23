@@ -7,20 +7,20 @@
  */
 (function () {
   const categories = [
-    { id: "power-bank", art: "assets/new-power.svg" },
-    { id: "charger", art: "assets/new-charger.svg" },
-    { id: "wireless", art: "assets/new-charger.svg" },
-    { id: "cables", art: "assets/new-cables.svg" },
-    { id: "hubs-docks", art: "assets/new-dock.svg" },
-    { id: "power", art: "assets/new-charger.svg" },
-    { id: "car", art: "assets/new-charger.svg" },
-    { id: "audio", art: "assets/new-audio.svg" },
-    { id: "security", art: "assets/new-security.svg" },
-    { id: "smart-home", art: "assets/new-security.svg" },
-    { id: "projector", art: "assets/new-projector.svg" },
-    { id: "solar", art: "assets/new-solar.svg" },
-    { id: "phone-cases", art: "assets/product-accessories.svg" },
-    { id: "accessories", art: "assets/product-accessories.svg" }
+    { id: "power-bank" },
+    { id: "charger" },
+    { id: "wireless" },
+    { id: "cables" },
+    { id: "hubs-docks" },
+    { id: "power" },
+    { id: "car" },
+    { id: "audio" },
+    { id: "security" },
+    { id: "smart-home" },
+    { id: "projector" },
+    { id: "solar" },
+    { id: "phone-cases" },
+    { id: "accessories" }
   ];
 
   // Display order of the brands that have a tagline in i18n.js.
@@ -356,7 +356,6 @@
     {id:5489,category:"accessories",brand:"Kingston",name:"Kingston Canvas Select Plus microSD",sku:"",oldPrice:19.99,price:19.99,image:"assets/products/5489.webp",inStock:true}
   ];
 
-  const PLACEHOLDER = "assets/product-accessories.svg";
   const categoryMap = Object.fromEntries(categories.map(c => [c.id, c]));
   const categoryIds = new Set(categories.map(c => c.id));
   const t = (key, vars, lang) => (window.I18N ? window.I18N.t(key, vars, lang) : "");
@@ -461,10 +460,13 @@
     };
   }
 
-  function fallbackFor(p) {
-    const c = categoryMap[p && p.category];
-    return rooted((c && c.art) || PLACEHOLDER);
-  }
+  /* There is no artwork fallback any more, and that is deliberate. The sixteen
+     category drawings this used to return had ANKER, soundcore, eufy, NEBULA
+     or SOLIX baked into them as SVG text, so a Joyroom product with a missing
+     photo advertised a competitor. A product with no photograph now returns
+     null and the page renders a department glyph with the product's own brand
+     name beside it. */
+  function fallbackFor() { return null; }
 
   // Paths are stored without a leading slash; serve them from the root so they
   // also resolve on /p/<id>.
@@ -472,12 +474,12 @@
     return url && !/^(https?:|data:|\/)/.test(url) ? "/" + url : url;
   }
 
+  // null when the product has no photograph; every caller must handle it.
   function imageFor(p) {
     if (p && typeof p.image === "string" && p.image.trim()) return rooted(p.image.trim());
     const custom = window.PRODUCT_IMAGES && window.PRODUCT_IMAGES[String(p && p.id)];
     if (custom) return rooted(custom);
-    const art = typeof window.STORE_ARTWORK === "function" ? window.STORE_ARTWORK(p) : "";
-    return art || fallbackFor(p);
+    return null;
   }
 
   const ARABIC = /[\u0600-\u06FF]/;
@@ -506,27 +508,8 @@
 
   function isKnownCategory(id) { return categoryIds.has(String(id)); }
 
-  // Broken image → category artwork → generic placeholder (never loops).
-  // Bound once in the capture phase: 'error' does not bubble. This file is also
-  // evaluated on the server to build /p/<id> and the sitemap, where there is no
-  // DOM, so nothing here may touch the document while loading.
-  if (typeof document !== "undefined") {
-    document.addEventListener("error", function (e) {
-      const img = e.target;
-      if (img && img.tagName === "IMG" && img.dataset.fallback !== undefined) window.storeImageFallback(img);
-    }, true);
-  }
-
-  window.storeImageFallback = function (img) {
-    const next = img.dataset.fallback;
-    img.dataset.fallback = "";
-    if (next && img.getAttribute("src") !== next) { img.src = next; return; }
-    img.onerror = null;
-    if (img.getAttribute("src") !== "/" + PLACEHOLDER) img.src = "/" + PLACEHOLDER;
-  };
-
   window.STORE = {
-    categories, brands, products, settings, PLACEHOLDER,
+    categories, brands, products, settings,
     esc, merge, deletedProducts, mergeSettings, imageFor, fallbackFor,
     descFor, categoryLabel, brandTagline, isKnownCategory, cleanWhatsapp
   };

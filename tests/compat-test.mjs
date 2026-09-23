@@ -19,11 +19,22 @@ const read = f => fs.readFileSync(path.join(REPO, f), "utf8");
 
 /* ---------- Static browser-support scan ---------- */
 const css = read("style.css") + read("admin.css");
-const js = read("script.js") + read("admin.js") + read("i18n.js") + read("catalog.js") + read("product-images.js");
+/* Every script that reaches a browser. product-images.js is gone — it drew
+   a placeholder per product, and the shop now shows a department glyph
+   and the product's own brand name instead. */
+const js = ["core.js", "script.js", "product.js", "cart.js", "checkout.js",
+  "admin.js", "i18n.js", "i18n-admin.js", "catalog.js", "lang-boot.js"]
+  .filter(f => fs.existsSync(path.join(REPO, f))).map(read).join(String.fromCharCode(10));
 
-// :has() is recent; it must never be the only way a rule applies.
-const hasRules = [...css.matchAll(/([^\n{]*:has\([^)]*\))\s*\{/g)].map(m => m[1].trim());
-check("every :has() rule has a class fallback", hasRules.every(rule => rule.split(",").length > 1), hasRules);
+/* :has() needs Chrome 105 or Safari 15.4, and this market is full of phones
+   older than that, so it may never be the only way a rule applies.
+   The whole selector list counts, not the line the :has() happens to sit on.
+   A list is normally written one selector per line, and reading only the last
+   line reported a fallback as missing when it was on the line above. */
+const hasRules = [...css.matchAll(/(?:^|[}\n])\s*((?:[^{};]|\n)*?:has\([^)]*\)(?:[^{};]|\n)*?)\{/g)]
+  .map(m => m[1].trim().replace(/\s*\n\s*/g, " "));
+const unguarded = hasRules.filter(rule => rule.split(",").every(sel => sel.includes(":has(")));
+check("every :has() rule has a selector that does not need :has()", unguarded.length === 0, unguarded);
 check("no @container queries (not supported on older phones)", !/@container/.test(css));
 check("no CSS nesting (needs a very recent browser)", !/^\s*&/m.test(css));
 // Risky JS APIs must be feature-detected.
@@ -63,7 +74,11 @@ for (const screen of SCREENS) {
       const offenders = [...document.querySelectorAll("body *")]
         .filter(el => {
           const r = el.getBoundingClientRect();
-          if (el.closest(".main-nav,.category-pills,.product-list,#cartItems,.modal-body,.hero,#cart,#overlay,#productView,#imageLightbox,#toast,.modal,.footer")) return false;
+          /* Things that are meant to sit outside the viewport: a rail scrolls
+             sideways on purpose, a sheet waits off-canvas, and the toast
+             slides in. Every other name that used to be in this list belonged
+             to the old markup and had been excusing nothing for weeks. */
+          if (el.closest(".rail__track,.sheet,dialog,#toast,#suggest,.vh")) return false;
           let node = el.parentElement;
           while (node) {
             const s = getComputedStyle(node);
@@ -73,7 +88,12 @@ for (const screen of SCREENS) {
           return r.right > document.documentElement.clientWidth + 1 || r.left < -1;
         })
         .slice(0, 4).map(el => el.tagName + "." + String(el.className).slice(0, 30));
-      const tapTargets = [...document.querySelectorAll("header button, header a, header select, header input, .category-pill, .product button, .product .product-image, .product .ask-product")].filter(el => {
+      /* Everything a thumb is expected to hit. The old list named buttons
+         inside `.product`, a class this shop no longer has, so the check had
+         quietly shrunk to the header. */
+      const tapTargets = [...document.querySelectorAll(
+        "header button, header a, header select, header input, .chip, .facetbar__chip, " +
+        ".bottombar__slot, .pcard__fav, .pcard__hit, .rail__more, .tile")].filter(el => {
         const r = el.getBoundingClientRect();
         const style = getComputedStyle(el);
         return r.width > 0 && style.visibility !== "hidden" && style.display !== "none" && (r.height < 30 || r.width < 20);
@@ -127,17 +147,40 @@ for (const locale of LOCALES) {
   const page = await browser.newPage();
   await page.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true });
   await page.goto(BASE, { waitUntil: "networkidle0" });
-  await page.evaluate(() => document.querySelector(".product .add-product").scrollIntoView({ block: "center" }));
-  await wait(200);
-  const box = await page.$(".product .add-product");
-  await box.tap();
-  await wait(400);
-  check("tapping add-to-cart works on touch screens", await page.$eval("#cart", el => el.classList.contains("open")));
-  await page.keyboard.press("Escape");
-  await wait(200);
-  check("escape closes the cart", !(await page.$eval("#cart", el => el.classList.contains("open"))));
+
+  /* There is no add-to-cart button on a card any more — the card is one link
+     to the product page, and the basket is reached from the header or the bar
+     along the bottom. Whichever of the two this screen shows is the one a
+     thumb would find. */
+  const opener = await page.evaluate(() => {
+    for (const sel of ["#slotCart", "#cartBtn"]) {
+      const el = document.querySelector(sel);
+      if (el && el.getBoundingClientRect().width > 0) return sel;
+    }
+    return "";
+  });
+  check("the basket is reachable on a phone", !!opener, opener);
+  if (opener) {
+    const handle = await page.$(opener);
+    await handle.tap();
+    await wait(600);
+    check("tapping the basket opens it on a touch screen",
+      await page.$eval("#cart", el => el.open));
+    await page.keyboard.press("Escape");
+    await wait(300);
+    check("escape closes the basket", await page.$eval("#cart", el => !el.open));
+    /* Closing must hand the page back. A sheet that leaves #app-root inert
+       locks the shopper out of everything behind it, and the page still looks
+       perfectly normal while it does. */
+    check("the page is usable again after closing",
+      await page.evaluate(() => {
+        const root = document.querySelector("#app-root");
+        return !!root && !root.hasAttribute("inert") && root.getAttribute("aria-hidden") !== "true";
+      }));
+  }
   const focusable = await page.evaluate(() => {
-    const el = document.querySelector("#searchInput");
+    const el = document.querySelector("#q");
+    if (!el) return false;
     el.focus();
     return document.activeElement === el;
   });

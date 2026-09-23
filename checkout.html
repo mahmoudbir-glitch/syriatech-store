@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-title-key="coTitle">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100D0A">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<title>Syriatech</title>
+<meta name="description" content="">
+<script src="/lang-boot.js?v=11e22a78"></script>
+<link rel="stylesheet" href="/style.css?v=42f8498f">
+<!--
+  Checkout is its own URL and its own document, so the home page never
+  downloads it. style.css already owns `.checkout`, `.field`, `.paymethod`,
+  `.btn`, `.empty` and every form control — none of that is restated below.
+  What is here is only what checkout has and the shared sheet does not: the
+  step indicator, the collapsible order summary, the totals block and the
+  client-rendered confirmation the degraded path falls back to.
+-->
+<style>
+  .co-steps{display:flex;align-items:center;gap:var(--s-2);min-block-size:20px;
+    font-size:var(--t-100);line-height:var(--lh-100);color:var(--n-500)}
+  .co-steps b{font-weight:var(--w-bold);color:var(--n-900)}
+  .co-back{display:inline-flex;align-items:center;min-block-size:44px;color:var(--brand-ink);font-weight:var(--w-medium)}
+  main > .co-back{margin-block-start:var(--s-3)}
+  .co-h2{margin-block:var(--s-5) var(--s-2);font-size:var(--t-400);line-height:var(--lh-400);font-weight:var(--w-bold)}
+
+  .co-summary{border:var(--bd-hair);border-radius:var(--r-md);background:var(--n-0);overflow:hidden}
+  @media (min-width:900px){.co-aside{position:sticky;inset-block-start:var(--s-5)}}
+  .co-summary__hit{inline-size:100%;min-block-size:56px;display:flex;align-items:center;gap:var(--s-2);
+    padding-inline:var(--s-4);font-size:var(--t-300);font-weight:var(--w-bold);color:inherit;text-align:start}
+  .co-summary__hit > span:first-child{flex:1;min-inline-size:0}
+  .co-summary__hit .icon{flex:none;transition:transform var(--d-2) var(--e-out)}
+  .co-summary__hit[aria-expanded="true"] .icon{transform:rotate(180deg)}
+  .co-lines{padding:0 var(--s-4) var(--s-3)}
+  .co-line{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px var(--s-3);
+    padding-block:var(--s-2);border-block-start:var(--bd-hair);font-size:var(--t-200);line-height:var(--lh-200)}
+  .co-line__name{grid-column:1;font-weight:var(--w-medium)}
+  .co-line__num{grid-column:1;font-size:var(--t-100);line-height:var(--lh-100);color:var(--n-600)}
+  .co-line b{grid-column:2;grid-row:1/3;align-self:center;font-weight:var(--w-bold);white-space:nowrap}
+  .co-line.is-out b{color:var(--danger)}
+
+  .co-remember{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2);
+    margin-block-end:var(--s-3);font-size:var(--t-100);line-height:var(--lh-100);color:var(--n-600)}
+  .co-remember[hidden]{display:none}
+
+  .co-totals{margin-block-start:var(--s-4);padding-block-start:var(--s-3);border-block-start:var(--bd-hair)}
+  .co-total{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s-3);
+    min-block-size:24px;font-size:var(--t-200);line-height:var(--lh-200);font-weight:var(--w-medium)}
+  .co-total--deliv{font-size:var(--t-100);line-height:var(--lh-100);color:var(--n-600);font-weight:var(--w-normal)}
+  .co-total--grand{margin-block-start:var(--s-2);padding-block-start:var(--s-2);border-block-start:var(--bd-hair);
+    font-size:var(--t-400);line-height:var(--lh-400);font-weight:var(--w-bold)}
+  /* An expression, not a number: "$559.94 + التوصيل". Truthful, unmissable,
+     and not a warning, so it frightens nobody. */
+  .co-total--grand b{font-weight:var(--w-bold);color:var(--n-950)}
+
+  .co-submit{inline-size:100%;min-block-size:56px;margin-block-start:var(--s-4)}
+  .co-promise{margin-block-start:var(--s-2);font-size:var(--t-100);line-height:var(--lh-100);color:var(--n-600)}
+  .co-error{display:block;margin-block-start:var(--s-3);color:var(--danger);
+    font-size:var(--t-200);line-height:var(--lh-200);font-weight:var(--w-medium)}
+  .co-error:empty{display:none}
+
+  /* The client-rendered confirmation, used only when the write failed. */
+  .co-ref{display:flex;align-items:baseline;gap:var(--s-2);margin-block-start:var(--s-2)}
+  .co-ref__k{font-size:var(--t-100);color:var(--n-600)}
+  .co-ref b{font-size:var(--t-500);line-height:var(--lh-500);font-weight:var(--w-bold)}
+  .co-warn{margin-block-start:var(--s-2);font-size:var(--t-100);line-height:var(--lh-100);color:var(--n-600)}
+  .co-next{margin-block-start:var(--s-2);padding-inline-start:var(--s-5);
+    font-size:var(--t-200);line-height:var(--lh-body)}
+  .co-next li{margin-block-end:var(--s-2)}
+  .co-addr{font-size:var(--t-200);line-height:var(--lh-body)}
+  .co-actions{display:flex;flex-wrap:wrap;gap:var(--s-3);margin-block-start:var(--s-5)}
+  .co-actions .btn{flex:1 1 200px;min-block-size:52px}
+  @media print{.co-back,.co-steps,.co-actions{display:none}}
+</style>
+</head>
+<body data-route="checkout">
+
+<a class="skip-link" href="#main" data-i18n="skipToProducts">الانتقال إلى المحتوى</a>
+
+<div id="app-root">
+  <div class="container">
+    <a class="co-back" href="/" data-i18n="coBack">العودة إلى الطلب</a>
+    <p class="co-steps" aria-hidden="true">
+      <span data-i18n="coStepCart">السلة</span> ——— <b data-i18n="coStepDetails">التفاصيل</b> ——— <span data-i18n="coStepDone">تم</span>
+    </p>
+    <main id="main" tabindex="-1">
+      <h1 data-i18n="coTitle">إتمام الطلب</h1>
+
+      <div class="checkout">
+        <form id="co-form" novalidate>
+          <h2 class="co-h2" data-i18n="coSectionDelivery">معلومات التوصيل</h2>
+
+          <p class="co-remember" data-remembered hidden>
+            <span data-i18n="coRemembered">أكملنا بياناتك من طلبك السابق.</span>
+            <button type="button" class="btn btn--ghost" data-clear-saved data-i18n="coNotYou">ليست بياناتك؟ امسحها</button>
+          </p>
+
+          <!--
+            Phone first. It is the field that makes the record an asset: without
+            it the owner cannot chase an order that stalls, and a row he cannot
+            action is a receipt, not an order.
+          -->
+          <label class="field">
+            <span class="field__label" data-i18n="coPhone">رقم الهاتف</span>
+            <input id="co-phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr"
+                   required aria-describedby="hint-phone err-phone">
+            <span class="meta" id="hint-phone" data-i18n="coPhoneHint">نتصل بك لتأكيد الطلب.</span>
+            <strong class="field__error" id="err-phone" hidden></strong>
+          </label>
+
+          <label class="field">
+            <span class="field__label" data-i18n="coName">الاسم الكامل</span>
+            <input id="co-name" type="text" autocomplete="name" required aria-describedby="err-name">
+            <strong class="field__error" id="err-name" hidden></strong>
+          </label>
+
+          <!-- The value is a key (sy-aleppo), never a label. -->
+          <label class="field">
+            <span class="field__label" data-i18n="coCity">المدينة</span>
+            <select id="co-city" autocomplete="address-level1" required aria-describedby="err-city"></select>
+            <strong class="field__error" id="err-city" hidden></strong>
+          </label>
+
+          <!--
+            One textarea, not three structured fields: Syrian addresses are
+            descriptive, and a postcode box forces people to invent data.
+          -->
+          <label class="field">
+            <span class="field__label" data-i18n="coAddress">العنوان بالتفصيل</span>
+            <textarea id="co-address" rows="2" autocomplete="street-address" required
+                      aria-describedby="hint-address err-address"></textarea>
+            <span class="meta" id="hint-address" data-i18n="coAddressHint">الحي، الشارع، أقرب معلم</span>
+            <strong class="field__error" id="err-address" hidden></strong>
+          </label>
+
+          <label class="field">
+            <span class="field__label"><span data-i18n="coEmail">البريد الإلكتروني</span>
+              <span class="meta"> — <span data-i18n="coOptional">اختياري</span></span></span>
+            <input id="co-email" type="email" inputmode="email" autocomplete="email" dir="ltr"
+                   aria-describedby="hint-email err-email">
+            <span class="meta" id="hint-email" data-i18n="coEmailWhy">نرسل لك نسخة من طلبك.</span>
+            <strong class="field__error" id="err-email" hidden></strong>
+          </label>
+
+          <button type="button" class="btn btn--ghost" data-note-toggle aria-expanded="false" aria-controls="note-box">
+            <span data-i18n="coNoteAdd">أضف ملاحظة</span>
+          </button>
+          <div id="note-box" data-note-box hidden>
+            <label class="field">
+              <span class="field__label" data-i18n="coNote">ملاحظة للطلب</span>
+              <textarea id="co-note" rows="2"></textarea>
+            </label>
+          </div>
+
+          <h2 class="co-h2" id="pay-label" data-i18n="coSectionPayment">طريقة الدفع</h2>
+          <!--
+            One entry, presented as a choice. It earns its label alone because
+            not paying a stranger up front is a reassurance the shopper is
+            looking for. No disabled "card coming soon" ghost row: a second
+            method is a second <label> here and the layout does not change.
+            There is deliberately no delivery-method group — one entry there
+            would be scaffolding, since the address field already implies it.
+          -->
+          <div role="radiogroup" aria-labelledby="pay-label">
+            <label class="paymethod">
+              <input type="radio" name="pay" value="cod" checked>
+              <strong data-i18n="payCod">الدفع عند الاستلام</strong>
+              <span data-i18n="payCodBody">نؤكّد الطلب وأجرة التوصيل معك، ثم تدفع للمندوب عند التسليم.</span>
+            </label>
+          </div>
+
+          <div class="co-totals">
+            <div class="co-total"><span data-i18n="coGoods">قيمة المنتجات</span><span data-goods></span></div>
+            <div class="co-total co-total--deliv"><span data-deliv-label></span>
+              <span data-i18n="coDeliveryTbd">يؤكَّد قبل الشحن</span></div>
+            <div class="co-total co-total--grand"><span data-i18n="coGrand">الإجمالي</span><b data-grand></b></div>
+          </div>
+
+          <strong class="co-error" data-form-error></strong>
+          <!-- No amount on the button: printing it would undo the honesty of
+               the expression one line above. -->
+          <button type="submit" class="btn btn--primary co-submit" data-submit data-i18n="coSubmit">تأكيد الطلب</button>
+          <p class="co-promise" data-i18n="coDeliveryPromise">نتواصل معك خلال ساعات الدوام لنتفق على أجرة التوصيل قبل الشحن.</p>
+        </form>
+
+        <aside class="co-aside">
+          <div class="co-summary" data-summary>
+            <button type="button" class="co-summary__hit" data-summary-toggle aria-expanded="false" aria-controls="co-sum-lines">
+              <span data-summary-text></span>
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/icons.svg#ic-chevron-down"></use></svg>
+              <span class="vh" data-i18n="coSummaryShow">عرض الأصناف</span>
+            </button>
+            <ul class="co-lines" id="co-sum-lines" data-summary-lines hidden></ul>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+</div>
+
+<dialog id="cart" class="sheet sheet--end"></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div class="vh" id="sr-cart"    role="status" aria-live="polite" aria-atomic="true"></div>
+<div class="vh" id="sr-results" role="status" aria-live="polite" aria-atomic="true"></div>
+<div class="vh" id="sr-filter"  role="status" aria-live="polite"></div>
+<div class="vh" id="sr-fav"     role="status" aria-live="polite"></div>
+<div class="vh" id="sr-route"   role="status" aria-live="polite"></div>
+<div class="vh" id="sr-busy"    role="status" aria-live="polite"></div>
+<div class="vh" id="sr-status"  role="status" aria-live="polite"></div>
+<div class="vh" id="sr-error"   role="alert"></div>
+
+<script src="/i18n.js?v=83c86074" defer></script>
+<!-- The checkout's own words. They are 6 KB gzipped and appear on this page,
+     the cart sheet and the confirmation — never on the home page, which is
+     why they travel in their own file. -->
+<script src="/i18n-order.js?v=5e197d27" defer></script>
+<script src="/catalog.js?v=3bd20424" defer></script>
+<script src="/core.js?v=fc81d53f" defer></script>
+<!-- cart.js owns the retry of an order whose write failed, and it is the one
+     file that runs on every page, so checkout loads it too. -->
+<script src="/cart.js?v=102eb19c" defer></script>
+<script src="/checkout.js?v=a0a30bd2" defer></script>
+</body>
+</html>

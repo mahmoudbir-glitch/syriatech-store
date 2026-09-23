@@ -16,7 +16,9 @@ const path = require("path");
 const crypto = require("crypto");
 
 const REPO = path.resolve(__dirname, "..");
-const PAGES = ["index.html", "admin.html"];
+/* Every page that links a local script or stylesheet. checkout.html is its
+   own document so the home page never downloads the checkout code. */
+const PAGES = ["index.html", "admin.html", "checkout.html"];
 const LINK = /(href|src)="\/([A-Za-z0-9._-]+\.(?:css|js))\?v=([A-Za-z0-9]+)"/g;
 
 function hash(file) {
@@ -36,12 +38,42 @@ function stamps(pageSource) {
   return found;
 }
 
+/*
+ * Scripts the page does not link but fetches later still need cache busting.
+ * product.js and cart.js are loaded on the tap that opens the surface they
+ * draw — shipping them up front cost 83.6 KB gzipped against a 60 KB budget —
+ * so their hashes travel in a small map on <html data-js>, and SY.require()
+ * reads it. Without this a shopper keeps a stale product page forever.
+ */
+const LAZY = ["product.js", "cart.js", "i18n-pdp.js", "i18n-order.js", "i18n-cat.js"];
+const DATA_JS = /(<html\s[^>]*?)(?:\s+data-js='[^']*')?(\s*>)/;
+
+function lazyMap() {
+  const out = {};
+  for (const file of LAZY) {
+    const h = hash(file);
+    if (h) out[file] = h;
+  }
+  return out;
+}
+
 function stamp({ write = true } = {}) {
   const stale = [];
   for (const page of PAGES) {
     const file = path.join(REPO, page);
     let source = fs.readFileSync(file, "utf8");
     let changed = 0;
+
+    if (page === "index.html") {
+      const want = " data-js='" + JSON.stringify(lazyMap()) + "'";
+      const m = source.match(/<html\s[^>]*>/);
+      const has = m && (m[0].match(/\s+data-js='[^']*'/) || [""])[0];
+      if (has !== want) {
+        stale.push({ page, file: "data-js", was: has || "(absent)", now: want.trim() });
+        source = source.replace(DATA_JS, (whole, head, tail) => head + want + tail);
+        changed++;
+      }
+    }
     for (const link of stamps(source)) {
       if (link.expected === null) {
         stale.push({ page, file: link.file, reason: "missing file" });
@@ -60,7 +92,7 @@ function stamp({ write = true } = {}) {
   return stale;
 }
 
-module.exports = { stamp, stamps, hash, PAGES };
+module.exports = { stamp, stamps, hash, lazyMap, PAGES, LAZY };
 
 if (require.main === module) {
   const stale = stamp({ write: true });

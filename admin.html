@@ -1,159 +1,129 @@
 <!doctype html>
-<html lang="ar" dir="rtl" data-title-key="adminPageTitle" data-default-lang="ar">
+<html lang="ar" dir="rtl" data-title-key="admin.pageTitle" data-default-lang="ar">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <title></title>
-<script src="/lang-boot.js?v=11e22a78"></script>
-<link rel="stylesheet" href="/admin.css?v=edb6c294">
+<link rel="stylesheet" href="/admin.css?v=9492b6a3">
+<!--
+  The console loads neither i18n.js nor catalog.js nor core.js.
+  i18n.js because 41% of it is this page's own copy and the shop should not
+  carry it; catalog.js because the list is paged from the server, so the
+  browser never holds 312 products (11.5KB gz today, ~110KB at 3,000) to show
+  forty rows.
+-->
+<script src="/i18n-admin.js?v=9cb90fac"></script>
 </head>
 <body>
 
-<div id="bootView" class="boot"></div>
+<a class="skip-link" href="#main" data-i18n="admin.skipToContent"></a>
 
-<section id="loginView" class="login-wrap" hidden>
-  <form id="loginForm" class="card login">
-    <div class="logo">SYRIA<span>TECH</span></div>
-    <h1 data-i18n="admin.title"></h1>
-    <p class="muted" data-i18n="admin.loginHint"></p>
-    <input id="password" type="password" autocomplete="current-password" data-i18n-attr="placeholder:admin.password;aria-label:admin.password" required>
-    <button type="submit" class="btn primary block" id="loginBtn" data-i18n="admin.login"></button>
-    <div id="loginMsg" class="msg" role="alert" aria-live="assertive"></div>
-    <select id="loginLanguage" class="lang-select" data-i18n-attr="aria-label:languageLabel"></select>
-  </form>
-</section>
+<div id="app-root">
 
-<section id="adminView" hidden>
-  <header class="topbar">
-    <div class="logo">SYRIA<span>TECH</span> <small data-i18n="admin.title"></small></div>
-    <nav class="tabs">
-      <button type="button" class="tab active" data-tab="products" data-i18n="admin.tabProducts"></button>
-      <button type="button" class="tab" data-tab="settings" data-i18n="admin.tabSettings"></button>
-      <button type="button" class="tab" data-tab="help" data-i18n="admin.tabHelp"></button>
+  <section id="loginView" class="login-wrap" hidden>
+    <form id="loginForm" class="card login">
+      <div class="logo" dir="ltr"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M29 6H6v10h20v10H3" stroke-width="6" stroke-linejoin="miter" fill="none" stroke="currentColor"></path></svg><span class="word">SYRIA<b>TECH</b></span></div>
+      <h1 data-i18n="admin.title"></h1>
+      <p class="muted" data-i18n="admin.loginHint"></p>
+      <label class="field"><span data-i18n="admin.userName"></span>
+        <input id="loginUser" autocomplete="username" dir="ltr">
+      </label>
+      <label class="field"><span data-i18n="admin.password"></span>
+        <input id="password" type="password" autocomplete="current-password" required>
+      </label>
+      <button type="submit" class="btn btn--primary btn--block" id="loginBtn" data-i18n="admin.login"></button>
+      <div id="loginMsg" class="msg" role="alert" aria-live="assertive"></div>
+      <select id="loginLanguage" class="lang-select" data-i18n-attr="aria-label:admin.languageLabel"></select>
+    </form>
+  </section>
+
+  <div id="adminView" class="shell" hidden>
+
+    <!-- Desktop: a 232px rail. Phone: this whole element is off-screen and the
+         bottom bar takes over, so chrome before content is 48px, not 281px. -->
+    <nav id="rail" class="rail" aria-label="" data-i18n-attr="aria-label:admin.menu">
+      <div class="rail__head">
+        <span class="logo" dir="ltr"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M29 6H6v10h20v10H3" stroke-width="6" stroke-linejoin="miter" fill="none" stroke="currentColor"></path></svg><span class="word">SYRIA<b>TECH</b></span></span>
+        <button type="button" id="railToggle" class="icon-btn icon-btn--rail" data-i18n-attr="aria-label:admin.collapseRail" aria-expanded="true"></button>
+      </div>
+      <div class="rail__groups" id="railGroups"></div>
+      <div class="rail__foot">
+        <select id="languageSelect" class="lang-select" data-i18n-attr="aria-label:admin.languageLabel"></select>
+        <a href="/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm" data-i18n="admin.viewStore"></a>
+        <button type="button" id="logoutBtn" class="btn btn--ghost btn--sm" data-i18n="admin.logout"></button>
+      </div>
     </nav>
-    <div class="top-actions">
-      <select id="languageSelect" class="lang-select" data-i18n-attr="aria-label:languageLabel"></select>
-      <a href="/" target="_blank" rel="noopener" class="btn ghost" data-i18n="admin.viewStore"></a>
-      <button type="button" id="logoutBtn" class="btn ghost" data-i18n="admin.logout"></button>
+
+    <div class="pane">
+      <header class="topbar">
+        <button type="button" id="backBtn" class="icon-btn icon-btn--back" data-i18n-attr="aria-label:admin.back" hidden></button>
+        <h1 id="screenTitle" class="topbar__title"></h1>
+        <div class="topbar__actions">
+          <button type="button" id="helpBtn" class="icon-btn icon-btn--help" data-i18n-attr="aria-label:admin.kbdTitle"></button>
+        </div>
+      </header>
+
+      <main id="main" class="screens" tabindex="-1">
+        <section id="screen-orders"   class="screen" hidden></section>
+        <section id="screen-customers" class="screen" hidden></section>
+        <section id="screen-products" class="screen" hidden></section>
+        <section id="screen-taxonomy" class="screen" hidden></section>
+        <section id="screen-stock"    class="screen" hidden></section>
+        <section id="screen-pricing"  class="screen" hidden></section>
+        <section id="screen-media"    class="screen" hidden></section>
+        <section id="screen-content"  class="screen" hidden></section>
+        <section id="screen-reports"  class="screen" hidden></section>
+        <section id="screen-users"    class="screen" hidden></section>
+        <section id="screen-backups"  class="screen" hidden></section>
+        <section id="screen-settings" class="screen" hidden></section>
+      </main>
     </div>
-  </header>
 
-  <main class="wrap">
-    <section id="tab-products">
-      <div class="toolbar">
-        <input id="filter" type="search" data-i18n-attr="placeholder:admin.searchPlaceholder;aria-label:admin.searchPlaceholder">
-        <select id="catFilter" data-i18n-attr="aria-label:admin.allCategories"></select>
-        <select id="brandFilter" data-i18n-attr="aria-label:admin.allBrands"></select>
-        <button type="button" id="addBtn" class="btn primary" data-i18n="admin.addProduct"></button>
-      </div>
-      <details id="deletedBox" class="card deleted" hidden>
-        <summary id="deletedSummary"></summary>
-        <div id="deletedList"></div>
-      </details>
-      <p id="listInfo" class="muted small"></p>
-      <div id="products" class="product-list"></div>
-    </section>
+    <!-- Five destinations, orders first: that is what the owner opens the
+         console for. Everything else is behind "more". -->
+    <nav id="bottombar" class="bottombar" aria-label="" data-i18n-attr="aria-label:admin.menu"></nav>
+  </div>
 
-    <section id="tab-settings" hidden>
-      <form id="settingsForm" class="card narrow">
-        <h2 data-i18n="admin.settingsTitle"></h2>
-        <p class="muted small" data-i18n="admin.settingsHint"></p>
-        <label><span data-i18n="admin.fieldWhatsapp"></span> <small data-i18n="admin.whatsappHint"></small>
-          <input id="setWhatsapp" inputmode="numeric" dir="ltr" required>
-          <a id="waTest" class="wa-test" href="#" target="_blank" rel="noopener" hidden data-i18n="admin.testWhatsapp"></a>
-        </label>
-        <label><span data-i18n="admin.fieldEmail"></span>
-          <input id="setEmail" type="email" dir="ltr">
-        </label>
-        <button type="submit" class="btn primary" data-i18n="admin.saveSettings"></button>
-      </form>
-
-      <div class="card narrow">
-        <h2 data-i18n="admin.restoreBackup"></h2>
-        <p class="muted small" data-i18n="admin.restoreBackupHint"></p>
-        <button type="button" id="restoreBackupBtn" class="btn ghost" data-i18n="admin.restoreBackup"></button>
-      </div>
-    </section>
-
-    <section id="tab-help" hidden>
-      <div class="card narrow help">
-        <h2 data-i18n="admin.helpTitle"></h2>
-        <ol>
-          <li data-i18n="admin.help1"></li>
-          <li data-i18n="admin.help2"></li>
-          <li data-i18n="admin.help3"></li>
-          <li data-i18n="admin.help4"></li>
-          <li data-i18n="admin.help5"></li>
-          <li data-i18n="admin.help6"></li>
-        </ol>
-        <p class="muted small" data-i18n="admin.helpNote"></p>
-      </div>
-    </section>
-  </main>
-</section>
-
-<div id="editor" class="modal" role="dialog" aria-modal="true" aria-labelledby="formTitle" hidden>
-  <form id="productForm" class="modal-card" novalidate>
-    <header class="modal-head">
-      <h2 id="formTitle"></h2>
-      <button type="button" class="icon-btn" data-close data-i18n-attr="aria-label:closeLabel"></button>
-    </header>
-    <div class="modal-body">
-      <div class="image-box">
-        <img id="preview" alt="" src="data:,">
-        <div class="image-actions">
-          <label class="btn primary file-btn"><span data-i18n="admin.pickImage"></span><input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/*"></label>
-          <button type="button" id="removeImage" class="btn ghost" data-i18n="admin.removeImage"></button>
-        </div>
-        <div id="uploadMsg" class="msg"></div>
-        <details class="advanced">
-          <summary data-i18n="admin.imageUrl"></summary>
-          <input id="image" type="text" dir="ltr" placeholder="https://...">
-        </details>
-      </div>
-      <div class="fields">
-        <label><span data-i18n="admin.fieldName"></span><input id="name" maxlength="200" required></label>
-        <div class="two">
-          <label><span data-i18n="admin.fieldNameEn"></span> <small data-i18n="admin.optional"></small><input id="nameEn" maxlength="200" dir="ltr"></label>
-          <label><span data-i18n="admin.fieldNameTr"></span> <small data-i18n="admin.optional"></small><input id="nameTr" maxlength="200" dir="ltr"></label>
-        </div>
-        <div class="two">
-          <label><span data-i18n="admin.fieldPrice"></span><input id="price" type="number" min="0" step="0.01" inputmode="decimal" required></label>
-          <label><span data-i18n="admin.fieldOldPrice"></span> <small data-i18n="admin.optional"></small><input id="oldPrice" type="number" min="0" step="0.01" inputmode="decimal"></label>
-        </div>
-        <div class="two">
-          <label><span data-i18n="admin.fieldBrand"></span><input id="brand" list="brandList" maxlength="60" required></label>
-          <label><span data-i18n="admin.fieldCategory"></span><select id="category"></select></label>
-        </div>
-        <p id="discountHint" class="hint"></p>
-        <label class="switch"><input id="inStock" type="checkbox" checked><span data-i18n="admin.fieldStock"></span></label>
-        <p class="hint muted" data-i18n="admin.stockHint"></p>
-        <label><span data-i18n="admin.fieldBadge"></span> <small data-i18n="admin.badgeHint"></small><input id="badge" maxlength="30"></label>
-        <label><span data-i18n="admin.fieldDescAr"></span> <small data-i18n="admin.descHint"></small><textarea id="descriptionAr" rows="2" maxlength="2000" dir="rtl"></textarea></label>
-        <label><span data-i18n="admin.fieldDescEn"></span><textarea id="description" rows="2" maxlength="2000" dir="ltr"></textarea></label>
-        <label><span data-i18n="admin.fieldDescTr"></span><textarea id="descriptionTr" rows="2" maxlength="2000" dir="ltr"></textarea></label>
-      </div>
-    </div>
-    <footer class="modal-foot">
-      <button type="submit" class="btn primary" id="saveBtn" data-i18n="admin.save"></button>
-      <button type="button" class="btn ghost" data-close data-i18n="admin.cancel"></button>
-      <span class="spacer"></span>
-      <button type="button" id="duplicateBtn" class="btn ghost" hidden data-i18n="admin.duplicate"></button>
-      <button type="button" id="revertBtn" class="btn ghost" hidden data-i18n="admin.revert"></button>
-      <button type="button" id="deleteBtn" class="btn danger" data-i18n="admin.deleteProduct"></button>
-    </footer>
-  </form>
 </div>
 
-<datalist id="brandList"></datalist>
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<!-- Dialogs are siblings of #app-root, never inside it. -->
+<dialog id="editor" class="sheet sheet--full" aria-labelledby="editorTitle">
+  <div class="sheet__head">
+    <h2 id="editorTitle"></h2>
+    <button type="button" class="icon-btn icon-btn--close" data-close data-i18n-attr="aria-label:admin.closeLabel"></button>
+  </div>
+  <div class="sheet__body" id="editorBody"></div>
+  <div class="sheet__foot" id="editorFoot"></div>
+</dialog>
 
-<script src="/i18n.js?v=b1f77c1b"></script>
-<script src="/catalog.js?v=98e12dc8"></script>
-<script src="/product-images.js?v=ca2bc1c1"></script>
-<script src="/admin.js?v=92997e5f"></script>
+<dialog id="order" class="sheet sheet--end" aria-labelledby="orderTitle">
+  <div class="sheet__head">
+    <h2 id="orderTitle"></h2>
+    <button type="button" class="icon-btn icon-btn--close" data-close data-i18n-attr="aria-label:admin.closeLabel"></button>
+  </div>
+  <div class="sheet__body" id="orderBody"></div>
+  <div class="sheet__foot" id="orderFoot"></div>
+</dialog>
+
+<dialog id="sheet" class="sheet sheet--bottom" aria-labelledby="sheetTitle">
+  <div class="sheet__head">
+    <h2 id="sheetTitle"></h2>
+    <button type="button" class="icon-btn icon-btn--close" data-close data-i18n-attr="aria-label:admin.closeLabel"></button>
+  </div>
+  <div class="sheet__body" id="sheetBody"></div>
+  <div class="sheet__foot" id="sheetFoot"></div>
+</dialog>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div class="vh" id="sr-status" role="status" aria-live="polite" aria-atomic="true"></div>
+<div class="vh" id="sr-results" role="status" aria-live="polite" aria-atomic="true"></div>
+<div class="vh" id="sr-busy" role="status" aria-live="polite"></div>
+<div class="vh" id="sr-route" role="status" aria-live="polite"></div>
+<div class="vh" id="sr-error" role="alert"></div>
+
+<script src="/admin.js?v=67f025ef"></script>
 </body>
 </html>

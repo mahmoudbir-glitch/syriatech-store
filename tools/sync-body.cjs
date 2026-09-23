@@ -22,9 +22,16 @@ const path = require("path");
 
 const REPO = process.argv[2] || path.resolve(__dirname, "..");
 const win = {};
-new Function("window", "navigator", "localStorage", "location", "document",
-  fs.readFileSync(path.join(REPO, "i18n.js"), "utf8")
-)(win, { languages: ["ar"] }, { getItem: () => null, setItem: () => {} }, { search: "" }, undefined);
+/* The dictionary is split by surface, so the generated copy has to be looked
+   up across every chunk: checkout.html's field labels live in i18n-order.js,
+   and reading only i18n.js reported all 28 of them missing. */
+const DICTS = ["i18n.js", "i18n-cat.js", "i18n-order.js", "i18n-pdp.js"]
+  .filter(f => fs.existsSync(path.join(REPO, f)));
+for (const dict of DICTS) {
+  new Function("window", "navigator", "localStorage", "location", "document",
+    fs.readFileSync(path.join(REPO, dict), "utf8")
+  )(win, { languages: ["ar"] }, { getItem: () => null, setItem: () => {} }, { search: "" }, undefined);
+}
 
 const ar = win.I18N.dict.ar;
 const esc = s => String(s)
@@ -34,32 +41,49 @@ function lookup(key) {
   return key.split(".").reduce((node, part) => (node && node[part] !== undefined ? node[part] : undefined), ar);
 }
 
-const file = path.join(REPO, "index.html");
+const PAGES = ["index.html", "checkout.html"].filter(f => fs.existsSync(path.join(REPO, f)));
+let missing = [];
+let nested = [];
+
+for (const page of PAGES) {
+const file = path.join(REPO, page);
 let html = fs.readFileSync(file, "utf8");
 let filled = 0;
-let missing = [];
 
-/* data-i18n: plain text. Only fills elements that are currently empty, so
-   nothing hand-written in the markup is ever overwritten. */
-html = html.replace(/(<(\w+)([^>]*\sdata-i18n="([^"]+)"[^>]*)>)\s*(<\/\2>)/g,
-  (whole, open, tag, attrs, key, close) => {
+/* data-i18n: plain text. The element's content is REPLACED, not merely filled
+   when empty. Every visible string here is generated from the dictionary, so
+   markup that disagrees with it is stale by definition — and stale copy is not
+   only wrong to read, it is a layout shift: a label that changes width when
+   i18n.js swaps it reflows everything below. Only text is replaced; an element
+   holding markup is left alone and reported. */
+html = html.replace(/(<(\w+)([^>]*\sdata-i18n="([^"]+)"[^>]*)>)([\s\S]*?)(<\/\2>)/g,
+  (whole, open, tag, attrs, key, inner, close) => {
     const value = lookup(key);
     if (typeof value !== "string") { missing.push(key); return whole; }
+    if (/<[a-zA-Z/]/.test(inner)) { nested.push(key); return whole; }
+    if (inner.trim() === esc(value)) return whole;
     filled++;
     return open + esc(value) + close;
   });
 
-/* data-i18n-html: the dictionary entry carries its own markup. */
-html = html.replace(/(<(\w+)([^>]*\sdata-i18n-html="([^"]+)"[^>]*)>)\s*(<\/\2>)/g,
-  (whole, open, tag, attrs, key, close) => {
+/* data-i18n-html: the dictionary entry carries its own markup. Replaced for
+   the same reason, and the dictionary value is trusted as markup here. */
+html = html.replace(/(<(\w+)([^>]*\sdata-i18n-html="([^"]+)"[^>]*)>)([\s\S]*?)(<\/\2>)/g,
+  (whole, open, tag, attrs, key, inner, close) => {
     const value = lookup(key);
     if (typeof value !== "string") { missing.push(key); return whole; }
+    if (inner === value) return whole;
     filled++;
     return open + value + close;
   });
 
 fs.writeFileSync(file, html);
-console.log("index.html: " + filled + " element(s) filled with the Arabic text");
+console.log(page + ": " + filled + " element(s) filled with the Arabic text");
+}
+if (nested.length) {
+  console.log("left alone because the element holds markup, not text: " +
+    [...new Set(nested)].join(", "));
+}
 if (missing.length) {
   console.log("keys not found in the dictionary: " + [...new Set(missing)].join(", "));
   process.exitCode = 1;
