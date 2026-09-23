@@ -3,7 +3,7 @@
   "functions": {
     "api/*.js": {
       "maxDuration": 30,
-      "includeFiles": "{catalog.js,i18n.js,index.html}"
+      "includeFiles": "{catalog.js,i18n.js,index.html,assets/copy.ar.json,assets/copy.en.json,assets/copy.tr.json}"
     }
   },
   "rewrites": [
@@ -18,11 +18,11 @@
   ],
   "headers": [
     {
-      "source": "/assets/og/(.*)",
+      "source": "/assets/fonts/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=604800"
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     },
@@ -32,6 +32,24 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/brands/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
+      "source": "/assets/og/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
         }
       ]
     },

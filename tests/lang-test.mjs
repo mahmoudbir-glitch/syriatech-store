@@ -60,7 +60,9 @@ LANGS.slice(1).forEach(code => {
 // No user-visible copy outside i18n.js.
 const ARABIC = /[\u0600-\u06FF]/;
 const TURKISH = /[ğĞşŞıİçÇöÖüÜ]/;
-const SOURCES = ["index.html", "admin.html", "script.js", "admin.js", "catalog.js", "product-images.js", "api/admin.js", "api/products.js", "api/image.js"];
+// index.html is generated from the dictionary by tools/sync-body.cjs and is
+// checked against it below, which is a stronger guarantee than being empty.
+const SOURCES = ["admin.html", "script.js", "admin.js", "catalog.js", "product-images.js", "api/admin.js", "api/products.js", "api/image.js"];
 SOURCES.forEach(file => {
   const src = file.endsWith(".html") ? read(file).replace(/<head>[\s\S]*?<\/head>/, "") : read(file);
   const code = file.endsWith(".html") ? src : src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
@@ -68,10 +70,32 @@ SOURCES.forEach(file => {
   check(`${file} has no Turkish text`, !TURKISH.test(code), (code.match(/.{0,40}[ğĞşŞıİçÇöÖüÜ].{0,40}/) || [])[0]);
 });
 
-// Every visible text node in the HTML must be empty — all copy is injected from the dictionary.
+/*
+ * Copy may appear in the markup, but only where it was generated from the
+ * dictionary. index.html carries the Arabic text so the first paint is
+ * readable; every one of those strings has to match its data-i18n key exactly,
+ * which catches both hand-written copy and a stale generated file.
+ */
 ["index.html", "admin.html"].forEach(file => {
-  const src = read(file).replace(/<head>[\s\S]*?<\/head>/, "").replace(/<script[\s\S]*?<\/script>/g, "").replace(/<style[\s\S]*?<\/style>/g, "").replace(/<!--[\s\S]*?-->/g, "");
-  const leftovers = src.split(/<[^>]*>/).map(s => s.trim()).filter(s => s && !/^[\s&;#0-9.,:$+×−-]*$/.test(s) && s !== "SYRIA" && s !== "TECH" && s !== "S");
+  const raw = read(file).replace(/<head>[\s\S]*?<\/head>/, "").replace(/<script[\s\S]*?<\/script>/g, "").replace(/<style[\s\S]*?<\/style>/g, "").replace(/<!--[\s\S]*?-->/g, "");
+  const dictionary = maps.ar;
+  const lookup = key => key.split(".").reduce((n, part) => (n && n[part] !== undefined ? n[part] : undefined), I18N.dict.ar);
+
+  // Anything inside an element that names a dictionary key is allowed when it
+  // is that key's Arabic value; strip those, then nothing should remain.
+  const stale = [];
+  const stripped = raw.replace(/<(\w+)([^>]*\sdata-i18n(?:-html)?="([^"]+)"[^>]*)>([\s\S]*?)<\/\1>/g,
+    (whole, tag, attrs, key, inner) => {
+      const expected = lookup(key);
+      const text = inner.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+      if (!text) return "";
+      const wanted = String(expected === undefined ? "" : expected).replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+      if (text !== wanted) stale.push(key + ": " + text.slice(0, 40) + " != " + wanted.slice(0, 40));
+      return "";
+    });
+  check(`${file} generated copy matches the dictionary`, !stale.length, stale);
+
+  const leftovers = stripped.split(/<[^>]*>/).map(s => s.trim()).filter(s => s && !/^[\s&;#0-9.,:$+×−-]*$/.test(s) && s !== "SYRIA" && s !== "TECH" && s !== "S");
   check(`${file} contains no hard-coded text`, !leftovers.length, leftovers);
 });
 
@@ -87,7 +111,9 @@ SOURCES.forEach(file => {
 }
 
 // Every key referenced by the markup or the scripts must exist, and every key must be used.
-const usage = SOURCES.map(read).join("\n");
+// index.html is left out of the Arabic-text scan because it is generated from
+// the dictionary, but it still references keys and counts towards what is used.
+const usage = ["index.html"].concat(SOURCES).map(read).join(String.fromCharCode(10));
 const referenced = new Set();
 [...usage.matchAll(/data-i18n(?:-html)?="([\w.]+)"/g)].forEach(m => referenced.add(m[1]));
 [...usage.matchAll(/data-i18n-attr="([^"]+)"/g)].forEach(m => m[1].split(";").forEach(pair => referenced.add(pair.split(":")[1].trim())));
@@ -165,10 +191,28 @@ for (const page of ["/", "/admin.html"]) {
       const values = new Set(Object.values(maps[code]));
       const templates = Object.values(maps[code]).filter(v => v.includes("{")).map(v =>
         new RegExp("^" + v.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\\\{\w+\\\}/g, ".+") + "$"));
-      const data = await tab.evaluate(() => {
+      const data = await tab.evaluate(async code => {
         const names = window.STORE.products.flatMap(p => [p.name, p.brand, p.description]);
-        return names.concat(window.STORE.brands);
-      });
+        let copy = {};
+        try {
+          const res = await fetch("/assets/copy." + code + ".json");
+          if (res.ok) copy = await res.json();
+        } catch (e) {}
+        // Product copy is content, not interface text, but it must still be
+        // present in the language being shown — which is what makes it valid here.
+        const localised = Object.values(copy).flatMap(c => [c.n, c.s]).filter(Boolean);
+        // The delivery, warranty and returns text is content in the same sense.
+        let policies = {};
+        try {
+          const res = await fetch("/assets/policies.json");
+          if (res.ok) policies = await res.json();
+        } catch (e) {}
+        const policyText = Object.values(policies).flatMap(section => [
+          section.title && section.title[code],
+          section.intro && section.intro[code]
+        ].concat((section.points || []).flatMap(pt => [pt.q && pt.q[code], pt.a && pt.a[code]]))).filter(Boolean);
+        return names.concat(window.STORE.brands).concat(localised).concat(policyText);
+      }, code);
       const dataSet = new Set(data);
       const stray = info.texts.filter(text => {
         if (values.has(text) || dataSet.has(text)) return false;

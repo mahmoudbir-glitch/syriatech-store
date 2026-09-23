@@ -1,6 +1,7 @@
 node_modules/
 .vercel
-.env*.local
+.env
+.env*
 tests/node_modules
 tests/.blobstore
 tests/.shots

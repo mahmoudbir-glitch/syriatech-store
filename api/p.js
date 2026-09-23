@@ -12,20 +12,26 @@ let shellHtml = null;
 // decide where code is loaded from, so the HTTP fallback uses Vercel's own
 // deployment URL.
 function trustedOrigin() {
-  const host = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL || "";
-  return host ? "https://" + host : "";
+  const host = process.env.SITE_ORIGIN || process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL || "";
+  if (!host) return "";
+  return /^https?:\/\//.test(host) ? host : "https://" + host;
 }
 
 async function readSource(name) {
-  try {
-    const fs = await import("node:fs/promises");
-    const path = await import("node:path");
-    return await fs.readFile(path.join(process.cwd(), name), "utf8");
-  } catch (e) {
-    const origin = trustedOrigin();
-    if (!origin) throw e;
-    return fetch(origin + "/" + name).then(r => r.text());
+  const fs = await import("node:fs/promises");
+  const path = await import("node:path");
+  const { fileURLToPath } = await import("node:url");
+  // The bundled files sit next to the api directory, so resolve from this
+  // module rather than from whatever directory the process was started in.
+  const here = path.dirname(fileURLToPath(import.meta.url));
+  for (const base of [path.join(here, ".."), process.cwd()]) {
+    try {
+      return await fs.readFile(path.join(base, name), "utf8");
+    } catch (e) { /* try the next one */ }
   }
+  const origin = trustedOrigin();
+  if (!origin) throw new Error("cannot read " + name);
+  return fetch(origin + "/" + name).then(r => r.text());
 }
 
 async function loadStore() {
@@ -50,17 +56,45 @@ async function loadStore() {
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+// The product's name and summary in the language the link was shared in, so a
+// WhatsApp preview reads the same as the page it opens.
+const copyCache = {};
+async function loadCopy(code) {
+  if (copyCache[code]) return copyCache[code];
+  try {
+    copyCache[code] = JSON.parse(await readSource("assets/copy." + code + ".json"));
+  } catch (e) { copyCache[code] = {}; }
+  return copyCache[code];
+}
+
 export default async function handler(req, res) {
-  const origin = trustedOrigin() || "https://" + String(req.headers.host || "").replace(/[^\w.:-]/g, "");
+  // Never let a request's Host header decide the canonical, og:url or the
+  // origin this function fetches from: the answer is cached and served to
+  // everyone else. Without a configured origin the page does not render.
+  const origin = trustedOrigin();
+  if (!origin) {
+    console.error("no SITE_ORIGIN or VERCEL_URL; refusing to build a product page");
+    res.statusCode = 500;
+    return res.end("");
+  }
   const id = Number(req.query && req.query.id);
   try {
     const win = await loadStore();
-    const state = await fetch(origin + "/api/products").then(r => r.json()).catch(() => ({}));
+    const asked = String((req.query && req.query.lang) || "").toLowerCase();
+    const code = ["ar", "en", "tr"].includes(asked) ? asked : "ar";
+    const [state, copy] = await Promise.all([
+      fetch(origin + "/api/products").then(r => r.json()).catch(() => ({})),
+      loadCopy(code)
+    ]);
     const product = win.STORE.merge(state).find(p => p.id === id);
     if (!product) {
-      res.statusCode = 302;
-      res.setHeader("Location", "/");
-      return res.end();
+      // A soft 404 keeps a dead product in the index; say it plainly.
+      res.statusCode = 404;
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.setHeader("Cache-Control", "public, max-age=0, s-maxage=60");
+      return res.end('<!doctype html><html lang="' + code + '"><head><meta charset="utf-8">' +
+        '<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/">' +
+        "<title>404</title></head><body></body></html>");
     }
 
     const raw = String(product.image || "");
@@ -69,16 +103,30 @@ export default async function handler(req, res) {
     const card = /^\/?assets\/products\/(\d+)\.webp$/.exec(raw);
     const image = card
       ? origin + "/assets/og/" + card[1] + ".jpg"
-      : (raw.startsWith("http") ? raw : origin + "/assets/og-cover.png");
+      : raw.startsWith("http") ? raw
+      : raw ? origin + (raw.startsWith("/") ? "" : "/") + raw
+      : origin + "/assets/og-cover.png";
     const url = origin + "/p/" + product.id;
-    const description = win.STORE.descFor(product, "ar") || product.description || "";
-    const title = product.name + " | " + win.I18N.t("brandName", null, "ar");
+    const canonical = code === "ar" ? url : url + "?lang=" + code;
+    const LOCALE = { ar: "ar_AR", en: "en_US", tr: "tr_TR" };
+    const DIR = { ar: "rtl", en: "ltr", tr: "ltr" };
+    // Anything the owner edited is theirs, but only the field they changed:
+    // editing a price must not drop the product back to its English name.
+    const edits = Array.isArray(product.edits) ? product.edits : [];
+    const entry = product.added ? null : copy[String(product.id)];
+    const name = (!edits.includes("name") && entry && entry.n) || product.name;
+    // Only the language the owner wrote in defers to them.
+    const descField = { ar: "descriptionAr", en: "description", tr: "descriptionTr" }[code] || "description";
+    const wroteThis = edits.includes(descField) && product[descField];
+    const description = (wroteThis && product[descField]) || (entry && entry.s) ||
+      win.STORE.descFor(product, code) || product.description || "";
+    const title = name + " | " + win.I18N.t("brandName", null, code);
 
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "Product",
       "@id": url + "#product",
-      name: product.name,
+      name,
       image: [image],
       description,
       sku: product.sku || String(product.id),
@@ -98,12 +146,12 @@ export default async function handler(req, res) {
       '<meta property="og:type" content="product">' +
       '<meta property="og:site_name" content="Syriatech">' +
       '<meta property="og:url" content="' + esc(url) + '">' +
-      '<meta property="og:title" content="' + esc(title) + '">' +
+      '<meta property="og:title" content="' + esc(name + " — " + product.price.toFixed(2) + " USD") + '">' +
       '<meta property="og:description" content="' + esc(description) + '">' +
       '<meta property="og:image" content="' + esc(image) + '">' +
       '<meta property="og:image:width" content="1200">' +
       '<meta property="og:image:height" content="630">' +
-      '<meta property="og:locale" content="ar_AR">' +
+      '<meta property="og:locale" content="' + LOCALE[code] + '">' +
       '<link rel="alternate" hreflang="ar" href="' + esc(url) + '?lang=ar">' +
       '<link rel="alternate" hreflang="en" href="' + esc(url) + '?lang=en">' +
       '<link rel="alternate" hreflang="tr" href="' + esc(url) + '?lang=tr">' +
@@ -114,13 +162,16 @@ export default async function handler(req, res) {
       '<meta name="twitter:title" content="' + esc(title) + '">' +
       '<meta name="twitter:description" content="' + esc(description) + '">' +
       '<meta name="twitter:image" content="' + esc(image) + '">' +
-      '<link rel="canonical" href="' + esc(url) + '">' +
+      '<link rel="canonical" href="' + esc(canonical) + '">' +
       '<script type="application/ld+json">' + JSON.stringify(jsonLd).replace(/</g, "\\u003c") + "</script>" +
-      '<link rel="alternate" type="application/json" href="' + esc(url) + '">';
+      "";
 
     if (!shellHtml) shellHtml = await readSource("index.html");
     const shell = shellHtml;
     const html = shell
+      .replace(/<html([^>]*)>/, () =>
+        '<html lang="' + code + '" dir="' + DIR[code] + '">')
+      .replace(/ data-title-key="[^"]*"/g, "")
       .replace('<body>', () => '<body data-product-id="' + product.id + '">')
       .replace(/<title>[^<]*<\/title>/, () => "<title>" + esc(title) + "</title>")
       .replace(/<meta name="description" content="[^"]*">/, () => '<meta name="description" content="' + esc(description) + '">')

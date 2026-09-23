@@ -1,0 +1,914 @@
+{
+  "25313": {
+    "en": {
+      "name": "Wearable Breast Pump S1 Pro",
+      "summary": "Hands-free in-bra breast pump with HeatFlow warmth and hospital-grade suction for up to 30% more milk in every session.",
+      "bullets": [
+        {
+          "title": "HeatFlow Heated Pumping",
+          "text": "Groundbreaking HeatFlow technology helps prevent clogs and boosts output by 30%, based on usage feedback from more than 300 eufy pump users. You get high-efficiency pumping with gentle, spa-like warmth."
+        },
+        {
+          "title": "Wireless Charging Case",
+          "text": "The wireless charging case keeps the pump ready wherever you are. With up to five days of power, it covers pumping sessions through busy work days and weekend trips alike."
+        },
+        {
+          "title": "Smart App Control",
+          "text": "With OptiRhythm in the eufy Baby app you can set the pumping rhythm, suction and speed to suit you. The result is a genuinely hands-free session."
+        },
+        {
+          "title": "Hospital-Grade Suction",
+          "text": "Up to 300 mmHg of hospital-grade suction with adjustable intensity and cycle speeds helps maximize milk flow, and every part that touches the skin is made from BPA-free, food-grade material. Boil or steam all washable parts for 5 minutes before first use, and check that the duckbill valve, flange tunnel, diaphragm and pump hub are sealed securely."
+        },
+        {
+          "title": "Ultra-Quiet and Slim",
+          "text": "At just 46 dB this compact, lightweight pump is whisper-quiet and ideal for wearing inside your bra. A secure double seal and a reinforced lower half keep it leakproof."
+        }
+      ]
+    },
+    "ar": {
+      "name": "مضخة حليب قابلة للارتداء S1 Pro",
+      "summary": "مضخة حليب تُلبَس داخل حمّالة الصدر، بتقنية التدفئة HeatFlow وشفط بمستوى المستشفيات لزيادة كمية الحليب حتى 30%.",
+      "bullets": [
+        {
+          "title": "تدفئة HeatFlow أثناء الشفط",
+          "text": "تساعد تقنية HeatFlow المبتكرة على منع انسداد القنوات وتزيد كمية الحليب بنسبة 30% بحسب ملاحظات أكثر من 300 مستخدمة لمضخات eufy. شفط عالي الكفاءة مع دفء لطيف يشبه جلسات السبا."
+        },
+        {
+          "title": "علبة شحن لاسلكي",
+          "text": "تبقي علبة الشحن اللاسلكي المضخة جاهزة أينما كنتِ، وتوفّر طاقة تكفي حتى خمسة أيام. تكفي لجلسات الشفط خلال أيام العمل المزدحمة وفي رحلات نهاية الأسبوع."
+        },
+        {
+          "title": "تحكّم ذكي عبر التطبيق",
+          "text": "عبر ميزة OptiRhythm في تطبيق eufy Baby يمكنكِ ضبط إيقاع الشفط وقوّته وسرعته بما يناسبكِ؛ تجربة حرّة اليدين بالكامل."
+        },
+        {
+          "title": "شفط بمستوى المستشفيات",
+          "text": "قوة شفط تصل إلى 300 mmHg مع إمكانية ضبط الشدة وسرعة الدورات للحصول على أفضل تدفّق للحليب، وجميع الأجزاء الملامسة للبشرة مصنوعة من مواد غذائية خالية من BPA. اغلي الأجزاء القابلة للغسل أو عقّميها بالبخار لمدة 5 دقائق قبل أول استخدام، وتأكّدي من إحكام تركيب الصمّام والقمع والغشاء وقاعدة المضخة."
+        },
+        {
+          "title": "هادئة ونحيفة",
+          "text": "بمستوى ضجيج 46 dB فقط، المضخة صغيرة وخفيفة وهادئة إلى حدّ يسمح بارتدائها داخل حمّالة الصدر. ويمنع الإغلاق المزدوج والجزء السفلي المقوّى أي تسرّب."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Giyilebilir Göğüs Pompası S1 Pro",
+      "summary": "Sütyen içinde kullanılan göğüs pompası; HeatFlow ısıtma ve hastane sınıfı emişle her seansta %30'a varan daha fazla süt sağlar.",
+      "bullets": [
+        {
+          "title": "HeatFlow Isıtmalı Pompalama",
+          "text": "Yenilikçi HeatFlow teknolojisi tıkanmaları önlemeye yardımcı olur ve 300'den fazla eufy pompa kullanıcısının geri bildirimine göre süt miktarını %30 artırır. Spa sıcaklığında, yüksek verimli bir pompalama sunar."
+        },
+        {
+          "title": "Kablosuz Şarj Kutusu",
+          "text": "Kablosuz şarj kutusu pompayı her yerde kullanıma hazır tutar. Beş güne varan güç kapasitesi, yoğun iş günlerinde de hafta sonu gezilerinde de seanslarınıza yeter."
+        },
+        {
+          "title": "Akıllı Uygulama Kontrolü",
+          "text": "eufy Baby uygulamasındaki OptiRhythm ile pompalama ritmini, emiş gücünü ve hızını kendinize göre ayarlayabilirsiniz. Böylece tamamen eller serbest bir deneyim elde edersiniz."
+        },
+        {
+          "title": "Hastane Sınıfı Emiş",
+          "text": "300 mmHg'ye varan hastane sınıfı emiş, ayarlanabilir güç ve döngü hızlarıyla süt akışını en üst düzeye çıkarır; cilde temas eden tüm parçalar BPA içermeyen, gıdayla temasa uygun malzemeden üretilmiştir. İlk kullanımdan önce yıkanabilir parçaları 5 dakika kaynatın veya buharla temizleyin ve ördek gagası valf, huni, diyafram ve pompa göbeğinin sızdırmaz şekilde takıldığından emin olun."
+        },
+        {
+          "title": "Sessiz ve İnce",
+          "text": "Yalnızca 46 dB ses seviyesiyle çalışan bu kompakt ve hafif pompa, sütyen içinde kullanım için idealdir. Çift contası ve güçlendirilmiş alt gövdesi sızıntıyı önler."
+        }
+      ]
+    }
+  },
+  "25342": {
+    "en": {
+      "name": "Robot Vacuum Omni E28",
+      "summary": "Self-emptying robot vacuum and mop with 20000 Pa suction, real-time mop washing and a detachable handheld deep cleaner.",
+      "bullets": [
+        {
+          "title": "HydroJet Mop Washing",
+          "text": "A dual water reservoir and a dual-scraper structure let the E28 clean its mop in real time. The mop stays fresh from the first room to the last."
+        },
+        {
+          "title": "FlexiOne Portable Cleaner",
+          "text": "The industry's first detachable portable deep cleaner is built into the Omni Station. Use it on carpets, stairs and other fabric surfaces."
+        },
+        {
+          "title": "20000 Pa Turbo Suction",
+          "text": "The E28 delivers professional-grade deep cleaning on carpets and hard floors alike, lifting even deeply embedded dust and hair."
+        },
+        {
+          "title": "DuoSpiral Detangle Brushes",
+          "text": "DuoSpiral brushes stop hair from wrapping around the roller and reduce how often the robot needs maintenance."
+        },
+        {
+          "title": "CornerRover Arm",
+          "text": "The CornerRover arm ensures 100% edge coverage, so walls and corners are cleaned as thoroughly as open floor."
+        },
+        {
+          "title": "All-in-One Station",
+          "text": "The station empties the dustbin, washes and hot-air dries the mop, dispenses detergent automatically, collects wastewater and refills clean water. Your part is simply to press start."
+        },
+        {
+          "title": "Keep the Firmware Updated",
+          "text": "Update the robot to the latest firmware through the app to keep cleaning performance at its best and unlock new functions."
+        }
+      ]
+    },
+    "ar": {
+      "name": "مكنسة روبوت Omni E28",
+      "summary": "مكنسة روبوت شافطة وممسحة بقوة 20000 Pa، مع غسل فوري للممسحة ومحطة متكاملة ومنظّف يدوي عميق قابل للفصل.",
+      "bullets": [
+        {
+          "title": "نظام HydroJet لغسل الممسحة",
+          "text": "بفضل خزّاني الماء المنفصلين وبنية الكاشطتين، ينظّف E28 الممسحة لحظيًا أثناء العمل. تبقى الممسحة نظيفة من أول غرفة حتى آخرها."
+        },
+        {
+          "title": "منظّف FlexiOne المحمول",
+          "text": "أول منظّف عميق محمول قابل للفصل في السوق، مدمج داخل محطة Omni. استخدمه على السجّاد والدرج والأسطح القماشية الأخرى."
+        },
+        {
+          "title": "شفط توربيني 20000 Pa",
+          "text": "ينظّف E28 السجّاد والأرضيات الصلبة بعمق احترافي، ويزيل الغبار والشعر المتراكم في الأعماق."
+        },
+        {
+          "title": "فرش DuoSpiral المانعة للتشابك",
+          "text": "تمنع فرش DuoSpiral التفاف الشعر حولها وتقلّل حاجة الجهاز إلى الصيانة المتكرّرة."
+        },
+        {
+          "title": "ذراع CornerRover",
+          "text": "يضمن ذراع CornerRover تغطية كاملة للحواف بنسبة 100%، فتُنظَّف الزوايا وحواف الجدران كما تُنظَّف المساحات المفتوحة."
+        },
+        {
+          "title": "محطة متكاملة",
+          "text": "تفرّغ المحطة حاوية الغبار وتغسل الممسحة وتجفّفها بالهواء الساخن، وتضخّ المنظّف تلقائيًا وتجمع المياه المتّسخة وتعيد تعبئة المياه النظيفة. كل ما عليك فعله هو الضغط على زر التشغيل."
+        },
+        {
+          "title": "تحديث البرنامج الثابت",
+          "text": "حدّث الجهاز إلى أحدث إصدار من البرنامج الثابت عبر التطبيق للحفاظ على أفضل أداء تنظيف والحصول على ميزات جديدة."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Robot Süpürge Omni E28",
+      "summary": "20.000 Pa emişli, kendi kendini boşaltan robot süpürge ve paspas; mopu anında yıkar, çıkarılabilir el tipi derin temizleyiciyle gelir.",
+      "bullets": [
+        {
+          "title": "HydroJet Mop Yıkama",
+          "text": "Çift su haznesi ve çift sıyırıcı yapısı sayesinde E28 mopunu çalışırken temizler. Mop ilk odadan sonuncuya kadar temiz kalır."
+        },
+        {
+          "title": "FlexiOne Taşınabilir Temizleyici",
+          "text": "Sektörün ilk çıkarılabilir taşınabilir derin temizleyicisi Omni İstasyonu'na entegre edilmiştir. Halılarda, merdivenlerde ve diğer kumaş yüzeylerde kullanabilirsiniz."
+        },
+        {
+          "title": "20.000 Pa Turbo Emiş",
+          "text": "E28 hem halıda hem sert zeminde profesyonel düzeyde derin temizlik yapar ve en dipteki tozu, saçı çeker."
+        },
+        {
+          "title": "DuoSpiral Dolaşma Önleyici Fırçalar",
+          "text": "DuoSpiral fırçalar saçların fırçaya dolanmasını önler ve cihazın bakım ihtiyacını azaltır."
+        },
+        {
+          "title": "CornerRover Kolu",
+          "text": "CornerRover kolu %100 kenar temizliği sağlar; duvar dipleri ve köşeler açık zemin kadar iyi temizlenir."
+        },
+        {
+          "title": "Her Şey Bir Arada İstasyon",
+          "text": "İstasyon toz haznesini boşaltır, mopu yıkayıp sıcak havayla kurutur, otomatik deterjan verir, atık suyu toplar ve temiz su takviyesi yapar. Size yalnızca başlat tuşuna basmak kalır."
+        },
+        {
+          "title": "Yazılımı Güncel Tutun",
+          "text": "En iyi temizlik performansı ve yeni işlevler için cihazın yazılımını uygulama üzerinden güncelleyin."
+        }
+      ]
+    }
+  },
+  "26110": {
+    "en": {
+      "name": "PITAKA Grip3 (Moonrise)",
+      "summary": "Magnetic dual-ring phone grip and stand in zinc alloy, holding up to 1.2 kg so you can shoot, watch and carry one-handed.",
+      "bullets": [
+        {
+          "title": "Stability in Every Mode",
+          "text": "A sturdy zinc alloy stand with a double-ring design gives strong support and keeps your phone steady in both landscape and portrait mode, leaving your hands free."
+        },
+        {
+          "title": "Easy One-Handed Grip",
+          "text": "The dual-ring magnetic design makes the phone noticeably easier to hold and use with one hand."
+        },
+        {
+          "title": "Steady While You Shoot",
+          "text": "It supports the phone firmly whether you are holding it, taking photos or pressing the Capture Button one-handed. The shape stays comfortable even for smaller hands."
+        },
+        {
+          "title": "Strong Magnetic Hold",
+          "text": "Powerful MagSafe magnets snap into place effortlessly. A magnetic strength of up to 1.2 kg lets you carry the device on one finger without worrying about slips or drops."
+        },
+        {
+          "title": "Sleek and Secure",
+          "text": "At just 5.9 mm thick, the grip slides into a pocket without adding bulk. Placed on a desk it lifts the phone slightly so the camera lenses stay scratch-free."
+        },
+        {
+          "title": "Small Details, Big Difference",
+          "text": "The aramid fiber is repurposed from camera ring offcuts, which cuts down on wasted material."
+        }
+      ]
+    },
+    "ar": {
+      "name": "مقبض PITAKA Grip3 (Moonrise)",
+      "summary": "مقبض وحامل مغناطيسي بحلقتين من سبيكة الزنك يتحمّل حتى 1.2 كغ، لاستخدام مريح للهاتف بيد واحدة.",
+      "bullets": [
+        {
+          "title": "ثبات في كل الأوضاع",
+          "text": "حامل متين من سبيكة الزنك بتصميم الحلقتين يمنح دعمًا قويًا ويثبّت الهاتف أفقيًا وعموديًا، فتبقى يداك حرّتين."
+        },
+        {
+          "title": "إمساك مريح بيد واحدة",
+          "text": "يجعل التصميم المغناطيسي بحلقتين إمساك الهاتف واستخدامه بيد واحدة أسهل بكثير."
+        },
+        {
+          "title": "ثبات أثناء التصوير",
+          "text": "يوفّر دعمًا ثابتًا أثناء الإمساك بالهاتف أو التصوير أو استخدام زر Capture بيد واحدة، ويبقى مريحًا حتى لأصحاب الأيدي الصغيرة."
+        },
+        {
+          "title": "قوة مغناطيسية عالية",
+          "text": "مغانط MagSafe قوية تلتصق في مكانها بسهولة. وبقوة مغناطيسية تصل إلى 1.2 كغ يمكنك حمل الهاتف بإصبع واحد دون قلق من الانزلاق أو السقوط."
+        },
+        {
+          "title": "نحيف وآمن",
+          "text": "بسماكة 5.9 مم فقط، يدخل المقبض في الجيب دون أي ضخامة. وعند وضع الهاتف على الطاولة يرفعه قليلًا لحماية عدسات الكاميرا من الخدوش."
+        },
+        {
+          "title": "تفاصيل صغيرة بفارق كبير",
+          "text": "تُصنع ألياف الأراميد من بقايا حلقات الكاميرا، ما يقلّل هدر المواد."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Grip3 Tutacak (Moonrise)",
+      "summary": "Çinko alaşımlı, çift halkalı manyetik telefon tutacağı ve standı; 1,2 kg'a kadar taşıyarak tek elle rahat kullanım sağlar.",
+      "bullets": [
+        {
+          "title": "Her Konumda Denge",
+          "text": "Çift halkalı tasarıma sahip sağlam çinko alaşım stand, telefonu hem yatay hem dikey konumda sabit tutar ve ellerinizi serbest bırakır."
+        },
+        {
+          "title": "Tek Elle Kolay Kullanım",
+          "text": "Çift halkalı manyetik tasarım, telefonu tek elle tutmayı ve kullanmayı belirgin şekilde kolaylaştırır."
+        },
+        {
+          "title": "Çekim Sırasında Sabit",
+          "text": "Telefonu tutarken, fotoğraf çekerken veya Capture tuşunu tek elle kullanırken sağlam destek verir. Formu küçük eller için bile rahattır."
+        },
+        {
+          "title": "Güçlü Manyetik Tutuş",
+          "text": "Güçlü MagSafe mıknatısları zahmetsizce yerine oturur. 1,2 kg'a varan manyetik gücü sayesinde telefonu tek parmağınızla, kayma veya düşme endişesi olmadan taşıyabilirsiniz."
+        },
+        {
+          "title": "İnce ve Güvenli",
+          "text": "Yalnızca 5,9 mm kalınlığıyla cebinize hacim katmadan girer. Masaya konduğunda telefonu hafifçe yükselterek kamera lenslerini çiziklerden korur."
+        },
+        {
+          "title": "Küçük Detaylar, Büyük Fark",
+          "text": "Aramid fiber, kamera halkası üretiminden artan malzemeden yeniden değerlendirilir ve malzeme israfını azaltır."
+        }
+      ]
+    }
+  },
+  "26124": {
+    "en": {
+      "name": "PITAKA Grip3 (Sunset)",
+      "summary": "Magnetic dual-ring phone grip and stand in zinc alloy, holding up to 1.2 kg so you can shoot, watch and carry one-handed.",
+      "bullets": [
+        {
+          "title": "Stability in Every Mode",
+          "text": "A sturdy zinc alloy stand with a double-ring design gives strong support and keeps your phone steady in both landscape and portrait mode, leaving your hands free."
+        },
+        {
+          "title": "Easy One-Handed Grip",
+          "text": "The dual-ring magnetic design makes the phone noticeably easier to hold and use with one hand."
+        },
+        {
+          "title": "Steady While You Shoot",
+          "text": "It supports the phone firmly whether you are holding it, taking photos or pressing the Capture Button one-handed. The shape stays comfortable even for smaller hands."
+        },
+        {
+          "title": "Strong Magnetic Hold",
+          "text": "Powerful MagSafe magnets snap into place effortlessly. A magnetic strength of up to 1.2 kg lets you carry the device on one finger without worrying about slips or drops."
+        },
+        {
+          "title": "Sleek and Secure",
+          "text": "At just 5.9 mm thick, the grip slides into a pocket without adding bulk. Placed on a desk it lifts the phone slightly so the camera lenses stay scratch-free."
+        },
+        {
+          "title": "Small Details, Big Difference",
+          "text": "The aramid fiber is repurposed from camera ring offcuts, which cuts down on wasted material."
+        }
+      ]
+    },
+    "ar": {
+      "name": "مقبض PITAKA Grip3 (Sunset)",
+      "summary": "مقبض وحامل مغناطيسي بحلقتين من سبيكة الزنك يتحمّل حتى 1.2 كغ، لاستخدام مريح للهاتف بيد واحدة.",
+      "bullets": [
+        {
+          "title": "ثبات في كل الأوضاع",
+          "text": "حامل متين من سبيكة الزنك بتصميم الحلقتين يمنح دعمًا قويًا ويثبّت الهاتف أفقيًا وعموديًا، فتبقى يداك حرّتين."
+        },
+        {
+          "title": "إمساك مريح بيد واحدة",
+          "text": "يجعل التصميم المغناطيسي بحلقتين إمساك الهاتف واستخدامه بيد واحدة أسهل بكثير."
+        },
+        {
+          "title": "ثبات أثناء التصوير",
+          "text": "يوفّر دعمًا ثابتًا أثناء الإمساك بالهاتف أو التصوير أو استخدام زر Capture بيد واحدة، ويبقى مريحًا حتى لأصحاب الأيدي الصغيرة."
+        },
+        {
+          "title": "قوة مغناطيسية عالية",
+          "text": "مغانط MagSafe قوية تلتصق في مكانها بسهولة. وبقوة مغناطيسية تصل إلى 1.2 كغ يمكنك حمل الهاتف بإصبع واحد دون قلق من الانزلاق أو السقوط."
+        },
+        {
+          "title": "نحيف وآمن",
+          "text": "بسماكة 5.9 مم فقط، يدخل المقبض في الجيب دون أي ضخامة. وعند وضع الهاتف على الطاولة يرفعه قليلًا لحماية عدسات الكاميرا من الخدوش."
+        },
+        {
+          "title": "تفاصيل صغيرة بفارق كبير",
+          "text": "تُصنع ألياف الأراميد من بقايا حلقات الكاميرا، ما يقلّل هدر المواد."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Grip3 Tutacak (Sunset)",
+      "summary": "Çinko alaşımlı, çift halkalı manyetik telefon tutacağı ve standı; 1,2 kg'a kadar taşıyarak tek elle rahat kullanım sağlar.",
+      "bullets": [
+        {
+          "title": "Her Konumda Denge",
+          "text": "Çift halkalı tasarıma sahip sağlam çinko alaşım stand, telefonu hem yatay hem dikey konumda sabit tutar ve ellerinizi serbest bırakır."
+        },
+        {
+          "title": "Tek Elle Kolay Kullanım",
+          "text": "Çift halkalı manyetik tasarım, telefonu tek elle tutmayı ve kullanmayı belirgin şekilde kolaylaştırır."
+        },
+        {
+          "title": "Çekim Sırasında Sabit",
+          "text": "Telefonu tutarken, fotoğraf çekerken veya Capture tuşunu tek elle kullanırken sağlam destek verir. Formu küçük eller için bile rahattır."
+        },
+        {
+          "title": "Güçlü Manyetik Tutuş",
+          "text": "Güçlü MagSafe mıknatısları zahmetsizce yerine oturur. 1,2 kg'a varan manyetik gücü sayesinde telefonu tek parmağınızla, kayma veya düşme endişesi olmadan taşıyabilirsiniz."
+        },
+        {
+          "title": "İnce ve Güvenli",
+          "text": "Yalnızca 5,9 mm kalınlığıyla cebinize hacim katmadan girer. Masaya konduğunda telefonu hafifçe yükselterek kamera lenslerini çiziklerden korur."
+        },
+        {
+          "title": "Küçük Detaylar, Büyük Fark",
+          "text": "Aramid fiber, kamera halkası üretiminden artan malzemeden yeniden değerlendirilir ve malzeme israfını azaltır."
+        }
+      ]
+    }
+  },
+  "26137": {
+    "en": {
+      "name": "PITAKA Grip3 (600D Black/Grey-Twill)",
+      "summary": "Magnetic dual-ring phone grip and stand in zinc alloy, holding up to 1.2 kg so you can shoot, watch and carry one-handed.",
+      "bullets": [
+        {
+          "title": "Stability in Every Mode",
+          "text": "A sturdy zinc alloy stand with a double-ring design gives strong support and keeps your phone steady in both landscape and portrait mode, leaving your hands free."
+        },
+        {
+          "title": "Easy One-Handed Grip",
+          "text": "The dual-ring magnetic design makes the phone noticeably easier to hold and use with one hand."
+        },
+        {
+          "title": "Steady While You Shoot",
+          "text": "It supports the phone firmly whether you are holding it, taking photos or pressing the Capture Button one-handed. The shape stays comfortable even for smaller hands."
+        },
+        {
+          "title": "Strong Magnetic Hold",
+          "text": "Powerful MagSafe magnets snap into place effortlessly. A magnetic strength of up to 1.2 kg lets you carry the device on one finger without worrying about slips or drops."
+        },
+        {
+          "title": "Sleek and Secure",
+          "text": "At just 5.9 mm thick, the grip slides into a pocket without adding bulk. Placed on a desk it lifts the phone slightly so the camera lenses stay scratch-free."
+        },
+        {
+          "title": "Small Details, Big Difference",
+          "text": "The aramid fiber is repurposed from camera ring offcuts, which cuts down on wasted material."
+        }
+      ]
+    },
+    "ar": {
+      "name": "مقبض PITAKA Grip3 (600D Black/Grey-Twill)",
+      "summary": "مقبض وحامل مغناطيسي بحلقتين من سبيكة الزنك يتحمّل حتى 1.2 كغ، لاستخدام مريح للهاتف بيد واحدة.",
+      "bullets": [
+        {
+          "title": "ثبات في كل الأوضاع",
+          "text": "حامل متين من سبيكة الزنك بتصميم الحلقتين يمنح دعمًا قويًا ويثبّت الهاتف أفقيًا وعموديًا، فتبقى يداك حرّتين."
+        },
+        {
+          "title": "إمساك مريح بيد واحدة",
+          "text": "يجعل التصميم المغناطيسي بحلقتين إمساك الهاتف واستخدامه بيد واحدة أسهل بكثير."
+        },
+        {
+          "title": "ثبات أثناء التصوير",
+          "text": "يوفّر دعمًا ثابتًا أثناء الإمساك بالهاتف أو التصوير أو استخدام زر Capture بيد واحدة، ويبقى مريحًا حتى لأصحاب الأيدي الصغيرة."
+        },
+        {
+          "title": "قوة مغناطيسية عالية",
+          "text": "مغانط MagSafe قوية تلتصق في مكانها بسهولة. وبقوة مغناطيسية تصل إلى 1.2 كغ يمكنك حمل الهاتف بإصبع واحد دون قلق من الانزلاق أو السقوط."
+        },
+        {
+          "title": "نحيف وآمن",
+          "text": "بسماكة 5.9 مم فقط، يدخل المقبض في الجيب دون أي ضخامة. وعند وضع الهاتف على الطاولة يرفعه قليلًا لحماية عدسات الكاميرا من الخدوش."
+        },
+        {
+          "title": "تفاصيل صغيرة بفارق كبير",
+          "text": "تُصنع ألياف الأراميد من بقايا حلقات الكاميرا، ما يقلّل هدر المواد."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Grip3 Tutacak (600D Black/Grey-Twill)",
+      "summary": "Çinko alaşımlı, çift halkalı manyetik telefon tutacağı ve standı; 1,2 kg'a kadar taşıyarak tek elle rahat kullanım sağlar.",
+      "bullets": [
+        {
+          "title": "Her Konumda Denge",
+          "text": "Çift halkalı tasarıma sahip sağlam çinko alaşım stand, telefonu hem yatay hem dikey konumda sabit tutar ve ellerinizi serbest bırakır."
+        },
+        {
+          "title": "Tek Elle Kolay Kullanım",
+          "text": "Çift halkalı manyetik tasarım, telefonu tek elle tutmayı ve kullanmayı belirgin şekilde kolaylaştırır."
+        },
+        {
+          "title": "Çekim Sırasında Sabit",
+          "text": "Telefonu tutarken, fotoğraf çekerken veya Capture tuşunu tek elle kullanırken sağlam destek verir. Formu küçük eller için bile rahattır."
+        },
+        {
+          "title": "Güçlü Manyetik Tutuş",
+          "text": "Güçlü MagSafe mıknatısları zahmetsizce yerine oturur. 1,2 kg'a varan manyetik gücü sayesinde telefonu tek parmağınızla, kayma veya düşme endişesi olmadan taşıyabilirsiniz."
+        },
+        {
+          "title": "İnce ve Güvenli",
+          "text": "Yalnızca 5,9 mm kalınlığıyla cebinize hacim katmadan girer. Masaya konduğunda telefonu hafifçe yükselterek kamera lenslerini çiziklerden korur."
+        },
+        {
+          "title": "Küçük Detaylar, Büyük Fark",
+          "text": "Aramid fiber, kamera halkası üretiminden artan malzemeden yeniden değerlendirilir ve malzeme israfını azaltır."
+        }
+      ]
+    }
+  },
+  "26153": {
+    "en": {
+      "name": "PITAKA Magnetic Woven Wallet (Moonrise)",
+      "summary": "Slim MagSafe card wallet with built-in NFC and N52 magnets, holding 1 to 2 cards at a weight of only 38 g.",
+      "bullets": [
+        {
+          "title": "Tap-and-Go NFC",
+          "text": "Built-in NFC support means you never have to fumble for your card again, whether you are commuting or travelling. One-handed operation removes the card-pulling step entirely and saves you time at the counter."
+        },
+        {
+          "title": "Powerful Magnetic Hold",
+          "text": "Built-in N52-grade magnets lock the wallet onto any MagSafe-compatible device, so it will not slip or fall out of a pocket or bag. It holds 1 to 2 cards neatly in place for instant access."
+        },
+        {
+          "title": "Demagnetization Proof",
+          "text": "A precision-engineered metal layer sits between the card compartment and the magnets and blocks magnetic interference. Your cards stay protected and fully functional day after day."
+        },
+        {
+          "title": "Ultra-Light 38 g Profile",
+          "text": "At only 38 grams this slim wallet feels almost weightless. Its ergonomic shape sits comfortably in the hand for a fatigue-free grip."
+        }
+      ]
+    },
+    "ar": {
+      "name": "محفظة PITAKA مغناطيسية منسوجة (Moonrise)",
+      "summary": "محفظة بطاقات نحيفة بتقنية MagSafe ومغانط N52 ودعم NFC، تحمل بطاقة أو بطاقتين بوزن 38 غ فقط.",
+      "bullets": [
+        {
+          "title": "الدفع بلمسة NFC",
+          "text": "تدعم المحفظة تقنية NFC المدمجة، فلا حاجة للبحث عن البطاقة في التنقّل اليومي أو أثناء السفر؛ يكفي أن تمرّرها وتمضي. والتشغيل بيد واحدة يوفّر عليك خطوة سحب البطاقة ويختصر وقتك عند الصندوق."
+        },
+        {
+          "title": "تثبيت مغناطيسي قوي",
+          "text": "مغانط مدمجة من فئة N52 تثبّت المحفظة على أي جهاز متوافق مع MagSafe، فلا تنزلق ولا تسقط من الجيب أو الحقيبة. وتتّسع لبطاقة أو بطاقتين تبقيان في متناول يدك."
+        },
+        {
+          "title": "حماية من إزالة المغنطة",
+          "text": "طبقة معدنية مصمّمة بدقّة تفصل جيب البطاقات عن المغانط وتمنع أي تداخل مغناطيسي. تبقى بطاقاتك محميّة وتعمل بشكل كامل يومًا بعد يوم."
+        },
+        {
+          "title": "وزن خفيف 38 غ",
+          "text": "بوزن 38 غ فقط تكاد لا تشعر بهذه المحفظة النحيفة. وتصميمها المريح يجعل الإمساك بها سهلًا دون أي إجهاد لليد."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Manyetik Dokuma Cüzdan (Moonrise)",
+      "summary": "Yerleşik NFC ve N52 mıknatıslı ince MagSafe kart cüzdanı; yalnızca 38 g ağırlığında, 1-2 kart taşır.",
+      "bullets": [
+        {
+          "title": "Dokun ve Geç NFC",
+          "text": "Yerleşik NFC desteği sayesinde işe giderken de seyahatte de kartınızı aramanıza gerek kalmaz; dokunup geçersiniz. Tek elle kullanım, kartı çıkarma adımını tamamen ortadan kaldırır ve kasada zaman kazandırır."
+        },
+        {
+          "title": "Güçlü Manyetik Tutuş",
+          "text": "Yerleşik N52 sınıfı mıknatıslar cüzdanı MagSafe uyumlu her cihaza sıkıca kilitler; cebinizde ya da çantanızda kaymaz, düşmez. 1-2 kartı düzenli biçimde, her an erişilebilir tutar."
+        },
+        {
+          "title": "Manyetik Bozulmaya Karşı Koruma",
+          "text": "Kart bölmesi ile mıknatıslar arasına yerleştirilen hassas metal katman, manyetik girişimi engeller. Kartlarınız korunur ve her gün sorunsuz çalışmaya devam eder."
+        },
+        {
+          "title": "Yalnızca 38 g",
+          "text": "38 gram ağırlığındaki ince cüzdan neredeyse hiç hissedilmez. Ergonomik formu elde yorulmadan rahat bir kavrama sunar."
+        }
+      ]
+    }
+  },
+  "26165": {
+    "en": {
+      "name": "PITAKA Galaxy Z Fold 7 Edge Case (Moonrise)",
+      "summary": "Ultra-thin woven aramid fiber case for the Galaxy Z Fold 7 that protects the edges while keeping the phone slim and light.",
+      "bullets": [
+        {
+          "title": "Be Light, Be Lively",
+          "text": "The pattern recreates Sunset Moment, the first hit of the Weaving+ series, weaving an immersive blue that shifts from sunset to moonrise."
+        },
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case has a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves the original feel of your phone. Ideal for minimalists who want elegant protection without added weight."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Galaxy Z Fold 7 Edge (Moonrise)",
+      "summary": "غطاء فائق النحافة من ألياف الأراميد المنسوجة لهاتف Galaxy Z Fold 7 يحمي الحواف ويحافظ على نحافة الهاتف وخفّته.",
+      "bullets": [
+        {
+          "title": "خفّة وحيوية",
+          "text": "يستعيد النقش تصميم Sunset Moment، أول إصدار ناجح من سلسلة Weaving+، بنسيج أزرق آسر ينتقل من لحظة الغروب إلى بزوغ القمر."
+        },
+        {
+          "title": "نسيج فاخر",
+          "text": "مصنوع من ألياف الأراميد المنسوجة بدقّة، ما يمنحه ملمسًا حريريًا ناعمًا وفاخرًا. خفيف ومتين ومريح في اليد في كل مرة."
+        },
+        {
+          "title": "رقيق كالورق وخفيف كالريشة",
+          "text": "هيكل نحيف بالكاد تشعر به يحافظ على إحساس الهاتف الأصلي. مثالي لمحبّي البساطة الباحثين عن حماية أنيقة بلا وزن إضافي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Galaxy Z Fold 7 Edge Kılıf (Moonrise)",
+      "summary": "Galaxy Z Fold 7 için ultra ince dokuma aramid fiber kılıf; kenarları korurken telefonun ince ve hafif yapısını bozmaz.",
+      "bullets": [
+        {
+          "title": "Hafif ve Canlı",
+          "text": "Weaving+ serisinin ilk sevilen tasarımı \"Sunset Moment\"ın yeniden yorumu; gün batımından ay doğuşuna uzanan mavi saatleri dokuyor."
+        },
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf, ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem sağlamdır ve her tutuşta keyif verir."
+        },
+        {
+          "title": "Kağıt İnceliğinde",
+          "text": "Neredeyse hissedilmeyen ince yapısı telefonunuzun orijinal hissini korur. Ek ağırlık istemeden şık koruma arayan minimalistler için idealdir."
+        }
+      ]
+    }
+  },
+  "26176": {
+    "en": {
+      "name": "PITAKA Galaxy Z Fold 7 Edge Case (600D Black/Grey-Twill)",
+      "summary": "Aerospace-grade aramid fiber case for the Galaxy Z Fold 7, combining serious strength with a barely-there profile.",
+      "bullets": [
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case has a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Aerospace-Grade Aramid Strength",
+          "text": "Made from aerospace-grade aramid fiber, which is 5x stronger than steel at one fifth of the weight. It is ultra-thin and extremely tough, built for premium protection without the bulk."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves the original feel of your phone. Ideal for minimalists who want elegant protection without added weight."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Galaxy Z Fold 7 Edge (600D Black/Grey-Twill)",
+      "summary": "غطاء من ألياف الأراميد بمواصفات الطيران لهاتف Galaxy Z Fold 7، يجمع بين متانة عالية وسماكة تكاد لا تُلاحَظ.",
+      "bullets": [
+        {
+          "title": "نسيج فاخر",
+          "text": "مصنوع من ألياف الأراميد المنسوجة بدقّة، ما يمنحه ملمسًا حريريًا ناعمًا وفاخرًا. خفيف ومتين ومريح في اليد في كل مرة."
+        },
+        {
+          "title": "ألياف أراميد بمواصفات الطيران",
+          "text": "مصنوع من ألياف الأراميد المستخدمة في صناعة الطيران، وهي أقوى من الفولاذ بخمس مرات ولا يتجاوز وزنها خُمس وزنه. رفيع للغاية وشديد الصلابة، ويوفّر حماية متقدّمة دون أي ضخامة."
+        },
+        {
+          "title": "رقيق كالورق وخفيف كالريشة",
+          "text": "هيكل نحيف بالكاد تشعر به يحافظ على إحساس الهاتف الأصلي. مثالي لمحبّي البساطة الباحثين عن حماية أنيقة بلا وزن إضافي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Galaxy Z Fold 7 Edge Kılıf (600D Black/Grey-Twill)",
+      "summary": "Galaxy Z Fold 7 için havacılık sınıfı aramid fiber kılıf; yüksek dayanımı neredeyse hissedilmeyen inceliğiyle birleştirir.",
+      "bullets": [
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf, ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem sağlamdır ve her tutuşta keyif verir."
+        },
+        {
+          "title": "Havacılık Sınıfı Aramid Dayanımı",
+          "text": "Çelikten 5 kat daha güçlü ve beşte biri ağırlığındaki havacılık sınıfı aramid fiberden üretilmiştir. Ultra ince ve son derece dayanıklı yapısıyla hantallaşmadan üst düzey koruma sunar."
+        },
+        {
+          "title": "Kağıt İnceliğinde",
+          "text": "Neredeyse hissedilmeyen ince yapısı telefonunuzun orijinal hissini korur. Ek ağırlık istemeden şık koruma arayan minimalistler için idealdir."
+        }
+      ]
+    }
+  },
+  "26192": {
+    "en": {
+      "name": "PITAKA iPhone 17 Pro Max Edge Case (Moonrise)",
+      "summary": "Aramid fiber Edge case for the iPhone 17 Pro Max, under 1 mm thick, with Pitatap support for the Camera Control button.",
+      "bullets": [
+        {
+          "title": "Be Light, Be Lively",
+          "text": "The pattern recreates Sunset Moment, the first hit of the Weaving+ series, weaving an immersive blue that shifts from sunset to moonrise."
+        },
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case has a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Pitatap Camera Control",
+          "text": "At under 1 mm thick, the case shields the Camera Control button with aramid fiber while a hidden capacitive layer lets you tap and slide effortlessly. The integration keeps the aramid texture intact and the control precise and responsive."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves the original feel of your phone. Ideal for minimalists who want elegant protection without added weight."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA iPhone 17 Pro Max Edge (Moonrise)",
+      "summary": "غطاء Edge من ألياف الأراميد لهاتف iPhone 17 Pro Max بسماكة أقل من 1 مم، مع دعم Pitatap لزر Camera Control.",
+      "bullets": [
+        {
+          "title": "خفّة وحيوية",
+          "text": "يستعيد النقش تصميم Sunset Moment، أول إصدار ناجح من سلسلة Weaving+، بنسيج أزرق آسر ينتقل من لحظة الغروب إلى بزوغ القمر."
+        },
+        {
+          "title": "نسيج فاخر",
+          "text": "مصنوع من ألياف الأراميد المنسوجة بدقّة، ما يمنحه ملمسًا حريريًا ناعمًا وفاخرًا. خفيف ومتين ومريح في اليد في كل مرة."
+        },
+        {
+          "title": "تقنية Pitatap",
+          "text": "بسماكة أقل من 1 مم، يغطّي الغطاء زر Camera Control بألياف الأراميد، بينما تتيح طبقة لمسية مخفيّة النقر والتمرير بسلاسة تامة. ويحافظ التصميم المتكامل على ملمس الأراميد مع استجابة دقيقة وسريعة."
+        },
+        {
+          "title": "رقيق كالورق وخفيف كالريشة",
+          "text": "هيكل نحيف بالكاد تشعر به يحافظ على إحساس الهاتف الأصلي. مثالي لمحبّي البساطة الباحثين عن حماية أنيقة بلا وزن إضافي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA iPhone 17 Pro Max Edge Kılıf (Moonrise)",
+      "summary": "iPhone 17 Pro Max için 1 mm'den ince aramid fiber Edge kılıf; Camera Control tuşu için Pitatap desteği sunar.",
+      "bullets": [
+        {
+          "title": "Hafif ve Canlı",
+          "text": "Weaving+ serisinin ilk sevilen tasarımı \"Sunset Moment\"ın yeniden yorumu; gün batımından ay doğuşuna uzanan mavi saatleri dokuyor."
+        },
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf, ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem sağlamdır ve her tutuşta keyif verir."
+        },
+        {
+          "title": "Pitatap Kamera Kontrolü",
+          "text": "1 mm'den ince kılıf, Camera Control tuşunu aramid fiberle korurken gizli kapasitif katman dokunma ve kaydırma hareketlerini sorunsuz iletir. Bütünleşik yapı aramid dokusunu korur, kontrolü hassas ve hızlı tutar."
+        },
+        {
+          "title": "Kağıt İnceliğinde",
+          "text": "Neredeyse hissedilmeyen ince yapısı telefonunuzun orijinal hissini korur. Ek ağırlık istemeden şık koruma arayan minimalistler için idealdir."
+        }
+      ]
+    }
+  },
+  "26211": {
+    "en": {
+      "name": "PITAKA iPhone 17 Pro Max Edge Case (Sunset)",
+      "summary": "Aramid fiber Edge case for the iPhone 17 Pro Max, under 1 mm thick, with Pitatap support for the Camera Control button.",
+      "bullets": [
+        {
+          "title": "Be Light, Be Lively",
+          "text": "The pattern recreates Sunset Moment, the first hit of the Weaving+ series, weaving an immersive blue that shifts from sunset to moonrise."
+        },
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case has a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Pitatap Camera Control",
+          "text": "At under 1 mm thick, the case shields the Camera Control button with aramid fiber while a hidden capacitive layer lets you tap and slide effortlessly. The integration keeps the aramid texture intact and the control precise and responsive."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves the original feel of your phone. Ideal for minimalists who want elegant protection without added weight."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA iPhone 17 Pro Max Edge (Sunset)",
+      "summary": "غطاء Edge من ألياف الأراميد لهاتف iPhone 17 Pro Max بسماكة أقل من 1 مم، مع دعم Pitatap لزر Camera Control.",
+      "bullets": [
+        {
+          "title": "خفّة وحيوية",
+          "text": "يستعيد النقش تصميم Sunset Moment، أول إصدار ناجح من سلسلة Weaving+، بنسيج أزرق آسر ينتقل من لحظة الغروب إلى بزوغ القمر."
+        },
+        {
+          "title": "نسيج فاخر",
+          "text": "مصنوع من ألياف الأراميد المنسوجة بدقّة، ما يمنحه ملمسًا حريريًا ناعمًا وفاخرًا. خفيف ومتين ومريح في اليد في كل مرة."
+        },
+        {
+          "title": "تقنية Pitatap",
+          "text": "بسماكة أقل من 1 مم، يغطّي الغطاء زر Camera Control بألياف الأراميد، بينما تتيح طبقة لمسية مخفيّة النقر والتمرير بسلاسة تامة. ويحافظ التصميم المتكامل على ملمس الأراميد مع استجابة دقيقة وسريعة."
+        },
+        {
+          "title": "رقيق كالورق وخفيف كالريشة",
+          "text": "هيكل نحيف بالكاد تشعر به يحافظ على إحساس الهاتف الأصلي. مثالي لمحبّي البساطة الباحثين عن حماية أنيقة بلا وزن إضافي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA iPhone 17 Pro Max Edge Kılıf (Sunset)",
+      "summary": "iPhone 17 Pro Max için 1 mm'den ince aramid fiber Edge kılıf; Camera Control tuşu için Pitatap desteği sunar.",
+      "bullets": [
+        {
+          "title": "Hafif ve Canlı",
+          "text": "Weaving+ serisinin ilk sevilen tasarımı \"Sunset Moment\"ın yeniden yorumu; gün batımından ay doğuşuna uzanan mavi saatleri dokuyor."
+        },
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf, ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem sağlamdır ve her tutuşta keyif verir."
+        },
+        {
+          "title": "Pitatap Kamera Kontrolü",
+          "text": "1 mm'den ince kılıf, Camera Control tuşunu aramid fiberle korurken gizli kapasitif katman dokunma ve kaydırma hareketlerini sorunsuz iletir. Bütünleşik yapı aramid dokusunu korur, kontrolü hassas ve hızlı tutar."
+        },
+        {
+          "title": "Kağıt İnceliğinde",
+          "text": "Neredeyse hissedilmeyen ince yapısı telefonunuzun orijinal hissini korur. Ek ağırlık istemeden şık koruma arayan minimalistler için idealdir."
+        }
+      ]
+    }
+  },
+  "26226": {
+    "en": {
+      "name": "PITAKA iPhone 17 Pro Max Edge Case (600D Black/Grey-Twill)",
+      "summary": "Aerospace-grade aramid Edge case for the iPhone 17 Pro Max with Pitatap control over the Camera Control button.",
+      "bullets": [
+        {
+          "title": "Aerospace-Grade Aramid Strength",
+          "text": "Made from aerospace-grade aramid fiber, which is 5x stronger than steel at one fifth of the weight. It is ultra-thin and extremely tough, built for premium protection without the bulk."
+        },
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case has a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Pitatap Camera Control",
+          "text": "At under 1 mm thick, the case shields the Camera Control button with aramid fiber while a hidden capacitive layer lets you tap and slide effortlessly. The integration keeps the aramid texture intact and the control precise and responsive."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves the original feel of your phone. Ideal for minimalists who want elegant protection without added weight."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA iPhone 17 Pro Max Edge (600D Black/Grey-Twill)",
+      "summary": "غطاء Edge من ألياف الأراميد بمواصفات الطيران لهاتف iPhone 17 Pro Max، مع دعم Pitatap لزر Camera Control.",
+      "bullets": [
+        {
+          "title": "ألياف أراميد بمواصفات الطيران",
+          "text": "مصنوع من ألياف الأراميد المستخدمة في صناعة الطيران، وهي أقوى من الفولاذ بخمس مرات ولا يتجاوز وزنها خُمس وزنه. رفيع للغاية وشديد الصلابة، ويوفّر حماية متقدّمة دون أي ضخامة."
+        },
+        {
+          "title": "نسيج فاخر",
+          "text": "مصنوع من ألياف الأراميد المنسوجة بدقّة، ما يمنحه ملمسًا حريريًا ناعمًا وفاخرًا. خفيف ومتين ومريح في اليد في كل مرة."
+        },
+        {
+          "title": "تقنية Pitatap",
+          "text": "بسماكة أقل من 1 مم، يغطّي الغطاء زر Camera Control بألياف الأراميد، بينما تتيح طبقة لمسية مخفيّة النقر والتمرير بسلاسة تامة. ويحافظ التصميم المتكامل على ملمس الأراميد مع استجابة دقيقة وسريعة."
+        },
+        {
+          "title": "رقيق كالورق وخفيف كالريشة",
+          "text": "هيكل نحيف بالكاد تشعر به يحافظ على إحساس الهاتف الأصلي. مثالي لمحبّي البساطة الباحثين عن حماية أنيقة بلا وزن إضافي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA iPhone 17 Pro Max Edge Kılıf (600D Black/Grey-Twill)",
+      "summary": "iPhone 17 Pro Max için havacılık sınıfı aramid Edge kılıf; Camera Control tuşu için Pitatap desteği sunar.",
+      "bullets": [
+        {
+          "title": "Havacılık Sınıfı Aramid Dayanımı",
+          "text": "Çelikten 5 kat daha güçlü ve beşte biri ağırlığındaki havacılık sınıfı aramid fiberden üretilmiştir. Ultra ince ve son derece dayanıklı yapısıyla hantallaşmadan üst düzey koruma sunar."
+        },
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf, ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem sağlamdır ve her tutuşta keyif verir."
+        },
+        {
+          "title": "Pitatap Kamera Kontrolü",
+          "text": "1 mm'den ince kılıf, Camera Control tuşunu aramid fiberle korurken gizli kapasitif katman dokunma ve kaydırma hareketlerini sorunsuz iletir. Bütünleşik yapı aramid dokusunu korur, kontrolü hassas ve hızlı tutar."
+        },
+        {
+          "title": "Kağıt İnceliğinde",
+          "text": "Neredeyse hissedilmeyen ince yapısı telefonunuzun orijinal hissini korur. Ek ağırlık istemeden şık koruma arayan minimalistler için idealdir."
+        }
+      ]
+    }
+  },
+  "26245": {
+    "en": {
+      "name": "PITAKA iPhone 17 Pro Edge Case (Moonrise)",
+      "summary": "Aramid fiber Edge case for the iPhone 17 Pro, under 1 mm thick, with Pitatap support for the Camera Control button.",
+      "bullets": [
+        {
+          "title": "Be Light, Be Lively",
+          "text": "The pattern recreates Sunset Moment, the first hit of the Weaving+ series, weaving an immersive blue that shifts from sunset to moonrise."
+        },
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case has a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Pitatap Camera Control",
+          "text": "At under 1 mm thick, the case shields the Camera Control button with aramid fiber while a hidden capacitive layer lets you tap and slide effortlessly. The integration keeps the aramid texture intact and the control precise and responsive."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves the original feel of your phone. Ideal for minimalists who want elegant protection without added weight."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA iPhone 17 Pro Edge (Moonrise)",
+      "summary": "غطاء Edge من ألياف الأراميد لهاتف iPhone 17 Pro بسماكة أقل من 1 مم، مع دعم Pitatap لزر Camera Control.",
+      "bullets": [
+        {
+          "title": "خفّة وحيوية",
+          "text": "يستعيد النقش تصميم Sunset Moment، أول إصدار ناجح من سلسلة Weaving+، بنسيج أزرق آسر ينتقل من لحظة الغروب إلى بزوغ القمر."
+        },
+        {
+          "title": "نسيج فاخر",
+          "text": "مصنوع من ألياف الأراميد المنسوجة بدقّة، ما يمنحه ملمسًا حريريًا ناعمًا وفاخرًا. خفيف ومتين ومريح في اليد في كل مرة."
+        },
+        {
+          "title": "تقنية Pitatap",
+          "text": "بسماكة أقل من 1 مم، يغطّي الغطاء زر Camera Control بألياف الأراميد، بينما تتيح طبقة لمسية مخفيّة النقر والتمرير بسلاسة تامة. ويحافظ التصميم المتكامل على ملمس الأراميد مع استجابة دقيقة وسريعة."
+        },
+        {
+          "title": "رقيق كالورق وخفيف كالريشة",
+          "text": "هيكل نحيف بالكاد تشعر به يحافظ على إحساس الهاتف الأصلي. مثالي لمحبّي البساطة الباحثين عن حماية أنيقة بلا وزن إضافي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA iPhone 17 Pro Edge Kılıf (Moonrise)",
+      "summary": "iPhone 17 Pro için 1 mm'den ince aramid fiber Edge kılıf; Camera Control tuşu için Pitatap desteği sunar.",
+      "bullets": [
+        {
+          "title": "Hafif ve Canlı",
+          "text": "Weaving+ serisinin ilk sevilen tasarımı \"Sunset Moment\"ın yeniden yorumu; gün batımından ay doğuşuna uzanan mavi saatleri dokuyor."
+        },
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf, ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem sağlamdır ve her tutuşta keyif verir."
+        },
+        {
+          "title": "Pitatap Kamera Kontrolü",
+          "text": "1 mm'den ince kılıf, Camera Control tuşunu aramid fiberle korurken gizli kapasitif katman dokunma ve kaydırma hareketlerini sorunsuz iletir. Bütünleşik yapı aramid dokusunu korur, kontrolü hassas ve hızlı tutar."
+        },
+        {
+          "title": "Kağıt İnceliğinde",
+          "text": "Neredeyse hissedilmeyen ince yapısı telefonunuzun orijinal hissini korur. Ek ağırlık istemeden şık koruma arayan minimalistler için idealdir."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,782 @@
+{
+  "35223": {
+    "en": {
+      "name": "P1i",
+      "summary": "Google TV projector with 380 ANSI lumens, 1080p picture and rotating 20W Dolby Audio speakers for any room.",
+      "bullets": [
+        {
+          "title": "Flippable Audio",
+          "text": "Rotate the 20W Dolby Audio speakers (2 × 10W) 90° from side to side or 200° up and down so the sound follows the scene. At 183 × 204 × 228 mm and 7.3 lb, it is easy to place anywhere at home."
+        },
+        {
+          "title": "True Brightness, Real Clarity",
+          "text": "TÜV-certified 380 ANSI lumens and 1080p Full HD resolution bring lifelike detail to every movie night."
+        },
+        {
+          "title": "Designed for Consistent Viewing",
+          "text": "All-glass lenses and a fully sealed optical engine resist dust and wear, keeping every frame crisp and clear even after hours of play."
+        },
+        {
+          "title": "Smart Instant Setup (IEA 3.0)",
+          "text": "Just plug in and go. Autofocus, auto keystone correction, obstacle avoidance and screen fit deliver a perfect view every time."
+        },
+        {
+          "title": "Google TV Built In",
+          "text": "Stream Netflix, YouTube, Prime Video and more straight from the projector, with no extra devices needed. A Google account and an internet connection are required for the initial setup and for Google TV access."
+        },
+        {
+          "title": "Engineered by Anker",
+          "text": "Built by Anker, the world's number one charging brand, trusted by more than 80 million users worldwide, Nebula products are designed for reliable performance at home and outdoors."
+        },
+        {
+          "title": "Firmware Update Note",
+          "text": "For the best out-of-the-box experience, update to the latest Android 14 system software before first use. The update includes key system optimisations and improved streaming app compatibility for more stable performance."
+        },
+        {
+          "title": "Power Supply Note",
+          "text": "The projector does not include a built-in battery. The Anker SOLIX C300 portable power station is recommended and can run the P1i for approximately 3.5 to 3.7 hours with all features in use, which suits backyard, outdoor and camping viewing."
+        }
+      ]
+    },
+    "ar": {
+      "name": "جهاز عرض P1i",
+      "summary": "جهاز عرض بنظام Google TV وسطوع 380 ANSI lumens ودقة 1080p مع مكبّرات صوت Dolby دوّارة بقدرة 20W.",
+      "bullets": [
+        {
+          "title": "صوت قابل للتوجيه",
+          "text": "أدِر مكبّرات الصوت بقدرة 20W (2 × 10W) بتقنية Dolby Audio بزاوية 90° يميناً ويساراً أو 200° للأعلى والأسفل ليتبع الصوت المشهد. وبأبعاد 183 × 204 × 228 مم ووزن 3.3 كغ، يسهل وضعه في أي ركن من البيت."
+        },
+        {
+          "title": "سطوع حقيقي ووضوح فعلي",
+          "text": "سطوع 380 ANSI lumens معتمد من TÜV ودقة 1080p Full HD يمنحان تفاصيل واقعية في كل أمسية سينمائية."
+        },
+        {
+          "title": "مصمَّم لمشاهدة ثابتة الجودة",
+          "text": "عدسات زجاجية بالكامل ومحرك بصري مغلق تماماً يقاومان الغبار والتآكل، فتبقى الصورة نقية وواضحة حتى بعد ساعات من التشغيل."
+        },
+        {
+          "title": "إعداد فوري ذكي (IEA 3.0)",
+          "text": "وصّله وابدأ المشاهدة. تركيز تلقائي وتصحيح تلقائي لانحراف الصورة وتفادٍ للعوائق وملاءمة للشاشة تمنحك صورة مضبوطة في كل مرة."
+        },
+        {
+          "title": "نظام Google TV مدمج",
+          "text": "شاهد Netflix وYouTube وPrime Video وغيرها مباشرةً من جهاز العرض دون أجهزة إضافية. ويلزم حساب Google واتصال بالإنترنت للإعداد الأولي ولاستخدام Google TV."
+        },
+        {
+          "title": "من هندسة Anker",
+          "text": "من تصميم Anker وهندستها في حلول الشحن، وموثوقة لدى أكثر من 80 مليون مستخدم حول العالم، ومنتجات Nebula مصنوعة لأداء موثوق داخل المنزل وخارجه."
+        },
+        {
+          "title": "ملاحظة حول تحديث النظام",
+          "text": "للحصول على أفضل تجربة، حدِّث الجهاز إلى أحدث إصدار من نظام Android 14 قبل الاستخدام الأول؛ فالتحديث يتضمن تحسينات أساسية للنظام وتوافقاً أفضل مع تطبيقات البث وأداءً أكثر استقراراً."
+        },
+        {
+          "title": "ملاحظة حول مصدر الطاقة",
+          "text": "لا يحتوي جهاز العرض على بطارية مدمجة. وننصح باستخدام محطة الطاقة المحمولة Anker SOLIX C300 التي تشغّل P1i نحو 3.5 إلى 3.7 ساعة مع تفعيل جميع المزايا، وهو ما يناسب المشاهدة في الحديقة أو في الرحلات والتخييم."
+        }
+      ]
+    },
+    "tr": {
+      "name": "P1i",
+      "summary": "380 ANSI lümen parlaklık, 1080p görüntü ve döner 20W Dolby Audio hoparlörlerle her odaya uygun Google TV'li projeksiyon.",
+      "bullets": [
+        {
+          "title": "Döndürülebilir Ses",
+          "text": "20W Dolby Audio hoparlörleri (2 × 10W) yanlara 90°, yukarı ve aşağı 200° döndürerek sesi sahneye göre yönlendirin. 183 × 204 × 228 mm ölçüleri ve 3,3 kg ağırlığıyla evin her yerine kolayca yerleşir."
+        },
+        {
+          "title": "Gerçek Parlaklık, Net Görüntü",
+          "text": "TÜV sertifikalı 380 ANSI lümen ve 1080p Full HD çözünürlük, film gecelerine gerçekçi ayrıntı katar."
+        },
+        {
+          "title": "İstikrarlı Görüntü İçin Tasarım",
+          "text": "Tam cam lensler ve tamamen sızdırmaz optik motor toza ve aşınmaya direnir; saatler süren kullanımdan sonra bile her kare net kalır."
+        },
+        {
+          "title": "Akıllı Anında Kurulum (IEA 3.0)",
+          "text": "Tak ve başla. Otomatik odaklama, otomatik yamukluk düzeltme, engelden kaçınma ve ekrana oturtma her seferinde kusursuz görüntü sunar."
+        },
+        {
+          "title": "Dahili Google TV",
+          "text": "Netflix, YouTube, Prime Video ve daha fazlasını ek cihaza gerek kalmadan doğrudan projeksiyondan izleyin. İlk kurulum ve Google TV erişimi için Google hesabı ve internet bağlantısı gerekir."
+        },
+        {
+          "title": "Anker Mühendisliği",
+          "text": "Şarj çözümlerinde dünyanın bir numaralı markası Anker tarafından geliştirilen ve 80 milyondan fazla kullanıcı tarafından tercih edilen Nebula ürünleri, ev içi ve açık hava kullanımında güvenilir performans için tasarlanır."
+        },
+        {
+          "title": "Yazılım Güncelleme Notu",
+          "text": "En iyi deneyim için ilk kullanımdan önce en güncel Android 14 sistem yazılımına geçin. Güncelleme, önemli sistem iyileştirmeleri ve yayın uygulamalarıyla daha iyi uyum sağlayarak performansı kararlı hâle getirir."
+        },
+        {
+          "title": "Güç Kaynağı Notu",
+          "text": "Projeksiyonda dahili pil yoktur. Anker SOLIX C300 taşınabilir güç istasyonu önerilir; tüm özellikler açıkken P1i'yi yaklaşık 3,5 - 3,7 saat çalıştırır ve bahçe, açık hava ya da kamp kullanımına uygundur."
+        }
+      ]
+    }
+  },
+  "35742": {
+    "en": {
+      "name": "eufy Dust Bags For C/E Series (3 Pieces)",
+      "summary": "Three sealed 3 L replacement dust bags for Omni E28, E25 and C28, each giving up to 75 days of auto-emptying.",
+      "bullets": [
+        {
+          "title": "Compatible Models",
+          "text": "Fits eufy Robot Vacuum Omni E28, eufy Robot Vacuum Omni E25 and eufy Robot Vacuum Omni C28."
+        },
+        {
+          "title": "Great Seal Without Leakage",
+          "text": "The sealed design, made from hygienic materials, prevents dirt and odour from leaking, keeping the room clean and fresh."
+        },
+        {
+          "title": "Effective Filtration",
+          "text": "Efficiently filters dander, mould and other common household allergens, promoting healthier indoor air quality."
+        },
+        {
+          "title": "Versatile Auto Emptying",
+          "text": "The spacious 3 L dust bag gives up to 75 days of hands-free cleaning, and the 3-pack covers long-term maintenance."
+        },
+        {
+          "title": "Performance Note",
+          "text": "Performance is based on internal eufy testing, and results may vary depending on your home environment."
+        },
+        {
+          "title": "Use Genuine Parts",
+          "text": "To protect your robot vacuum and extend its lifespan, use authentic eufy replacement parts."
+        }
+      ]
+    },
+    "ar": {
+      "name": "أكياس غبار eufy لسلسلة C/E (3 قطع)",
+      "summary": "ثلاثة أكياس غبار أصلية بسعة 3 لتر لموديلات Omni E28 وE25 وC28، ويمنحك كل كيس حتى 75 يوماً من التفريغ التلقائي.",
+      "bullets": [
+        {
+          "title": "الموديلات المتوافقة",
+          "text": "تناسب مكانس eufy Robot Vacuum Omni E28 وeufy Robot Vacuum Omni E25 وeufy Robot Vacuum Omni C28."
+        },
+        {
+          "title": "إغلاق محكم بلا تسريب",
+          "text": "تصميم محكم من مواد صحية يمنع تسرّب الأوساخ والروائح، فيبقى المكان نظيفاً ومنعشاً."
+        },
+        {
+          "title": "فلترة فعّالة",
+          "text": "تحجز الوبر والعفن وسائر مسببات الحساسية المنزلية الشائعة، فتتحسن جودة الهواء داخل البيت."
+        },
+        {
+          "title": "تفريغ تلقائي متعدد الاستخدام",
+          "text": "كيس واسع بسعة 3 لتر يمنحك حتى 75 يوماً من التنظيف دون تدخل يدوي، والعبوة من ثلاث قطع تغطي فترة صيانة طويلة."
+        },
+        {
+          "title": "ملاحظة حول الأداء",
+          "text": "الأرقام مبنية على اختبارات eufy الداخلية، وقد تختلف النتائج باختلاف بيئة منزلك."
+        },
+        {
+          "title": "استخدم قطعاً أصلية",
+          "text": "للحفاظ على مكنسة الروبوت وإطالة عمرها، استخدم قطع الغيار الأصلية من eufy."
+        }
+      ]
+    },
+    "tr": {
+      "name": "eufy C/E Serisi için Toz Torbası (3 Adet)",
+      "summary": "Omni E28, E25 ve C28 için üçlü 3 L yedek toz torbası; her torba 75 güne kadar otomatik boşaltma sağlar.",
+      "bullets": [
+        {
+          "title": "Uyumlu Modeller",
+          "text": "eufy Robot Vacuum Omni E28, eufy Robot Vacuum Omni E25 ve eufy Robot Vacuum Omni C28 ile uyumludur."
+        },
+        {
+          "title": "Sızdırmayan Sıkı Kapama",
+          "text": "Hijyenik malzemeden üretilen sızdırmaz tasarım, kir ve kokunun dışarı çıkmasını engeller; ortam temiz ve ferah kalır."
+        },
+        {
+          "title": "Etkili Filtreleme",
+          "text": "Kepek, küf ve yaygın ev alerjenlerini verimli şekilde tutarak iç mekân hava kalitesini iyileştirir."
+        },
+        {
+          "title": "Esnek Otomatik Boşaltma",
+          "text": "Geniş 3 L hacimli torba 75 güne kadar elinizi sürmeden temizlik sunar; 3'lü paket uzun süreli bakımı karşılar."
+        },
+        {
+          "title": "Performans Notu",
+          "text": "Veriler eufy'nin iç testlerine dayanır; sonuçlar ev ortamınıza göre değişebilir."
+        },
+        {
+          "title": "Orijinal Parça Kullanın",
+          "text": "Robot süpürgenizi korumak ve ömrünü uzatmak için orijinal eufy yedek parçalarını kullanın."
+        }
+      ]
+    }
+  },
+  "35744": {
+    "en": {
+      "name": "eufy Rolling Brush For C/E Series",
+      "summary": "Genuine replacement roller brush for Omni E28, E25 and C28, fitted in seconds without any tools.",
+      "bullets": [
+        {
+          "title": "Compatible Models",
+          "text": "Fits eufy Robot Vacuum Omni E28, E25 and C28."
+        },
+        {
+          "title": "Suggested Replacement Frequency",
+          "text": "Replace roughly every 3 months, depending on how often you clean."
+        },
+        {
+          "title": "Keeps Performance High",
+          "text": "Regular roller brush maintenance keeps your robot vacuum performing at its best."
+        },
+        {
+          "title": "Tool-Free Replacement",
+          "text": "Swap the brush on your robot vacuum without any tools, which keeps maintenance simple."
+        },
+        {
+          "title": "Use Genuine Parts",
+          "text": "To protect your robot vacuum and extend its lifespan, use authentic eufy replacement parts."
+        }
+      ]
+    },
+    "ar": {
+      "name": "فرشاة دوّارة eufy لسلسلة C/E",
+      "summary": "فرشاة دوّارة أصلية لمكانس Omni E28 وE25 وC28، تُركَّب خلال ثوانٍ ومن دون أي أدوات.",
+      "bullets": [
+        {
+          "title": "الموديلات المتوافقة",
+          "text": "تناسب مكانس eufy Robot Vacuum Omni E28 وE25 وC28."
+        },
+        {
+          "title": "دورية التبديل الموصى بها",
+          "text": "يُنصح بتبديلها كل 3 أشهر تقريباً بحسب عدد مرات الاستخدام."
+        },
+        {
+          "title": "أداء عالٍ ودائم",
+          "text": "العناية المنتظمة بالفرشاة الدوّارة تحافظ على أداء مكنسة الروبوت في أفضل مستوياته."
+        },
+        {
+          "title": "تبديل دون أدوات",
+          "text": "بدّل الفرشاة في مكنسة الروبوت دون أي أدوات، فتصبح الصيانة أمراً بسيطاً."
+        },
+        {
+          "title": "استخدم قطعاً أصلية",
+          "text": "للحفاظ على مكنسة الروبوت وإطالة عمرها، استخدم قطع الغيار الأصلية من eufy."
+        }
+      ]
+    },
+    "tr": {
+      "name": "eufy C/E Serisi için Döner Fırça",
+      "summary": "Omni E28, E25 ve C28 için orijinal yedek döner fırça; saniyeler içinde, alet gerekmeden takılır.",
+      "bullets": [
+        {
+          "title": "Uyumlu Modeller",
+          "text": "eufy Robot Vacuum Omni E28, E25 ve C28 ile uyumludur."
+        },
+        {
+          "title": "Önerilen Değişim Sıklığı",
+          "text": "Kullanım sıklığınıza bağlı olarak yaklaşık her 3 ayda bir değiştirin."
+        },
+        {
+          "title": "Yüksek Performans",
+          "text": "Döner fırçanın düzenli bakımı, robot süpürgenizin en iyi performansla çalışmasını sağlar."
+        },
+        {
+          "title": "Aletsiz Değişim",
+          "text": "Fırçayı robot süpürgenizde alet kullanmadan değiştirin; bakım böylece basitleşir."
+        },
+        {
+          "title": "Orijinal Parça Kullanın",
+          "text": "Robot süpürgenizi korumak ve ömrünü uzatmak için orijinal eufy yedek parçalarını kullanın."
+        }
+      ]
+    }
+  },
+  "35800": {
+    "en": {
+      "name": "PITAKA Google Pixel 11 Pro Edge Case (600D Black/Grey-Twill) (Aaron Button)",
+      "summary": "Ultra-thin aramid fiber case for the Pixel 11 Pro with a tactile Aaron Button for one-press shortcuts.",
+      "bullets": [
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case offers a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves your phone's original feel, ideal for minimalists who want elegant protection without added weight."
+        },
+        {
+          "title": "Stop Scrolling, Start Doing",
+          "text": "Skip the menus and trigger your most-used commands instantly with satisfying physical feedback. The Aaron Button gives you a direct path to what matters most in your workflow or daily routine."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Edge لهاتف Google Pixel 11 Pro (600D Black/Grey-Twill) (Aaron Button)",
+      "summary": "غطاء فائق النحافة من ألياف الأراميد لهاتف Pixel 11 Pro، مع زر Aaron الملموس للاختصارات بضغطة واحدة.",
+      "bullets": [
+        {
+          "title": "نسيج أراميد فاخر",
+          "text": "منسوج من ألياف أراميد دقيقة تمنحه ملمساً حريرياً فاخراً. خفيف ومتين في آن واحد، ويمنحك إحساساً مريحاً في كل مرة تمسك به."
+        },
+        {
+          "title": "بسماكة الورقة وخفة الريشة",
+          "text": "تصميم رفيع بالكاد تشعر به يحافظ على ملمس هاتفك الأصلي، وهو الخيار الأمثل لمحبي البساطة الباحثين عن حماية أنيقة دون وزن إضافي."
+        },
+        {
+          "title": "أوقف التمرير وابدأ التنفيذ",
+          "text": "تجاوز القوائم وشغّل أكثر أوامرك استخداماً فوراً مع استجابة ملموسة مُرضية. ويمنحك زر Aaron طريقاً مباشراً إلى ما يهمك في عملك أو في روتينك اليومي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Google Pixel 11 Pro Edge Kılıf (600D Black/Grey-Twill) (Aaron Button)",
+      "summary": "Pixel 11 Pro için ultra ince aramid fiber kılıf; Aaron Button ile tek dokunuşta kısayol sunar.",
+      "bullets": [
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem güçlüdür; elinizde tutmak her seferinde keyif verir."
+        },
+        {
+          "title": "Kâğıt İnceliğinde, Tüy Hafifliğinde",
+          "text": "Neredeyse hissedilmeyen ince profil telefonunuzun özgün dokusunu korur; ek ağırlık olmadan zarif koruma isteyen sadelik severler için idealdir."
+        },
+        {
+          "title": "Kaydırmayı Bırak, İşe Koyul",
+          "text": "Menülerle uğraşmadan en sık kullandığınız komutları tatmin edici fiziksel geri bildirimle anında çalıştırın. Aaron Button, iş akışınızda ya da günlük rutininizde önemli olana doğrudan erişim verir."
+        }
+      ]
+    }
+  },
+  "35812": {
+    "en": {
+      "name": "PITAKA Google Pixel 11 ProXL Edge Case (600D Black/Grey-Twill) (Aaron Button)",
+      "summary": "Ultra-thin aramid fiber case for the Pixel 11 ProXL with a tactile Aaron Button for one-press shortcuts.",
+      "bullets": [
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case offers a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves your phone's original feel, ideal for minimalists who want elegant protection without added weight."
+        },
+        {
+          "title": "Stop Scrolling, Start Doing",
+          "text": "Skip the menus and trigger your most-used commands instantly with satisfying physical feedback. The Aaron Button gives you a direct path to what matters most in your workflow or daily routine."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Edge لهاتف Google Pixel 11 ProXL (600D Black/Grey-Twill) (Aaron Button)",
+      "summary": "غطاء فائق النحافة من ألياف الأراميد لهاتف Pixel 11 ProXL، مع زر Aaron الملموس للاختصارات بضغطة واحدة.",
+      "bullets": [
+        {
+          "title": "نسيج أراميد فاخر",
+          "text": "منسوج من ألياف أراميد دقيقة تمنحه ملمساً حريرياً فاخراً. خفيف ومتين في آن واحد، ويمنحك إحساساً مريحاً في كل مرة تمسك به."
+        },
+        {
+          "title": "بسماكة الورقة وخفة الريشة",
+          "text": "تصميم رفيع بالكاد تشعر به يحافظ على ملمس هاتفك الأصلي، وهو الخيار الأمثل لمحبي البساطة الباحثين عن حماية أنيقة دون وزن إضافي."
+        },
+        {
+          "title": "أوقف التمرير وابدأ التنفيذ",
+          "text": "تجاوز القوائم وشغّل أكثر أوامرك استخداماً فوراً مع استجابة ملموسة مُرضية. ويمنحك زر Aaron طريقاً مباشراً إلى ما يهمك في عملك أو في روتينك اليومي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Google Pixel 11 ProXL Edge Kılıf (600D Black/Grey-Twill) (Aaron Button)",
+      "summary": "Pixel 11 ProXL için ultra ince aramid fiber kılıf; Aaron Button ile tek dokunuşta kısayol sunar.",
+      "bullets": [
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem güçlüdür; elinizde tutmak her seferinde keyif verir."
+        },
+        {
+          "title": "Kâğıt İnceliğinde, Tüy Hafifliğinde",
+          "text": "Neredeyse hissedilmeyen ince profil telefonunuzun özgün dokusunu korur; ek ağırlık olmadan zarif koruma isteyen sadelik severler için idealdir."
+        },
+        {
+          "title": "Kaydırmayı Bırak, İşe Koyul",
+          "text": "Menülerle uğraşmadan en sık kullandığınız komutları tatmin edici fiziksel geri bildirimle anında çalıştırın. Aaron Button, iş akışınızda ya da günlük rutininizde önemli olana doğrudan erişim verir."
+        }
+      ]
+    }
+  },
+  "35813": {
+    "en": {
+      "name": "PITAKA Galaxy Z Fold 8 Edge Case (600D Black Grey-Twill)",
+      "summary": "Aramid fiber case that gives the Galaxy Z Fold 8 aerospace-grade protection without adding bulk.",
+      "bullets": [
+        {
+          "title": "Aerospace-Grade Aramid Strength",
+          "text": "Light yet remarkably strong, woven from aerospace-grade aramid fiber that is five times stronger than steel and lighter with it. PITAKA's own weaving process forms a precise geometric order for lasting durability and a refined tactile feel."
+        },
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case offers a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves your phone's original feel, ideal for minimalists who want elegant protection without added weight."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Edge لهاتف Galaxy Z Fold 8 (600D Black Grey-Twill)",
+      "summary": "غطاء من ألياف الأراميد يمنح هاتف Galaxy Z Fold 8 حماية بمستوى صناعة الطيران دون أي سماكة زائدة.",
+      "bullets": [
+        {
+          "title": "ألياف أراميد بمواصفات الطيران",
+          "text": "خفيف ومتين إلى حد مدهش، منسوج من ألياف أراميد بمواصفات صناعة الطيران أقوى من الفولاذ بخمس مرات وأخف منه وزناً. وتمنحه طريقة النسج الخاصة بـ PITAKA نظاماً هندسياً دقيقاً ومتانة تدوم وملمساً راقياً."
+        },
+        {
+          "title": "نسيج أراميد فاخر",
+          "text": "ألياف أراميد منسوجة بدقة تمنح الغطاء ملمساً حريرياً فاخراً. خفيف ومتين، ويمنحك إحساساً مريحاً في كل مرة تمسك به."
+        },
+        {
+          "title": "بسماكة الورقة وخفة الريشة",
+          "text": "تصميم رفيع بالكاد تشعر به يحافظ على ملمس هاتفك الأصلي، وهو الخيار الأمثل لمحبي البساطة الباحثين عن حماية أنيقة دون وزن إضافي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Galaxy Z Fold 8 Edge Kılıf (600D Black Grey-Twill)",
+      "summary": "Galaxy Z Fold 8'e hacim eklemeden havacılık sınıfı koruma sunan aramid fiber kılıf.",
+      "bullets": [
+        {
+          "title": "Havacılık Sınıfı Aramid Dayanımı",
+          "text": "Hafif ama olağanüstü güçlü; çelikten beş kat sağlam ve daha hafif havacılık sınıfı aramid fiberden dokunmuştur. PITAKA'nın kendi dokuma yöntemi hassas bir geometrik düzen oluşturarak kalıcı dayanıklılık ve zarif bir doku sağlar."
+        },
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem güçlüdür; elinizde tutmak her seferinde keyif verir."
+        },
+        {
+          "title": "Kâğıt İnceliğinde, Tüy Hafifliğinde",
+          "text": "Neredeyse hissedilmeyen ince profil telefonunuzun özgün dokusunu korur; ek ağırlık olmadan zarif koruma isteyen sadelik severler için idealdir."
+        }
+      ]
+    }
+  },
+  "35826": {
+    "en": {
+      "name": "PITAKA Galaxy Z Fold 8 Edge Case (California Dream-01)",
+      "summary": "Slim aramid fiber case for the Galaxy Z Fold 8 with a weave inspired by 1970s California.",
+      "bullets": [
+        {
+          "title": "California Dream Pattern",
+          "text": "The design recalls California in the 1970s, where the Pacific breeze mingled with the heat of transistors and disco grooves resonated with the pulse of binary code. In garages, scattered schematics mapped out drafts that would change the world, and the future was already awakening in the golden afterglow of sunset."
+        },
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case offers a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves your phone's original feel, ideal for minimalists who want elegant protection without added weight."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Edge لهاتف Galaxy Z Fold 8 (California Dream-01)",
+      "summary": "غطاء رفيع من ألياف الأراميد لهاتف Galaxy Z Fold 8 بنسيج مستوحى من كاليفورنيا في السبعينيات.",
+      "bullets": [
+        {
+          "title": "نقشة California Dream",
+          "text": "تصميم مستوحى من كاليفورنيا في سبعينيات القرن الماضي، حيث امتزج نسيم المحيط الهادئ بحرارة الترانزستورات، وتناغمت إيقاعات الديسكو مع نبض الشيفرة الثنائية. وفي المرائب كانت مخططات متناثرة ترسم أفكاراً ستغيّر العالم، بينما كان المستقبل يستيقظ في ضوء الغروب الذهبي."
+        },
+        {
+          "title": "نسيج أراميد فاخر",
+          "text": "ألياف أراميد منسوجة بدقة تمنح الغطاء ملمساً حريرياً فاخراً. خفيف ومتين، ويمنحك إحساساً مريحاً في كل مرة تمسك به."
+        },
+        {
+          "title": "بسماكة الورقة وخفة الريشة",
+          "text": "تصميم رفيع بالكاد تشعر به يحافظ على ملمس هاتفك الأصلي، وهو الخيار الأمثل لمحبي البساطة الباحثين عن حماية أنيقة دون وزن إضافي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Galaxy Z Fold 8 Edge Kılıf (California Dream-01)",
+      "summary": "Galaxy Z Fold 8 için 1970'ler California'sından esinlenen dokuya sahip ince aramid fiber kılıf.",
+      "bullets": [
+        {
+          "title": "California Dream Deseni",
+          "text": "Tasarım, 1970'lerin California'sını anlatır: Pasifik esintisinin transistör sıcaklığıyla buluştuğu, disko ritimlerinin ikili kodun nabzıyla uyuştuğu günleri. Garajlara saçılmış şemalar dünyayı değiştirecek taslakları çizerken gelecek, altın rengi gün batımında çoktan uyanmaktaydı."
+        },
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem güçlüdür; elinizde tutmak her seferinde keyif verir."
+        },
+        {
+          "title": "Kâğıt İnceliğinde, Tüy Hafifliğinde",
+          "text": "Neredeyse hissedilmeyen ince profil telefonunuzun özgün dokusunu korur; ek ağırlık olmadan zarif koruma isteyen sadelik severler için idealdir."
+        }
+      ]
+    }
+  },
+  "35838": {
+    "en": {
+      "name": "PITAKA Galaxy Z Fold 8 Edge Case (Moonrise)",
+      "summary": "Slim aramid fiber case for the Galaxy Z Fold 8 with a woven sunset-to-moonrise pattern.",
+      "bullets": [
+        {
+          "title": "Be Light, Be Lively",
+          "text": "Reworking Sunset Moment, the first popular design in the Weaving+ series, this case weaves an immersive blue time from sunset to moonrise. The Weaving+ Moment series captures these fleeting moments in aramid fiber through countless experiments and explorations."
+        },
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case offers a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves your phone's original feel, ideal for minimalists who want elegant protection without added weight."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Edge لهاتف Galaxy Z Fold 8 (Moonrise)",
+      "summary": "غطاء رفيع من ألياف الأراميد لهاتف Galaxy Z Fold 8 بنسيج يحاكي لحظة الغروب وبزوغ القمر.",
+      "bullets": [
+        {
+          "title": "خفة وحيوية",
+          "text": "إعادة صياغة لتصميم Sunset Moment، أول تصميم لاقى رواجاً في سلسلة Weaving+، بنسيج يحاكي الساعات الزرقاء الممتدة من الغروب إلى بزوغ القمر. وتلتقط سلسلة Weaving+ Moment هذه اللحظات العابرة بنسيج ألياف الأراميد بعد تجارب لا تُحصى."
+        },
+        {
+          "title": "نسيج أراميد فاخر",
+          "text": "ألياف أراميد منسوجة بدقة تمنح الغطاء ملمساً حريرياً فاخراً. خفيف ومتين، ويمنحك إحساساً مريحاً في كل مرة تمسك به."
+        },
+        {
+          "title": "بسماكة الورقة وخفة الريشة",
+          "text": "تصميم رفيع بالكاد تشعر به يحافظ على ملمس هاتفك الأصلي، وهو الخيار الأمثل لمحبي البساطة الباحثين عن حماية أنيقة دون وزن إضافي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Galaxy Z Fold 8 Edge Kılıf (Moonrise)",
+      "summary": "Galaxy Z Fold 8 için gün batımından ay doğuşuna uzanan dokusuyla ince aramid fiber kılıf.",
+      "bullets": [
+        {
+          "title": "Hafif Ol, Canlı Ol",
+          "text": "Weaving+ serisinin ilk sevilen tasarımı \"Sunset Moment\"ın yeniden yorumu; gün batımından ay doğuşuna uzanan mavi saatleri dokuyor. Weaving+ Moment serisi, sayısız deneme ve araştırmanın ardından bu kaçıp giden anları aramid fiber dokumayla yakalar."
+        },
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem güçlüdür; elinizde tutmak her seferinde keyif verir."
+        },
+        {
+          "title": "Kâğıt İnceliğinde, Tüy Hafifliğinde",
+          "text": "Neredeyse hissedilmeyen ince profil telefonunuzun özgün dokusunu korur; ek ağırlık olmadan zarif koruma isteyen sadelik severler için idealdir."
+        }
+      ]
+    }
+  },
+  "35850": {
+    "en": {
+      "name": "PITAKA Galaxy Z Fold 8 Ultra Edge Case (600D Black Grey-Twill)",
+      "summary": "Aramid fiber case that gives the Galaxy Z Fold 8 Ultra aerospace-grade protection without adding bulk.",
+      "bullets": [
+        {
+          "title": "Aerospace-Grade Aramid Strength",
+          "text": "Light yet remarkably strong, woven from aerospace-grade aramid fiber that is five times stronger than steel and lighter with it. PITAKA's own weaving process forms a precise geometric order for lasting durability and a refined tactile feel."
+        },
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case offers a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves your phone's original feel, ideal for minimalists who want elegant protection without added weight."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Edge لهاتف Galaxy Z Fold 8 Ultra (600D Black Grey-Twill)",
+      "summary": "غطاء من ألياف الأراميد يمنح هاتف Galaxy Z Fold 8 Ultra حماية بمستوى صناعة الطيران دون سماكة زائدة.",
+      "bullets": [
+        {
+          "title": "ألياف أراميد بمواصفات الطيران",
+          "text": "خفيف ومتين إلى حد مدهش، منسوج من ألياف أراميد بمواصفات صناعة الطيران أقوى من الفولاذ بخمس مرات وأخف منه وزناً. وتمنحه طريقة النسج الخاصة بـ PITAKA نظاماً هندسياً دقيقاً ومتانة تدوم وملمساً راقياً."
+        },
+        {
+          "title": "نسيج أراميد فاخر",
+          "text": "ألياف أراميد منسوجة بدقة تمنح الغطاء ملمساً حريرياً فاخراً. خفيف ومتين، ويمنحك إحساساً مريحاً في كل مرة تمسك به."
+        },
+        {
+          "title": "بسماكة الورقة وخفة الريشة",
+          "text": "تصميم رفيع بالكاد تشعر به يحافظ على ملمس هاتفك الأصلي، وهو الخيار الأمثل لمحبي البساطة الباحثين عن حماية أنيقة دون وزن إضافي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Galaxy Z Fold 8 Ultra Edge Kılıf (600D Black Grey-Twill)",
+      "summary": "Galaxy Z Fold 8 Ultra'ya hacim eklemeden havacılık sınıfı koruma sunan aramid fiber kılıf.",
+      "bullets": [
+        {
+          "title": "Havacılık Sınıfı Aramid Dayanımı",
+          "text": "Hafif ama olağanüstü güçlü; çelikten beş kat sağlam ve daha hafif havacılık sınıfı aramid fiberden dokunmuştur. PITAKA'nın kendi dokuma yöntemi hassas bir geometrik düzen oluşturarak kalıcı dayanıklılık ve zarif bir doku sağlar."
+        },
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem güçlüdür; elinizde tutmak her seferinde keyif verir."
+        },
+        {
+          "title": "Kâğıt İnceliğinde, Tüy Hafifliğinde",
+          "text": "Neredeyse hissedilmeyen ince profil telefonunuzun özgün dokusunu korur; ek ağırlık olmadan zarif koruma isteyen sadelik severler için idealdir."
+        }
+      ]
+    }
+  },
+  "35861": {
+    "en": {
+      "name": "PITAKA Galaxy Z Fold 8 Ultra Edge Case (California Dream-01)",
+      "summary": "Slim aramid fiber case for the Galaxy Z Fold 8 Ultra with a weave inspired by 1970s California.",
+      "bullets": [
+        {
+          "title": "California Dream Pattern",
+          "text": "The design recalls California in the 1970s, where the Pacific breeze mingled with the heat of transistors and disco grooves resonated with the pulse of binary code. In garages, scattered schematics mapped out drafts that would change the world, and the future was already awakening in the golden afterglow of sunset."
+        },
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case offers a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves your phone's original feel, ideal for minimalists who want elegant protection without added weight."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Edge لهاتف Galaxy Z Fold 8 Ultra (California Dream-01)",
+      "summary": "غطاء رفيع من ألياف الأراميد لهاتف Galaxy Z Fold 8 Ultra بنسيج مستوحى من كاليفورنيا في السبعينيات.",
+      "bullets": [
+        {
+          "title": "نقشة California Dream",
+          "text": "تصميم مستوحى من كاليفورنيا في سبعينيات القرن الماضي، حيث امتزج نسيم المحيط الهادئ بحرارة الترانزستورات، وتناغمت إيقاعات الديسكو مع نبض الشيفرة الثنائية. وفي المرائب كانت مخططات متناثرة ترسم أفكاراً ستغيّر العالم، بينما كان المستقبل يستيقظ في ضوء الغروب الذهبي."
+        },
+        {
+          "title": "نسيج أراميد فاخر",
+          "text": "ألياف أراميد منسوجة بدقة تمنح الغطاء ملمساً حريرياً فاخراً. خفيف ومتين، ويمنحك إحساساً مريحاً في كل مرة تمسك به."
+        },
+        {
+          "title": "بسماكة الورقة وخفة الريشة",
+          "text": "تصميم رفيع بالكاد تشعر به يحافظ على ملمس هاتفك الأصلي، وهو الخيار الأمثل لمحبي البساطة الباحثين عن حماية أنيقة دون وزن إضافي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Galaxy Z Fold 8 Ultra Edge Kılıf (California Dream-01)",
+      "summary": "Galaxy Z Fold 8 Ultra için 1970'ler California'sından esinlenen dokuya sahip ince aramid fiber kılıf.",
+      "bullets": [
+        {
+          "title": "California Dream Deseni",
+          "text": "Tasarım, 1970'lerin California'sını anlatır: Pasifik esintisinin transistör sıcaklığıyla buluştuğu, disko ritimlerinin ikili kodun nabzıyla uyuştuğu günleri. Garajlara saçılmış şemalar dünyayı değiştirecek taslakları çizerken gelecek, altın rengi gün batımında çoktan uyanmaktaydı."
+        },
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem güçlüdür; elinizde tutmak her seferinde keyif verir."
+        },
+        {
+          "title": "Kâğıt İnceliğinde, Tüy Hafifliğinde",
+          "text": "Neredeyse hissedilmeyen ince profil telefonunuzun özgün dokusunu korur; ek ağırlık olmadan zarif koruma isteyen sadelik severler için idealdir."
+        }
+      ]
+    }
+  },
+  "35876": {
+    "en": {
+      "name": "PITAKA Galaxy Z Fold 8 Ultra Edge Case (Moonrise)",
+      "summary": "Slim aramid fiber case for the Galaxy Z Fold 8 Ultra with a woven sunset-to-moonrise pattern.",
+      "bullets": [
+        {
+          "title": "Be Light, Be Lively",
+          "text": "Reworking Sunset Moment, the first popular design in the Weaving+ series, this case weaves an immersive blue time from sunset to moonrise. The Weaving+ Moment series captures these fleeting moments in aramid fiber through countless experiments and explorations."
+        },
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case offers a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Paper Thin and Feather Light",
+          "text": "A sleek, barely-there profile preserves your phone's original feel, ideal for minimalists who want elegant protection without added weight."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Edge لهاتف Galaxy Z Fold 8 Ultra (Moonrise)",
+      "summary": "غطاء رفيع من ألياف الأراميد لهاتف Galaxy Z Fold 8 Ultra بنسيج يحاكي لحظة الغروب وبزوغ القمر.",
+      "bullets": [
+        {
+          "title": "خفة وحيوية",
+          "text": "إعادة صياغة لتصميم Sunset Moment، أول تصميم لاقى رواجاً في سلسلة Weaving+، بنسيج يحاكي الساعات الزرقاء الممتدة من الغروب إلى بزوغ القمر. وتلتقط سلسلة Weaving+ Moment هذه اللحظات العابرة بنسيج ألياف الأراميد بعد تجارب لا تُحصى."
+        },
+        {
+          "title": "نسيج أراميد فاخر",
+          "text": "ألياف أراميد منسوجة بدقة تمنح الغطاء ملمساً حريرياً فاخراً. خفيف ومتين، ويمنحك إحساساً مريحاً في كل مرة تمسك به."
+        },
+        {
+          "title": "بسماكة الورقة وخفة الريشة",
+          "text": "تصميم رفيع بالكاد تشعر به يحافظ على ملمس هاتفك الأصلي، وهو الخيار الأمثل لمحبي البساطة الباحثين عن حماية أنيقة دون وزن إضافي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Galaxy Z Fold 8 Ultra Edge Kılıf (Moonrise)",
+      "summary": "Galaxy Z Fold 8 Ultra için gün batımından ay doğuşuna uzanan dokusuyla ince aramid fiber kılıf.",
+      "bullets": [
+        {
+          "title": "Hafif Ol, Canlı Ol",
+          "text": "Weaving+ serisinin ilk sevilen tasarımı \"Sunset Moment\"ın yeniden yorumu; gün batımından ay doğuşuna uzanan mavi saatleri dokuyor. Weaving+ Moment serisi, sayısız deneme ve araştırmanın ardından bu kaçıp giden anları aramid fiber dokumayla yakalar."
+        },
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem güçlüdür; elinizde tutmak her seferinde keyif verir."
+        },
+        {
+          "title": "Kâğıt İnceliğinde, Tüy Hafifliğinde",
+          "text": "Neredeyse hissedilmeyen ince profil telefonunuzun özgün dokusunu korur; ek ağırlık olmadan zarif koruma isteyen sadelik severler için idealdir."
+        }
+      ]
+    }
+  },
+  "35887": {
+    "en": {
+      "name": "PITAKA Galaxy S25 Ultra Cairn Case (600D Black/Grey-Twill)",
+      "summary": "Ultra-thin aramid fiber case for the Galaxy S25 Ultra, five times stronger than steel at a fifth of the weight.",
+      "bullets": [
+        {
+          "title": "Premium Weave",
+          "text": "Crafted from finely woven aramid fiber, the case offers a silky-smooth, luxurious texture. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Aerospace-Grade Aramid Strength",
+          "text": "Made from aerospace-grade aramid fiber, which is 5x stronger than steel and weighs just one fifth as much. It is ultra-thin, incredibly tough and built for premium protection without the bulk."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Cairn لهاتف Galaxy S25 Ultra (600D Black/Grey-Twill)",
+      "summary": "غطاء فائق النحافة من ألياف الأراميد لهاتف Galaxy S25 Ultra، أقوى من الفولاذ بخمس مرات وبخُمس وزنه.",
+      "bullets": [
+        {
+          "title": "نسيج أراميد فاخر",
+          "text": "ألياف أراميد منسوجة بدقة تمنح الغطاء ملمساً حريرياً فاخراً. خفيف ومتين، ويمنحك إحساساً مريحاً في كل مرة تمسك به."
+        },
+        {
+          "title": "قوة بمواصفات صناعة الطيران",
+          "text": "مصنوع من ألياف أراميد بمواصفات صناعة الطيران، أقوى من الفولاذ بخمس مرات ولا يزن سوى خُمس وزنه. غطاء رفيع جداً ومتين إلى حد بعيد يوفر حماية فاخرة دون أي سماكة."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Galaxy S25 Ultra Cairn Kılıf (600D Black/Grey-Twill)",
+      "summary": "Galaxy S25 Ultra için ultra ince aramid fiber kılıf; çelikten beş kat güçlü, beşte biri ağırlığında.",
+      "bullets": [
+        {
+          "title": "Premium Dokuma",
+          "text": "İnce dokunmuş aramid fiberden üretilen kılıf ipeksi ve lüks bir dokuya sahiptir. Hem hafif hem güçlüdür; elinizde tutmak her seferinde keyif verir."
+        },
+        {
+          "title": "Havacılık Sınıfı Aramid Dayanımı",
+          "text": "Havacılık sınıfı aramid fiberden üretilmiştir; çelikten 5 kat güçlü ve yalnızca beşte biri ağırlığındadır. Ultra ince, son derece sağlam ve hacim eklemeden üst düzey koruma sunar."
+        }
+      ]
+    }
+  }
+}

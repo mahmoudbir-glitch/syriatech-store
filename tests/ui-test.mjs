@@ -155,7 +155,18 @@ async function newPage(lang) {
   await page.screenshot({ path: SHOT + "/product-page.png" });
 
   const firstId = await page.evaluate(() => window.STORE.products[0].id);
-  const firstName = await page.evaluate(() => window.STORE.products[0].name);
+  const firstName = await page.evaluate(async id => {
+    // The storefront shows the localised name; fall back to the catalogue one
+    // for anything the owner added by hand.
+    try {
+      const res = await fetch("/assets/copy.ar.json");
+      if (res.ok) {
+        const copy = await res.json();
+        if (copy[id] && copy[id].n) return copy[id].n;
+      }
+    } catch (e) {}
+    return window.STORE.products[0].name;
+  }, firstId);
   const direct = await browser.newPage();
   await direct.goto(BASE + "#product/" + firstId, { waitUntil: "load" });
   await wait(700);
@@ -209,7 +220,15 @@ async function newPage(lang) {
   const rows = await page.$$eval(".product-list .row", els => els.length);
   check("admin lists the whole catalog", rows >= 300, rows);
   const firstId = await page.evaluate(() => window.STORE.products[0].id);
-  const originalName = await page.evaluate(() => window.STORE.products[0].name);
+  // The panel now lists the name the shopper sees, so compare against that:
+  // the owner searches for the name a customer just read out to them.
+  const originalName = await page.evaluate(async id => {
+    try {
+      const res = await fetch("/assets/copy.ar.json");
+      if (res.ok) { const c = await res.json(); if (c[id] && c[id].n) return c[id].n; }
+    } catch (e) {}
+    return window.STORE.products[0].name;
+  }, firstId);
   const originalPrice = await page.evaluate(() => window.STORE.products[0].price.toFixed(2));
   const firstRowSelector = '.product-list .row[data-edit="' + firstId + '"]';
   await page.screenshot({ path: SHOT + "/admin-list.png" });
@@ -247,10 +266,46 @@ async function newPage(lang) {
   await wait(1500);
   check("one-tap stock toggle works", await page.$eval(firstRowSelector, el => !!el.querySelector(".tag.out")));
 
+  /*
+   * Arabic search. A shopper types the word they use, not the word on the box:
+   * "\u0627\u064a\u0641\u0648\u0646" for iPhone, "\u0623\u0646\u0643\u0631" for Anker. These all returned nothing
+   * before, and adding a second word used to wipe the result out entirely.
+   */
+  {
+    const { page: find } = await newPage("ar");
+    await find.goto(BASE, { waitUntil: "networkidle0" });
+    await wait(600);
+    const hits = async term => {
+      await find.evaluate(t => {
+        const f = document.getElementById("searchInput");
+        f.value = t;
+        f.dispatchEvent(new Event("input", { bubbles: true }));
+      }, term);
+      await wait(800);
+      return find.$$eval(".product", els => els.length).catch(() => 0);
+    };
+    const iphone = await hits("\u0627\u064a\u0641\u0648\u0646");          // ايفون
+    check("arabic search finds iPhone cases", iphone > 20, iphone);
+    const anker = await hits("\u0623\u0646\u0643\u0631");                  // أنكر
+    check("arabic search finds the Anker brand", anker > 20, anker);
+    const twoWords = await hits("\u0643\u0641\u0631 \u0627\u064a\u0641\u0648\u0646");        // كفر ايفون
+    check("a second word narrows instead of emptying", twoWords > 5, twoWords);
+    const nonsense = await hits("\u0632\u0632\u0632\u0632\u0632\u0632");                // زززززز
+    check("a nonsense query returns nothing", nonsense === 0, nonsense);
+    await find.close();
+  }
+
   const { page: shop, bad } = await newPage();
   await shop.goto(BASE, { waitUntil: "networkidle0" });
-  const updated = await shop.evaluate(() => {
-    const el = document.querySelector(".product");
+  // Sold-out products sort to the end of the catalogue now, so narrow the grid
+  // to this one rather than expecting it near the front.
+  await shop.type("#searchInput", "اسم جديد للمنتج");
+  await wait(900);
+  // Sold-out products now sort to the end of the grid, so find this one by its
+  // id rather than assuming it is still the first card.
+  const updated = await shop.evaluate(id => {
+    const el = document.querySelector('[data-product="' + id + '"]');
+    if (!el) return { missing: true };
     return {
       name: el.querySelector("h3").textContent,
       desc: el.querySelector("p").textContent,
@@ -262,7 +317,7 @@ async function newPage(lang) {
       hasAsk: !!el.querySelector(".ask-product"),
       hasAdd: !!el.querySelector(".add-product")
     };
-  });
+  }, firstId);
   check("store shows the admin name", updated.name === "اسم جديد للمنتج", updated.name);
   check("store shows the admin description", updated.desc === "وصف عربي كتبه صاحب المتجر", updated.desc);
   check("store shows the admin price", updated.price === "$99.50", updated.price);
@@ -273,8 +328,11 @@ async function newPage(lang) {
 
   await shop.close();
   const { page: shopTr } = await newPage("tr");
-  await shopTr.goto(BASE, { waitUntil: "networkidle0" });
-  const turkish = await shopTr.$eval(".product p", el => el.textContent);
+  // Open the edited product directly: it is out of stock, so it no longer sits
+  // at the front of the grid.
+  await shopTr.goto(BASE + "#product/" + firstId, { waitUntil: "networkidle0" });
+  await wait(900);
+  const turkish = await shopTr.$eval(".product-page-info p", el => el.textContent);
   check("turkish description from admin is used", turkish === "Magaza sahibinin yazdigi aciklama", turkish);
   await shopTr.close();
 

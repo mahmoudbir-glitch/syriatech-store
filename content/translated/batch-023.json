@@ -1,0 +1,986 @@
+{
+  "33753": {
+    "en": {
+      "name": "eufyMake UV Ink Cartridge for UV Printer E1",
+      "summary": "Genuine UV ink for the E1 printer: 100 ml per bottle, GREENGUARD Gold certified and bonding to over 300 materials.",
+      "bullets": [
+        {
+          "title": "Bottle Volume",
+          "text": "Each bottle contains 100 ml of ink."
+        },
+        {
+          "title": "Adhesion on 300+ Materials",
+          "text": "Delivers exceptional ink adhesion across more than 300 materials and is GREENGUARD Gold certified for low emissions."
+        },
+        {
+          "title": "One-Year Warranty",
+          "text": "Covered by a one-year hassle-free warranty from the manufacturing date."
+        },
+        {
+          "title": "Shelf Life",
+          "text": "12 months from production, including bottling and transit from the factory to the local warehouse."
+        }
+      ]
+    },
+    "ar": {
+      "name": "خرطوشة حبر UV من eufyMake لطابعة UV Printer E1",
+      "summary": "حبر UV أصلي لطابعة E1 بسعة 100 مل للعبوة، حاصل على شهادة GREENGUARD Gold ويلتصق بأكثر من 300 مادة.",
+      "bullets": [
+        {
+          "title": "حجم العبوة",
+          "text": "تحتوي كل عبوة على 100 مل من الحبر."
+        },
+        {
+          "title": "التصاق ممتاز بـ 300 مادة",
+          "text": "التصاق استثنائي للحبر على أكثر من 300 مادة، مع شهادة GREENGUARD Gold للانبعاثات المنخفضة."
+        },
+        {
+          "title": "ضمان سنة كاملة",
+          "text": "مشمول بضمان لمدة سنة واحدة اعتباراً من تاريخ التصنيع."
+        },
+        {
+          "title": "مدة الصلاحية",
+          "text": "12 شهراً من تاريخ الإنتاج، وتشمل التعبئة والشحن من المصنع إلى المستودع المحلي."
+        }
+      ]
+    },
+    "tr": {
+      "name": "UV Printer E1 için eufyMake UV Mürekkep Kartuşu",
+      "summary": "E1 yazıcı için orijinal UV mürekkep: şişe başına 100 ml, GREENGUARD Gold sertifikalı ve 300'den fazla yüzeye tutunur.",
+      "bullets": [
+        {
+          "title": "Şişe Hacmi",
+          "text": "Her şişede 100 ml mürekkep bulunur."
+        },
+        {
+          "title": "300'den Fazla Yüzeye Tutunur",
+          "text": "300'ü aşkın malzemede olağanüstü mürekkep tutunması sağlar ve düşük emisyon için GREENGUARD Gold sertifikalıdır."
+        },
+        {
+          "title": "Bir Yıl Garanti",
+          "text": "Üretim tarihinden itibaren bir yıl sorunsuz garanti kapsamındadır."
+        },
+        {
+          "title": "Raf Ömrü",
+          "text": "Üretimden itibaren 12 ay; şişeleme ile fabrikadan yerel depoya nakliye süresi dâhildir."
+        }
+      ]
+    }
+  },
+  "33817": {
+    "en": {
+      "name": "eufyMake UV DTF Laminating Machine for UV Printer E1",
+      "summary": "Laminating unit that finishes UV DTF transfers from the E1 printer; compact 2.7 kg body running on 100-240V.",
+      "bullets": [
+        {
+          "title": "Product Dimensions",
+          "text": "495 mm (W) × 150 mm (D) × 135 mm (H)."
+        },
+        {
+          "title": "Product Weight",
+          "text": "2.7 kg."
+        },
+        {
+          "title": "Weight Including Packaging",
+          "text": "5 kg."
+        },
+        {
+          "title": "Power Input",
+          "text": "100-240V, 50-60Hz."
+        },
+        {
+          "title": "Working Humidity Range",
+          "text": "20% to 85% relative humidity."
+        },
+        {
+          "title": "Recommended Temperature Range",
+          "text": "15°C to 35°C (59°F to 95°F)."
+        }
+      ]
+    },
+    "ar": {
+      "name": "آلة تصفيح UV DTF من eufyMake لطابعة UV Printer E1",
+      "summary": "آلة تصفيح تُنهي ملصقات UV DTF الصادرة عن طابعة E1، بجسم مدمج وزنه 2.7 كغ ويعمل على جهد 100-240V.",
+      "bullets": [
+        {
+          "title": "أبعاد المنتج",
+          "text": "495 مم عرضاً × 150 مم عمقاً × 135 مم ارتفاعاً."
+        },
+        {
+          "title": "وزن المنتج",
+          "text": "2.7 كغ."
+        },
+        {
+          "title": "الوزن مع التغليف",
+          "text": "5 كغ."
+        },
+        {
+          "title": "جهد التشغيل",
+          "text": "100-240V، 50-60Hz."
+        },
+        {
+          "title": "نطاق الرطوبة أثناء العمل",
+          "text": "من 20% إلى 85% رطوبة نسبية."
+        },
+        {
+          "title": "درجة الحرارة الموصى بها",
+          "text": "من 15°م إلى 35°م."
+        }
+      ]
+    },
+    "tr": {
+      "name": "UV Printer E1 için eufyMake UV DTF Laminasyon Makinesi",
+      "summary": "E1 yazıcının UV DTF transferlerini tamamlayan laminasyon makinesi; 2,7 kg kompakt gövde, 100-240V besleme.",
+      "bullets": [
+        {
+          "title": "Ürün Ölçüleri",
+          "text": "495 mm (G) × 150 mm (D) × 135 mm (Y)."
+        },
+        {
+          "title": "Ürün Ağırlığı",
+          "text": "2,7 kg."
+        },
+        {
+          "title": "Paketli Ağırlık",
+          "text": "5 kg."
+        },
+        {
+          "title": "Güç Girişi",
+          "text": "100-240V, 50-60Hz."
+        },
+        {
+          "title": "Çalışma Nem Aralığı",
+          "text": "%20 - %85 bağıl nem."
+        },
+        {
+          "title": "Önerilen Sıcaklık Aralığı",
+          "text": "15°C - 35°C."
+        }
+      ]
+    }
+  },
+  "33823": {
+    "en": {
+      "name": "eufyMake Rotary Printing Attachment for UV Printer E1",
+      "summary": "Rotary attachment that lets the E1 printer print around cylindrical items 40 to 100 mm in diameter.",
+      "bullets": [
+        {
+          "title": "Overall Dimensions",
+          "text": "377 mm (W) × 140 mm (D) × 109 mm (H)."
+        },
+        {
+          "title": "Product Weight",
+          "text": "2 kg (4.4 lb)."
+        },
+        {
+          "title": "Weight Including Packaging",
+          "text": "3 kg (6.61 lb)."
+        },
+        {
+          "title": "Working Humidity Range",
+          "text": "20% to 85% relative humidity."
+        },
+        {
+          "title": "Recommended Temperature Range",
+          "text": "15°C to 35°C (59°F to 95°F)."
+        },
+        {
+          "title": "Supported Printing Diameter",
+          "text": "40 mm to 100 mm."
+        }
+      ]
+    },
+    "ar": {
+      "name": "ملحق الطباعة الدوّار من eufyMake لطابعة UV Printer E1",
+      "summary": "ملحق دوّار يتيح لطابعة E1 الطباعة حول الأجسام الأسطوانية بقطر من 40 حتى 100 مم.",
+      "bullets": [
+        {
+          "title": "الأبعاد الكلية",
+          "text": "377 مم عرضاً × 140 مم عمقاً × 109 مم ارتفاعاً."
+        },
+        {
+          "title": "وزن المنتج",
+          "text": "2 كغ."
+        },
+        {
+          "title": "الوزن مع التغليف",
+          "text": "3 كغ."
+        },
+        {
+          "title": "نطاق الرطوبة أثناء العمل",
+          "text": "من 20% إلى 85% رطوبة نسبية."
+        },
+        {
+          "title": "درجة الحرارة الموصى بها",
+          "text": "من 15°م إلى 35°م."
+        },
+        {
+          "title": "أقطار الطباعة المدعومة",
+          "text": "من 40 مم إلى 100 مم."
+        }
+      ]
+    },
+    "tr": {
+      "name": "UV Printer E1 için eufyMake Döner Baskı Aparatı",
+      "summary": "E1 yazıcının 40 - 100 mm çapındaki silindirik ürünlerin çevresine baskı yapmasını sağlayan döner aparat.",
+      "bullets": [
+        {
+          "title": "Genel Ölçüler",
+          "text": "377 mm (G) × 140 mm (D) × 109 mm (Y)."
+        },
+        {
+          "title": "Ürün Ağırlığı",
+          "text": "2 kg."
+        },
+        {
+          "title": "Paketli Ağırlık",
+          "text": "3 kg."
+        },
+        {
+          "title": "Çalışma Nem Aralığı",
+          "text": "%20 - %85 bağıl nem."
+        },
+        {
+          "title": "Önerilen Sıcaklık Aralığı",
+          "text": "15°C - 35°C."
+        },
+        {
+          "title": "Desteklenen Baskı Çapı",
+          "text": "40 mm - 100 mm."
+        }
+      ]
+    }
+  },
+  "33829": {
+    "en": {
+      "name": "eufyMake E1: the First Personal 3D-Texture UV Printer (No Ink Included)",
+      "summary": "Personal UV printer that lays down full-color 3D texture up to 5 mm on wood, metal, acrylic and more. Ink not included.",
+      "bullets": [
+        {
+          "title": "Make Anything Your Canvas",
+          "text": "Print vibrant, full-color 3D texture at up to 1440 DPI on metal, wood, acrylic, ceramics, fabric (with flexible white ink) and more."
+        },
+        {
+          "title": "Up to 5 mm Texture",
+          "text": "Build textures up to 5 mm high for oil painting effects, embossed coins, leather-texture covers and more."
+        },
+        {
+          "title": "For Home or Business",
+          "text": "Suited to custom gifts, decor, merchandise and commercial printing."
+        }
+      ]
+    },
+    "ar": {
+      "name": "طابعة UV شخصية eufyMake E1 بملمس ثلاثي الأبعاد (بدون حبر)",
+      "summary": "طابعة UV شخصية تطبع ملمساً ثلاثي الأبعاد بارتفاع حتى 5 مم وبألوان كاملة على الخشب والمعدن والأكريليك وغيرها.",
+      "bullets": [
+        {
+          "title": "اجعل أي سطح لوحتك",
+          "text": "طباعة بألوان كاملة وملمس ثلاثي الأبعاد بدقة تصل إلى 1440 DPI على المعدن والخشب والأكريليك والسيراميك والأقمشة (مع الحبر الأبيض المرن) وغيرها."
+        },
+        {
+          "title": "ملمس ثلاثي الأبعاد بارز",
+          "text": "احصل على نتوءات يصل ارتفاعها إلى 5 مم لتأثيرات اللوحات الزيتية والعملات البارزة والأغلفة بملمس الجلد وغيرها."
+        },
+        {
+          "title": "للمنزل أو للعمل",
+          "text": "مناسبة للهدايا المخصصة والديكور والمنتجات الترويجية والطباعة التجارية."
+        }
+      ]
+    },
+    "tr": {
+      "name": "eufyMake E1: İlk Kişisel 3D Dokulu UV Yazıcı (Mürekkep Dahil Değildir)",
+      "summary": "Ahşap, metal, akrilik ve daha fazlasına 5 mm'ye varan tam renkli 3D doku basan kişisel UV yazıcı. Mürekkep dahil değildir.",
+      "bullets": [
+        {
+          "title": "Her Yüzey Tuvaliniz",
+          "text": "Metal, ahşap, akrilik, seramik, kumaş (esnek beyaz mürekkeple) ve daha fazlasına 1.440 DPI'ye varan canlı, tam renkli 3D dokulu baskı yapın."
+        },
+        {
+          "title": "5 mm'ye Varan 3D Doku",
+          "text": "Yağlı boya etkisi, kabartma madeni para ve deri dokulu kapaklar için 5 mm'ye kadar doku oluşturun."
+        },
+        {
+          "title": "Ev ve İşletme İçin",
+          "text": "Kişiye özel hediyeler, dekorasyon, promosyon ürünleri ve ticari baskı için uygundur."
+        }
+      ]
+    }
+  },
+  "33842": {
+    "en": {
+      "name": "Robot Vacuum Omni C28",
+      "summary": "Robot vacuum and mop with 15000 Pa suction, a tangle-free brush and a station that runs up to 75 days hands-free.",
+      "bullets": [
+        {
+          "title": "Real Mopping, Not Just Wiping",
+          "text": "A 28 cm HydroJet roller with 24 water ports spins at 270 RPM, nine times a second, cleaning itself continuously while it mops. A built-in scraper moves dirt into a separate tank so the roller stays clean and marks from paw prints and spills disappear."
+        },
+        {
+          "title": "Zero Pet Hair Tangles",
+          "text": "The DuoSpiral brush handles hair up to 30 cm (11.8 in) long without wrapping it around the roller, which suits homes with several pets. No more cutting hair off a clogged brush by hand."
+        },
+        {
+          "title": "15000 Pa Turbo Suction",
+          "text": "Lifts pet hair, dander, kibble crumbs and fine dust from carpets and hard floors, with suction boosted automatically on carpet."
+        },
+        {
+          "title": "75 Days Hands-Free Cleaning",
+          "text": "The all-in-one station empties dust into a 3 L bag, washes the mop, dries it with 50°C hot air to prevent mould and collects the wastewater. It handles 95% of maintenance for up to 75 days."
+        },
+        {
+          "title": "Privacy-Safe Laser Navigation",
+          "text": "LiDAR navigation avoids obstacles of 3 × 3 × 3 cm and larger, such as furniture, toys and pet bowls, without using any camera. The mop lifts 10.8 mm on short carpet, the long-lasting battery covers several rooms and operation measures 54.89 dB."
+        },
+        {
+          "title": "Testing Notes",
+          "text": "Hair-tangling figures come from internal testing. On hard floors and Wilton carpet, a mix of 0.15 g of 20 cm hair and 0.15 g of 30 cm hair left no hair on the roller brush over 7 consecutive cleaning cycles, and 1 g of 8 to 15 cm Golden Retriever hair left none after 6 consecutive cycles."
+        }
+      ]
+    },
+    "ar": {
+      "name": "مكنسة روبوت Omni C28",
+      "summary": "مكنسة روبوت تشفط وتمسح بقوة شفط 15000 Pa، بفرشاة لا يتشابك بها الشعر ومحطة تعمل حتى 75 يوماً دون تدخل.",
+      "bullets": [
+        {
+          "title": "مسح حقيقي لا مجرد تلميع",
+          "text": "أسطوانة HydroJet بعرض 28 سم وفيها 24 فتحة ماء تدور بسرعة 270 دورة في الدقيقة (9 مرات في الثانية) فتنظّف نفسها باستمرار أثناء المسح. ويزيل كاشط مدمج الأوساخ إلى خزان منفصل لتبقى الأسطوانة نظيفة وتختفي آثار أقدام الحيوانات والانسكابات."
+        },
+        {
+          "title": "بلا تشابك لشعر الحيوانات",
+          "text": "تتعامل فرشاة DuoSpiral مع الشعر حتى طول 30 سم دون أن يلتف حول الأسطوانة، وهي مناسبة للبيوت التي تضم أكثر من حيوان أليف. وداعاً لتنظيف الفرشاة المسدودة يدوياً."
+        },
+        {
+          "title": "شفط توربيني بقوة 15000 Pa",
+          "text": "يرفع شعر الحيوانات والوبر وفتات الطعام والغبار الناعم عن السجاد والأرضيات الصلبة، مع زيادة تلقائية لقوة الشفط على السجاد."
+        },
+        {
+          "title": "75 يوماً دون تدخل يدوي",
+          "text": "المحطة المتكاملة تفرّغ الغبار في كيس سعة 3 لتر، وتغسل الممسحة، وتجففها بالهواء الساخن عند 50°م لمنع العفن، وتجمع المياه المستعملة. وتتولى المحطة 95% من أعمال الصيانة لمدة تصل إلى 75 يوماً."
+        },
+        {
+          "title": "ملاحة ليزرية تحفظ الخصوصية",
+          "text": "تتفادى ملاحة LiDAR العوائق التي تبلغ 3 × 3 × 3 سم فأكثر مثل الأثاث والألعاب وأوعية الطعام، ومن دون أي كاميرا فتبقى خصوصيتك محفوظة. وترفع الممسحة 10.8 مم فوق السجاد القصير، وتكفي البطارية لتنظيف عدة غرف، ومستوى الضجيج 54.89 dB."
+        },
+        {
+          "title": "ملاحظات الاختبار",
+          "text": "أرقام تشابك الشعر مبنية على اختبارات داخلية. على الأرضيات الصلبة وسجاد Wilton، لم يبقَ أي شعر على الفرشاة بعد 7 دورات تنظيف متتالية مع خليط من 0.15 غ من شعر بطول 20 سم و0.15 غ من شعر بطول 30 سم؛ ولم يبقَ أي شعر بعد 6 دورات متتالية مع 1 غ من شعر كلاب Golden Retriever بطول 8 إلى 15 سم."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Robot Süpürge Omni C28",
+      "summary": "15.000 Pa emiş, dolaşmayan fırça ve 75 güne kadar elinizi sürmeden çalışan istasyona sahip robot süpürge ve paspas.",
+      "bullets": [
+        {
+          "title": "Silmek Değil, Gerçek Paspaslama",
+          "text": "24 su çıkışlı 28 cm HydroJet silindiri dakikada 270 devirle, yani saniyede 9 kez dönerek paspaslarken kendini sürekli temizler. Dahili sıyırıcı kiri ayrı hazneye alır; silindir temiz kalır, pati izleri ve dökülen lekeler silinir."
+        },
+        {
+          "title": "Evcil Hayvan Tüyü Dolaşmaz",
+          "text": "DuoSpiral fırça 30 cm uzunluğa kadar tüyü silindire dolaştırmadan toplar; birden fazla evcil hayvanı olan evler için uygundur. Tıkanan fırçayı elle temizlemeye son."
+        },
+        {
+          "title": "15.000 Pa Turbo Emiş",
+          "text": "Halı ve sert zeminlerden evcil hayvan tüyünü, keratini, mama kırıntılarını ve ince tozu zahmetsizce kaldırır; halıda emiş gücü otomatik olarak artar."
+        },
+        {
+          "title": "75 Gün Elinizi Sürmeden Temizlik",
+          "text": "Hepsi bir arada istasyon tozu 3 L torbaya boşaltır, paspası yıkar, küflenmeyi önlemek için 50°C sıcak havayla kurutur ve atık suyu toplar. Bakımın %95'ini 75 güne kadar üstlenir."
+        },
+        {
+          "title": "Gizliliğe Duyarlı Lazer Navigasyon",
+          "text": "LiDAR navigasyon 3 × 3 × 3 cm ve üzeri engelleri (mobilya, oyuncak, mama kabı) kamera kullanmadan aşar; gizliliğiniz korunur. Kısa halılarda paspası 10,8 mm kaldırır, uzun ömürlü pil birden fazla odaya yeter ve çalışma sesi 54,89 dB'dir."
+        },
+        {
+          "title": "Test Notları",
+          "text": "Tüy dolaşma verileri iç testlere dayanır. Sert zemin ve Wilton halıda 0,15 g 20 cm ve 0,15 g 30 cm tüy karışımıyla 7 ardışık temizlik döngüsü sonunda fırçada tüy kalmadı; 1 g 8-15 cm Golden Retriever tüyüyle 6 ardışık döngü sonunda da tüy kalmadı."
+        }
+      ]
+    }
+  },
+  "33883": {
+    "en": {
+      "name": "Prime Thunderbolt 5 Cable 1m",
+      "summary": "Delivers 80Gbps transfer, 240W charging and dual 8K display support over a single 1 m connection.",
+      "bullets": [
+        {
+          "title": "Peak Performance with Thunderbolt 5",
+          "text": "Enables 80Gbps data transfer and 240W fast charging for powerful multi-display setups."
+        },
+        {
+          "title": "Lightning-Fast File Transfers",
+          "text": "Move a 5GB file in just 1 second at 80Gbps."
+        },
+        {
+          "title": "8K Display Capabilities",
+          "text": "Supports dual 8K displays at 60Hz with up to 120Gbps of bandwidth for stunning clarity and detail."
+        },
+        {
+          "title": "240W USB-C Charging",
+          "text": "Charges a 16-inch MacBook Pro (M3 Pro) to 50% in just 26 minutes."
+        },
+        {
+          "title": "What You Get",
+          "text": "Anker Prime Thunderbolt 5 cable (1 m / 3.3 ft, 80Gbps, 240W), welcome guide and a 12-month warranty."
+        }
+      ]
+    },
+    "ar": {
+      "name": "كابل Prime Thunderbolt 5 بطول 1 متر",
+      "summary": "كابل بطول 1 متر يجمع نقل البيانات بسرعة 80Gbps والشحن بقدرة 240W ودعم شاشتين بدقة 8K.",
+      "bullets": [
+        {
+          "title": "أداء Thunderbolt 5",
+          "text": "يدعم نقل البيانات بسرعة 80Gbps والشحن السريع بقدرة 240W لإعدادات الشاشات المتعددة."
+        },
+        {
+          "title": "نقل ملفات فائق السرعة",
+          "text": "انقل ملفاً بحجم 5GB خلال ثانية واحدة بسرعة 80Gbps."
+        },
+        {
+          "title": "دعم شاشتين بدقة 8K",
+          "text": "يشغّل شاشتين بدقة 8K بمعدل 60Hz وعرض نطاق يصل إلى 120Gbps لوضوح وتفاصيل استثنائية."
+        },
+        {
+          "title": "شحن USB-C بقدرة 240W",
+          "text": "يشحن جهاز MacBook Pro مقاس 16 إنش (M3 Pro) إلى 50% خلال 26 دقيقة فقط."
+        },
+        {
+          "title": "محتويات العلبة",
+          "text": "كابل Anker Prime Thunderbolt 5 (1 متر، 80Gbps، 240W)، دليل الاستخدام، وضمان 12 شهراً."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Prime Thunderbolt 5 Kablo 1 m",
+      "summary": "Tek bir 1 metrelik bağlantıda 80Gbps aktarım, 240W şarj ve çift 8K ekran desteği sunar.",
+      "bullets": [
+        {
+          "title": "Thunderbolt 5 Performansı",
+          "text": "80Gbps veri aktarımı ve 240W hızlı şarj ile güçlü çoklu ekran kurulumlarını destekler."
+        },
+        {
+          "title": "Şimşek Hızında Aktarım",
+          "text": "80Gbps hızla 5GB'lık bir dosyayı yalnızca 1 saniyede taşır."
+        },
+        {
+          "title": "8K Ekran Desteği",
+          "text": "120Gbps'ye varan bant genişliğiyle 60Hz'de iki 8K ekranı çalıştırır; olağanüstü netlik ve ayrıntı sunar."
+        },
+        {
+          "title": "240W USB-C Şarj",
+          "text": "16 inç MacBook Pro'yu (M3 Pro) yalnızca 26 dakikada %50 doldurur."
+        },
+        {
+          "title": "Kutu İçeriği",
+          "text": "Anker Prime Thunderbolt 5 kablo (1 m, 80Gbps, 240W), kullanım kılavuzu ve 12 ay garanti."
+        }
+      ]
+    }
+  },
+  "35074": {
+    "en": {
+      "name": "Zolo Charger (20W)",
+      "summary": "Compact 20W USB-C charger that stays up to 10°C cooler than standard chargers for safe daily charging.",
+      "bullets": [
+        {
+          "title": "Low-Temperature Charging",
+          "text": "Stays up to 10°C cooler than standard chargers for safer and more efficient charging."
+        },
+        {
+          "title": "Real-Time Protection",
+          "text": "Capacitor protection monitors and stabilizes the current to prevent voltage fluctuations."
+        },
+        {
+          "title": "Fast and Efficient Power",
+          "text": "A 20W output charges your devices quickly and effortlessly."
+        },
+        {
+          "title": "Compact and Travel-Friendly",
+          "text": "Lightweight and portable design that is easy to carry anywhere."
+        },
+        {
+          "title": "Universal Compatibility",
+          "text": "Works with smartphones, tablets and other USB-C devices."
+        }
+      ]
+    },
+    "ar": {
+      "name": "شاحن Zolo (20W)",
+      "summary": "شاحن USB-C مدمج بقدرة 20W يبقى أبرد بما يصل إلى 10 درجات مئوية من الشواحن الاعتيادية لشحن يومي آمن.",
+      "bullets": [
+        {
+          "title": "شحن بحرارة منخفضة",
+          "text": "يبقى أبرد بما يصل إلى 10 درجات مئوية مقارنةً بالشواحن الاعتيادية، لشحن أكثر أماناً وكفاءة."
+        },
+        {
+          "title": "حماية لحظية",
+          "text": "حماية بالمكثفات تراقب التيار وتثبّته لمنع تذبذب الجهد الكهربائي."
+        },
+        {
+          "title": "قدرة خرج 20W",
+          "text": "قدرة خرج تبلغ 20W تشحن أجهزتك بسرعة وبلا عناء."
+        },
+        {
+          "title": "صغير ومناسب للسفر",
+          "text": "تصميم خفيف ومحمول يسهل حمله في الجيب أو الحقيبة."
+        },
+        {
+          "title": "توافق واسع",
+          "text": "يعمل مع الهواتف الذكية والأجهزة اللوحية وسائر الأجهزة المزوَّدة بمنفذ USB-C."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Zolo Şarj Cihazı (20W)",
+      "summary": "Standart şarj cihazlarından 10°C'ye kadar daha serin çalışan, güvenli günlük şarj için kompakt 20W USB-C şarj cihazı.",
+      "bullets": [
+        {
+          "title": "Düşük Sıcaklıkta Şarj",
+          "text": "Standart şarj cihazlarına göre 10°C'ye kadar daha serin kalarak daha güvenli ve verimli şarj sunar."
+        },
+        {
+          "title": "Gerçek Zamanlı Koruma",
+          "text": "Kapasitör koruması akımı izler ve dengeleyerek gerilim dalgalanmalarını önler."
+        },
+        {
+          "title": "Hızlı ve Verimli Güç",
+          "text": "20W çıkış, cihazlarınızı hızlı ve zahmetsiz şarj eder."
+        },
+        {
+          "title": "Kompakt ve Seyahat Dostu",
+          "text": "Hafif ve taşınabilir tasarımıyla her yere rahatça götürülür."
+        },
+        {
+          "title": "Geniş Uyumluluk",
+          "text": "Akıllı telefonlar, tabletler ve USB-C özellikli diğer cihazlarla çalışır."
+        }
+      ]
+    }
+  },
+  "35100": {
+    "en": {
+      "name": "Zolo Charger (70W, 4 Port)",
+      "summary": "Four-port 70W charger that powers a laptop and a phone at the same time, small enough for any bag.",
+      "bullets": [
+        {
+          "title": "Up to 70W of Power",
+          "text": "Each USB-C port supports up to 70W, enough to charge your laptop quickly."
+        },
+        {
+          "title": "Two Devices at Once",
+          "text": "Use two USB-C ports to charge your laptop at 45W and your phone at 25W at the same time."
+        },
+        {
+          "title": "4-in-1 Charging",
+          "text": "The four-port design includes 3 USB-C ports and 1 USB-A port, with a combined output of 64.5W."
+        },
+        {
+          "title": "Designed for Travel",
+          "text": "Compact and lightweight, this charger suits travel, commuting and working on the go."
+        },
+        {
+          "title": "In the Box",
+          "text": "Anker Zolo Charger (70W, 4 ports), welcome guide and a 12-month warranty."
+        }
+      ]
+    },
+    "ar": {
+      "name": "شاحن Zolo (70W، 4 منافذ)",
+      "summary": "شاحن بأربعة منافذ وقدرة 70W يشحن الحاسوب المحمول والهاتف معاً، وبحجم صغير يرافقك في كل مكان.",
+      "bullets": [
+        {
+          "title": "قدرة تصل إلى 70W",
+          "text": "يدعم كل منفذ USB-C قدرة تصل إلى 70W، وهي كافية لشحن الحاسوب المحمول بسرعة."
+        },
+        {
+          "title": "شحن جهازين في آن واحد",
+          "text": "استخدم منفذي USB-C لشحن الحاسوب المحمول بقدرة 45W والهاتف بقدرة 25W في الوقت نفسه."
+        },
+        {
+          "title": "أربعة منافذ في شاحن واحد",
+          "text": "ثلاثة منافذ USB-C ومنفذ USB-A واحد بقدرة خرج إجمالية تبلغ 64.5W."
+        },
+        {
+          "title": "مصمَّم للسفر",
+          "text": "حجم صغير ووزن خفيف يجعله مثالياً للسفر والتنقل اليومي والعمل خارج المكتب."
+        },
+        {
+          "title": "محتويات العلبة",
+          "text": "شاحن Anker Zolo (70W، 4 منافذ)، دليل الاستخدام، وضمان 12 شهراً."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Zolo Şarj Cihazı (70W, 4 Portlu)",
+      "summary": "Dizüstü bilgisayarı ve telefonu aynı anda besleyen, her çantaya sığan 4 portlu 70W şarj cihazı.",
+      "bullets": [
+        {
+          "title": "70W'a Varan Güç",
+          "text": "Her USB-C port 70W'a kadar destekler; dizüstü bilgisayarınızı hızla şarj eder."
+        },
+        {
+          "title": "Aynı Anda İki Cihaz",
+          "text": "İki USB-C portu kullanarak dizüstü bilgisayarınızı 45W, telefonunuzu 25W ile aynı anda şarj edin."
+        },
+        {
+          "title": "4'ü 1 Arada Şarj",
+          "text": "Dört portlu tasarım 3 USB-C ve 1 USB-A port içerir; toplam çıkış gücü 64,5W'tır."
+        },
+        {
+          "title": "Seyahat İçin Tasarlandı",
+          "text": "Kompakt ve hafif yapısıyla seyahat, günlük yolculuk ve hareket hâlinde çalışma için idealdir."
+        },
+        {
+          "title": "Kutu İçeriği",
+          "text": "Anker Zolo Şarj Cihazı (70W, 4 port), kullanım kılavuzu ve 12 ay garanti."
+        }
+      ]
+    }
+  },
+  "35118": {
+    "en": {
+      "name": "R60i NC",
+      "summary": "Wireless earbuds with up to 52 dB adaptive noise cancelling, LDAC Hi-Res sound and live AI translation.",
+      "bullets": [
+        {
+          "title": "Real-Time Adaptive Noise Cancelling",
+          "text": "Advanced ANC reduces noise by up to 52 dB, and adaptive technology reads your surroundings to choose the best level automatically."
+        },
+        {
+          "title": "Hi-Res Certified Sound with LDAC",
+          "text": "LDAC and Hi-Res Audio certification reproduce musical nuances with rich, well-balanced treble and bass."
+        },
+        {
+          "title": "AI Translation in 100+ Languages",
+          "text": "AI translates speech instantly in more than 100 languages with high accuracy, keeping conversations smooth and natural."
+        },
+        {
+          "title": "6 AI-Enhanced Microphones",
+          "text": "Six microphones work with an AI noise-reduction algorithm to separate your voice from background noise, while wind-noise reduction keeps outdoor calls clear."
+        },
+        {
+          "title": "Long Playtime and Fast Charging",
+          "text": "Up to 10 hours of playtime on a single charge and 50 hours with the case. With ANC on you get 8 hours per charge and 40 hours in total, and a 10-minute charge gives 3.5 hours of listening."
+        }
+      ]
+    },
+    "ar": {
+      "name": "سمّاعات R60i NC",
+      "summary": "سمّاعات لاسلكية بإلغاء ضجيج تكيّفي حتى 52 dB وصوت Hi-Res عبر LDAC وترجمة فورية بالذكاء الاصطناعي.",
+      "bullets": [
+        {
+          "title": "إلغاء ضجيج تكيّفي لحظي",
+          "text": "إلغاء ضجيج متقدم يحجب ما يصل إلى 52 dB من الضجيج، مع تقنية تكيّفية تستشعر محيطك وتختار المستوى الأنسب تلقائياً."
+        },
+        {
+          "title": "صوت Hi-Res مع LDAC",
+          "text": "بفضل تقنية LDAC واعتماد Hi-Res Audio، تسمع أدق تفاصيل الموسيقى بنغمات عالية ومنخفضة غنية ومتوازنة."
+        },
+        {
+          "title": "ترجمة فورية بـ 100 لغة",
+          "text": "يترجم الذكاء الاصطناعي الكلام فورياً بأكثر من 100 لغة وبدقة عالية، فتبقى المحادثة سلسة وطبيعية."
+        },
+        {
+          "title": "6 ميكروفونات معزَّزة بالذكاء الاصطناعي",
+          "text": "ستة ميكروفونات مع خوارزمية ذكية لإلغاء الضجيج تفصل صوتك عن ضجيج الخلفية، وخوارزمية إلغاء ضجيج الرياح تحافظ على وضوح مكالماتك في الهواء الطلق."
+        },
+        {
+          "title": "تشغيل طويل وشحن سريع",
+          "text": "حتى 10 ساعات تشغيل بالشحنة الواحدة و50 ساعة مع علبة الشحن. وعند تفعيل إلغاء الضجيج تحصل على 8 ساعات بالشحنة و40 ساعة إجمالاً، كما يمنحك شحن 10 دقائق 3.5 ساعات من الاستماع."
+        }
+      ]
+    },
+    "tr": {
+      "name": "R60i NC",
+      "summary": "52 dB'ye varan uyarlanabilir gürültü engelleme, LDAC Hi-Res ses ve anlık yapay zekâ çevirisi sunan kablosuz kulaklık.",
+      "bullets": [
+        {
+          "title": "Gerçek Zamanlı Uyarlanabilir ANC",
+          "text": "Gelişmiş ANC gürültüyü 52 dB'ye kadar azaltır; uyarlanabilir teknoloji ortamınızı algılayıp en uygun seviyeyi otomatik seçer."
+        },
+        {
+          "title": "LDAC ile Hi-Res Sertifikalı Ses",
+          "text": "LDAC ve Hi-Res Audio sertifikası, müzikteki en ince ayrıntıları zengin ve dengeli tiz ile basla yeniden üretir."
+        },
+        {
+          "title": "100'den Fazla Dilde Çeviri",
+          "text": "Yapay zekâ konuşmayı 100'ü aşkın dilde yüksek doğrulukla anında çevirir; sohbet akıcı ve doğal kalır."
+        },
+        {
+          "title": "6 Yapay Zekâ Destekli Mikrofon",
+          "text": "Altı mikrofon ve yapay zekâ gürültü azaltma algoritması sesinizi arka plandan ayırır; rüzgâr gürültüsü azaltma açık havada da görüşmeleri net tutar."
+        },
+        {
+          "title": "Uzun Çalma ve Hızlı Şarj",
+          "text": "Tek şarjla 10 saate, kutuyla 50 saate kadar dinleyin. ANC açıkken şarj başına 8 saat ve toplam 40 saat elde edersiniz; 10 dakikalık şarj 3,5 saat dinleme sağlar."
+        }
+      ]
+    }
+  },
+  "35141": {
+    "en": {
+      "name": "Prime Power Bank (26K, 300W)",
+      "summary": "26250mAh travel battery with 300W total output, 250W recharging and a smart information display.",
+      "bullets": [
+        {
+          "title": "300W Total Output Power",
+          "text": "Offers up to 300W across two USB-C ports and one USB-A port, keeping two MacBook Pros running at full speed."
+        },
+        {
+          "title": "140W Max Fast Charging",
+          "text": "Delivers up to 140W for fast laptop charging when connected with a 5A cable. It powers a MacBook Pro (M4 Pro) to 50% in 27 minutes or an iPhone 16 Pro to 50% in 26 minutes."
+        },
+        {
+          "title": "Anker's First 250W Dual-Port Input",
+          "text": "Industry-leading 250W dual USB-C input recharges the power bank to 40% in 10 minutes and 50% in 13 minutes, ideal for busy mornings and airport layovers."
+        },
+        {
+          "title": "Power That's Ready to Fly",
+          "text": "Delivers 26250mAh (99.75Wh) of TSA-approved capacity and charges a MacBook Pro (M4) up to 0.8 times."
+        },
+        {
+          "title": "Smart Display and App Control",
+          "text": "The display provides detailed charging information for the power bank and the charging base, and the app allows manual adjustment of output power."
+        },
+        {
+          "title": "What You Get",
+          "text": "Anker Prime Power Bank (26K, 300W), 3.3 ft USB-C to USB-C charging cable (240W), travel pouch, welcome guide and a 12-month warranty."
+        },
+        {
+          "title": "Testing Note",
+          "text": "Data is based on internal lab testing, and actual performance may vary with conditions of use."
+        }
+      ]
+    },
+    "ar": {
+      "name": "بطارية متنقلة Prime (26K، 300W)",
+      "summary": "بطارية سفر بسعة 26250mAh وقدرة خرج إجمالية 300W وإعادة شحن بقدرة 250W مع شاشة معلومات ذكية.",
+      "bullets": [
+        {
+          "title": "قدرة خرج إجمالية 300W",
+          "text": "قدرة تصل إلى 300W موزَّعة على منفذي USB-C ومنفذ USB-A، تكفي لتشغيل جهازي MacBook Pro بأقصى سرعة."
+        },
+        {
+          "title": "شحن سريع حتى 140W",
+          "text": "قدرة تصل إلى 140W لشحن الحاسوب المحمول بسرعة عند استخدام كابل 5A. يصل MacBook Pro (M4 Pro) إلى 50% خلال 27 دقيقة، وiPhone 16 Pro إلى 50% خلال 26 دقيقة."
+        },
+        {
+          "title": "أول دخل مزدوج بقدرة 250W",
+          "text": "دخل مزدوج USB-C بقدرة 250W هو الأول من Anker ويعيد شحن البطارية إلى 40% خلال 10 دقائق وإلى 50% خلال 13 دقيقة؛ مثالي للصباحات المزدحمة وفترات الانتظار في المطار."
+        },
+        {
+          "title": "سعة مسموح بها جواً",
+          "text": "سعة 26250mAh (99.75Wh) مسموح بها في السفر الجوي، وتشحن جهاز MacBook Pro (M4) حتى 0.8 من الشحنة الكاملة."
+        },
+        {
+          "title": "شاشة ذكية وتحكم عبر التطبيق",
+          "text": "تعرض الشاشة معلومات مفصلة عن شحن البطارية وقاعدة الشحن، ويتيح التطبيق ضبط قدرة الخرج يدوياً."
+        },
+        {
+          "title": "محتويات العلبة",
+          "text": "بطارية Anker Prime المتنقلة (26K، 300W)، كابل USB-C إلى USB-C بطول 1 متر بقدرة 240W، حقيبة سفر، دليل الاستخدام، وضمان 12 شهراً."
+        },
+        {
+          "title": "ملاحظة حول القياسات",
+          "text": "الأرقام مبنية على اختبارات مخبرية داخلية، وقد يختلف الأداء الفعلي بحسب ظروف الاستخدام."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Prime Taşınabilir Şarj Cihazı (26K, 300W)",
+      "summary": "300W toplam çıkış, 250W hızlı dolum ve akıllı bilgi ekranı sunan 26.250mAh taşınabilir şarj cihazı.",
+      "bullets": [
+        {
+          "title": "300W Toplam Çıkış Gücü",
+          "text": "İki USB-C ve bir USB-A porttan 300W'a kadar güç verir; iki MacBook Pro'yu tam hızda çalıştırmaya yeter."
+        },
+        {
+          "title": "140W'a Varan Hızlı Şarj",
+          "text": "5A kablo bağlandığında dizüstü bilgisayarlar için 140W'a kadar çıkış sunar. MacBook Pro'yu (M4 Pro) 27 dakikada, iPhone 16 Pro'yu 26 dakikada %50 doldurur."
+        },
+        {
+          "title": "Anker'in İlk 250W Çift Giriş",
+          "text": "Sektör lideri 250W çift USB-C girişi taşınabilir şarj cihazını 10 dakikada %40, 13 dakikada %50 doldurur; yoğun sabahlar ve havalimanı aktarmaları için idealdir."
+        },
+        {
+          "title": "Uçuşa Uygun Büyük Kapasite",
+          "text": "26.250mAh (99,75Wh) kapasite uçak seyahatine uygundur ve MacBook Pro'yu (M4) 0,8 kez şarj eder."
+        },
+        {
+          "title": "Akıllı Ekran ve Uygulama Kontrolü",
+          "text": "Ekran, taşınabilir şarj cihazı ve şarj tabanına ait ayrıntılı şarj bilgilerini gösterir; uygulamadan çıkış gücünü elle ayarlayabilirsiniz."
+        },
+        {
+          "title": "Kutu İçeriği",
+          "text": "Anker Prime Taşınabilir Şarj Cihazı (26K, 300W), 1 m USB-C - USB-C şarj kablosu (240W), seyahat kılıfı, kullanım kılavuzu ve 12 ay garanti."
+        },
+        {
+          "title": "Ölçüm Notu",
+          "text": "Veriler iç laboratuvar testlerine dayanır; gerçek performans kullanım koşullarına göre değişebilir."
+        }
+      ]
+    }
+  },
+  "35177": {
+    "en": {
+      "name": "Smart Display E10",
+      "summary": "8-inch home security screen showing four live camera feeds and instant door alerts without touching your phone.",
+      "bullets": [
+        {
+          "title": "Instant Hands-Free Door Alerts",
+          "text": "When someone rings the doorbell, unlocks the door or is detected by a camera, the display lights up automatically with a live feed and a voice alert, so you know who is there instantly."
+        },
+        {
+          "title": "Four Views on One Screen",
+          "text": "View your entire property at a glance through four simultaneous live feeds, with near-instant access to any stream the moment something happens."
+        },
+        {
+          "title": "Instant Playback, No Buffering",
+          "text": "Past events are downloaded automatically to local storage, so you can replay any moment with no delay and no buffering."
+        },
+        {
+          "title": "Smart Daily Security Reports",
+          "text": "Using facial and package recognition powered by HomeBase 3, the display compiles daily summaries with statistics and video recordings for quick insight."
+        },
+        {
+          "title": "Simple 8-Inch Touchscreen",
+          "text": "The 8-inch touchscreen is straightforward enough for children and older family members, and flexible to place wherever you need it."
+        }
+      ]
+    },
+    "ar": {
+      "name": "شاشة ذكية E10",
+      "summary": "شاشة منزلية مقاس 8 إنش تعرض أربع كاميرات مباشرة وتنبّهك فوراً عند الباب دون الحاجة إلى هاتفك.",
+      "bullets": [
+        {
+          "title": "تنبيهات فورية عند الباب",
+          "text": "عندما يرن أحدهم الجرس أو يفتح الباب أو ترصده إحدى الكاميرات، تضيء الشاشة تلقائياً وتعرض بثاً مباشراً مع تنبيه صوتي، فتعرف من بالباب فوراً ودون أن ترفع يدك."
+        },
+        {
+          "title": "أربع كاميرات على شاشة واحدة",
+          "text": "تابع أربعة بثوث مباشرة في الوقت نفسه لترى منزلك كاملاً بنظرة واحدة، مع وصول شبه فوري إلى أي كاميرا لحظة وقوع أي حدث."
+        },
+        {
+          "title": "إعادة تشغيل فورية بلا تقطيع",
+          "text": "تُنزَّل الأحداث السابقة تلقائياً إلى الذاكرة المحلية، فتعيد مشاهدة أي لحظة دون انتظار أو تقطيع."
+        },
+        {
+          "title": "تقارير أمنية يومية",
+          "text": "بالاعتماد على التعرف على الوجوه والطرود عبر HomeBase 3، تُعدّ الشاشة ملخصات يومية تتضمن إحصاءات ومقاطع فيديو تعطيك صورة سريعة عمّا جرى."
+        },
+        {
+          "title": "شاشة لمس 8 إنش سهلة",
+          "text": "شاشة لمس مقاس 8 إنش بسيطة الاستخدام حتى للأطفال وكبار السن، ويمكن وضعها في أي مكان يناسبك."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Akıllı Ekran E10",
+      "summary": "Dört kamerayı canlı gösteren ve kapı uyarılarını telefona gerek kalmadan ileten 8 inç ev güvenlik ekranı.",
+      "bullets": [
+        {
+          "title": "Eller Serbest Anında Kapı Uyarısı",
+          "text": "Biri zili çaldığında, kapıyı açtığında ya da kamera birini algıladığında ekran otomatik olarak yanar; canlı görüntüyü ve sesli uyarıyı anında verir, kapıda kimin olduğunu hemen bilirsiniz."
+        },
+        {
+          "title": "Tek Ekranda Dört Görüntü",
+          "text": "Dört canlı yayını aynı anda izleyerek evinizin tamamını tek bakışta görün; bir olay olduğunda istediğiniz yayına neredeyse anında geçin."
+        },
+        {
+          "title": "Takılmadan Anında Oynatma",
+          "text": "Geçmiş olaylar otomatik olarak yerel depolamaya indirilir; gecikme ve takılma olmadan istediğiniz anı tekrar izleyin."
+        },
+        {
+          "title": "Akıllı Günlük Güvenlik Raporu",
+          "text": "HomeBase 3 destekli yüz ve paket tanıma ile ekran, istatistik ve video kayıtları içeren günlük özetler hazırlar."
+        },
+        {
+          "title": "Kolay 8 İnç Dokunmatik Ekran",
+          "text": "8 inç dokunmatik ekran çocuklar ve yaşlılar için bile kolaydır; istediğiniz yere esnekçe yerleştirilir."
+        }
+      ]
+    }
+  },
+  "35197": {
+    "en": {
+      "name": "Wearable Breast Pump E20",
+      "summary": "Heated wearable breast pump that warms up in 30 seconds, runs under 46 dB and gives 30% more output.",
+      "bullets": [
+        {
+          "title": "Innovative Heated Wearable Pump",
+          "text": "HeatFlow technology helps prevent clogs and gives 30% more output for warm, spa-like pumping. Based on actual usage feedback from more than 300 eufy pump users."
+        },
+        {
+          "title": "Quick Start for Busy Mums",
+          "text": "Start pumping in 30 seconds. HeatFlow warms the pump to 95°F quickly and boosts your milk flow."
+        },
+        {
+          "title": "Smart, Hands-Free Pumping",
+          "text": "Select from four presets, use expert-recommended rhythms or create your own for maximum efficiency and comfort (available with free trial)."
+        },
+        {
+          "title": "Hospital-Grade Suction",
+          "text": "Up to 300 mmHg of safe suction maximizes your milk output. The ergonomic 105° curve rests gently against the body, and every part that touches skin is made from BPA-free, food-grade material."
+        },
+        {
+          "title": "Ultra-Quiet and Slim",
+          "text": "Whisper-quiet at under 46 dB for discreet use, compact and light enough to wear inside your bra, and leakproof thanks to a double seal and a reinforced lower half."
+        }
+      ]
+    },
+    "ar": {
+      "name": "مضخة حليب قابلة للارتداء E20",
+      "summary": "مضخة حليب قابلة للارتداء بتقنية تدفئة تجهز خلال 30 ثانية، وتعمل بصوت أقل من 46 dB وتزيد الكمية 30%.",
+      "bullets": [
+        {
+          "title": "مضخة مدفَّأة قابلة للارتداء",
+          "text": "تساعد تقنية HeatFlow على منع انسداد القنوات وتزيد كمية الحليب بنسبة 30%، مع إحساس دافئ ومريح أثناء الشفط. والنتائج مبنية على ملاحظات الاستخدام الفعلي لأكثر من 300 مستخدمة لمضخات eufy."
+        },
+        {
+          "title": "جاهزة خلال 30 ثانية",
+          "text": "ابدئي الشفط خلال 30 ثانية؛ إذ تسخّن تقنية HeatFlow المضخة سريعاً إلى 35°م وتساعد على تدفق الحليب."
+        },
+        {
+          "title": "شفط ذكي ويداك حرّتان",
+          "text": "اختاري من بين أربعة أوضاع جاهزة، أو اتبعي الإيقاعات الموصى بها من الخبراء، أو أنشئي إيقاعك الخاص لأعلى كفاءة وراحة (متاح مع النسخة التجريبية المجانية)."
+        },
+        {
+          "title": "قوة شفط بمستوى المشافي",
+          "text": "قوة شفط آمنة تصل إلى 300 mmHg تزيد كمية الحليب إلى أقصى حد. والانحناء المريح بزاوية 105° يلامس الجسم بلطف، وجميع الأجزاء الملامسة للبشرة مصنوعة من مواد غذائية خالية من BPA."
+        },
+        {
+          "title": "هادئة ونحيفة",
+          "text": "صوت أقل من 46 dB يمنحك الخصوصية، وتصميم صغير وخفيف يوضع داخل حمالة الصدر، مع إحكام مزدوج وقاعدة مقوّاة تمنع التسريب."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Giyilebilir Göğüs Pompası E20",
+      "summary": "30 saniyede ısınan, 46 dB'nin altında çalışan ve %30 daha fazla süt sağlayan ısıtmalı giyilebilir göğüs pompası.",
+      "bullets": [
+        {
+          "title": "Yenilikçi Isıtmalı Giyilebilir Pompa",
+          "text": "HeatFlow teknolojisi tıkanmayı önlemeye yardımcı olur ve %30 daha fazla süt sağlar; sıcak, spa benzeri bir pompalama sunar. Veriler 300'den fazla eufy pompa kullanıcısının gerçek kullanım geri bildirimine dayanır."
+        },
+        {
+          "title": "Yoğun Anneler İçin Hızlı Başlangıç",
+          "text": "30 saniye içinde pompalamaya başlayın. HeatFlow pompayı hızla 35°C'ye ısıtır ve süt akışını artırır."
+        },
+        {
+          "title": "Akıllı, Eller Serbest Kullanım",
+          "text": "Dört hazır moddan birini seçin, uzman önerili ritimleri kullanın veya en yüksek verim ve konfor için kendi ritminizi oluşturun (ücretsiz deneme ile sunulur)."
+        },
+        {
+          "title": "Hastane Sınıfı Emiş",
+          "text": "300 mmHg'ye varan güvenli emiş süt miktarını en üst düzeye çıkarır. Ergonomik 105° kavis vücuda nazikçe oturur ve cilde temas eden tüm parçalar BPA içermeyen gıda sınıfı malzemeden üretilmiştir."
+        },
+        {
+          "title": "Ultra Sessiz ve İnce",
+          "text": "46 dB'nin altındaki sesiyle fark edilmeden kullanılır; kompakt ve hafif yapısıyla sütyen içine girer, çift contası ve güçlendirilmiş alt gövdesi sızdırmaz."
+        }
+      ]
+    }
+  }
+}

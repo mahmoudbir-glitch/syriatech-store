@@ -5,20 +5,26 @@ let store = null;
 // decide where code is loaded from, so the HTTP fallback uses Vercel's own
 // deployment URL.
 function trustedOrigin() {
-  const host = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL || "";
-  return host ? "https://" + host : "";
+  const host = process.env.SITE_ORIGIN || process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL || "";
+  if (!host) return "";
+  return /^https?:\/\//.test(host) ? host : "https://" + host;
 }
 
 async function readSource(name) {
-  try {
-    const fs = await import("node:fs/promises");
-    const path = await import("node:path");
-    return await fs.readFile(path.join(process.cwd(), name), "utf8");
-  } catch (e) {
-    const origin = trustedOrigin();
-    if (!origin) throw e;
-    return fetch(origin + "/" + name).then(r => r.text());
+  const fs = await import("node:fs/promises");
+  const path = await import("node:path");
+  const { fileURLToPath } = await import("node:url");
+  // The bundled files sit next to the api directory, so resolve from this
+  // module rather than from whatever directory the process was started in.
+  const here = path.dirname(fileURLToPath(import.meta.url));
+  for (const base of [path.join(here, ".."), process.cwd()]) {
+    try {
+      return await fs.readFile(path.join(base, name), "utf8");
+    } catch (e) { /* try the next one */ }
   }
+  const origin = trustedOrigin();
+  if (!origin) throw new Error("cannot read " + name);
+  return fetch(origin + "/" + name).then(r => r.text());
 }
 
 async function loadStore() {

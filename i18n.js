@@ -16,7 +16,7 @@
     ar: {
       brandName: "Syriatech",
       pageTitle: "Syriatech | إلكترونيات وشواحن أصلية",
-      metaDescription: "متجر Syriatech للإلكترونيات الأصلية: Anker وeufy وsoundcore وNebula وPITAKA. أسعار واضحة وطلب مباشر عبر واتساب.",
+      metaDescription: "متجر Syriatech للإلكترونيات الأصلية: Anker · eufy · soundcore · Nebula · PITAKA. أسعار واضحة وطلب مباشر عبر واتساب.",
       adminPageTitle: "Syriatech | لوحة التحكم",
 
       noticeMain: "توصيل سريع لكل المحافظات · اطلب مباشرة عبر واتساب",
@@ -27,6 +27,7 @@
       navBrands: "العلامات التجارية",
       navCategories: "الأقسام",
       navOffers: "العروض",
+      navInfo: "الشحن والضمان",
       navContact: "تواصل معنا",
       navFavorites: "المفضلة",
 
@@ -41,7 +42,7 @@
       heroTagOriginal: "وكلاء معتمدون",
       heroTagYear: "تشكيلة 2026",
       heroTitle: "تقنية أصلية<br><em>بأسعار واضحة.</em>",
-      heroSubtitle: "شواحن وباور بانك وسماعات وكاميرات أمان وكفرات من Anker وeufy وsoundcore وNebula وPITAKA — اطلبها بضغطة واحدة عبر واتساب.",
+      heroSubtitle: "شواحن وباور بانك وسماعات وكاميرات أمان وكفرات أصلية من Anker · eufy · soundcore · Nebula · PITAKA — اطلبها بضغطة واحدة عبر واتساب.",
       heroShop: "تسوّق الآن",
       heroOffers: "شاهد العروض",
       heroBadgeTitle: "أصلي ومضمون",
@@ -89,6 +90,7 @@
       dealsTitle: "العروض والخصومات",
       inStockOnly: "المتوفر فقط",
       filterStock: "التوفر",
+      filterDevice: "جهازك",
       detailsTitle: "تفاصيل المنتج",
       staleNotice: "تعذّر تحديث الأسعار الآن — تأكد من السعر والتوفر عبر واتساب قبل الطلب.",
       orderRef: "رقم الطلب",
@@ -112,6 +114,14 @@
       relatedTitle: "منتجات مشابهة",
       closeLabel: "إغلاق",
       imagePreview: "معاينة صورة المنتج",
+      imageOf: "صورة {n} من {total}",
+      variantCountTwo: "متوفر بلونين",
+      variantCountFew: "متوفر بـ{n} ألوان",
+      variantCountMany: "متوفر بـ{n} لوناً",
+      variantPick: "اختر اللون",
+      infoEyebrow: "قبل أن تطلب",
+      infoTitle: "الشحن والضمان والإرجاع",
+      galleryTitle: "صور المنتج",
 
       offersEyebrow: "عروض هذا الشهر",
       offersTitle: "خصومات حقيقية على تشكيلة مختارة",
@@ -131,14 +141,16 @@
       cartItemRemove: "إزالة من السلة",
       cartIncrease: "زيادة الكمية",
       cartDecrease: "إنقاص الكمية",
+      cartDeliveryNote: "السعر لا يشمل أجور التوصيل — نتفق عليها معك على واتساب حسب مدينتك.",
       cartNote: "نؤكد لك الطلب ونتفق على التوصيل عبر واتساب.",
 
       orderIntro: "مرحباً Syriatech، أودّ طلب المنتجات التالية:",
       orderSingleIntro: "مرحباً Syriatech، أريد الاستفسار عن هذا المنتج:",
+      orderSingleOrderIntro: "مرحباً Syriatech، أريد طلب هذا المنتج:",
       orderTotal: "الإجمالي:",
       orderLink: "رابط المنتج:",
 
-      footerAbout: "متجر سوري مستقل لمنتجات التقنية الأصلية من وكلاء معتمدين.",
+      footerAbout: "متجر سوري للتقنية الأصلية — وكلاء موزّعون معتمدون للعلامات التي نبيعها.",
       footerProducts: "أقسام مختارة",
       footerHelp: "روابط سريعة",
       footerBrands: "العلامات التجارية",
@@ -176,7 +188,13 @@
         restore: "استعادة",
         editTitle: "تعديل المنتج",
         newTitle: "إضافة منتج جديد",
-        fieldName: "اسم المنتج",
+        fieldName: "اسم المنتج (بالعربية)",
+        fieldNameEn: "الاسم بالإنجليزية",
+        fieldNameTr: "الاسم بالتركية",
+        restoreBackup: "استعادة نسخة سابقة",
+        restoreBackupHint: "يحفظ المتجر نسخة بعد كل تعديل. الاستعادة تُرجع آخر نسخة محفوظة وتلغي ما بعدها.",
+        confirmRestoreBackup: "استعادة آخر نسخة احتياطية؟ التعديلات التي تمت بعدها ستضيع.",
+        backupRestored: "تمت استعادة النسخة السابقة ✓",
         fieldBrand: "العلامة التجارية",
         fieldCategory: "القسم",
         fieldPrice: "السعر الحالي ($)",
@@ -218,7 +236,7 @@
         confirmLeave: "لديك تغييرات غير محفوظة. هل تريد الخروج بدون حفظ؟",
         needName: "اكتب اسم المنتج",
         needBrand: "اكتب العلامة التجارية",
-        needPrice: "اكتب السعر الحالي",
+        needPrice: "السعر يجب أن يكون رقماً أكبر من صفر",
         settingsTitle: "معلومات التواصل",
         settingsHint: "تظهر في المتجر وتصل إليها طلبات الزبائن عبر واتساب.",
         fieldWhatsapp: "رقم واتساب",
@@ -253,6 +271,8 @@
         image_too_large: "حجم الصورة يجب أن يكون أقل من 10 ميغابايت",
         corrupt_state: "تعذّر الحفظ بسبب مشكلة في ملف بيانات المتجر. لم يتغيّر شيء في متجرك — تواصل مع الدعم الفني.",
         no_backup: "لا توجد نسخة احتياطية محفوظة",
+        edited_elsewhere: "غُيّر هذا المنتج من جهاز آخر. حدّث الصفحة لترى آخر نسخة قبل أن تحفظ.",
+        too_many_attempts: "محاولات دخول كثيرة. انتظر دقيقة ثم حاول مرة أخرى.",
         unknown_action: "عملية غير معروفة",
         server_error: "خطأ في الخادم، حاول مرة أخرى"
       },
@@ -308,6 +328,7 @@
       navBrands: "Brands",
       navCategories: "Categories",
       navOffers: "Deals",
+      navInfo: "Delivery & warranty",
       navContact: "Contact",
       navFavorites: "Saved",
 
@@ -370,6 +391,7 @@
       dealsTitle: "Deals and discounts",
       inStockOnly: "In stock only",
       filterStock: "Availability",
+      filterDevice: "Your device",
       detailsTitle: "Product details",
       staleNotice: "Prices could not be refreshed — please confirm price and availability on WhatsApp before ordering.",
       orderRef: "Order no.",
@@ -393,6 +415,14 @@
       relatedTitle: "You may also like",
       closeLabel: "Close",
       imagePreview: "Product image preview",
+      imageOf: "Image {n} of {total}",
+      variantCountTwo: "Available in 2 colours",
+      variantCountFew: "Available in {n} colours",
+      variantCountMany: "Available in {n} colours",
+      variantPick: "Choose a colour",
+      infoEyebrow: "Before you order",
+      infoTitle: "Delivery, warranty and returns",
+      galleryTitle: "Product photos",
 
       offersEyebrow: "THIS MONTH",
       offersTitle: "Real discounts on selected gear",
@@ -412,10 +442,12 @@
       cartItemRemove: "Remove item",
       cartIncrease: "Increase quantity",
       cartDecrease: "Decrease quantity",
+      cartDeliveryNote: "Delivery is not included — we agree it with you on WhatsApp based on your city.",
       cartNote: "You confirm the order and delivery on WhatsApp.",
 
       orderIntro: "Hello Syriatech, I would like to order:",
       orderSingleIntro: "Hello Syriatech, I have a question about this product:",
+      orderSingleOrderIntro: "Hello Syriatech, I would like to order this product:",
       orderTotal: "Total:",
       orderLink: "Product link:",
 
@@ -457,7 +489,13 @@
         restore: "Restore",
         editTitle: "Edit product",
         newTitle: "Add new product",
-        fieldName: "Product name",
+        fieldName: "Product name (Arabic)",
+        fieldNameEn: "Name in English",
+        fieldNameTr: "Name in Turkish",
+        restoreBackup: "Restore an earlier copy",
+        restoreBackupHint: "The shop saves a copy after every change. Restoring brings back the last saved copy and discards anything after it.",
+        confirmRestoreBackup: "Restore the most recent backup? Changes made since then will be lost.",
+        backupRestored: "The earlier copy was restored ✓",
         fieldBrand: "Brand",
         fieldCategory: "Category",
         fieldPrice: "Current price ($)",
@@ -479,7 +517,7 @@
         imageUploaded: "Photo uploaded ✓ press Save to attach it to the product.",
         imageRemoved: "Photo removed. Press Save to apply the change.",
         uploadFailed: "Photo was not uploaded: {error}",
-        unsupportedFile: "This image format is not supported. Use JPG or PNG",
+        unsupportedFile: "This image format is not supported. Use JPG, PNG or WEBP",
         imageTooBig: "The photo is too large (over 10MB)",
         save: "Save",
         saving: "Saving...",
@@ -499,7 +537,7 @@
         confirmLeave: "You have unsaved changes. Leave without saving?",
         needName: "Enter the product name",
         needBrand: "Enter the brand",
-        needPrice: "Enter the current price",
+        needPrice: "The price must be a number greater than zero",
         settingsTitle: "Contact details",
         settingsHint: "Shown in the store — customer orders arrive here on WhatsApp.",
         fieldWhatsapp: "WhatsApp number",
@@ -534,6 +572,8 @@
         image_too_large: "The image must be smaller than 10MB",
         corrupt_state: "The store data file is corrupt, nothing was saved",
         no_backup: "No saved backup was found",
+        edited_elsewhere: "This product was changed on another device. Reload the page to see the latest version before saving.",
+        too_many_attempts: "Too many sign-in attempts. Wait a minute and try again.",
         unknown_action: "Unknown action",
         server_error: "Server error, please try again"
       },
@@ -589,6 +629,7 @@
       navBrands: "Markalar",
       navCategories: "Kategoriler",
       navOffers: "Fırsatlar",
+      navInfo: "Teslimat ve garanti",
       navContact: "İletişim",
       navFavorites: "Favoriler",
 
@@ -651,6 +692,7 @@
       dealsTitle: "Fırsatlar ve indirimler",
       inStockOnly: "Sadece stokta olanlar",
       filterStock: "Stok durumu",
+      filterDevice: "Cihazınız",
       detailsTitle: "Ürün detayları",
       staleNotice: "Fiyatlar şu anda güncellenemedi — sipariş öncesi fiyat ve stok durumunu WhatsApp'tan doğrulayın.",
       orderRef: "Sipariş No",
@@ -674,6 +716,14 @@
       relatedTitle: "Bunlar da ilginizi çekebilir",
       closeLabel: "Kapat",
       imagePreview: "Ürün görseli önizlemesi",
+      imageOf: "Görsel {n} / {total}",
+      variantCountTwo: "2 renk seçeneği",
+      variantCountFew: "{n} renk seçeneği",
+      variantCountMany: "{n} renk seçeneği",
+      variantPick: "Renk seçin",
+      infoEyebrow: "Sipariş vermeden önce",
+      infoTitle: "Teslimat, garanti ve iade",
+      galleryTitle: "Ürün fotoğrafları",
 
       offersEyebrow: "BU AY",
       offersTitle: "Seçili ürünlerde gerçek indirim",
@@ -693,10 +743,12 @@
       cartItemRemove: "Ürünü kaldır",
       cartIncrease: "Adedi artır",
       cartDecrease: "Adedi azalt",
+      cartDeliveryNote: "Fiyata teslimat dahil değildir — şehrinize göre WhatsApp üzerinden kararlaştırırız.",
       cartNote: "Siparişi ve teslimatı WhatsApp'tan onaylarsınız.",
 
       orderIntro: "Merhaba Syriatech, sipariş vermek istiyorum:",
       orderSingleIntro: "Merhaba Syriatech, bu ürün hakkında bilgi almak istiyorum:",
+      orderSingleOrderIntro: "Merhaba Syriatech, bu ürünü sipariş etmek istiyorum:",
       orderTotal: "Toplam:",
       orderLink: "Ürün bağlantısı:",
 
@@ -738,7 +790,13 @@
         restore: "Geri al",
         editTitle: "Ürünü düzenle",
         newTitle: "Yeni ürün ekle",
-        fieldName: "Ürün adı",
+        fieldName: "Ürün adı (Arapça)",
+        fieldNameEn: "İngilizce adı",
+        fieldNameTr: "Türkçe adı",
+        restoreBackup: "Önceki bir kopyayı geri yükle",
+        restoreBackupHint: "Mağaza her değişiklikten sonra bir kopya saklar. Geri yükleme son kopyayı getirir ve sonrasındakileri siler.",
+        confirmRestoreBackup: "En son yedek geri yüklensin mi? Sonrasında yapılan değişiklikler kaybolur.",
+        backupRestored: "Önceki kopya geri yüklendi ✓",
         fieldBrand: "Marka",
         fieldCategory: "Kategori",
         fieldPrice: "Güncel fiyat ($)",
@@ -780,7 +838,7 @@
         confirmLeave: "Kaydedilmemiş değişiklikleriniz var. Kaydetmeden çıkılsın mı?",
         needName: "Ürün adını yazın",
         needBrand: "Markayı yazın",
-        needPrice: "Güncel fiyatı yazın",
+        needPrice: "Fiyat sıfırdan büyük bir sayı olmalıdır",
         settingsTitle: "İletişim bilgileri",
         settingsHint: "Bu bilgiler mağazada görünür; müşteri siparişleri WhatsApp'ta bu numaraya gelir.",
         fieldWhatsapp: "WhatsApp numarası",
@@ -815,6 +873,8 @@
         image_too_large: "Görsel 10 MB'tan küçük olmalı",
         corrupt_state: "Mağaza veri dosyası bozuk, hiçbir değişiklik kaydedilmedi",
         no_backup: "Kayıtlı yedek bulunamadı",
+        edited_elsewhere: "Bu ürün başka bir cihazda değiştirildi. Kaydetmeden önce sayfayı yenileyin.",
+        too_many_attempts: "Çok fazla giriş denemesi. Bir dakika bekleyip tekrar deneyin.",
         unknown_action: "Bilinmeyen işlem",
         server_error: "Sunucu hatası, lütfen tekrar deneyin"
       },
@@ -842,7 +902,7 @@
         accessories: "Cihazınızın performansını koruyan orijinal {brand} aksesuar."
       },
       brandTagline: {
-        Anker: "Şarj ve enerjide dünyanın 1 numarası",
+        Anker: "Şarj ve enerjide dünyanın en çok satanı",
         UGREEN: "Her cihaz için kablo ve hub",
         Baseus: "Akıllı aksesuar, uygun fiyat",
         soundcore: "Kulaklıklar ve hoparlörler",
@@ -869,6 +929,11 @@
     try { return normalize(localStorage.getItem(STORAGE_KEY)); } catch (e) { return ""; }
   }
   function detect() {
+    // A page may pin its own default — the admin panel is Arabic-first because
+    // it has one user, while the storefront follows the visitor's device.
+    const root = typeof document !== "undefined" && document.documentElement;
+    const pinned = root && root.dataset ? root.dataset.defaultLang : "";
+    if (pinned && normalize(pinned) && !stored()) return normalize(pinned);
     const list = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language]) || [];
     for (const item of list) { const code = normalize(item); if (code) return code; }
     return fallback;
@@ -929,6 +994,10 @@
       const info = meta();
       document.documentElement.lang = info.code;
       document.documentElement.dir = info.dir;
+      // A product page arrives with its own title and description already set
+      // by the server; replacing them with the home page's would undo it.
+      const onProduct = document.body && document.body.dataset && document.body.dataset.productId;
+      if (onProduct) return;
       const titleKey = document.documentElement.dataset.titleKey || "pageTitle";
       document.title = t(titleKey);
       const description = document.querySelector('meta[name="description"]');

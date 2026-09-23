@@ -23,6 +23,12 @@ export default async function handler(req, res) {
     const overrides = {};
     Object.entries(state.overrides && typeof state.overrides === "object" ? state.overrides : {})
       .forEach(([id, value]) => { if (!hidden.has(Number(id))) overrides[id] = value; });
+    // savedAt only exists to catch two devices overwriting each other. It is
+    // nobody else's business when the owner last touched a product.
+    const strip = p => { const { savedAt, ...rest } = p || {}; return rest; };
+    delete state.logins;
+    state.additions = (state.additions || []).map(strip);
+    state.overrides = Object.fromEntries(Object.entries(state.overrides || {}).map(([k, v]) => [k, strip(v)]));
     return res.status(200).json({
       overrides,
       // A product the owner deleted must not stay readable here.

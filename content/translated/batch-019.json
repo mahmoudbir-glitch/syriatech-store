@@ -1,0 +1,938 @@
+{
+  "30978": {
+    "en": {
+      "name": "Nano Power Bank (5K, MagGo, Slim)",
+      "summary": "Qi2-certified 5000mAh magnetic power bank just 0.3 inches thin, with up to 15W wireless and 20W USB-C charging.",
+      "bullets": [
+        {
+          "title": "Ultra-Slim Qi2 Magnetic Bank",
+          "text": "At just 0.3 inches thin, this Qi2-certified power bank delivers 5000mAh of reliable wireless charging. It is made for daily carry with an iPhone."
+        },
+        {
+          "title": "Enhanced Safety and Speed",
+          "text": "Qi2 and MagSafe compatibility deliver high-speed charging with up to 20W max USB-C output. Built-in temperature protection keeps every charge safe."
+        },
+        {
+          "title": "15W MagSafe Wireless Charging",
+          "text": "Get up to 15W of Qi2-certified fast wireless charging, enough to bring an iPhone 16 Pro to 25% in 42 minutes. Figures are based on internal lab testing and actual performance may vary."
+        },
+        {
+          "title": "Stays Below 104°F",
+          "text": "Graphene cooling, dual NTC chips and smart heat control keep the unit below 104°F, 14 degrees cooler than the industry standard. Built-in temperature protection makes handling safer."
+        },
+        {
+          "title": "What You Get",
+          "text": "Anker Nano Power Bank (5K, MagGo, Slim), a USB-C to USB-C charging cable, a welcome guide and a 12-month warranty."
+        }
+      ]
+    },
+    "ar": {
+      "name": "بطارية متنقلة Nano (5K، MagGo، نحيفة)",
+      "summary": "بطارية متنقلة مغناطيسية بسعة 5000mAh واعتماد Qi2، بسماكة 8 مم فقط وشحن لاسلكي حتى 15W.",
+      "bullets": [
+        {
+          "title": "بطارية مغناطيسية فائقة النحافة",
+          "text": "بسماكة 8 مم فقط، توفّر هذه البطارية المعتمدة من Qi2 سعة 5000mAh من الشحن اللاسلكي الموثوق. وهي مصمّمة للحمل اليومي مع هاتف iPhone."
+        },
+        {
+          "title": "أمان أعلى وسرعة أكبر",
+          "text": "يمنحك توافق Qi2 وMagSafe شحنًا فائق السرعة مع قدرة خرج USB-C تصل إلى 20W. وتحافظ الحماية الحرارية المدمجة على أمان كل عملية شحن."
+        },
+        {
+          "title": "شحن لاسلكي بقدرة 15W",
+          "text": "شحن لاسلكي سريع معتمد من Qi2 بقدرة تصل إلى 15W، يكفي لرفع شحن iPhone 16 Pro إلى 25% خلال 42 دقيقة. الأرقام مبنية على اختبارات مخبرية داخلية وقد يختلف الأداء الفعلي."
+        },
+        {
+          "title": "حرارة أقل بـ 8 درجات",
+          "text": "يعمل التبريد بالغرافين وشريحتا NTC والتحكّم الذكي بالحرارة على إبقاء الجهاز دون 40°م، أي أبرد بـ 8 درجات من المعيار السائد في السوق. وحماية حرارية مدمجة تجعل الاستخدام أكثر أمانًا."
+        },
+        {
+          "title": "محتويات العلبة",
+          "text": "بطارية Anker Nano Power Bank (5K، MagGo، نحيفة)، كابل شحن USB-C إلى USB-C، دليل استخدام، وضمان 12 شهرًا."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Nano Taşınabilir Şarj Cihazı (5K, MagGo, İnce)",
+      "summary": "Yalnızca 8 mm kalınlığında, Qi2 sertifikalı 5.000mAh manyetik taşınabilir şarj cihazı; 15W kablosuz ve 20W USB-C şarj.",
+      "bullets": [
+        {
+          "title": "Ultra İnce Qi2 Manyetik Şarj",
+          "text": "Yalnızca 8 mm kalınlığındaki bu Qi2 sertifikalı taşınabilir şarj cihazı 5.000mAh güvenilir kablosuz şarj sunar. Günlük taşıma ve iPhone kullanımı için tasarlandı."
+        },
+        {
+          "title": "Daha Güvenli ve Hızlı",
+          "text": "Qi2 ve MagSafe uyumluluğu, 20W'a varan USB-C çıkışıyla yüksek hızlı şarj sağlar. Dahili sıcaklık koruması her şarjı güvende tutar."
+        },
+        {
+          "title": "15W Kablosuz Şarj",
+          "text": "Qi2 sertifikalı 15W'a varan hızlı kablosuz şarj, iPhone 16 Pro'yu 42 dakikada %25'e ulaştırır. Veriler dahili laboratuvar testlerine dayanır; gerçek performans değişebilir."
+        },
+        {
+          "title": "40°C Altında Kalır",
+          "text": "Grafen soğutma, çift NTC çipi ve akıllı ısı kontrolü cihazı 40°C'nin altında tutar; bu, sektör standardından 8°C daha serindir. Sıcaklık koruması kullanımı daha güvenli kılar."
+        },
+        {
+          "title": "Kutu İçeriği",
+          "text": "Anker Nano Taşınabilir Şarj Cihazı (5K, MagGo, İnce), USB-C'den USB-C'ye şarj kablosu, kullanım kılavuzu ve 12 ay garanti."
+        }
+      ]
+    }
+  },
+  "31005": {
+    "en": {
+      "name": "Nano Charger (100W) with USB-C Cable",
+      "summary": "Remarkably compact 100W USB-C charger with cable that takes a 14-inch MacBook Pro to 50% in 27 minutes.",
+      "bullets": [
+        {
+          "title": "Supercharge with 100W Max",
+          "text": "This remarkably compact charger delivers up to 100W of power. It charges a 14-inch MacBook Pro to 50% in just 27 minutes."
+        },
+        {
+          "title": "Tiny but Powerful",
+          "text": "Charge on the move with a charger roughly the size of the latest AirPods Pro that still packs a serious power punch."
+        },
+        {
+          "title": "Locks In Place",
+          "text": "At just 4.23 oz, the Anker Nano Charger stays securely in place thanks to durable matte prongs, giving stability without the weight."
+        },
+        {
+          "title": "Superior Safety",
+          "text": "ActiveShield 2.0 intelligently monitors temperature 3 million times per day and adjusts power output to safeguard your connected devices."
+        },
+        {
+          "title": "What You Get",
+          "text": "Anker Nano Charger (100W) with a 6 ft USB-C cable, a welcome guide and a 12-month warranty."
+        }
+      ]
+    },
+    "ar": {
+      "name": "شاحن Nano (100W) مع كابل USB-C",
+      "summary": "شاحن USB-C مدمج بقدرة 100W مع كابل، يرفع شحن MacBook Pro مقاس 14 إنش إلى 50% خلال 27 دقيقة.",
+      "bullets": [
+        {
+          "title": "قدرة تصل إلى 100W",
+          "text": "يوفّر هذا الشاحن الصغير الحجم قدرة خرج تصل إلى 100W. ويشحن حاسب MacBook Pro مقاس 14 إنش إلى 50% خلال 27 دقيقة فقط."
+        },
+        {
+          "title": "صغير الحجم وقوي",
+          "text": "اشحن أجهزتك أينما كنت بشاحن يقارب حجم سمّاعات AirPods Pro الجديدة، ومع ذلك يقدّم قدرة كبيرة."
+        },
+        {
+          "title": "ثبات على المقبس",
+          "text": "بوزن 120 غ فقط، يبقى شاحن Anker Nano ثابتًا في المقبس بفضل أطرافه المتينة بتشطيب مطفأ، فتحصل على ثبات دون وزن إضافي."
+        },
+        {
+          "title": "حماية متقدمة",
+          "text": "تراقب تقنية ActiveShield 2.0 درجة الحرارة 3 ملايين مرة يوميًا وتضبط قدرة الخرج لحماية أجهزتك الموصولة."
+        },
+        {
+          "title": "محتويات العلبة",
+          "text": "شاحن Anker Nano (100W) مع كابل USB-C بطول 1.8 متر، دليل استخدام، وضمان 12 شهرًا."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Nano Şarj Cihazı (100W) USB-C Kablolu",
+      "summary": "Son derece kompakt 100W USB-C şarj cihazı ve kablosu; 14 inç MacBook Pro'yu 27 dakikada %50'ye çıkarır.",
+      "bullets": [
+        {
+          "title": "100W Maksimum Güç",
+          "text": "Son derece kompakt bu şarj cihazı 100W'a varan güç sunar. 14 inç MacBook Pro'yu yalnızca 27 dakikada %50'ye şarj eder."
+        },
+        {
+          "title": "Küçük Ama Güçlü",
+          "text": "Yeni AirPods Pro boyutlarındaki bu şarj cihazıyla hareket hâlindeyken bile yüksek güçle şarj edin."
+        },
+        {
+          "title": "Yerinde Sabit Durur",
+          "text": "Yalnızca 120 g ağırlığındaki Anker Nano Şarj Cihazı, dayanıklı mat uçları sayesinde prizde sağlam durur; ekstra ağırlık olmadan denge sağlar."
+        },
+        {
+          "title": "Üstün Güvenlik",
+          "text": "ActiveShield 2.0, sıcaklığı günde 3 milyon kez ölçer ve bağlı cihazlarınızı korumak için güç çıkışını ayarlar."
+        },
+        {
+          "title": "Kutu İçeriği",
+          "text": "Anker Nano Şarj Cihazı (100W), 1,8 m USB-C kablo, kullanım kılavuzu ve 12 ay garanti."
+        }
+      ]
+    }
+  },
+  "31024": {
+    "en": {
+      "name": "Zolo Power Bank (20K, 22.5W, Built-In USB-C Cable)",
+      "summary": "20000mAh battery with a built-in USB-C cable and 22.5W output, enough to recharge a phone up to four times.",
+      "bullets": [
+        {
+          "title": "Fast Charging Made Easy",
+          "text": "Get high-speed charging with 22.5W output from the USB-C port. It recharges your phone up to 4 times."
+        },
+        {
+          "title": "Easy to Carry",
+          "text": "A built-in strap and sleek, slim design make this power bank easy to take anywhere."
+        },
+        {
+          "title": "Power in Your Pocket",
+          "text": "A 20000mAh battery in a slim 14.07 × 7.17 × 2.77 cm body keeps phones and tablets running for days."
+        },
+        {
+          "title": "Trickle-Charging Mode",
+          "text": "Keeps low-power devices such as earbuds, smartwatches and fitness bands safely charged with steady, optimized power."
+        },
+        {
+          "title": "ActiveShield 3.0 Safety",
+          "text": "Over 6 million temperature checks every day keep your devices protected."
+        },
+        {
+          "title": "Built to Last",
+          "text": "The integrated bidirectional USB-C cable is tested to endure over 10000 bends, so it stands up to the rigours of everyday use."
+        },
+        {
+          "title": "What You Get",
+          "text": "Anker Zolo Power Bank (20K, 22.5W, Built-In USB-C Cable) and a welcome guide."
+        }
+      ]
+    },
+    "ar": {
+      "name": "بطارية متنقلة Zolo (20K، 22.5W، كابل USB-C مدمج)",
+      "summary": "سعة 20000mAh مع كابل USB-C مدمج وقدرة خرج 22.5W، تكفي لإعادة شحن هاتفك حتى 4 مرات.",
+      "bullets": [
+        {
+          "title": "شحن سريع وسهل",
+          "text": "قدرة خرج 22.5W من منفذ USB-C تمنحك شحنًا سريعًا، وتكفي لإعادة شحن هاتفك حتى 4 مرات."
+        },
+        {
+          "title": "سهلة الحمل",
+          "text": "حزام مدمج وتصميم نحيف وأنيق يجعلان حملها معك في كل مكان أمرًا سهلًا."
+        },
+        {
+          "title": "قدرة في جيبك",
+          "text": "بطارية بسعة 20000mAh ضمن هيكل نحيف بأبعاد 14.07 × 7.17 × 2.77 سم، تشغّل الهواتف والأجهزة اللوحية لأيام."
+        },
+        {
+          "title": "وضع الشحن الخفيف",
+          "text": "يحافظ على شحن الأجهزة منخفضة الاستهلاك مثل سمّاعات الأذن والساعات الذكية وأساور اللياقة بتيار ثابت ومضبوط."
+        },
+        {
+          "title": "حماية ActiveShield 3.0",
+          "text": "أكثر من 6 ملايين فحص لدرجة الحرارة يوميًا لحماية أجهزتك."
+        },
+        {
+          "title": "متانة تدوم",
+          "text": "الكابل USB-C المدمج ثنائي الاتجاه مختبَر على تحمّل أكثر من 10000 طيّة، فيصمد أمام الاستخدام اليومي."
+        },
+        {
+          "title": "محتويات العلبة",
+          "text": "بطارية Anker Zolo Power Bank (20K، 22.5W، كابل USB-C مدمج) ودليل استخدام."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Zolo Taşınabilir Şarj Cihazı (20K, 22,5W, Dahili USB-C Kablo)",
+      "summary": "Dahili USB-C kablolu 20.000mAh batarya ve 22,5W çıkış; telefonunuzu dört kata kadar şarj eder.",
+      "bullets": [
+        {
+          "title": "Kolay ve Hızlı Şarj",
+          "text": "USB-C bağlantı noktasından 22,5W çıkışla yüksek hızlı şarj alın. Telefonunuzu 4 kata kadar şarj eder."
+        },
+        {
+          "title": "Taşıması Kolay",
+          "text": "Dahili askısı ve ince, şık tasarımı sayesinde her yere rahatça götürebilirsiniz."
+        },
+        {
+          "title": "Cebinizde Güç",
+          "text": "14,07 × 7,17 × 2,77 cm ince gövdedeki 20.000mAh pil, telefon ve tabletlerinizi günlerce çalıştırır."
+        },
+        {
+          "title": "Düşük Akımlı Şarj Modu",
+          "text": "Kulaklık, akıllı saat ve fitness bilekliği gibi düşük güçlü cihazları dengeli ve optimize akımla güvenle şarj eder."
+        },
+        {
+          "title": "ActiveShield 3.0 Güvenliği",
+          "text": "Günde 6 milyondan fazla sıcaklık kontrolü cihazlarınızı korur."
+        },
+        {
+          "title": "Uzun Ömürlü Kablo",
+          "text": "Dahili çift yönlü USB-C kablo 10.000'den fazla bükülmeye karşı test edilmiştir ve günlük kullanıma dayanır."
+        },
+        {
+          "title": "Kutu İçeriği",
+          "text": "Anker Zolo Taşınabilir Şarj Cihazı (20K, 22,5W, Dahili USB-C Kablo) ve kullanım kılavuzu."
+        }
+      ]
+    }
+  },
+  "31061": {
+    "en": {
+      "name": "Nano Charger (35W, Built-In Retractable USB-C Cable)",
+      "summary": "35W dual USB-C charger with a built-in retractable cable that extends to 2.3 ft, small enough for any pocket.",
+      "bullets": [
+        {
+          "title": "Pocket-Friendly Charger",
+          "text": "A built-in retractable USB-C cable and lightweight body make this charger ideal on the go. It is compact enough to match the size of AirPods Pro (2nd generation)."
+        },
+        {
+          "title": "Smart 35W Dual USB-C",
+          "text": "Two USB-C ports with smart power distribution improve charging efficiency and remove the need to carry several chargers."
+        },
+        {
+          "title": "Pull for Power",
+          "text": "The patented Anker InstaCord cable is built to endure 20000 bends and 20000 retractions, and extends up to 2.3 ft. Figures are based on internal testing and actual performance may vary."
+        },
+        {
+          "title": "What You Get",
+          "text": "Anker Nano Charger (35W, Built-In Retractable USB-C Cable), a welcome guide and a 12-month warranty."
+        }
+      ]
+    },
+    "ar": {
+      "name": "شاحن Nano (35W، كابل USB-C مدمج قابل للسحب)",
+      "summary": "شاحن بمنفذَي USB-C وقدرة 35W مع كابل مدمج قابل للسحب حتى 70 سم، بحجم يناسب الجيب.",
+      "bullets": [
+        {
+          "title": "شاحن بحجم الجيب",
+          "text": "كابل USB-C مدمج قابل للسحب وجسم خفيف يجعلان هذا الشاحن مثاليًا أثناء التنقّل. وهو بحجم علبة AirPods Pro (الجيل الثاني) تقريبًا."
+        },
+        {
+          "title": "منفذا USB-C بقدرة 35W",
+          "text": "منفذا USB-C مع توزيع ذكي للطاقة يرفعان كفاءة الشحن ويغنيانك عن حمل أكثر من شاحن."
+        },
+        {
+          "title": "اسحب الكابل واشحن",
+          "text": "كابل Anker InstaCord الحاصل على براءة اختراع مصمَّم لتحمّل 20000 طيّة و20000 عملية سحب، ويمتد حتى 70 سم. الأرقام مبنية على اختبارات داخلية وقد يختلف الأداء الفعلي."
+        },
+        {
+          "title": "محتويات العلبة",
+          "text": "شاحن Anker Nano (35W، كابل USB-C مدمج قابل للسحب)، دليل استخدام، وضمان 12 شهرًا."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Nano Şarj Cihazı (35W, Dahili Geri Sarılabilir USB-C Kablo)",
+      "summary": "0,7 m uzayan dahili geri sarılabilir kablolu 35W çift USB-C şarj cihazı; her cebe sığacak kadar küçük.",
+      "bullets": [
+        {
+          "title": "Cebe Sığan Şarj Cihazı",
+          "text": "Dahili geri sarılabilir USB-C kablosu ve hafif gövdesiyle yolculukta idealdir. AirPods Pro (2. nesil) kutusu kadar kompakttır."
+        },
+        {
+          "title": "Akıllı 35W Çift USB-C",
+          "text": "Akıllı güç dağıtımlı iki USB-C bağlantı noktası şarj verimliliğini artırır ve birden fazla şarj cihazı taşıma ihtiyacını ortadan kaldırır."
+        },
+        {
+          "title": "Çek ve Şarj Et",
+          "text": "Patentli Anker InstaCord kablo 20.000 bükülme ve 20.000 geri sarmaya dayanacak şekilde üretilmiştir ve 0,7 m uzayabilir. Veriler dahili testlere dayanır; gerçek performans değişebilir."
+        },
+        {
+          "title": "Kutu İçeriği",
+          "text": "Anker Nano Şarj Cihazı (35W, Dahili Geri Sarılabilir USB-C Kablo), kullanım kılavuzu ve 12 ay garanti."
+        }
+      ]
+    }
+  },
+  "31084": {
+    "en": {
+      "name": "Prime Power Bank (20K, 220W)",
+      "summary": "20100mAh travel battery with 220W total output and 140W fast charging for laptops, phones and tablets.",
+      "bullets": [
+        {
+          "title": "220W Total Output Power",
+          "text": "Two USB-C ports and one USB-A port deliver 220W of total output, enough to keep a full office setup running."
+        },
+        {
+          "title": "Flight-Ready 20K Power",
+          "text": "Carry 20100mAh (72.36Wh) of TSA-approved portable power, enough for up to 4.2 days of video streaming on an iPhone 17 Pro Max."
+        },
+        {
+          "title": "140W Max Fast Charging",
+          "text": "Delivers up to 140W for fast laptop charging with a 5A cable, taking a 16-inch MacBook Pro (M4 Pro) to 50% in 28 minutes. Figures are based on internal lab testing and actual performance may vary."
+        },
+        {
+          "title": "100W Max Recharging",
+          "text": "Recharge the power bank to 50% in 25 minutes through the 100W max USB-C input."
+        },
+        {
+          "title": "What You Get",
+          "text": "Anker Prime Power Bank (20K, 220W), a 3.3 ft 240W USB-C to USB-C charging cable, a travel pouch, a welcome guide and a 12-month warranty."
+        }
+      ]
+    },
+    "ar": {
+      "name": "بطارية متنقلة Prime (20K، 220W)",
+      "summary": "بطارية سفر بسعة 20100mAh وقدرة خرج إجمالية 220W وشحن سريع حتى 140W للحواسيب المحمولة والهواتف.",
+      "bullets": [
+        {
+          "title": "خرج إجمالي 220W",
+          "text": "يوفّر منفذا USB-C ومنفذ USB-A قدرة خرج إجمالية تبلغ 220W، تكفي لتشغيل تجهيزات مكتبك كاملة."
+        },
+        {
+          "title": "طاقة 20K مناسبة للطيران",
+          "text": "احمل معك سعة 20100mAh (72.36Wh) معتمدة من TSA للحمل على متن الطائرة، تكفي لما يصل إلى 4.2 أيام من مشاهدة الفيديو على iPhone 17 Pro Max."
+        },
+        {
+          "title": "شحن سريع حتى 140W",
+          "text": "قدرة خرج تصل إلى 140W لشحن الحواسيب المحمولة بسرعة عند استخدام كابل 5A، فيصل MacBook Pro مقاس 16 إنش (M4 Pro) إلى 50% خلال 28 دقيقة. الأرقام مبنية على اختبارات مخبرية داخلية وقد يختلف الأداء الفعلي."
+        },
+        {
+          "title": "إعادة شحن بقدرة 100W",
+          "text": "أعد شحن البطارية إلى 50% خلال 25 دقيقة عبر مدخل USB-C بقدرة تصل إلى 100W."
+        },
+        {
+          "title": "محتويات العلبة",
+          "text": "بطارية Anker Prime Power Bank (20K، 220W)، كابل شحن USB-C إلى USB-C بطول 1 متر يدعم 240W، حقيبة سفر، دليل استخدام، وضمان 12 شهرًا."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Prime Taşınabilir Şarj Cihazı (20K, 220W)",
+      "summary": "220W toplam çıkışlı 20.100mAh taşınabilir şarj cihazı; dizüstü, telefon ve tabletler için 140W hızlı şarj.",
+      "bullets": [
+        {
+          "title": "220W Toplam Çıkış Gücü",
+          "text": "İki USB-C ve bir USB-A bağlantı noktası toplam 220W çıkış sunarak tüm ofis kurulumunuzu besler."
+        },
+        {
+          "title": "Uçuşa Uygun 20K Güç",
+          "text": "TSA onaylı 20.100mAh (72,36Wh) taşınabilir güç, iPhone 17 Pro Max'ta 4,2 güne varan video izleme sağlar."
+        },
+        {
+          "title": "140W Hızlı Şarj",
+          "text": "5A kablo ile 140W'a varan çıkış, 16 inç MacBook Pro'yu (M4 Pro) 28 dakikada %50'ye ulaştırır. Veriler dahili laboratuvar testlerine dayanır; gerçek performans değişebilir."
+        },
+        {
+          "title": "100W Hızlı Yeniden Şarj",
+          "text": "100W'a varan USB-C girişiyle taşınabilir şarj cihazını 25 dakikada %50'ye şarj edin."
+        },
+        {
+          "title": "Kutu İçeriği",
+          "text": "Anker Prime Taşınabilir Şarj Cihazı (20K, 220W), 1 m 240W USB-C'den USB-C'ye şarj kablosu, seyahat çantası, kullanım kılavuzu ve 12 ay garanti."
+        }
+      ]
+    }
+  },
+  "31111": {
+    "en": {
+      "name": "Prime Charger (160W, 3 Ports)",
+      "summary": "Three-port 160W USB-C charger the size of an AirPods Pro 3 case, with a full 140W available on a single port.",
+      "bullets": [
+        {
+          "title": "160W in AirPods Size",
+          "text": "With a power density of 1.35 W/cm³, this slim three-port USB-C charger delivers up to 160W. It is as compact as an AirPods Pro 3 case and easy to carry."
+        },
+        {
+          "title": "140W on a Single Port",
+          "text": "A single port delivers up to 140W without throttling, so laptops charge at full speed. Whichever port you use, a 16-inch MacBook Pro goes from 0% to 50% in 25 minutes."
+        },
+        {
+          "title": "One Charger for Three",
+          "text": "Smart power distribution with PowerIQ 5.0 charges a 16-inch MacBook Pro, an iPhone 16 Pro Max and an 11-inch iPad Pro at the same time, as efficiently as three original chargers (140W + 35W + 35W)."
+        },
+        {
+          "title": "Intelligent Charging Control",
+          "text": "With AnkerSense View you can monitor performance in real time on the display, switch modes instantly and activate individual modes from the app over Bluetooth."
+        }
+      ]
+    },
+    "ar": {
+      "name": "شاحن Prime (160W، 3 منافذ)",
+      "summary": "شاحن USB-C بثلاثة منافذ وقدرة 160W بحجم علبة AirPods Pro 3، مع 140W كاملة من منفذ واحد.",
+      "bullets": [
+        {
+          "title": "160W بحجم AirPods",
+          "text": "بكثافة طاقة تبلغ 1.35 واط/سم³، يقدّم هذا الشاحن النحيف بثلاثة منافذ USB-C قدرة تصل إلى 160W. وهو بحجم علبة AirPods Pro 3 وسهل الحمل."
+        },
+        {
+          "title": "140W من منفذ واحد",
+          "text": "يوفّر المنفذ الواحد قدرة تصل إلى 140W دون خفض، فتشحن الحواسيب المحمولة بأقصى سرعة. ومن أي منفذ تستخدمه، يصل MacBook Pro مقاس 16 إنش من 0% إلى 50% خلال 25 دقيقة."
+        },
+        {
+          "title": "شاحن واحد لثلاثة أجهزة",
+          "text": "يتيح التوزيع الذكي للطاقة عبر PowerIQ 5.0 شحن MacBook Pro مقاس 16 إنش وiPhone 16 Pro Max وiPad Pro مقاس 11 إنش في آنٍ واحد، وبالكفاءة نفسها التي تقدّمها ثلاثة شواحن أصلية (140W + 35W + 35W)."
+        },
+        {
+          "title": "تحكّم ذكي بالشحن",
+          "text": "مع AnkerSense View تتابع الأداء لحظة بلحظة على الشاشة، وتبدّل الأوضاع فورًا، وتفعّل أوضاعًا مخصصة من التطبيق عبر Bluetooth."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Prime Şarj Cihazı (160W, 3 Bağlantı Noktası)",
+      "summary": "AirPods Pro 3 kutusu boyutunda üç bağlantı noktalı 160W USB-C şarj cihazı; tek portta 140W güç.",
+      "bullets": [
+        {
+          "title": "AirPods Boyutunda 160W",
+          "text": "1,35 W/cm³ güç yoğunluğuna sahip bu ince, üç bağlantı noktalı USB-C şarj cihazı 160W'a varan güç sunar. AirPods Pro 3 kutusu kadar kompakt ve taşıması kolaydır."
+        },
+        {
+          "title": "Tek Portta 140W",
+          "text": "Tek bağlantı noktası kısıtlama olmadan 140W'a varan güç verir; dizüstü bilgisayarlar tam hızda şarj olur. Hangi portu kullanırsanız kullanın, 16 inç MacBook Pro 25 dakikada %0'dan %50'ye ulaşır."
+        },
+        {
+          "title": "Üç Cihaz İçin Tek Şarj",
+          "text": "PowerIQ 5.0 akıllı güç dağıtımı sayesinde 16 inç MacBook Pro, iPhone 16 Pro Max ve 11 inç iPad Pro'yu aynı anda, üç orijinal şarj cihazı kadar verimli şarj edersiniz (140W + 35W + 35W)."
+        },
+        {
+          "title": "Akıllı Şarj Kontrolü",
+          "text": "AnkerSense View ile performansı ekrandan gerçek zamanlı izleyebilir, modları anında değiştirebilir ve uygulamadan Bluetooth üzerinden özel modları etkinleştirebilirsiniz."
+        }
+      ]
+    }
+  },
+  "31268": {
+    "en": {
+      "name": "Baby Monitor C10",
+      "summary": "2K baby monitor with a 351° panoramic view, a 12-hour battery and a stable local feed that works without Wi-Fi.",
+      "bullets": [
+        {
+          "title": "2K HD Resolution",
+          "text": "Clear 2K resolution with a 351° panoramic view, 60° tilt and 4× zoom, plus a split screen to watch two babies at once, day or night. The camera must stay plugged in to operate."
+        },
+        {
+          "title": "Hybrid Monitoring",
+          "text": "A stable local feed works without Wi-Fi, while remote access keeps you connected when you are away, and viewing can be shared with up to 5 family members. Please update the app to version V5.6.0 or above before use."
+        },
+        {
+          "title": "12-Hour Battery Power",
+          "text": "A 5000mAh high-capacity battery gives up to 12 hours of screen time on a single charge. Battery life is based on internal lab testing and actual performance may vary."
+        },
+        {
+          "title": "Smart Detection and Alerts",
+          "text": "An advanced sensing system continually monitors your baby's kicks, rolls and cries along with room temperature and unusual noises. Customisable alert settings reduce distractions so you only get the updates that matter."
+        },
+        {
+          "title": "Privacy Protection",
+          "text": "A reliable local connection, one-tap Wi-Fi off in the app and RSA-1024 with AES-128 encryption keep monitoring private, with each recording stored locally. The SD card is not included and its slot sits underneath the camera lens."
+        }
+      ]
+    },
+    "ar": {
+      "name": "جهاز مراقبة الأطفال C10",
+      "summary": "جهاز مراقبة بدقة 2K وزاوية رؤية بانورامية 351° وبطارية تدوم 12 ساعة، ويعمل محليًا من دون Wi-Fi.",
+      "bullets": [
+        {
+          "title": "دقة تصوير 2K",
+          "text": "دقة 2K واضحة مع زاوية رؤية بانورامية 351° وإمالة 60° وتقريب 4×، إضافة إلى شاشة مقسومة لمتابعة طفلين في وقت واحد ليلًا ونهارًا. يجب أن تبقى الكاميرا موصولة بالكهرباء أثناء الاستخدام."
+        },
+        {
+          "title": "اتصال محلي وبعيد",
+          "text": "بث محلي مستقر يعمل من دون Wi-Fi، مع إمكانية الوصول عن بُعد عندما تكون خارج المنزل، وإمكانية مشاركة المشاهدة مع 5 أفراد من العائلة. يُرجى تحديث التطبيق إلى الإصدار V5.6.0 أو أحدث قبل الاستخدام."
+        },
+        {
+          "title": "بطارية تدوم 12 ساعة",
+          "text": "بطارية بسعة 5000mAh تمنحك حتى 12 ساعة من تشغيل الشاشة بشحنة واحدة. عمر البطارية مبني على اختبارات مخبرية داخلية وقد يختلف الأداء الفعلي."
+        },
+        {
+          "title": "تنبيهات ذكية فورية",
+          "text": "نظام استشعار متقدّم يتابع حركات طفلك وبكاءه ودرجة حرارة الغرفة والأصوات غير المعتادة باستمرار. وتتيح لك إعدادات التنبيه المخصصة تقليل الإزعاج وتلقّي ما يهمّك فقط."
+        },
+        {
+          "title": "خصوصية وأمان",
+          "text": "اتصال محلي موثوق، وإيقاف Wi-Fi بضغطة واحدة من التطبيق، وتشفير RSA-1024 وAES-128 تحافظ على خصوصية المراقبة، مع تخزين كل تسجيل محليًا. بطاقة SD غير مرفقة، ومكان تركيبها أسفل عدسة الكاميرا."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Bebek Monitörü C10",
+      "summary": "351° panoramik görüşlü 2K bebek monitörü; 12 saat pil ömrü ve Wi-Fi olmadan çalışan kararlı yerel bağlantı.",
+      "bullets": [
+        {
+          "title": "2K HD Çözünürlük",
+          "text": "351° panoramik görüş, 60° eğim ve 4× yakınlaştırma sunan net 2K çözünürlük; bölünmüş ekranla gece gündüz iki bebeği aynı anda izleyin. Kamera çalışması için prize takılı olmalıdır."
+        },
+        {
+          "title": "Hibrit İzleme",
+          "text": "Wi-Fi olmadan çalışan kararlı yerel bağlantı, uzaktayken de sorunsuz erişim sağlar ve görüntüleme 5 aile üyesine kadar paylaşılabilir. Kullanmadan önce uygulamayı V5.6.0 veya üzeri sürüme güncelleyin."
+        },
+        {
+          "title": "12 Saat Pil Ömrü",
+          "text": "5.000mAh yüksek kapasiteli pil, tek şarjla 12 saate varan ekran süresi sunar. Pil ömrü dahili laboratuvar testlerine dayanır; gerçek performans değişebilir."
+        },
+        {
+          "title": "Akıllı Algılama ve Uyarılar",
+          "text": "Gelişmiş algılama sistemi bebeğinizin hareketlerini, ağlamasını, oda sıcaklığını ve olağandışı sesleri sürekli izler. Özelleştirilebilir uyarı ayarları dikkat dağınıklığını azaltır, yalnızca önemli bildirimleri almanızı sağlar."
+        },
+        {
+          "title": "Gizlilik Koruması",
+          "text": "Güvenilir yerel bağlantı, uygulamadan tek dokunuşla Wi-Fi kapatma ve RSA-1024 ile AES-128 şifreleme izlemeyi gizli tutar; her kayıt yerel olarak saklanır. SD kart dâhil değildir ve yuvası kamera lensinin altındadır."
+        }
+      ]
+    }
+  },
+  "31290": {
+    "en": {
+      "name": "S3 Max Video Smart Lock",
+      "summary": "Smart door lock that opens by palm vein in 0.6 seconds, with a 2K video doorbell and an indoor screen for visitors.",
+      "bullets": [
+        {
+          "title": "Palm Vein Unlocking",
+          "text": "Forgery-proof palm vein recognition unlocks the door in just 0.6 seconds with 99.9% accuracy. Your palm vein data is stored securely on the device, so your privacy stays intact."
+        },
+        {
+          "title": "All-in-One Door Device",
+          "text": "A 2K HD camera with an f/1.6 lens stays sharp even at night, and a 150° head-to-toe video doorbell removes blind spots so you can check packages and visitors. Real-time alerts tell you who is at the door, whether you are at home or away."
+        },
+        {
+          "title": "Rear Lock Video Screen",
+          "text": "Check the front door at any time from the screen on the inside of the lock, with no smartphone app needed. Its simple, intuitive layout suits older people and children."
+        },
+        {
+          "title": "Dual Power Supply System",
+          "text": "A rechargeable battery runs the lock for up to 4 months of full functionality. An emergency set of 4 AAA batteries adds another month of essential functions during a power cut."
+        },
+        {
+          "title": "Matter and Apple Home",
+          "text": "Works with the eufy ecosystem and HomeBase 3 for advanced AI security, and supports Matter for secure connections with Apple Home, Google Home, Alexa and SmartThings. Camera streams are not available over Matter, and this lock is not compatible with HomeBase 2."
+        }
+      ]
+    },
+    "ar": {
+      "name": "قفل ذكي بكاميرا S3 Max",
+      "summary": "قفل باب ذكي يفتح ببصمة أوردة الكف خلال 0.6 ثانية، مع كاميرا 2K وشاشة داخلية لرؤية الزوّار.",
+      "bullets": [
+        {
+          "title": "فتح ببصمة أوردة الكف",
+          "text": "تقنية التعرّف على أوردة الكف غير القابلة للتزوير تفتح الباب خلال 0.6 ثانية فقط وبدقة 99.9%. وتُخزَّن بيانات كفّك داخل الجهاز نفسه حفاظًا على خصوصيتك."
+        },
+        {
+          "title": "جهاز متكامل للباب",
+          "text": "كاميرا 2K HD بعدسة f/1.6 تمنحك صورة واضحة حتى في الليل، وجرس باب بالفيديو بزاوية رؤية 150° من الرأس إلى القدم يلغي النقاط العمياء لمتابعة الطرود والزوّار. وتصلك تنبيهات فورية بمن يقف عند الباب سواء كنت في المنزل أو خارجه."
+        },
+        {
+          "title": "شاشة داخلية للقفل",
+          "text": "تابع باب المنزل في أي وقت من الشاشة الموجودة على الجهة الداخلية للقفل، دون الحاجة إلى تطبيق الهاتف. وتصميمها البسيط والواضح يناسب كبار السن والأطفال."
+        },
+        {
+          "title": "نظام طاقة مزدوج",
+          "text": "بطارية قابلة لإعادة الشحن تشغّل القفل بكامل وظائفه حتى 4 أشهر. وتضيف 4 بطاريات AAA للطوارئ شهرًا إضافيًا من الوظائف الأساسية عند انقطاع الكهرباء."
+        },
+        {
+          "title": "توافق Matter وApple Home",
+          "text": "يعمل مع منظومة eufy وHomeBase 3 لميزات الأمان الذكية المتقدمة، ويدعم Matter للاتصال الآمن مع Apple Home وGoogle Home وAlexa وSmartThings. لا يدعم Matter بث الكاميرا، وهذا القفل غير متوافق مع HomeBase 2."
+        }
+      ]
+    },
+    "tr": {
+      "name": "S3 Max Görüntülü Akıllı Kilit",
+      "summary": "Avuç içi damarıyla 0,6 saniyede açılan akıllı kapı kilidi; 2K görüntülü kapı zili ve iç taraftaki ekran.",
+      "bullets": [
+        {
+          "title": "Avuç İçi Damar Tanıma",
+          "text": "Taklit edilemeyen avuç içi damar tanıma, %99,9 doğrulukla kapıyı 0,6 saniyede açar. Damar verileriniz cihazda güvenle saklanır, gizliliğiniz korunur."
+        },
+        {
+          "title": "Hepsi Bir Arada Cihaz",
+          "text": "f/1.6 lensli 2K HD kamera geceleri bile net görüntü verir; 150° baştan ayağa görüş açılı görüntülü kapı zili kör noktaları ortadan kaldırır ve kargoları ya da ziyaretçileri kontrol etmenizi sağlar. Gerçek zamanlı bildirimlerle evde veya dışarıdayken kapıdaki kişiyi anında görürsünüz."
+        },
+        {
+          "title": "Arka Ekranlı Kilit",
+          "text": "Kilidin iç tarafındaki ekrandan kapıyı telefon uygulamasına gerek kalmadan istediğiniz an kontrol edin. Sade ve anlaşılır tasarımı yaşlılar ve çocuklar için idealdir."
+        },
+        {
+          "title": "Çift Güç Kaynağı",
+          "text": "Şarj edilebilir pil, kilidi 4 aya kadar tam işlevle çalıştırır. Acil durum için 4 adet AAA pil, elektrik kesintilerinde bir ay daha temel işlevleri sürdürür."
+        },
+        {
+          "title": "Matter ve Apple Home",
+          "text": "Gelişmiş yapay zekâ güvenliği için eufy ekosistemi ve HomeBase 3 ile çalışır; Matter desteğiyle Apple Home, Google Home, Alexa ve SmartThings'e güvenle bağlanır. Kamera yayınları Matter üzerinden desteklenmez ve bu kilit HomeBase 2 ile uyumlu değildir."
+        }
+      ]
+    }
+  },
+  "31435": {
+    "en": {
+      "name": "eufy Dirty Water Reservoir Filter For E Series",
+      "summary": "Replacement dirty-water tank filter for the eufy Robot Vacuum Omni E28 and E25, fitted in seconds without tools.",
+      "bullets": [
+        {
+          "title": "Compatible Models",
+          "text": "Fits the eufy Robot Vacuum Omni E28 and E25."
+        },
+        {
+          "title": "Efficient Filtration",
+          "text": "Filters the dirty water tank efficiently and extends the time you can clean between emptyings."
+        },
+        {
+          "title": "Replace Every 3 Months",
+          "text": "We recommend replacing the filter every 3 months, depending on how often you clean."
+        },
+        {
+          "title": "Easy to Install",
+          "text": "Fits into place with no tools needed."
+        },
+        {
+          "title": "Use Genuine Parts",
+          "text": "To protect your robot vacuum and extend its lifespan, use authentic eufy replacement parts."
+        }
+      ]
+    },
+    "ar": {
+      "name": "فلتر خزان المياه المتسخة eufy لسلسلة E",
+      "summary": "فلتر بديل لخزان المياه المتسخة في eufy Robot Vacuum Omni E28 وE25، يُركَّب خلال ثوانٍ ودون أدوات.",
+      "bullets": [
+        {
+          "title": "الأجهزة المتوافقة",
+          "text": "متوافق مع مكنسة eufy Robot Vacuum Omni E28 وE25."
+        },
+        {
+          "title": "ترشيح فعّال",
+          "text": "يرشّح خزان المياه المتسخة بكفاءة ويطيل مدة التنظيف قبل الحاجة إلى إفراغه."
+        },
+        {
+          "title": "استبدال كل 3 أشهر",
+          "text": "ننصح باستبدال الفلتر كل 3 أشهر بحسب كثافة استخدامك للمكنسة."
+        },
+        {
+          "title": "تركيب سهل",
+          "text": "يُركَّب في مكانه من دون الحاجة إلى أي أدوات."
+        },
+        {
+          "title": "قطع غيار أصلية",
+          "text": "لحماية مكنسة الروبوت وإطالة عمرها، استخدم قطع الغيار الأصلية من eufy."
+        }
+      ]
+    },
+    "tr": {
+      "name": "eufy E Serisi Kirli Su Haznesi Filtresi",
+      "summary": "eufy Robot Vacuum Omni E28 ve E25 için kirli su haznesi yedek filtresi; saniyeler içinde aletsiz takılır.",
+      "bullets": [
+        {
+          "title": "Uyumlu Modeller",
+          "text": "eufy Robot Vacuum Omni E28 ve E25 ile uyumludur."
+        },
+        {
+          "title": "Verimli Filtreleme",
+          "text": "Kirli su haznesini verimli şekilde filtreler ve boşaltmalar arasındaki kullanım süresini uzatır."
+        },
+        {
+          "title": "3 Ayda Bir Değiştirin",
+          "text": "Kullanım sıklığınıza bağlı olarak filtreyi 3 ayda bir değiştirmenizi öneririz."
+        },
+        {
+          "title": "Kolay Montaj",
+          "text": "Hiçbir alete gerek kalmadan yerine takılır."
+        },
+        {
+          "title": "Orijinal Parça Kullanın",
+          "text": "Robot süpürgenizi korumak ve ömrünü uzatmak için orijinal eufy yedek parçalarını kullanın."
+        }
+      ]
+    }
+  },
+  "31437": {
+    "en": {
+      "name": "eufy Replacement Filter for E Series",
+      "summary": "Washable, reusable replacement filter for the eufy Robot Vacuum Omni E28 and E25 that keeps exhaust air cleaner.",
+      "bullets": [
+        {
+          "title": "Compatible Models",
+          "text": "Fits the eufy Robot Vacuum Omni E28 and E25."
+        },
+        {
+          "title": "Durable and Eco-Friendly",
+          "text": "Washable and reusable once air dried, so it serves you for a long time."
+        },
+        {
+          "title": "High-Performance Filtration",
+          "text": "Captures most particles to keep the air cleaner."
+        },
+        {
+          "title": "Tool-Free Installation",
+          "text": "Replace the filter on your robot vacuum without any tools, which keeps maintenance simple."
+        },
+        {
+          "title": "Use Genuine Parts",
+          "text": "To protect your robot vacuum and extend its lifespan, use authentic eufy replacement parts."
+        }
+      ]
+    },
+    "ar": {
+      "name": "فلتر بديل eufy لسلسلة E",
+      "summary": "فلتر بديل قابل للغسل وإعادة الاستخدام لمكنسة eufy Robot Vacuum Omni E28 وE25، ليخرج الهواء أنظف.",
+      "bullets": [
+        {
+          "title": "الأجهزة المتوافقة",
+          "text": "متوافق مع مكنسة eufy Robot Vacuum Omni E28 وE25."
+        },
+        {
+          "title": "متين وصديق للبيئة",
+          "text": "قابل للغسل وإعادة الاستخدام بعد تجفيفه بالهواء، فيخدمك مدة طويلة."
+        },
+        {
+          "title": "ترشيح عالي الأداء",
+          "text": "يحتجز معظم الجزيئات ليبقى الهواء أنظف."
+        },
+        {
+          "title": "تركيب دون أدوات",
+          "text": "استبدل الفلتر في مكنسة الروبوت من دون أي أدوات، فتبقى الصيانة بسيطة."
+        },
+        {
+          "title": "قطع غيار أصلية",
+          "text": "لحماية مكنسة الروبوت وإطالة عمرها، استخدم قطع الغيار الأصلية من eufy."
+        }
+      ]
+    },
+    "tr": {
+      "name": "eufy E Serisi Yedek Filtre",
+      "summary": "eufy Robot Vacuum Omni E28 ve E25 için yıkanabilir, yeniden kullanılabilir yedek filtre; havayı temiz tutar.",
+      "bullets": [
+        {
+          "title": "Uyumlu Modeller",
+          "text": "eufy Robot Vacuum Omni E28 ve E25 ile uyumludur."
+        },
+        {
+          "title": "Dayanıklı ve Çevreci",
+          "text": "Yıkanabilir ve havada kuruduktan sonra tekrar kullanılabilir; uzun süre hizmet eder."
+        },
+        {
+          "title": "Yüksek Performanslı Filtreleme",
+          "text": "Parçacıkların büyük bölümünü tutarak havayı daha temiz tutar."
+        },
+        {
+          "title": "Aletsiz Montaj",
+          "text": "Robot süpürgenizin filtresini alete gerek kalmadan değiştirin; bakım böylece çok kolaylaşır."
+        },
+        {
+          "title": "Orijinal Parça Kullanın",
+          "text": "Robot süpürgenizi korumak ve ömrünü uzatmak için orijinal eufy yedek parçalarını kullanın."
+        }
+      ]
+    }
+  },
+  "31483": {
+    "en": {
+      "name": "PITAKA Aramid Fiber Magnetic Power Bank (Black/Grey-Twill)",
+      "summary": "Qi2-certified 5000mAh magnetic power bank in woven aramid fiber, just 0.35 inches thick and 4.16 oz.",
+      "bullets": [
+        {
+          "title": "Thinner and Lighter",
+          "text": "At just 0.35 inches thick and 4.16 oz, it fits easily in your pocket without adding bulk. No extra bag needed, just grab it and go."
+        },
+        {
+          "title": "A Second Phone Battery",
+          "text": "A 5000mAh battery keeps your phone going through a full day of basic use. Qi2 certified, it delivers up to 15W of fast wireless charging while you are on the move."
+        },
+        {
+          "title": "Better Looks and Feel",
+          "text": "Woven aramid fiber and a refined matte metallic finish give a pleasant feel in the palm of your hand. It creates a harmonious look with a phone case in the same color."
+        },
+        {
+          "title": "Secure Magnetic Hold",
+          "text": "Strong built-in magnets attach the power bank to the back of your phone and hold it firmly in place while you move."
+        }
+      ]
+    },
+    "ar": {
+      "name": "بطارية متنقلة مغناطيسية PITAKA من ألياف الأراميد (Black/Grey-Twill)",
+      "summary": "بطارية مغناطيسية بسعة 5000mAh من ألياف الأراميد المنسوجة، معتمدة من Qi2 بسماكة 9 مم ووزن 118 غ.",
+      "bullets": [
+        {
+          "title": "أنحف وأخف",
+          "text": "بسماكة 9 مم ووزن 118 غ فقط، تدخل جيبك دون أن تشكّل عبئًا. لا حاجة إلى حقيبة إضافية، احملها وانطلق."
+        },
+        {
+          "title": "بطارية ثانية لهاتفك",
+          "text": "سعة 5000mAh تكفي هاتفك ليوم كامل من الاستخدام الاعتيادي. وبفضل اعتماد Qi2، توفّر شحنًا لاسلكيًا سريعًا يصل إلى 15W أثناء تنقّلك."
+        },
+        {
+          "title": "مظهر وملمس مميّزان",
+          "text": "نسيج ألياف الأراميد مع تشطيب معدني مطفأ يمنحان ملمسًا مريحًا في راحة اليد. وتنسجم مع غطاء الهاتف باللون نفسه لمظهر متناغم."
+        },
+        {
+          "title": "تثبيت مغناطيسي قوي",
+          "text": "مغانط داخلية قوية تلتصق بظهر هاتفك وتبقي البطارية ثابتة أثناء الحركة."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Aramid Fiber Manyetik Taşınabilir Şarj Cihazı (Black/Grey-Twill)",
+      "summary": "Dokuma aramid fiberden Qi2 sertifikalı 5.000mAh manyetik taşınabilir şarj cihazı; 9 mm kalınlık, 118 g ağırlık.",
+      "bullets": [
+        {
+          "title": "Daha İnce, Daha Hafif",
+          "text": "Yalnızca 9 mm kalınlığı ve 118 g ağırlığıyla cebinizde yer kaplamaz. Ekstra çantaya gerek yok, alın ve yola çıkın."
+        },
+        {
+          "title": "Telefonunuzun İkinci Pili",
+          "text": "5.000mAh pil, telefonunuzu normal kullanımda bir gün boyunca çalıştırır. Qi2 sertifikalıdır ve hareket hâlinde 15W'a varan hızlı kablosuz şarj sunar."
+        },
+        {
+          "title": "Daha Şık, Daha Konforlu",
+          "text": "Dokuma aramid fiber ve rafine mat metalik yüzey elinizde hoş bir his bırakır. Aynı renkteki telefon kılıfıyla uyumlu, bütünlüklü bir görünüm oluşturur."
+        },
+        {
+          "title": "Güçlü Manyetik Tutuş",
+          "text": "Dahili güçlü mıknatıslar şarj cihazını telefonunuzun arkasına sabitler ve hareket hâlinde yerinde tutar."
+        }
+      ]
+    }
+  },
+  "31496": {
+    "en": {
+      "name": "PITAKA Aramid Fiber Magnetic Power Bank (Sunset)",
+      "summary": "Qi2-certified 5000mAh magnetic power bank in woven aramid fiber, just 0.35 inches thick and 4.16 oz.",
+      "bullets": [
+        {
+          "title": "Thinner and Lighter",
+          "text": "At just 0.35 inches thick and 4.16 oz, it fits easily in your pocket without adding bulk. No extra bag needed, just grab it and go."
+        },
+        {
+          "title": "A Second Phone Battery",
+          "text": "A 5000mAh battery keeps your phone going through a full day of basic use. Qi2 certified, it delivers up to 15W of fast wireless charging while you are on the move."
+        },
+        {
+          "title": "Better Looks and Feel",
+          "text": "Woven aramid fiber and a refined matte metallic finish give a pleasant feel in the palm of your hand. It creates a harmonious look with a phone case in the same color."
+        },
+        {
+          "title": "Secure Magnetic Hold",
+          "text": "Strong built-in magnets attach the power bank to the back of your phone and hold it firmly in place while you move."
+        }
+      ]
+    },
+    "ar": {
+      "name": "بطارية متنقلة مغناطيسية PITAKA من ألياف الأراميد (Sunset)",
+      "summary": "بطارية مغناطيسية بسعة 5000mAh من ألياف الأراميد المنسوجة، معتمدة من Qi2 بسماكة 9 مم ووزن 118 غ.",
+      "bullets": [
+        {
+          "title": "أنحف وأخف",
+          "text": "بسماكة 9 مم ووزن 118 غ فقط، تدخل جيبك دون أن تشكّل عبئًا. لا حاجة إلى حقيبة إضافية، احملها وانطلق."
+        },
+        {
+          "title": "بطارية ثانية لهاتفك",
+          "text": "سعة 5000mAh تكفي هاتفك ليوم كامل من الاستخدام الاعتيادي. وبفضل اعتماد Qi2، توفّر شحنًا لاسلكيًا سريعًا يصل إلى 15W أثناء تنقّلك."
+        },
+        {
+          "title": "مظهر وملمس مميّزان",
+          "text": "نسيج ألياف الأراميد مع تشطيب معدني مطفأ يمنحان ملمسًا مريحًا في راحة اليد. وتنسجم مع غطاء الهاتف باللون نفسه لمظهر متناغم."
+        },
+        {
+          "title": "تثبيت مغناطيسي قوي",
+          "text": "مغانط داخلية قوية تلتصق بظهر هاتفك وتبقي البطارية ثابتة أثناء الحركة."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Aramid Fiber Manyetik Taşınabilir Şarj Cihazı (Sunset)",
+      "summary": "Dokuma aramid fiberden Qi2 sertifikalı 5.000mAh manyetik taşınabilir şarj cihazı; 9 mm kalınlık, 118 g ağırlık.",
+      "bullets": [
+        {
+          "title": "Daha İnce, Daha Hafif",
+          "text": "Yalnızca 9 mm kalınlığı ve 118 g ağırlığıyla cebinizde yer kaplamaz. Ekstra çantaya gerek yok, alın ve yola çıkın."
+        },
+        {
+          "title": "Telefonunuzun İkinci Pili",
+          "text": "5.000mAh pil, telefonunuzu normal kullanımda bir gün boyunca çalıştırır. Qi2 sertifikalıdır ve hareket hâlinde 15W'a varan hızlı kablosuz şarj sunar."
+        },
+        {
+          "title": "Daha Şık, Daha Konforlu",
+          "text": "Dokuma aramid fiber ve rafine mat metalik yüzey elinizde hoş bir his bırakır. Aynı renkteki telefon kılıfıyla uyumlu, bütünlüklü bir görünüm oluşturur."
+        },
+        {
+          "title": "Güçlü Manyetik Tutuş",
+          "text": "Dahili güçlü mıknatıslar şarj cihazını telefonunuzun arkasına sabitler ve hareket hâlinde yerinde tutar."
+        }
+      ]
+    }
+  }
+}

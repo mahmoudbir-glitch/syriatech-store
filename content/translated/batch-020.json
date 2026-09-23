@@ -1,0 +1,938 @@
+{
+  "31502": {
+    "en": {
+      "name": "PITAKA Aramid Fiber Magnetic Power Bank (Moonrise)",
+      "summary": "Qi2-certified 5000mAh magnetic power bank in woven aramid fiber, just 0.35 inches thick and 4.16 oz.",
+      "bullets": [
+        {
+          "title": "Thinner and Lighter",
+          "text": "At just 0.35 inches thick and 4.16 oz, it fits easily in your pocket without adding bulk. No extra bag needed, just grab it and go."
+        },
+        {
+          "title": "A Second Phone Battery",
+          "text": "A 5000mAh battery keeps your phone going through a full day of basic use. Qi2 certified, it delivers up to 15W of fast wireless charging while you are on the move."
+        },
+        {
+          "title": "Better Looks and Feel",
+          "text": "Woven aramid fiber and a refined matte metallic finish give a pleasant feel in the palm of your hand. It creates a harmonious look with a phone case in the same color."
+        },
+        {
+          "title": "Secure Magnetic Hold",
+          "text": "Strong built-in magnets attach the power bank to the back of your phone and hold it firmly in place while you move."
+        }
+      ]
+    },
+    "ar": {
+      "name": "بطارية متنقلة مغناطيسية PITAKA من ألياف الأراميد (Moonrise)",
+      "summary": "بطارية مغناطيسية بسعة 5000mAh من ألياف الأراميد المنسوجة، معتمدة من Qi2 بسماكة 9 مم ووزن 118 غ.",
+      "bullets": [
+        {
+          "title": "أنحف وأخف",
+          "text": "بسماكة 9 مم ووزن 118 غ فقط، تدخل جيبك دون أن تشكّل عبئًا. لا حاجة إلى حقيبة إضافية، احملها وانطلق."
+        },
+        {
+          "title": "بطارية ثانية لهاتفك",
+          "text": "سعة 5000mAh تكفي هاتفك ليوم كامل من الاستخدام الاعتيادي. وبفضل اعتماد Qi2، توفّر شحنًا لاسلكيًا سريعًا يصل إلى 15W أثناء تنقّلك."
+        },
+        {
+          "title": "مظهر وملمس مميّزان",
+          "text": "نسيج ألياف الأراميد مع تشطيب معدني مطفأ يمنحان ملمسًا مريحًا في راحة اليد. وتنسجم مع غطاء الهاتف باللون نفسه لمظهر متناغم."
+        },
+        {
+          "title": "تثبيت مغناطيسي قوي",
+          "text": "مغانط داخلية قوية تلتصق بظهر هاتفك وتبقي البطارية ثابتة أثناء الحركة."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Aramid Fiber Manyetik Taşınabilir Şarj Cihazı (Moonrise)",
+      "summary": "Dokuma aramid fiberden Qi2 sertifikalı 5.000mAh manyetik taşınabilir şarj cihazı; 9 mm kalınlık, 118 g ağırlık.",
+      "bullets": [
+        {
+          "title": "Daha İnce, Daha Hafif",
+          "text": "Yalnızca 9 mm kalınlığı ve 118 g ağırlığıyla cebinizde yer kaplamaz. Ekstra çantaya gerek yok, alın ve yola çıkın."
+        },
+        {
+          "title": "Telefonunuzun İkinci Pili",
+          "text": "5.000mAh pil, telefonunuzu normal kullanımda bir gün boyunca çalıştırır. Qi2 sertifikalıdır ve hareket hâlinde 15W'a varan hızlı kablosuz şarj sunar."
+        },
+        {
+          "title": "Daha Şık, Daha Konforlu",
+          "text": "Dokuma aramid fiber ve rafine mat metalik yüzey elinizde hoş bir his bırakır. Aynı renkteki telefon kılıfıyla uyumlu, bütünlüklü bir görünüm oluşturur."
+        },
+        {
+          "title": "Güçlü Manyetik Tutuş",
+          "text": "Dahili güçlü mıknatıslar şarj cihazını telefonunuzun arkasına sabitler ve hareket hâlinde yerinde tutar."
+        }
+      ]
+    }
+  },
+  "31508": {
+    "en": {
+      "name": "PITAKA Galaxy S26 Ultra Edge Case (Over The Horizon) (Aaron Button)",
+      "summary": "Ultra-thin woven aramid fiber case for the Galaxy S26 Ultra with a programmable Aaron Button for instant shortcuts.",
+      "bullets": [
+        {
+          "title": "Premium Aramid Weave",
+          "text": "Finely woven aramid fiber gives the case a silky, luxurious texture you can feel. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Paper Thin and Light",
+          "text": "A sleek, barely-there profile preserves your phone's original feel. Ideal for minimalists who want elegant protection without added weight."
+        },
+        {
+          "title": "Instant Physical Shortcuts",
+          "text": "Skip the menus and trigger your most-used commands with satisfying physical feedback. The Aaron Button gives you a direct path to whatever matters most in your day."
+        },
+        {
+          "title": "Exclusive App Control",
+          "text": "No learning curve and no complex system setup. Clone and apply your custom functions instantly, and manage every Aaron Button configuration in one place."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Edge لهاتف Galaxy S26 Ultra (Over The Horizon) (Aaron Button)",
+      "summary": "غطاء فائق النحافة من ألياف الأراميد لهاتف Galaxy S26 Ultra، مع زر Aaron قابل للبرمجة لاختصارات فورية.",
+      "bullets": [
+        {
+          "title": "نسيج أراميد فاخر",
+          "text": "ألياف أراميد منسوجة بدقة تمنح الغطاء ملمسًا حريريًا فاخرًا تشعر به. خفيف ومتين، وممتع في اليد في كل مرة."
+        },
+        {
+          "title": "رقيق وخفيف جدًا",
+          "text": "هيكل أنيق شبه غير محسوس يحافظ على إحساس هاتفك الأصلي. مثالي لمن يريد حماية أنيقة دون وزن إضافي."
+        },
+        {
+          "title": "اختصارات فورية بضغطة",
+          "text": "تجاوز القوائم وشغّل أوامرك الأكثر استخدامًا بضغطة ملموسة ومريحة. يمنحك زر Aaron طريقًا مباشرًا إلى ما يهمّك في يومك."
+        },
+        {
+          "title": "تحكّم عبر تطبيق خاص",
+          "text": "لا حاجة إلى تعلّم أو إعدادات معقّدة. انسخ وظائفك المخصصة وطبّقها فورًا، وأدر جميع إعدادات زر Aaron من مكان واحد."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Galaxy S26 Ultra Edge Kılıf (Over The Horizon) (Aaron Button)",
+      "summary": "Galaxy S26 Ultra için ultra ince dokuma aramid fiber kılıf; anında kısayollar için programlanabilir Aaron Button.",
+      "bullets": [
+        {
+          "title": "Premium Aramid Dokuma",
+          "text": "İnce dokunmuş aramid fiber, kılıfa ipeksi ve lüks bir doku kazandırır. Hem hafif hem güçlüdür; her seferinde elinizde tutmak keyif verir."
+        },
+        {
+          "title": "Kâğıt İnceliğinde ve Hafif",
+          "text": "Neredeyse hissedilmeyen zarif profili telefonunuzun orijinal dokusunu korur. Ekstra ağırlık istemeyen minimalistler için ideal."
+        },
+        {
+          "title": "Anında Fiziksel Kısayollar",
+          "text": "Menülerle uğraşmadan en çok kullandığınız komutları tatmin edici fiziksel geri bildirimle çalıştırın. Aaron Button, gününüzde önemli olan her şeye doğrudan erişim sağlar."
+        },
+        {
+          "title": "Özel Uygulama Kontrolü",
+          "text": "Öğrenme süreci ve karmaşık kurulum yok. Özel işlevlerinizi anında kopyalayıp uygulayın, tüm Aaron Button ayarlarını tek yerden yönetin."
+        }
+      ]
+    }
+  },
+  "31519": {
+    "en": {
+      "name": "PITAKA Galaxy S26 Ultra Edge Case (Milky Way Galaxy) (Aaron Button)",
+      "summary": "Ultra-thin woven aramid fiber case for the Galaxy S26 Ultra with a programmable Aaron Button for instant shortcuts.",
+      "bullets": [
+        {
+          "title": "Premium Aramid Weave",
+          "text": "Finely woven aramid fiber gives the case a silky, luxurious texture you can feel. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Paper Thin and Light",
+          "text": "A sleek, barely-there profile preserves your phone's original feel. Ideal for minimalists who want elegant protection without added weight."
+        },
+        {
+          "title": "Instant Physical Shortcuts",
+          "text": "Skip the menus and trigger your most-used commands with satisfying physical feedback. The Aaron Button gives you a direct path to whatever matters most in your day."
+        },
+        {
+          "title": "Exclusive App Control",
+          "text": "No learning curve and no complex system setup. Clone and apply your custom functions instantly, and manage every Aaron Button configuration in one place."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Edge لهاتف Galaxy S26 Ultra (Milky Way Galaxy) (Aaron Button)",
+      "summary": "غطاء فائق النحافة من ألياف الأراميد لهاتف Galaxy S26 Ultra، مع زر Aaron قابل للبرمجة لاختصارات فورية.",
+      "bullets": [
+        {
+          "title": "نسيج أراميد فاخر",
+          "text": "ألياف أراميد منسوجة بدقة تمنح الغطاء ملمسًا حريريًا فاخرًا تشعر به. خفيف ومتين، وممتع في اليد في كل مرة."
+        },
+        {
+          "title": "رقيق وخفيف جدًا",
+          "text": "هيكل أنيق شبه غير محسوس يحافظ على إحساس هاتفك الأصلي. مثالي لمن يريد حماية أنيقة دون وزن إضافي."
+        },
+        {
+          "title": "اختصارات فورية بضغطة",
+          "text": "تجاوز القوائم وشغّل أوامرك الأكثر استخدامًا بضغطة ملموسة ومريحة. يمنحك زر Aaron طريقًا مباشرًا إلى ما يهمّك في يومك."
+        },
+        {
+          "title": "تحكّم عبر تطبيق خاص",
+          "text": "لا حاجة إلى تعلّم أو إعدادات معقّدة. انسخ وظائفك المخصصة وطبّقها فورًا، وأدر جميع إعدادات زر Aaron من مكان واحد."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Galaxy S26 Ultra Edge Kılıf (Milky Way Galaxy) (Aaron Button)",
+      "summary": "Galaxy S26 Ultra için ultra ince dokuma aramid fiber kılıf; anında kısayollar için programlanabilir Aaron Button.",
+      "bullets": [
+        {
+          "title": "Premium Aramid Dokuma",
+          "text": "İnce dokunmuş aramid fiber, kılıfa ipeksi ve lüks bir doku kazandırır. Hem hafif hem güçlüdür; her seferinde elinizde tutmak keyif verir."
+        },
+        {
+          "title": "Kâğıt İnceliğinde ve Hafif",
+          "text": "Neredeyse hissedilmeyen zarif profili telefonunuzun orijinal dokusunu korur. Ekstra ağırlık istemeyen minimalistler için ideal."
+        },
+        {
+          "title": "Anında Fiziksel Kısayollar",
+          "text": "Menülerle uğraşmadan en çok kullandığınız komutları tatmin edici fiziksel geri bildirimle çalıştırın. Aaron Button, gününüzde önemli olan her şeye doğrudan erişim sağlar."
+        },
+        {
+          "title": "Özel Uygulama Kontrolü",
+          "text": "Öğrenme süreci ve karmaşık kurulum yok. Özel işlevlerinizi anında kopyalayıp uygulayın, tüm Aaron Button ayarlarını tek yerden yönetin."
+        }
+      ]
+    }
+  },
+  "31543": {
+    "en": {
+      "name": "PITAKA AirPods Pro 3 Aramid Fiber Case (Golden Glint)",
+      "summary": "Leather and aramid fiber case for AirPods Pro 3 with N52 magnets for MagSafe alignment and wireless charging.",
+      "bullets": [
+        {
+          "title": "Dual-Touch Elegance",
+          "text": "A supple leather top meets a precision-woven aramid fiber base, pairing smooth comfort with texture and strength. Two materials, one singular elegance."
+        },
+        {
+          "title": "Tough Outside, Gentle Inside",
+          "text": "It combines eco-friendly PU leather with an aramid fiber exterior and a textured finish. An anti-scratch silicone module sits inside."
+        },
+        {
+          "title": "Snap On and Charge",
+          "text": "Built-in precision N52 magnets give perfect MagSafe alignment and effortless wireless charging for your AirPods Pro 3."
+        },
+        {
+          "title": "One Pattern, All Devices",
+          "text": "Inspired by PITAKA's classic texture for a unified design. The color complements your phone case for a refined and distinctive look."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA من ألياف الأراميد لسمّاعات AirPods Pro 3 (Golden Glint)",
+      "summary": "غطاء لسمّاعات AirPods Pro 3 من الجلد وألياف الأراميد، بمغناطيس N52 لمحاذاة MagSafe والشحن اللاسلكي.",
+      "bullets": [
+        {
+          "title": "أناقة بملمسين",
+          "text": "جلد ناعم في الأعلى وقاعدة من ألياف الأراميد المنسوجة بدقة، فتجتمع الراحة مع الملمس والمتانة. مادتان بأناقة واحدة."
+        },
+        {
+          "title": "متانة خارجية ونعومة داخلية",
+          "text": "يجمع جلد PU الصديق للبيئة مع سطح خارجي من ألياف الأراميد وتشطيب محبّب الملمس. وفي الداخل وحدة سيليكون مقاومة للخدوش."
+        },
+        {
+          "title": "ثبّته واشحن",
+          "text": "مغانط N52 دقيقة مدمجة توفّر محاذاة MagSafe مثالية وشحنًا لاسلكيًا سهلًا لسمّاعات AirPods Pro 3."
+        },
+        {
+          "title": "نمط واحد لكل أجهزتك",
+          "text": "مستوحى من نسيج PITAKA الكلاسيكي بتصميم موحّد. ويتناغم لونه مع غطاء هاتفك ليمنحك مظهرًا أنيقًا ومميزًا."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA AirPods Pro 3 Aramid Fiber Kılıf (Golden Glint)",
+      "summary": "AirPods Pro 3 için deri ve aramid fiber kılıf; MagSafe hizalaması ve kablosuz şarj için N52 mıknatıslar.",
+      "bullets": [
+        {
+          "title": "Çift Dokulu Zarafet",
+          "text": "Üstte yumuşak deri, altta hassas dokunmuş aramid fiber; konfor ile doku ve dayanıklılık bir arada. İki malzeme, tek bir zarafet."
+        },
+        {
+          "title": "Dışı Sağlam, İçi Yumuşak",
+          "text": "Çevre dostu PU deriyi aramid fiber dış yüzey ve dokulu kaplamayla birleştirir. İçinde çizilmeye karşı dayanıklı silikon modül bulunur."
+        },
+        {
+          "title": "Tak ve Şarj Et",
+          "text": "Dahili hassas N52 mıknatıslar kusursuz MagSafe hizalaması ve AirPods Pro 3 için zahmetsiz kablosuz şarj sağlar."
+        },
+        {
+          "title": "Tek Desen, Tüm Cihazlar",
+          "text": "PITAKA'nın klasik dokusundan esinlenen bütünlüklü bir tasarım. Rengi telefon kılıfınızla uyumludur ve şık, ayırt edici bir görünüm sunar."
+        }
+      ]
+    }
+  },
+  "31552": {
+    "en": {
+      "name": "PITAKA AirPods Pro 3 Aramid Fiber Case (Lucid Blue)",
+      "summary": "Leather and aramid fiber case for AirPods Pro 3 with N52 magnets for MagSafe alignment and wireless charging.",
+      "bullets": [
+        {
+          "title": "Dual-Touch Elegance",
+          "text": "A supple leather top meets a precision-woven aramid fiber base, pairing smooth comfort with texture and strength. Two materials, one singular elegance."
+        },
+        {
+          "title": "Tough Outside, Gentle Inside",
+          "text": "It combines eco-friendly PU leather with an aramid fiber exterior and a textured finish. An anti-scratch silicone module sits inside."
+        },
+        {
+          "title": "Snap On and Charge",
+          "text": "Built-in precision N52 magnets give perfect MagSafe alignment and effortless wireless charging for your AirPods Pro 3."
+        },
+        {
+          "title": "One Pattern, All Devices",
+          "text": "Inspired by PITAKA's classic texture for a unified design. The color complements your phone case for a refined and distinctive look."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA من ألياف الأراميد لسمّاعات AirPods Pro 3 (Lucid Blue)",
+      "summary": "غطاء لسمّاعات AirPods Pro 3 من الجلد وألياف الأراميد، بمغناطيس N52 لمحاذاة MagSafe والشحن اللاسلكي.",
+      "bullets": [
+        {
+          "title": "أناقة بملمسين",
+          "text": "جلد ناعم في الأعلى وقاعدة من ألياف الأراميد المنسوجة بدقة، فتجتمع الراحة مع الملمس والمتانة. مادتان بأناقة واحدة."
+        },
+        {
+          "title": "متانة خارجية ونعومة داخلية",
+          "text": "يجمع جلد PU الصديق للبيئة مع سطح خارجي من ألياف الأراميد وتشطيب محبّب الملمس. وفي الداخل وحدة سيليكون مقاومة للخدوش."
+        },
+        {
+          "title": "ثبّته واشحن",
+          "text": "مغانط N52 دقيقة مدمجة توفّر محاذاة MagSafe مثالية وشحنًا لاسلكيًا سهلًا لسمّاعات AirPods Pro 3."
+        },
+        {
+          "title": "نمط واحد لكل أجهزتك",
+          "text": "مستوحى من نسيج PITAKA الكلاسيكي بتصميم موحّد. ويتناغم لونه مع غطاء هاتفك ليمنحك مظهرًا أنيقًا ومميزًا."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA AirPods Pro 3 Aramid Fiber Kılıf (Lucid Blue)",
+      "summary": "AirPods Pro 3 için deri ve aramid fiber kılıf; MagSafe hizalaması ve kablosuz şarj için N52 mıknatıslar.",
+      "bullets": [
+        {
+          "title": "Çift Dokulu Zarafet",
+          "text": "Üstte yumuşak deri, altta hassas dokunmuş aramid fiber; konfor ile doku ve dayanıklılık bir arada. İki malzeme, tek bir zarafet."
+        },
+        {
+          "title": "Dışı Sağlam, İçi Yumuşak",
+          "text": "Çevre dostu PU deriyi aramid fiber dış yüzey ve dokulu kaplamayla birleştirir. İçinde çizilmeye karşı dayanıklı silikon modül bulunur."
+        },
+        {
+          "title": "Tak ve Şarj Et",
+          "text": "Dahili hassas N52 mıknatıslar kusursuz MagSafe hizalaması ve AirPods Pro 3 için zahmetsiz kablosuz şarj sağlar."
+        },
+        {
+          "title": "Tek Desen, Tüm Cihazlar",
+          "text": "PITAKA'nın klasik dokusundan esinlenen bütünlüklü bir tasarım. Rengi telefon kılıfınızla uyumludur ve şık, ayırt edici bir görünüm sunar."
+        }
+      ]
+    }
+  },
+  "32096": {
+    "en": {
+      "name": "Zolo Power Bank (10K, 22.5W, Built-In USB-C Cable)",
+      "summary": "Slim 10000mAh battery with a built-in USB-C cable and 22.5W output, enough for two full phone charges.",
+      "bullets": [
+        {
+          "title": "Fast Charging Made Easy",
+          "text": "Get high-speed charging with 22.5W output from the USB-C port. It recharges your phone up to 2 times."
+        },
+        {
+          "title": "Easy to Carry",
+          "text": "A built-in strap and sleek, slim design make this power bank easy to take anywhere."
+        },
+        {
+          "title": "Power in Your Pocket",
+          "text": "A 10000mAh battery in a slim 14.07 × 7.17 × 1.54 cm body keeps phones and tablets running for days."
+        },
+        {
+          "title": "Trickle-Charging Mode",
+          "text": "Keeps low-power devices such as earbuds, smartwatches and fitness bands safely charged with steady, optimized power."
+        },
+        {
+          "title": "Pass-Through Charging",
+          "text": "While the power bank is being recharged, your device keeps charging too, so you stay connected and ready."
+        },
+        {
+          "title": "ActiveShield 3.0 Safety",
+          "text": "Over 6 million temperature checks every day keep your devices protected."
+        },
+        {
+          "title": "Built to Last",
+          "text": "The integrated bidirectional USB-C cable is tested to endure over 10000 bends, so it stands up to the rigours of everyday use."
+        },
+        {
+          "title": "What You Get",
+          "text": "Anker Zolo Power Bank (10K, 22.5W, Built-In USB-C Cable) and a welcome guide."
+        }
+      ]
+    },
+    "ar": {
+      "name": "بطارية متنقلة Zolo (10K، 22.5W، كابل USB-C مدمج)",
+      "summary": "بطارية نحيفة بسعة 10000mAh مع كابل USB-C مدمج وقدرة خرج 22.5W، تكفي لشحن هاتفك مرتين كاملتين.",
+      "bullets": [
+        {
+          "title": "شحن سريع وسهل",
+          "text": "قدرة خرج 22.5W من منفذ USB-C تمنحك شحنًا سريعًا، وتكفي لإعادة شحن هاتفك حتى مرتين."
+        },
+        {
+          "title": "سهلة الحمل",
+          "text": "حزام مدمج وتصميم نحيف وأنيق يجعلان حملها معك في كل مكان أمرًا سهلًا."
+        },
+        {
+          "title": "قدرة في جيبك",
+          "text": "بطارية بسعة 10000mAh ضمن هيكل نحيف بأبعاد 14.07 × 7.17 × 1.54 سم، تشغّل الهواتف والأجهزة اللوحية لأيام."
+        },
+        {
+          "title": "وضع الشحن الخفيف",
+          "text": "يحافظ على شحن الأجهزة منخفضة الاستهلاك مثل سمّاعات الأذن والساعات الذكية وأساور اللياقة بتيار ثابت ومضبوط."
+        },
+        {
+          "title": "الشحن أثناء إعادة الشحن",
+          "text": "بينما تُشحن البطارية المتنقلة، يستمر جهازك بالشحن أيضًا لتبقى متصلًا وجاهزًا دائمًا."
+        },
+        {
+          "title": "حماية ActiveShield 3.0",
+          "text": "أكثر من 6 ملايين فحص لدرجة الحرارة يوميًا لحماية أجهزتك."
+        },
+        {
+          "title": "متانة تدوم",
+          "text": "الكابل USB-C المدمج ثنائي الاتجاه مختبَر على تحمّل أكثر من 10000 طيّة، فيصمد أمام الاستخدام اليومي."
+        },
+        {
+          "title": "محتويات العلبة",
+          "text": "بطارية Anker Zolo Power Bank (10K، 22.5W، كابل USB-C مدمج) ودليل استخدام."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Zolo Taşınabilir Şarj Cihazı (10K, 22,5W, Dahili USB-C Kablo)",
+      "summary": "Dahili USB-C kablolu ince 10.000mAh batarya ve 22,5W çıkış; telefonunuzu iki kez tam şarj eder.",
+      "bullets": [
+        {
+          "title": "Kolay ve Hızlı Şarj",
+          "text": "USB-C bağlantı noktasından 22,5W çıkışla yüksek hızlı şarj alın. Telefonunuzu 2 kata kadar şarj eder."
+        },
+        {
+          "title": "Taşıması Kolay",
+          "text": "Dahili askısı ve ince, şık tasarımı sayesinde her yere rahatça götürebilirsiniz."
+        },
+        {
+          "title": "Cebinizde Güç",
+          "text": "14,07 × 7,17 × 1,54 cm ince gövdedeki 10.000mAh pil, telefon ve tabletlerinizi günlerce çalıştırır."
+        },
+        {
+          "title": "Düşük Akımlı Şarj Modu",
+          "text": "Kulaklık, akıllı saat ve fitness bilekliği gibi düşük güçlü cihazları dengeli ve optimize akımla güvenle şarj eder."
+        },
+        {
+          "title": "Geçişli Şarj",
+          "text": "Taşınabilir şarj cihazı şarj olurken cihazınız da şarj olmaya devam eder; bağlantınız hiç kesilmez."
+        },
+        {
+          "title": "ActiveShield 3.0 Güvenliği",
+          "text": "Günde 6 milyondan fazla sıcaklık kontrolü cihazlarınızı korur."
+        },
+        {
+          "title": "Uzun Ömürlü Kablo",
+          "text": "Dahili çift yönlü USB-C kablo 10.000'den fazla bükülmeye karşı test edilmiştir ve günlük kullanıma dayanır."
+        },
+        {
+          "title": "Kutu İçeriği",
+          "text": "Anker Zolo Taşınabilir Şarj Cihazı (10K, 22,5W, Dahili USB-C Kablo) ve kullanım kılavuzu."
+        }
+      ]
+    }
+  },
+  "32856": {
+    "en": {
+      "name": "eufy Side Brushes For S/E Series (2 Pairs)",
+      "summary": "Two pairs of genuine eufy side brushes for the Omni S1 Pro, S1, E28 and E25, fitted in seconds without tools.",
+      "bullets": [
+        {
+          "title": "Perfect Fit",
+          "text": "Compatible with the eufy Omni S1 Pro, S1, E28 and E25."
+        },
+        {
+          "title": "Replace Every 3 Months",
+          "text": "To keep your robot vacuum operating at peak efficiency, replace the brush every 3 months, depending on how often you clean."
+        },
+        {
+          "title": "Soft Flexible Bristles",
+          "text": "Soft, flexible bristles clean effectively without damaging floors or furniture."
+        },
+        {
+          "title": "No Tools Required",
+          "text": "Swapping the side brush is quick and needs no tools."
+        },
+        {
+          "title": "Use Genuine Parts",
+          "text": "For the best performance and a longer robot vacuum lifespan, use authentic eufy replacement parts."
+        }
+      ]
+    },
+    "ar": {
+      "name": "فرش جانبية eufy لسلسلة S/E (زوجان)",
+      "summary": "زوجان من الفرش الجانبية الأصلية من eufy لمكانس Omni S1 Pro وS1 وE28 وE25، تُركَّب بثوانٍ ودون أدوات.",
+      "bullets": [
+        {
+          "title": "توافق تام",
+          "text": "متوافقة مع مكانس eufy Omni S1 Pro وS1 وE28 وE25."
+        },
+        {
+          "title": "استبدال كل 3 أشهر",
+          "text": "للحفاظ على أداء مكنسة الروبوت في أفضل مستوياته، استبدل الفرشاة كل 3 أشهر بحسب كثافة الاستخدام."
+        },
+        {
+          "title": "شعيرات ناعمة ومرنة",
+          "text": "شعيرات ناعمة ومرنة تنظّف بفعالية دون أن تُلحق ضررًا بالأرضيات أو الأثاث."
+        },
+        {
+          "title": "من دون أدوات",
+          "text": "تبديل الفرشاة الجانبية سريع ولا يحتاج إلى أي أداة."
+        },
+        {
+          "title": "قطع غيار أصلية",
+          "text": "للحصول على أفضل أداء وإطالة عمر مكنسة الروبوت، استخدم قطع الغيار الأصلية من eufy."
+        }
+      ]
+    },
+    "tr": {
+      "name": "eufy S/E Serisi Yan Fırçalar (2 Çift)",
+      "summary": "eufy Omni S1 Pro, S1, E28 ve E25 için iki çift orijinal yan fırça; saniyeler içinde aletsiz takılır.",
+      "bullets": [
+        {
+          "title": "Tam Uyum",
+          "text": "eufy Omni S1 Pro, S1, E28 ve E25 ile uyumludur."
+        },
+        {
+          "title": "3 Ayda Bir Değiştirin",
+          "text": "Robot süpürgenizin en yüksek verimle çalışması için fırçayı kullanım sıklığınıza göre 3 ayda bir değiştirin."
+        },
+        {
+          "title": "Yumuşak Esnek Kıllar",
+          "text": "Yumuşak ve esnek kıllar zeminlere ya da mobilyalara zarar vermeden etkili temizlik sağlar."
+        },
+        {
+          "title": "Alete Gerek Yok",
+          "text": "Yan fırçanın değişimi hızlıdır ve hiçbir alet gerektirmez."
+        },
+        {
+          "title": "Orijinal Parça Kullanın",
+          "text": "En iyi performans ve daha uzun robot süpürge ömrü için orijinal eufy yedek parçalarını kullanın."
+        }
+      ]
+    }
+  },
+  "32864": {
+    "en": {
+      "name": "eufy Dust Bag For S Series (3 Pieces)",
+      "summary": "Three sealed 2.5L dust bags for the eufy Omni S1 Pro and S1, giving up to 68 days without manual emptying.",
+      "bullets": [
+        {
+          "title": "Compatible Models",
+          "text": "Fits the eufy Omni S1 Pro and S1."
+        },
+        {
+          "title": "Less Maintenance",
+          "text": "Each dust bag holds 2.5L and allows up to 68 days of use without manual emptying."
+        },
+        {
+          "title": "Sealed Design",
+          "text": "A sealed design with a higher opening position captures fine dust for thorough, mess-free collection."
+        },
+        {
+          "title": "Disposable Bags",
+          "text": "Replace the bag as soon as it is full to keep performance at its best."
+        },
+        {
+          "title": "Authentic eufy Accessory",
+          "text": "Choose genuine official accessories to extend the lifespan of your machine."
+        }
+      ]
+    },
+    "ar": {
+      "name": "أكياس غبار eufy لسلسلة S (3 قطع)",
+      "summary": "ثلاثة أكياس غبار محكمة بسعة 2.5 لتر لمكانس eufy Omni S1 Pro وS1، حتى 68 يومًا دون إفراغ يدوي.",
+      "bullets": [
+        {
+          "title": "الأجهزة المتوافقة",
+          "text": "متوافقة مع مكانس eufy Omni S1 Pro وS1."
+        },
+        {
+          "title": "صيانة أقل",
+          "text": "يتّسع كل كيس لـ 2.5 لتر ويتيح ما يصل إلى 68 يومًا من الاستخدام دون إفراغ يدوي."
+        },
+        {
+          "title": "تصميم محكم الإغلاق",
+          "text": "تصميم محكم بفتحة مرتفعة يحتجز الغبار الناعم ويجمعه بالكامل دون أي تطاير."
+        },
+        {
+          "title": "أكياس تُستعمل مرة واحدة",
+          "text": "استبدل الكيس فور امتلائه للحفاظ على أفضل أداء."
+        },
+        {
+          "title": "ملحق eufy أصلي",
+          "text": "اختر الملحقات الأصلية لإطالة عمر جهازك."
+        }
+      ]
+    },
+    "tr": {
+      "name": "eufy S Serisi Toz Torbası (3 Adet)",
+      "summary": "eufy Omni S1 Pro ve S1 için üç adet sızdırmaz 2,5L toz torbası; 68 güne kadar elle boşaltma gerektirmez.",
+      "bullets": [
+        {
+          "title": "Uyumlu Modeller",
+          "text": "eufy Omni S1 Pro ve S1 ile uyumludur."
+        },
+        {
+          "title": "Daha Az Bakım",
+          "text": "Her toz torbası 2,5L kapasitelidir ve 68 güne kadar elle boşaltmadan kullanım sağlar."
+        },
+        {
+          "title": "Sızdırmaz Tasarım",
+          "text": "Yüksek ağız konumlu sızdırmaz tasarım ince tozu da yakalar ve dağılmadan eksiksiz toplar."
+        },
+        {
+          "title": "Tek Kullanımlık Torba",
+          "text": "Torba dolar dolmaz değiştirin; performans en üst düzeyde kalsın."
+        },
+        {
+          "title": "Orijinal eufy Aksesuarı",
+          "text": "Cihazınızın ömrünü uzatmak için orijinal aksesuarları tercih edin."
+        }
+      ]
+    }
+  },
+  "32937": {
+    "en": {
+      "name": "eufy Dust Bags For Omni C20 (6 Pieces)",
+      "summary": "Six sealed dust bags for the eufy Clean C20 with Self-Empty Station that keep airflow steady even when full.",
+      "bullets": [
+        {
+          "title": "Compatible Model",
+          "text": "Fits the eufy Clean C20 with Self-Empty Station."
+        },
+        {
+          "title": "Sealed Tightly",
+          "text": "A strong seal stops dust, dirt and debris escaping once they are collected."
+        },
+        {
+          "title": "Never Clogs",
+          "text": "The bags do not clog and keep airflow steady even when full."
+        },
+        {
+          "title": "Easy to Replace",
+          "text": "Take out the full dust bag and slide a new one in using the guiding slots."
+        },
+        {
+          "title": "Authentic eufy Accessory",
+          "text": "Choose genuine official accessories to extend the lifespan of your vacuum cleaner."
+        }
+      ]
+    },
+    "ar": {
+      "name": "أكياس غبار eufy لمكنسة Omni C20 (6 قطع)",
+      "summary": "ستة أكياس غبار محكمة لمكنسة eufy Clean C20 بمحطة التفريغ الذاتي، تحافظ على تدفّق الهواء حتى عند امتلائها.",
+      "bullets": [
+        {
+          "title": "الجهاز المتوافق",
+          "text": "متوافقة مع مكنسة eufy Clean C20 المزوّدة بمحطة التفريغ الذاتي."
+        },
+        {
+          "title": "إغلاق محكم",
+          "text": "إحكام قوي يمنع تسرّب الغبار والأوساخ والفتات بعد جمعها."
+        },
+        {
+          "title": "لا تنسدّ أبدًا",
+          "text": "لا تنسدّ الأكياس وتحافظ على تدفّق الهواء حتى عندما تمتلئ."
+        },
+        {
+          "title": "تبديل سهل",
+          "text": "أخرج الكيس الممتلئ وركّب كيسًا جديدًا عبر المجاري الموجّهة."
+        },
+        {
+          "title": "ملحق eufy أصلي",
+          "text": "اختر الملحقات الأصلية لإطالة عمر مكنستك."
+        }
+      ]
+    },
+    "tr": {
+      "name": "eufy Omni C20 Toz Torbaları (6 Adet)",
+      "summary": "Kendi kendini boşaltan istasyonlu eufy Clean C20 için altı sızdırmaz toz torbası; dolu olsa da hava akışı sabit kalır.",
+      "bullets": [
+        {
+          "title": "Uyumlu Model",
+          "text": "Kendi kendini boşaltan istasyonlu eufy Clean C20 ile uyumludur."
+        },
+        {
+          "title": "Sıkıca Kapanır",
+          "text": "Güçlü sızdırmazlık, toplanan toz, kir ve kalıntıların dışarı çıkmasını önler."
+        },
+        {
+          "title": "Asla Tıkanmaz",
+          "text": "Torbalar tıkanmaz ve dolu olduklarında bile hava akışını korur."
+        },
+        {
+          "title": "Kolay Değişim",
+          "text": "Dolan torbayı çıkarın, kılavuz yuvalarını kullanarak yenisini yerleştirin."
+        },
+        {
+          "title": "Orijinal eufy Aksesuarı",
+          "text": "Süpürgenizin ömrünü uzatmak için orijinal aksesuarları tercih edin."
+        }
+      ]
+    }
+  },
+  "33223": {
+    "en": {
+      "name": "eufy RoboVac Replacement Battery (2 Pieces)",
+      "summary": "Two genuine 2600mAh Li-ion batteries for eufy RoboVac models, giving up to 100 minutes of cleaning per charge.",
+      "bullets": [
+        {
+          "title": "Two 2600mAh Batteries",
+          "text": "Includes two 2600mAh Li-ion batteries that clean for up to 100 minutes per charge."
+        },
+        {
+          "title": "Peak Cleaning Performance",
+          "text": "Keeps your RoboVac working at its peak cleaning performance."
+        },
+        {
+          "title": "Easy to Install",
+          "text": "Fits into place quickly and easily."
+        },
+        {
+          "title": "Genuine eufy Accessory",
+          "text": "An authentic eufy RoboVac accessory."
+        },
+        {
+          "title": "Compatible Models",
+          "text": "Compatible with 11, 11C, 11S, 11S PLUS, 11S MAX, 12, 15C, 15C MAX, 15T, 25C, 25C Max, 30, 30C, 30C MAX, 35C, G10 Hybrid, G15, G20, G20 Hybrid, G30, G30 Edge, G30 Hybrid, G30 Verge, G30 SES, G30 Hybrid SES, G32 Pro, G35, G35+, G40, G40 Hybrid, G40+, G40 Hybrid+, R450, R500, X9 Pro and X10 Pro Omni."
+        }
+      ]
+    },
+    "ar": {
+      "name": "بطارية بديلة eufy RoboVac (قطعتان)",
+      "summary": "بطاريتان ليثيوم أصليتان بسعة 2600mAh لمكانس eufy RoboVac، حتى 100 دقيقة تنظيف بالشحنة الواحدة.",
+      "bullets": [
+        {
+          "title": "بطاريتان بسعة 2600mAh",
+          "text": "تتضمّن العبوة بطاريتَي ليثيوم أيون بسعة 2600mAh لكل منهما، وتنظّف حتى 100 دقيقة بالشحنة الواحدة."
+        },
+        {
+          "title": "أداء تنظيف كامل",
+          "text": "تحافظ على أداء مكنسة RoboVac في أفضل مستوياته."
+        },
+        {
+          "title": "تركيب سهل",
+          "text": "تُركَّب في مكانها بسرعة وسهولة."
+        },
+        {
+          "title": "ملحق eufy أصلي",
+          "text": "ملحق أصلي من eufy لمكانس RoboVac."
+        },
+        {
+          "title": "الموديلات المتوافقة",
+          "text": "متوافقة مع 11 و11C و11S و11S PLUS و11S MAX و12 و15C و15C MAX و15T و25C و25C Max و30 و30C و30C MAX و35C وG10 Hybrid وG15 وG20 وG20 Hybrid وG30 وG30 Edge وG30 Hybrid وG30 Verge وG30 SES وG30 Hybrid SES وG32 Pro وG35 وG35+ وG40 وG40 Hybrid وG40+ وG40 Hybrid+ وR450 وR500 وX9 Pro وX10 Pro Omni."
+        }
+      ]
+    },
+    "tr": {
+      "name": "eufy RoboVac Yedek Batarya (2 Adet)",
+      "summary": "eufy RoboVac modelleri için iki orijinal 2.600mAh Li-ion batarya; şarj başına 100 dakikaya varan temizlik.",
+      "bullets": [
+        {
+          "title": "İki Adet 2.600mAh Batarya",
+          "text": "Şarj başına 100 dakikaya kadar temizlik yapan iki adet 2.600mAh Li-ion batarya içerir."
+        },
+        {
+          "title": "En İyi Temizlik Performansı",
+          "text": "RoboVac cihazınızın temizlik performansını en üst düzeyde tutar."
+        },
+        {
+          "title": "Kolay Montaj",
+          "text": "Hızlı ve kolay şekilde yerine takılır."
+        },
+        {
+          "title": "Orijinal eufy Aksesuarı",
+          "text": "Orijinal bir eufy RoboVac aksesuarıdır."
+        },
+        {
+          "title": "Uyumlu Modeller",
+          "text": "11, 11C, 11S, 11S PLUS, 11S MAX, 12, 15C, 15C MAX, 15T, 25C, 25C Max, 30, 30C, 30C MAX, 35C, G10 Hybrid, G15, G20, G20 Hybrid, G30, G30 Edge, G30 Hybrid, G30 Verge, G30 SES, G30 Hybrid SES, G32 Pro, G35, G35+, G40, G40 Hybrid, G40+, G40 Hybrid+, R450, R500, X9 Pro ve X10 Pro Omni ile uyumludur."
+        }
+      ]
+    }
+  },
+  "33254": {
+    "en": {
+      "name": "PITAKA MagEZ Car Mount Pro 2 (Qi2)",
+      "summary": "Qi2-certified magnetic car mount with 15W wireless charging and three NFC shortcuts, fits Tesla and most cars.",
+      "bullets": [
+        {
+          "title": "Tap to Trigger NFC",
+          "text": "Built-in NFC chips launch a preset app when you tap an NFC-enabled phone on the car mount. Three NFC shortcuts can be switched between for a convenient experience."
+        },
+        {
+          "title": "15W Fast Wireless Charging",
+          "text": "The MagSafe car mount charges your phone at a fast speed of up to 15W."
+        },
+        {
+          "title": "Strong Magnetic Attachment",
+          "text": "Integrated premium MagSafe magnets hold a MagSafe-enabled phone securely and keep wireless charging stable, even on bumpy roads."
+        },
+        {
+          "title": "Qi2 Certified",
+          "text": "Qi2 is the latest generation of wireless charging standards, with improved efficiency, faster 15W charging and broad compatibility with iPhone and Android phones. Certification brings all of that to this magnetic car mount."
+        },
+        {
+          "title": "Fits Tesla and More",
+          "text": "A 17mm universal swivel ball gives broad compatibility with a wide range of car brands and models. It is detachable, so you can refit it to a bicycle or motorcycle phone mount."
+        },
+        {
+          "title": "Minimalist Design",
+          "text": "A streamlined profile in vacuum-plated PC and woven aramid fiber adds a refined look to your MagSafe car mount."
+        }
+      ]
+    },
+    "ar": {
+      "name": "حامل سيارة PITAKA MagEZ Pro 2 (Qi2)",
+      "summary": "حامل سيارة مغناطيسي معتمد من Qi2 بشحن لاسلكي 15W وثلاثة اختصارات NFC، يناسب Tesla ومعظم السيارات.",
+      "bullets": [
+        {
+          "title": "اختصارات NFC بلمسة",
+          "text": "شرائح NFC مدمجة تفتح تطبيقًا محدّدًا مسبقًا بمجرّد لمس هاتفك الداعم لـ NFC للحامل. ويمكنك التبديل بين ثلاثة اختصارات NFC حسب حاجتك."
+        },
+        {
+          "title": "شحن لاسلكي سريع 15W",
+          "text": "يشحن حامل MagSafe هاتفك بسرعة عالية وبقدرة تصل إلى 15W."
+        },
+        {
+          "title": "تثبيت مغناطيسي قوي",
+          "text": "مغانط MagSafe عالية الجودة تثبّت الهاتف الداعم لـ MagSafe بإحكام وتحافظ على استقرار الشحن اللاسلكي حتى على الطرق الوعرة."
+        },
+        {
+          "title": "معتمد من Qi2",
+          "text": "Qi2 هو أحدث جيل من معايير الشحن اللاسلكي، ويقدّم كفاءة أعلى وشحنًا أسرع بقدرة 15W وتوافقًا واسعًا مع هواتف iPhone وAndroid. واعتماد الحامل لهذا المعيار ينقل تجربة الشحن لديك إلى مستوى أفضل."
+        },
+        {
+          "title": "يناسب Tesla وغيرها",
+          "text": "كرة دوّارة عالمية بقياس 17 مم تمنحه توافقًا واسعًا مع مختلف ماركات السيارات وموديلاتها. وهي قابلة للفك لتركيبها على حامل هاتف لدراجة هوائية أو نارية."
+        },
+        {
+          "title": "تصميم بسيط وأنيق",
+          "text": "هيكل انسيابي من البولي كربونات المطلي بالتفريغ ونسيج ألياف الأراميد يمنح حاملك مظهرًا راقيًا."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA MagEZ Car Mount Pro 2 Araç Tutucu (Qi2)",
+      "summary": "15W kablosuz şarj ve üç NFC kısayolu sunan Qi2 sertifikalı manyetik araç tutucu; Tesla ve çoğu araca uyar.",
+      "bullets": [
+        {
+          "title": "Dokunmatik NFC Kısayolları",
+          "text": "Dahili NFC çipleri, NFC destekli telefonunuzu tutucuya dokundurduğunuzda önceden belirlediğiniz uygulamayı açar. Üç NFC kısayolu arasında dilediğiniz gibi geçiş yapabilirsiniz."
+        },
+        {
+          "title": "15W Hızlı Kablosuz Şarj",
+          "text": "MagSafe araç tutucu telefonunuzu 15W'a varan hızda şarj eder."
+        },
+        {
+          "title": "Güçlü Manyetik Tutuş",
+          "text": "Entegre premium MagSafe mıknatıslar MagSafe destekli telefonu sıkıca tutar ve bozuk yollarda bile kablosuz şarjı kararlı kılar."
+        },
+        {
+          "title": "Qi2 Sertifikalı",
+          "text": "Qi2, daha yüksek verim, 15W'lık daha hızlı şarj ve iPhone ile Android telefonlarla geniş uyumluluk sunan en yeni kablosuz şarj standardıdır. Bu sertifika, araç tutucunuzdaki şarj deneyimini bir üst seviyeye taşır."
+        },
+        {
+          "title": "Tesla ve Diğer Markalar",
+          "text": "17 mm evrensel mafsal topu birçok otomobil marka ve modeliyle geniş uyumluluk sağlar. Sökülebilir yapısı sayesinde bisiklet veya motosiklet telefon tutucusuna da takılabilir."
+        },
+        {
+          "title": "Minimalist Tasarım",
+          "text": "Vakumla kaplanmış PC ve dokuma aramid fiberden akıcı gövde, MagSafe araç tutucunuza rafine bir görünüm katar."
+        }
+      ]
+    }
+  },
+  "33270": {
+    "en": {
+      "name": "PITAKA Galaxy S26 Ultra Cairn Case (600D Black/Grey-Twill) (Aaron Button)",
+      "summary": "Aramid fiber case for the Galaxy S26 Ultra with 1.2 m drop protection and a programmable Aaron Button.",
+      "bullets": [
+        {
+          "title": "Military-Grade Protection",
+          "text": "Enhanced arched corner cushioning protects the phone from drops of up to 1.2 meters (4 feet), strengthening everyday protection."
+        },
+        {
+          "title": "Aerospace-Grade Aramid Strength",
+          "text": "Made from aerospace-grade aramid fiber, which is 5× stronger than steel and weighs just one fifth as much. It stays ultra-thin and incredibly tough without the bulk."
+        },
+        {
+          "title": "Premium Weave",
+          "text": "Finely woven aramid fiber gives the case a silky, luxurious texture you can feel. It is light and strong, and a pleasure to hold every single time."
+        },
+        {
+          "title": "Exclusive App Control",
+          "text": "No learning curve and no complex system setup. Clone and apply your custom functions instantly, and manage every Aaron Button configuration in one place."
+        }
+      ]
+    },
+    "ar": {
+      "name": "غطاء PITAKA Cairn لهاتف Galaxy S26 Ultra (600D Black/Grey-Twill) (Aaron Button)",
+      "summary": "غطاء من ألياف الأراميد لهاتف Galaxy S26 Ultra يحمي من السقوط حتى 1.2 متر، مع زر Aaron قابل للبرمجة.",
+      "bullets": [
+        {
+          "title": "حماية بمعايير عسكرية",
+          "text": "تصميم الزوايا المقوّسة المعزّزة يحمي الهاتف من السقوط من ارتفاع يصل إلى 1.2 متر، فتزداد حمايته اليومية."
+        },
+        {
+          "title": "أراميد بمواصفات الطيران",
+          "text": "مصنوع من ألياف الأراميد بمواصفات صناعة الطيران، وهي أقوى من الفولاذ بخمس مرات وأخف منه بخمس مرات. يبقى الغطاء رقيقًا ومتينًا للغاية دون أي ضخامة."
+        },
+        {
+          "title": "نسيج أراميد فاخر",
+          "text": "ألياف أراميد منسوجة بدقة تمنح الغطاء ملمسًا حريريًا فاخرًا تشعر به. خفيف ومتين، وممتع في اليد في كل مرة."
+        },
+        {
+          "title": "تحكّم عبر تطبيق خاص",
+          "text": "لا حاجة إلى تعلّم أو إعدادات معقّدة. انسخ وظائفك المخصصة وطبّقها فورًا، وأدر جميع إعدادات زر Aaron من مكان واحد."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PITAKA Galaxy S26 Ultra Cairn Kılıf (600D Black/Grey-Twill) (Aaron Button)",
+      "summary": "Galaxy S26 Ultra için aramid fiber kılıf; 1,2 m düşme koruması ve programlanabilir Aaron Button.",
+      "bullets": [
+        {
+          "title": "Askeri Sınıf Koruma",
+          "text": "Geliştirilmiş kavisli köşe tamponlaması telefonu 1,2 metreye kadar düşmelere karşı korur ve günlük korumayı güçlendirir."
+        },
+        {
+          "title": "Havacılık Sınıfı Aramid",
+          "text": "Çelikten 5 kat güçlü ve beşte biri ağırlığında havacılık sınıfı aramid fiberden üretilmiştir. Ultra ince ve son derece dayanıklıdır, hacim eklemez."
+        },
+        {
+          "title": "Premium Aramid Dokuma",
+          "text": "İnce dokunmuş aramid fiber, kılıfa ipeksi ve lüks bir doku kazandırır. Hem hafif hem güçlüdür; her seferinde elinizde tutmak keyif verir."
+        },
+        {
+          "title": "Özel Uygulama Kontrolü",
+          "text": "Öğrenme süreci ve karmaşık kurulum yok. Özel işlevlerinizi anında kopyalayıp uygulayın, tüm Aaron Button ayarlarını tek yerden yönetin."
+        }
+      ]
+    }
+  }
+}

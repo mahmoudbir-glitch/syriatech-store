@@ -1,0 +1,398 @@
+{
+  "4083": {
+    "en": {
+      "name": "Motion Sensor",
+      "summary": "Wireless motion detector with a 100° field of view and up to 2 years of battery life, sending instant alerts to your phone.",
+      "bullets": [
+        {"title": "Protection That Lasts", "text": "The included battery provides up to 2 years of power for round-the-clock security."},
+        {"title": "Extensive Coverage", "text": "Detects motion within a 100° field of view and up to 30 feet (9 m) away — enough to cover an entire room of your home."},
+        {"title": "Adjustable Sensitivity", "text": "Tailor the sensitivity of the sensor so that it only alerts you when people are in range, rather than your playful dog or cat."},
+        {"title": "App Alerts", "text": "Notifies you as soon as motion is detected by sending a message to your phone via the eufy Security app, no matter where you are."},
+        {"title": "Works With HomeBase", "text": "Connects to the eufy Security HomeBase (sold separately) as well as other eufy Security products. Pair it in the eufy Security app, then press the button on the sensor to add it to your system."}
+      ]
+    },
+    "ar": {
+      "name": "حسّاس حركة",
+      "summary": "كاشف حركة لاسلكي بزاوية رؤية 100° وعمر بطارية يصل إلى سنتين، يرسل تنبيهات فورية إلى هاتفك.",
+      "bullets": [
+        {"title": "حماية تدوم طويلاً", "text": "توفّر البطارية المرفقة طاقة تصل إلى سنتين لحماية متواصلة على مدار الساعة."},
+        {"title": "تغطية واسعة", "text": "يرصد الحركة ضمن زاوية رؤية 100° وعلى مسافة تصل إلى 9 أمتار، وهو ما يكفي لتغطية غرفة كاملة في منزلك."},
+        {"title": "حساسية قابلة للضبط", "text": "يمكنك ضبط حساسية الحسّاس ليُنبّهك عند مرور الأشخاص فقط، دون أن يتفاعل مع حركة القطط أو الكلاب في المنزل."},
+        {"title": "تنبيهات عبر التطبيق", "text": "يرسل إشعاراً إلى هاتفك عبر تطبيق eufy Security فور رصد أي حركة، أينما كنت."},
+        {"title": "يعمل مع HomeBase", "text": "يتصل بجهاز eufy Security HomeBase (يُباع منفصلاً) وببقية أجهزة eufy Security. اربطه عبر تطبيق eufy Security ثم اضغط الزر الموجود على الحسّاس لإضافته إلى نظامك."}
+      ]
+    },
+    "tr": {
+      "name": "Hareket Sensörü",
+      "summary": "100° görüş açısı ve 2 yıla varan pil ömrüyle kablosuz hareket dedektörü; telefonunuza anında bildirim gönderir.",
+      "bullets": [
+        {"title": "Uzun Süreli Koruma", "text": "Ürünle birlikte gelen pil, 7/24 güvenlik için 2 yıla varan çalışma süresi sunar."},
+        {"title": "Geniş Kapsama Alanı", "text": "100° görüş açısı içinde ve 9 m mesafeye kadar hareket algılar; evinizde bir odanın tamamını kaplamaya yeter."},
+        {"title": "Ayarlanabilir Hassasiyet", "text": "Sensörün hassasiyetini ayarlayarak yalnızca insanlar algılandığında uyarı almanızı, kedi ve köpeğinizin hareketlerinin göz ardı edilmesini sağlayabilirsiniz."},
+        {"title": "Uygulama Bildirimleri", "text": "Hareket algılandığı anda eufy Security uygulaması üzerinden telefonunuza bildirim gönderir; nerede olursanız olun haberdar olursunuz."},
+        {"title": "HomeBase ile Uyumlu", "text": "eufy Security HomeBase (ayrı satılır) ve diğer eufy Security ürünlerine bağlanır. eufy Security uygulamasından eşleştirin, ardından sensördeki düğmeye basarak sisteminize ekleyin."}
+      ]
+    }
+  },
+  "4084": {
+    "en": {
+      "name": "Entry Sensor",
+      "summary": "Slim door and window sensor that triggers a 100 dB siren on HomeBase and alerts your phone the moment it is forced open.",
+      "bullets": [
+        {"title": "2-Year Battery Life", "text": "A single battery provides 730 days of continuous monitoring."},
+        {"title": "For Doors and Windows", "text": "The small, compact design fits onto any door or window frame."},
+        {"title": "100-Decibel Siren", "text": "If a forced entry is detected, a 100 dB siren — as loud as a jackhammer — is triggered on HomeBase and you are notified instantly on your smartphone."},
+        {"title": "Easy Installation", "text": "Just peel off the mounting tape and stick the sensor onto the door or window you want to monitor."}
+      ]
+    },
+    "ar": {
+      "name": "حسّاس دخول",
+      "summary": "حسّاس نحيف للأبواب والنوافذ يُطلق صفّارة بقوة 100 dB على HomeBase وينبّه هاتفك فور محاولة الفتح عنوة.",
+      "bullets": [
+        {"title": "عمر بطارية سنتان", "text": "بطارية واحدة تكفي لمراقبة متواصلة طوال 730 يوماً."},
+        {"title": "للأبواب والنوافذ", "text": "تصميم صغير ومدمج يناسب أي إطار باب أو نافذة."},
+        {"title": "صفّارة بقوة 100 dB", "text": "عند رصد محاولة اقتحام تنطلق صفّارة بقوة 100 dB من جهاز HomeBase، بصوت يضاهي المطرقة الهوائية، ويصلك إشعار فوري على هاتفك."},
+        {"title": "تركيب سهل", "text": "انزع الشريط اللاصق وألصق الحسّاس على الباب أو النافذة التي تريد مراقبتها."}
+      ]
+    },
+    "tr": {
+      "name": "Giriş Sensörü",
+      "summary": "İnce yapılı kapı ve pencere sensörü; zorla açılma anında HomeBase'de 100 dB siren çalar ve telefonunuza bildirim gönderir.",
+      "bullets": [
+        {"title": "2 Yıl Pil Ömrü", "text": "Tek bir pil, 730 gün boyunca kesintisiz izleme sağlar."},
+        {"title": "Kapı ve Pencereler İçin", "text": "Küçük ve kompakt tasarımı her kapı ya da pencere kasasına uyar."},
+        {"title": "100 Desibel Siren", "text": "Zorla giriş algılandığında HomeBase üzerinde kırıcı sesi kadar güçlü 100 dB'lik bir siren çalar ve telefonunuza anında bildirim gelir."},
+        {"title": "Kolay Kurulum", "text": "Montaj bandının koruyucusunu çıkarın ve sensörü izlemek istediğiniz kapı ya da pencereye yapıştırın."}
+      ]
+    }
+  },
+  "4092": {
+    "en": {
+      "name": "Lumi Stick-On Night Light (3-pack)",
+      "summary": "Battery-powered LED night lights that switch on by themselves in the dark when they sense movement, with up to a year of use.",
+      "bullets": [
+        {"title": "Ideal Lighting", "text": "Provides just the right amount of glare-free light to guide you in the dark."},
+        {"title": "Automatic Illumination", "text": "When the light sensor detects darkness, the motion sensor switches the light on as soon as it senses movement."},
+        {"title": "Energy Efficient", "text": "Three AAA batteries (not included) provide soft illumination for up to a year."},
+        {"title": "Nighttime Navigation", "text": "No need to switch on blinding ceiling lights in the middle of the night."},
+        {"title": "What You Get", "text": "3 Lumi stick-on night lights, 6 screws, 6 wall plugs and a user manual."}
+      ]
+    },
+    "ar": {
+      "name": "ضوء ليلي لاصق Lumi (عبوة 3 قطع)",
+      "summary": "أضواء ليلية LED تعمل بالبطاريات وتُضاء تلقائياً في الظلام عند استشعار الحركة، وتدوم حتى سنة كاملة.",
+      "bullets": [
+        {"title": "إضاءة مثالية", "text": "توفّر القدر المناسب من الضوء الخالي من الوهج ليرشدك في العتمة."},
+        {"title": "إضاءة تلقائية", "text": "عندما يستشعر حسّاس الضوء حلول الظلام، يقوم حسّاس الحركة بتشغيل الإضاءة فور رصد أي حركة."},
+        {"title": "توفير في الطاقة", "text": "ثلاث بطاريات AAA (غير مرفقة) تمنحك إضاءة هادئة لمدة تصل إلى سنة."},
+        {"title": "تنقّل آمن ليلاً", "text": "لن تضطر إلى إشعال الإنارة القوية في منتصف الليل."},
+        {"title": "محتويات العلبة", "text": "3 وحدات إضاءة Lumi لاصقة، و6 براغٍ، و6 مثبّتات جدارية، ودليل المستخدم."}
+      ]
+    },
+    "tr": {
+      "name": "Lumi Yapışkanlı Gece Lambası (3'lü Paket)",
+      "summary": "Pille çalışan LED gece lambaları; karanlıkta hareket algıladığında kendiliğinden yanar ve bir yıla kadar kullanım sunar.",
+      "bullets": [
+        {"title": "İdeal Aydınlatma", "text": "Karanlıkta yolunuzu bulmanız için göz almayan, tam kıvamında bir ışık verir."},
+        {"title": "Otomatik Aydınlatma", "text": "Işık sensörü karanlığı algıladığında, hareket sensörü hareket fark eder etmez lambayı yakar."},
+        {"title": "Enerji Verimli", "text": "Üç adet AAA pil (dahil değildir) bir yıla varan süreyle yumuşak bir aydınlatma sağlar."},
+        {"title": "Gece Rahat Hareket", "text": "Gecenin bir yarısı göz alıcı tavan lambalarını açmanıza gerek kalmaz."},
+        {"title": "Kutu İçeriği", "text": "3 adet Lumi yapışkanlı gece lambası, 6 vida, 6 dübel ve kullanım kılavuzu."}
+      ]
+    }
+  },
+  "4097": {
+    "en": {
+      "name": "AAA Alkaline Batteries (4-pack)",
+      "summary": "Long-life alkaline cells with a 10-year shelf life, ready to power your remotes, sensors and everyday devices.",
+      "bullets": [
+        {"title": "Durable Construction", "text": "Built from premium materials with a casing that resists abrasion and wear."},
+        {"title": "Long-Lasting Power", "text": "Delivers steady power that keeps your devices running for a long time."},
+        {"title": "10-Year Shelf Life", "text": "Store them for up to 10 years and they will still be ready when you need them."}
+      ]
+    },
+    "ar": {
+      "name": "بطاريات AAA قلوية (عبوة 4 قطع)",
+      "summary": "بطاريات قلوية طويلة العمر بصلاحية تخزين تصل إلى 10 سنوات، جاهزة لتشغيل أجهزة التحكم والحسّاسات والأجهزة اليومية.",
+      "bullets": [
+        {"title": "بنية متينة", "text": "مصنوعة من مواد عالية الجودة بغلاف يقاوم الخدش والتآكل."},
+        {"title": "طاقة تدوم طويلاً", "text": "تمنح أجهزتك تياراً ثابتاً يبقيها تعمل لفترة طويلة."},
+        {"title": "صلاحية تخزين 10 سنوات", "text": "يمكن تخزينها حتى 10 سنوات وتبقى جاهزة للاستخدام عند الحاجة."}
+      ]
+    },
+    "tr": {
+      "name": "AAA Alkalin Pil (4'lü Paket)",
+      "summary": "10 yıl raf ömrüne sahip uzun ömürlü alkalin piller; kumandalarınızı, sensörlerinizi ve günlük cihazlarınızı çalıştırır.",
+      "bullets": [
+        {"title": "Dayanıklı Yapı", "text": "Aşınmaya ve çizilmeye dirençli bir gövdeyle, kaliteli malzemelerden üretilmiştir."},
+        {"title": "Uzun Süreli Güç", "text": "Cihazlarınızı uzun süre çalışır durumda tutan istikrarlı bir güç verir."},
+        {"title": "10 Yıl Raf Ömrü", "text": "10 yıla kadar saklayabilirsiniz; ihtiyacınız olduğunda yine hazır olurlar."}
+      ]
+    }
+  },
+  "4098": {
+    "en": {
+      "name": "AAA Alkaline Batteries (8-pack)",
+      "summary": "Eight long-life alkaline cells with a 10-year shelf life — a ready stock for remotes, sensors and everyday devices.",
+      "bullets": [
+        {"title": "Durable Construction", "text": "Built from premium materials with a casing that resists abrasion and wear."},
+        {"title": "Long-Lasting Power", "text": "Delivers steady power that keeps your devices running for a long time."},
+        {"title": "10-Year Shelf Life", "text": "Store them for up to 10 years and they will still be ready when you need them."}
+      ]
+    },
+    "ar": {
+      "name": "بطاريات AAA قلوية (عبوة 8 قطع)",
+      "summary": "ثماني بطاريات قلوية طويلة العمر بصلاحية تخزين 10 سنوات؛ مخزون جاهز لأجهزة التحكم والحسّاسات والأجهزة اليومية.",
+      "bullets": [
+        {"title": "بنية متينة", "text": "مصنوعة من مواد عالية الجودة بغلاف يقاوم الخدش والتآكل."},
+        {"title": "طاقة تدوم طويلاً", "text": "تمنح أجهزتك تياراً ثابتاً يبقيها تعمل لفترة طويلة."},
+        {"title": "صلاحية تخزين 10 سنوات", "text": "يمكن تخزينها حتى 10 سنوات وتبقى جاهزة للاستخدام عند الحاجة."}
+      ]
+    },
+    "tr": {
+      "name": "AAA Alkalin Pil (8'li Paket)",
+      "summary": "10 yıl raf ömrüne sahip sekiz adet uzun ömürlü alkalin pil; kumandalar, sensörler ve günlük cihazlar için hazır stok.",
+      "bullets": [
+        {"title": "Dayanıklı Yapı", "text": "Aşınmaya ve çizilmeye dirençli bir gövdeyle, kaliteli malzemelerden üretilmiştir."},
+        {"title": "Uzun Süreli Güç", "text": "Cihazlarınızı uzun süre çalışır durumda tutan istikrarlı bir güç verir."},
+        {"title": "10 Yıl Raf Ömrü", "text": "10 yıla kadar saklayabilirsiniz; ihtiyacınız olduğunda yine hazır olurlar."}
+      ]
+    }
+  },
+  "5489": {
+    "en": {
+      "name": "Kingston Canvas Select Plus microSD",
+      "summary": "An A1-rated microSD card for Android phones and tablets, giving you faster app loading and room for more photos and video.",
+      "bullets": [
+        {"title": "Built for Android", "text": "Compatible with Android devices and designed with A1-rated performance, it offers improved speed and capacity for loading apps faster and capturing photos and video."}
+      ]
+    },
+    "ar": {
+      "name": "بطاقة ذاكرة Kingston Canvas Select Plus microSD",
+      "summary": "بطاقة microSD بتصنيف A1 لهواتف وأجهزة Android، تمنحك تحميلاً أسرع للتطبيقات ومساحة أكبر للصور والفيديو.",
+      "bullets": [
+        {"title": "مصمّمة لأجهزة Android", "text": "متوافقة مع أجهزة Android ومصمّمة بأداء بتصنيف A1، فتوفّر سرعة وسعة أفضل لتشغيل التطبيقات بشكل أسرع ولتصوير الصور ومقاطع الفيديو."}
+      ]
+    },
+    "tr": {
+      "name": "Kingston Canvas Select Plus microSD Hafıza Kartı",
+      "summary": "Android telefon ve tabletler için A1 sertifikalı microSD kart; uygulamaları daha hızlı açar, fotoğraf ve videoya yer bırakır.",
+      "bullets": [
+        {"title": "Android İçin Tasarlandı", "text": "Android cihazlarla uyumludur ve A1 performans sertifikasına sahiptir; uygulamaları daha hızlı açmak, fotoğraf ve video çekmek için daha yüksek hız ve kapasite sunar."}
+      ]
+    }
+  },
+  "5614": {
+    "en": {
+      "name": "eufyCam Solar Panel Charger",
+      "summary": "Official 2.6W solar panel that keeps any eufyCam charged around the clock with just a few hours of daily sunlight.",
+      "bullets": [
+        {"title": "Compatible with All eufyCams", "text": "Provides continuous charging for eufyCam, eufyCam E, eufyCam 2, eufyCam 2 Pro, eufyCam 2C and eufyCam 2C Pro."},
+        {"title": "Solar-Powered Charging", "text": "With the 2.6W high-efficiency solar panel and a few hours of direct sunlight per day, your camera stays charged round the clock."},
+        {"title": "Easy to Install", "text": "The 13 ft (4 m) cable lets you place the panel where it gets the most sunlight, and the 360-degree mounting bracket and wall anchors make installation quick and flexible."},
+        {"title": "Certified Safe for eufyCam", "text": "Only certified eufy Security solar panels can sync with eufyCam for correct power management. Non-certified panels may damage the eufyCam battery."},
+        {"title": "IP65 Weatherproof", "text": "Built to withstand extreme weather conditions."},
+        {"title": "Official eufy Accessory", "text": "This is the only official eufy solar panel, designed to provide continuous charging for all eufyCam models."},
+        {"title": "What You Get", "text": "Solar panel, 13 ft (4 m) charging cable, 360-degree mounting bracket, set of installation screws and wall anchors, 4 camera adapters and a quick start guide."}
+      ]
+    },
+    "ar": {
+      "name": "لوح شحن بالطاقة الشمسية eufyCam",
+      "summary": "لوح شمسي أصلي بقدرة 2.6W يُبقي كاميرا eufyCam مشحونة على مدار الساعة بساعات قليلة من أشعة الشمس يومياً.",
+      "bullets": [
+        {"title": "متوافق مع جميع كاميرات eufyCam", "text": "يوفّر شحناً متواصلاً لكاميرات eufyCam وeufyCam E وeufyCam 2 وeufyCam 2 Pro وeufyCam 2C وeufyCam 2C Pro."},
+        {"title": "شحن بالطاقة الشمسية", "text": "بفضل اللوح الشمسي عالي الكفاءة بقدرة 2.6W وبضع ساعات من أشعة الشمس المباشرة يومياً، تبقى الكاميرا مشحونة على مدار الساعة."},
+        {"title": "تركيب سهل", "text": "يتيح لك الكابل بطول 4 م وضع اللوح في المكان الأكثر تعرضاً للشمس، بينما تجعل قاعدة التثبيت الدوّارة 360 درجة والمثبّتات الجدارية عملية التركيب سريعة ومرنة."},
+        {"title": "معتمد وآمن لكاميرات eufyCam", "text": "الألواح الشمسية المعتمدة من eufy Security وحدها قادرة على التزامن مع eufyCam لإدارة الطاقة بشكل صحيح، أما الألواح غير المعتمدة فقد تُتلف بطارية الكاميرا."},
+        {"title": "مقاومة للطقس بمعيار IP65", "text": "مصمّم ليتحمّل الظروف الجوية القاسية."},
+        {"title": "ملحق eufy الأصلي", "text": "هو اللوح الشمسي الرسمي الوحيد من eufy، وقد صُمّم لتوفير شحن متواصل لجميع طرازات eufyCam."},
+        {"title": "محتويات العلبة", "text": "لوح شمسي، وكابل شحن بطول 4 م، وقاعدة تثبيت دوّارة 360 درجة، وطقم براغٍ ومثبّتات جدارية، و4 محوّلات للكاميرا، ودليل البدء السريع."}
+      ]
+    },
+    "tr": {
+      "name": "eufyCam Güneş Paneli Şarj Cihazı",
+      "summary": "Günde birkaç saat güneş ışığıyla eufyCam'inizi sürekli şarjlı tutan 2,6W gücünde orijinal güneş paneli.",
+      "bullets": [
+        {"title": "Tüm eufyCam Modelleriyle Uyumlu", "text": "eufyCam, eufyCam E, eufyCam 2, eufyCam 2 Pro, eufyCam 2C ve eufyCam 2C Pro için kesintisiz şarj sağlar."},
+        {"title": "Güneş Enerjisiyle Şarj", "text": "2,6W gücündeki yüksek verimli güneş paneli ve günde birkaç saatlik doğrudan güneş ışığı sayesinde kameranız sürekli şarjlı kalır."},
+        {"title": "Kolay Kurulum", "text": "4 m uzunluğundaki kablo, paneli en çok güneş alan yere yerleştirmenizi sağlar; 360 derece dönen montaj aparatı ve dübeller kurulumu hızlı ve esnek kılar."},
+        {"title": "eufyCam İçin Sertifikalı", "text": "Yalnızca sertifikalı eufy Security güneş panelleri, doğru güç yönetimi için eufyCam ile senkronize olabilir; sertifikasız paneller eufyCam bataryasına zarar verebilir."},
+        {"title": "IP65 Hava Koşullarına Dayanıklı", "text": "Zorlu hava koşullarına dayanacak şekilde üretilmiştir."},
+        {"title": "Orijinal eufy Aksesuarı", "text": "Tüm eufyCam modellerine kesintisiz şarj sağlamak için tasarlanmış tek orijinal eufy güneş panelidir."},
+        {"title": "Kutu İçeriği", "text": "Güneş paneli, 4 m şarj kablosu, 360 derece montaj aparatı, vida ve dübel seti, 4 adet kamera adaptörü ve hızlı başlangıç kılavuzu."}
+      ]
+    }
+  },
+  "5979": {
+    "en": {
+      "name": "PowerPort PD+ 2",
+      "summary": "Compact two-port wall charger with 20W USB-C Power Delivery and a PowerIQ USB-A port for charging two devices at once.",
+      "bullets": [
+        {"title": "Next-Gen Speed", "text": "A USB-C Power Delivery port loaded with 20W of output power gives the latest iPhone models a full-speed charge."},
+        {"title": "Two-in-One", "text": "With one USB-C Power Delivery port and one USB port with Anker's PowerIQ, you are ready to charge two of your devices simultaneously."},
+        {"title": "Pocket-Friendly Size", "text": "All this power comes in a compact body that fits in your pocket, ready to go wherever the journey takes you."},
+        {"title": "Universal Compatibility", "text": "Charge virtually all your mobile devices at maximum speed through the USB-C and standard USB ports."},
+        {"title": "What You Get", "text": "PowerPort PD+ 2, welcome guide and a 12-month warranty."}
+      ]
+    },
+    "ar": {
+      "name": "شاحن PowerPort PD+ 2",
+      "summary": "شاحن جداري مدمج بمنفذين: منفذ USB-C بقدرة 20W بتقنية Power Delivery ومنفذ USB-A بتقنية PowerIQ لشحن جهازين معاً.",
+      "bullets": [
+        {"title": "سرعة الجيل الجديد", "text": "منفذ USB-C بتقنية Power Delivery وقدرة خرج 20W يمنح أحدث هواتف iPhone شحناً بأقصى سرعة."},
+        {"title": "منفذان في شاحن واحد", "text": "بفضل منفذ USB-C بتقنية Power Delivery ومنفذ USB بتقنية PowerIQ من Anker، يمكنك شحن جهازين في الوقت نفسه."},
+        {"title": "حجم يناسب الجيب", "text": "كل هذه القدرة في هيكل صغير يتّسع لجيبك، ليرافقك أينما ذهبت."},
+        {"title": "توافق شامل", "text": "اشحن جميع أجهزتك المحمولة تقريباً بأقصى سرعة عبر منفذ USB-C ومنفذ USB التقليدي."},
+        {"title": "محتويات العلبة", "text": "شاحن PowerPort PD+ 2، ودليل الاستخدام، وضمان لمدة 12 شهراً."}
+      ]
+    },
+    "tr": {
+      "name": "PowerPort PD+ 2",
+      "summary": "20W USB-C Power Delivery ve PowerIQ'lu USB-A portuyla iki cihazı aynı anda şarj eden kompakt duvar şarj cihazı.",
+      "bullets": [
+        {"title": "Yeni Nesil Hız", "text": "20W çıkış gücüne sahip USB-C Power Delivery portu, en yeni iPhone modellerini tam hızda şarj eder."},
+        {"title": "İki Cihaz Tek Şarj", "text": "Bir USB-C Power Delivery portu ve Anker PowerIQ'lu bir USB portu sayesinde iki cihazınızı aynı anda şarj edebilirsiniz."},
+        {"title": "Cep Dostu Boyut", "text": "Tüm bu güç, cebinize sığan kompakt bir gövdede; yolculuk sizi nereye götürürse götürsün yanınızda."},
+        {"title": "Evrensel Uyumluluk", "text": "USB-C ve standart USB girişleri sayesinde neredeyse tüm mobil cihazlarınızı maksimum hızda şarj edin."},
+        {"title": "Kutu İçeriği", "text": "PowerPort PD+ 2, kullanım kılavuzu ve 12 ay garanti."}
+      ]
+    }
+  },
+  "5990": {
+    "en": {
+      "name": "PowerLine Micro USB",
+      "summary": "Aramid fiber reinforced Micro USB cable with a 10000-bend lifespan and thick-gauge wiring for the fastest possible charge.",
+      "bullets": [
+        {"title": "Strengthened Construction", "text": "One of the first charging cables built with bulletproof aramid fiber, PowerLine is much stronger than ordinary cables."},
+        {"title": "Lasts 10x Longer", "text": "Reinforced stress points and a 10000+ bend lifespan make PowerLine many times more durable than ordinary cables."},
+        {"title": "Faster Charging", "text": "Thick-gauge wiring and reduced cable resistance let PowerLine deliver the fastest possible charge from any USB charger, plus high-speed data transfer."},
+        {"title": "What You Get", "text": "Anker PowerLine Micro USB cable and a 12-month warranty."}
+      ]
+    },
+    "ar": {
+      "name": "كابل PowerLine Micro USB",
+      "summary": "كابل Micro USB مُقوّى بألياف الأراميد يتحمّل أكثر من 10000 طيّة، بأسلاك سميكة تمنحك أسرع شحن ممكن.",
+      "bullets": [
+        {"title": "بنية معزّزة", "text": "من أوائل كابلات الشحن المصنوعة بألياف الأراميد المضادة للرصاص، ما يجعل PowerLine أقوى بكثير من الكابلات العادية."},
+        {"title": "عمر أطول بعشر مرات", "text": "نقاط الإجهاد المعزّزة وعمر يتجاوز 10000 طيّة يجعلان PowerLine أمتن بأضعاف من الكابلات العادية."},
+        {"title": "شحن أسرع", "text": "أسلاك بمقطع سميك ومقاومة منخفضة تتيح لكابل PowerLine أسرع شحن ممكن من أي شاحن USB، إضافة إلى نقل البيانات بسرعة عالية."},
+        {"title": "محتويات العلبة", "text": "كابل Anker PowerLine Micro USB وضمان لمدة 12 شهراً."}
+      ]
+    },
+    "tr": {
+      "name": "PowerLine Micro USB Kablo",
+      "summary": "Aramid elyafla güçlendirilmiş, 10.000 bükülme ömrüne sahip Micro USB kablo; kalın telleriyle en hızlı şarjı sunar.",
+      "bullets": [
+        {"title": "Güçlendirilmiş Yapı", "text": "Kurşun geçirmez aramid elyafla üretilen ilk şarj kablolarından biri olan PowerLine, sıradan kablolardan çok daha sağlamdır."},
+        {"title": "10 Kat Uzun Ömür", "text": "Güçlendirilmiş baskı noktaları ve 10.000'in üzerinde bükülme ömrü, PowerLine'ı sıradan kablolardan kat kat dayanıklı kılar."},
+        {"title": "Daha Hızlı Şarj", "text": "Kalın kesitli teller ve düşük kablo direnci, PowerLine'ın herhangi bir USB şarj cihazından mümkün olan en hızlı şarjı ve yüksek hızlı veri aktarımını sunmasını sağlar."},
+        {"title": "Kutu İçeriği", "text": "Anker PowerLine Micro USB kablo ve 12 ay garanti."}
+      ]
+    }
+  },
+  "6035": {
+    "en": {
+      "name": "PowerLine Select+ USB-A to Lightning",
+      "summary": "MFi-certified Lightning cable in aramid fiber that charges an iPhone 8 or later to 50% in just 30 minutes.",
+      "bullets": [
+        {"title": "Ultimate Durability", "text": "Aramid fiber makes the cable thoroughly resistant to fraying and wear-related damage."},
+        {"title": "Fast Charging", "text": "Wide-diameter wires and reduced cord resistance maximize charge speed, taking an iPhone 8 or later from 0 to 50% in just 30 minutes."},
+        {"title": "Reinforced Connectors", "text": "Redesigned connectors allow the cable to survive a 15000+ bending test."},
+        {"title": "Apple Certified", "text": "MFi certification and strict quality testing ensure your Apple devices are charged safely, at their fastest possible speed."},
+        {"title": "What You Get", "text": "Anker PowerLine Select+ USB-A to Lightning cable, welcome guide and a 12-month warranty."}
+      ]
+    },
+    "ar": {
+      "name": "كابل PowerLine Select+ من USB-A إلى Lightning",
+      "summary": "كابل Lightning معتمد بشهادة MFi بألياف الأراميد، يشحن iPhone 8 وما بعده حتى 50% خلال 30 دقيقة.",
+      "bullets": [
+        {"title": "متانة فائقة", "text": "ألياف الأراميد تجعل الكابل مقاوماً تماماً للتقصّف والتلف الناتج عن الاستعمال."},
+        {"title": "شحن سريع", "text": "أسلاك بقطر أوسع ومقاومة أقل ترفعان سرعة الشحن إلى أقصاها، فتنتقل بهاتف iPhone 8 أو أحدث من 0 إلى 50% خلال 30 دقيقة فقط."},
+        {"title": "موصّلات معزّزة", "text": "موصّلات مُعاد تصميمها تتيح للكابل اجتياز اختبار يتجاوز 15000 طيّة."},
+        {"title": "معتمد من Apple", "text": "شهادة MFi واختبارات الجودة الصارمة تضمن شحن أجهزة Apple بأمان وبأقصى سرعة ممكنة."},
+        {"title": "محتويات العلبة", "text": "كابل Anker PowerLine Select+ من USB-A إلى Lightning، ودليل الاستخدام، وضمان لمدة 12 شهراً."}
+      ]
+    },
+    "tr": {
+      "name": "PowerLine Select+ USB-A - Lightning Kablo",
+      "summary": "Aramid elyaflı, MFi sertifikalı Lightning kablo; iPhone 8 ve sonrasını 30 dakikada %50 doluluğa ulaştırır.",
+      "bullets": [
+        {"title": "Üstün Dayanıklılık", "text": "Aramid elyaf, kabloyu yıpranmaya ve aşınma kaynaklı hasara karşı son derece dirençli kılar."},
+        {"title": "Hızlı Şarj", "text": "Geniş kesitli teller ve azaltılmış kablo direnci şarj hızını en üst düzeye çıkarır; iPhone 8 ve sonrasını yalnızca 30 dakikada %0'dan %50'ye getirir."},
+        {"title": "Güçlendirilmiş Konnektörler", "text": "Yeniden tasarlanan konnektörler, kablonun 15.000'in üzerinde bükülme testini geçmesini sağlar."},
+        {"title": "Apple Sertifikalı", "text": "MFi sertifikası ve sıkı kalite testleri, Apple cihazlarınızın güvenli biçimde ve mümkün olan en yüksek hızda şarj olmasını sağlar."},
+        {"title": "Kutu İçeriği", "text": "Anker PowerLine Select+ USB-A - Lightning kablo, kullanım kılavuzu ve 12 ay garanti."}
+      ]
+    }
+  },
+  "6631": {
+    "en": {
+      "name": "S230 Smart Lock Touch & Wi-Fi",
+      "summary": "Fingerprint smart lock that opens in one second and lets you control your door from anywhere over Wi-Fi.",
+      "bullets": [
+        {"title": "Your Finger is the Key", "text": "Smart Lock recognizes your fingerprint in just 0.3 seconds and unlocks your door in 1 second — faster than fumbling for your keys."},
+        {"title": "Control From Anywhere", "text": "With its all-new Wi-Fi connectivity, you can control Smart Lock from absolutely anywhere via the eufy Security app."},
+        {"title": "Auto-Lock Behind You", "text": "A built-in sensor detects when your door is closed and locks it automatically behind you, every time."},
+        {"title": "Multiple Ways to Unlock", "text": "Open Smart Lock using your fingerprint, with your phone via the eufy Security app, or by using the keypad or key."},
+        {"title": "Built to Last", "text": "With a sturdy zinc alloy and stainless steel frame, Smart Lock is tested to handle the comings and goings of a busy household for over 30 years, and the IP65 rating keeps your front door protected come rain or shine."}
+      ]
+    },
+    "ar": {
+      "name": "قفل ذكي S230 باللمس وWi-Fi",
+      "summary": "قفل ذكي بالبصمة يفتح الباب خلال ثانية واحدة، ويتيح لك التحكّم به من أي مكان عبر Wi-Fi.",
+      "bullets": [
+        {"title": "بصمتك هي المفتاح", "text": "يتعرّف القفل على بصمتك خلال 0.3 ثانية ويفتح الباب خلال ثانية واحدة، أسرع من البحث عن مفاتيحك."},
+        {"title": "تحكّم من أي مكان", "text": "يتيح لك اتصال Wi-Fi المدمج التحكّم بالقفل من أي مكان عبر تطبيق eufy Security."},
+        {"title": "قفل تلقائي خلفك", "text": "يرصد حسّاس مدمج إغلاق الباب فيقفله تلقائياً خلفك في كل مرة."},
+        {"title": "طرق متعدّدة للفتح", "text": "افتح القفل ببصمتك، أو من هاتفك عبر تطبيق eufy Security، أو بلوحة الأرقام، أو بالمفتاح التقليدي."},
+        {"title": "مصنوع ليدوم", "text": "هيكل متين من سبيكة الزنك والفولاذ المقاوم للصدأ خضع لاختبارات تثبت تحمّله حركة منزل مزدحم لأكثر من 30 عاماً، ويحمي تصنيف IP65 بابك في المطر والشمس على حد سواء."}
+      ]
+    },
+    "tr": {
+      "name": "S230 Akıllı Kilit Dokunmatik ve Wi-Fi",
+      "summary": "Bir saniyede açılan parmak izi destekli akıllı kilit; Wi-Fi sayesinde kapınızı her yerden kontrol edin.",
+      "bullets": [
+        {"title": "Anahtarınız Parmağınız", "text": "Akıllı kilit parmak izinizi 0,3 saniyede tanır ve kapıyı 1 saniyede açar; anahtar aramaktan çok daha hızlı."},
+        {"title": "Her Yerden Kontrol", "text": "Yepyeni Wi-Fi bağlantısı, kilidi eufy Security uygulamasından dilediğiniz yerden kontrol etmenizi sağlar."},
+        {"title": "Arkanızdan Otomatik Kilitleme", "text": "Dahili sensör kapının kapandığını algılar ve her seferinde arkanızdan otomatik olarak kilitler."},
+        {"title": "Birden Fazla Açma Yöntemi", "text": "Kilidi parmak izinizle, eufy Security uygulaması üzerinden telefonunuzla, tuş takımıyla veya anahtarla açabilirsiniz."},
+        {"title": "Uzun Ömürlü Yapı", "text": "Sağlam çinko alaşım ve paslanmaz çelik gövde, kalabalık bir evin 30 yılı aşkın giriş çıkışına dayanacak şekilde test edilmiştir; IP65 koruması ise kapınızı yağmurda da güneşte de korur."}
+      ]
+    }
+  },
+  "6919": {
+    "en": {
+      "name": "S230 SoloCam 2K (S40)",
+      "summary": "Wireless 2K security camera with built-in solar panel, 600-lumen spotlight and AI person detection — no monthly fees.",
+      "bullets": [
+        {"title": "Forever Power, Solar Style", "text": "Just 2 hours of direct sunlight each day is enough to continuously power SoloCam S40, so you never have to worry about changing the battery. When the sun sets, the built-in battery keeps it running."},
+        {"title": "Light Up the Night", "text": "The ultra-bright 600-lumen spotlight switches on as soon as motion is detected, while color night vision picks out details in the darkness up to 8 meters away."},
+        {"title": "The Key is in the Detail", "text": "Capture every event that occurs around your home in ultra-clear 2K resolution."},
+        {"title": "No Hidden Costs", "text": "SoloCam is a one-time purchase with no monthly fees or hidden costs. Everything is done on the device for complete security and transparency."},
+        {"title": "Relevant Recordings", "text": "The built-in AI ensures SoloCam S40 only records when a person is present, rather than an animal."}
+      ]
+    },
+    "ar": {
+      "name": "كاميرا SoloCam S40 بدقة 2K",
+      "summary": "كاميرا مراقبة لاسلكية بدقة 2K مع لوح شمسي مدمج وكشّاف بقوة 600 لومن وكشف ذكي للأشخاص، دون أي رسوم شهرية.",
+      "bullets": [
+        {"title": "طاقة شمسية دائمة", "text": "ساعتان فقط من أشعة الشمس المباشرة يومياً تكفيان لتشغيل SoloCam S40 باستمرار، فلا حاجة لتغيير البطارية، وبعد الغروب تتولّى البطارية المدمجة المهمة."},
+        {"title": "إضاءة تكشف الليل", "text": "يعمل الكشّاف فائق السطوع بقوة 600 لومن فور رصد أي حركة، بينما تُظهر الرؤية الليلية الملوّنة التفاصيل في العتمة حتى مسافة 8 أمتار."},
+        {"title": "تفاصيل بدقة 2K", "text": "سجّل كل ما يجري حول منزلك بدقة 2K فائقة الوضوح."},
+        {"title": "بلا تكاليف خفية", "text": "SoloCam عملية شراء لمرة واحدة، بلا رسوم شهرية ولا تكاليف خفية، وتتم كل المعالجة داخل الجهاز لأمان وشفافية كاملين."},
+        {"title": "تسجيل لما يهمّك فقط", "text": "يضمن الذكاء الاصطناعي المدمج ألا تسجّل SoloCam S40 إلا عند وجود شخص، لا عند مرور حيوان."}
+      ]
+    },
+    "tr": {
+      "name": "S230 SoloCam 2K (S40)",
+      "summary": "Dahili güneş paneli, 600 lümen spot ışığı ve yapay zekâ destekli insan algılamalı kablosuz 2K güvenlik kamerası.",
+      "bullets": [
+        {"title": "Güneşle Sürekli Enerji", "text": "Günde yalnızca 2 saat doğrudan güneş ışığı SoloCam S40'ı sürekli çalıştırmaya yeter; pil değiştirmeyi dert etmezsiniz. Güneş battığında dahili batarya devreye girer."},
+        {"title": "Geceyi Aydınlatır", "text": "600 lümenlik son derece parlak spot ışığı hareket algılandığı anda yanar; renkli gece görüşü ise karanlıkta 8 metreye kadar ayrıntıları ortaya çıkarır."},
+        {"title": "Ayrıntı Fark Yaratır", "text": "Evinizin çevresinde olan biten her şeyi son derece net 2K çözünürlükle kaydedin."},
+        {"title": "Gizli Maliyet Yok", "text": "SoloCam tek seferlik bir alımdır; aylık ücret ya da gizli maliyet yoktur. Tüm işlemler cihaz üzerinde yapılır, güvenlik ve şeffaflık tamdır."},
+        {"title": "Yalnızca Önemli Anlar", "text": "Dahili yapay zekâ, SoloCam S40'ın bir hayvan değil yalnızca bir insan varken kayıt yapmasını sağlar."}
+      ]
+    }
+  }
+}

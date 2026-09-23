@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl" data-title-key="adminPageTitle">
+<html lang="ar" dir="rtl" data-title-key="adminPageTitle" data-default-lang="ar">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,7 +7,8 @@
 <meta name="description" content="">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <title></title>
-<link rel="stylesheet" href="/admin.css?v=5992aecc">
+<script src="/lang-boot.js?v=11e22a78"></script>
+<link rel="stylesheet" href="/admin.css?v=edb6c294">
 </head>
 <body>
 
@@ -20,7 +21,7 @@
     <p class="muted" data-i18n="admin.loginHint"></p>
     <input id="password" type="password" autocomplete="current-password" data-i18n-attr="placeholder:admin.password;aria-label:admin.password" required>
     <button type="submit" class="btn primary block" id="loginBtn" data-i18n="admin.login"></button>
-    <div id="loginMsg" class="msg"></div>
+    <div id="loginMsg" class="msg" role="alert" aria-live="assertive"></div>
     <select id="loginLanguage" class="lang-select" data-i18n-attr="aria-label:languageLabel"></select>
   </form>
 </section>
@@ -69,6 +70,12 @@
         </label>
         <button type="submit" class="btn primary" data-i18n="admin.saveSettings"></button>
       </form>
+
+      <div class="card narrow">
+        <h2 data-i18n="admin.restoreBackup"></h2>
+        <p class="muted small" data-i18n="admin.restoreBackupHint"></p>
+        <button type="button" id="restoreBackupBtn" class="btn ghost" data-i18n="admin.restoreBackup"></button>
+      </div>
     </section>
 
     <section id="tab-help" hidden>
@@ -88,7 +95,7 @@
   </main>
 </section>
 
-<div id="editor" class="modal" hidden>
+<div id="editor" class="modal" role="dialog" aria-modal="true" aria-labelledby="formTitle" hidden>
   <form id="productForm" class="modal-card" novalidate>
     <header class="modal-head">
       <h2 id="formTitle"></h2>
@@ -110,12 +117,16 @@
       <div class="fields">
         <label><span data-i18n="admin.fieldName"></span><input id="name" maxlength="200" required></label>
         <div class="two">
-          <label><span data-i18n="admin.fieldBrand"></span><input id="brand" list="brandList" maxlength="60" required></label>
-          <label><span data-i18n="admin.fieldCategory"></span><select id="category"></select></label>
+          <label><span data-i18n="admin.fieldNameEn"></span> <small data-i18n="admin.optional"></small><input id="nameEn" maxlength="200" dir="ltr"></label>
+          <label><span data-i18n="admin.fieldNameTr"></span> <small data-i18n="admin.optional"></small><input id="nameTr" maxlength="200" dir="ltr"></label>
         </div>
         <div class="two">
           <label><span data-i18n="admin.fieldPrice"></span><input id="price" type="number" min="0" step="0.01" inputmode="decimal" required></label>
           <label><span data-i18n="admin.fieldOldPrice"></span> <small data-i18n="admin.optional"></small><input id="oldPrice" type="number" min="0" step="0.01" inputmode="decimal"></label>
+        </div>
+        <div class="two">
+          <label><span data-i18n="admin.fieldBrand"></span><input id="brand" list="brandList" maxlength="60" required></label>
+          <label><span data-i18n="admin.fieldCategory"></span><select id="category"></select></label>
         </div>
         <p id="discountHint" class="hint"></p>
         <label class="switch"><input id="inStock" type="checkbox" checked><span data-i18n="admin.fieldStock"></span></label>
@@ -138,11 +149,11 @@
 </div>
 
 <datalist id="brandList"></datalist>
-<div id="toast" class="toast" role="status" hidden></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-<script src="/i18n.js?v=50807a4e"></script>
-<script src="/catalog.js?v=ed8a03e1"></script>
+<script src="/i18n.js?v=b1f77c1b"></script>
+<script src="/catalog.js?v=98e12dc8"></script>
 <script src="/product-images.js?v=ca2bc1c1"></script>
-<script src="/admin.js?v=73c3ecee"></script>
+<script src="/admin.js?v=92997e5f"></script>
 </body>
 </html>

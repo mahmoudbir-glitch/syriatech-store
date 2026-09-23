@@ -16,6 +16,32 @@ let uploadAbort = null;
 let editorPushed = false;
 
 /* ---------- Server ---------- */
+/*
+ * The panel used to list the supplier's English names while the shop showed
+ * Arabic ones, so an owner searching for the name a customer had just read out
+ * found nothing. Same file the storefront uses.
+ */
+let shopCopy = {};
+const shopCopyByLang = { ar: {}, en: {}, tr: {} };
+let shopCopyReady = false;
+async function loadShopCopy() {
+  await Promise.all(["ar", "en", "tr"].map(async code => {
+    try {
+      const res = await fetch("/assets/copy." + code + ".json", { cache: "force-cache" });
+      shopCopyByLang[code] = res.ok ? await res.json() : {};
+    } catch (e) { shopCopyByLang[code] = {}; }
+  }));
+  shopCopy = shopCopyByLang[window.I18N ? window.I18N.current : "ar"] || shopCopyByLang.ar;
+  return shopCopy;
+}
+// The name as the shopper sees it, unless the owner has renamed it themselves.
+function shopName(p) {
+  if (!p || p.added) return (p && p.name) || "";
+  if (Array.isArray(p.edits) && p.edits.includes("name")) return p.name;
+  const entry = shopCopy[String(p.id)];
+  return (entry && entry.n) || p.name;
+}
+
 async function api(action, body) {
   const options = body === undefined
     ? { method: "GET" }
@@ -116,7 +142,8 @@ function renderList() {
   const rows = list.filter(p =>
     (!cat || p.category === cat) &&
     (!brand || p.brand === brand) &&
-    (!q || [p.name, p.brand, p.descriptionAr, p.description, p.descriptionTr].some(v => String(v).toLowerCase().includes(q))));
+    (!q || [shopName(p), p.name, p.brand, p.descriptionAr, p.description, p.descriptionTr]
+      .some(v => String(v).toLowerCase().includes(q))));
 
   $("#listInfo").textContent = rows.length === list.length
     ? t("admin.listInfo", { n: rows.length })
@@ -129,7 +156,7 @@ function renderList() {
     if (!p.inStock) tags.push('<span class="tag out">' + esc(t("admin.tagOutOfStock")) + "</span>");
     if (!p.image) tags.push('<span class="tag">' + esc(t("admin.tagAutoImage")) + "</span>");
     return '<div class="row-wrap"><button type="button" class="row" data-edit="' + p.id + '">' + imgTag(p) +
-      "<div><strong>" + esc(p.name) + "</strong><small>" + esc(p.brand) + " · " + esc(S.categoryLabel(p.category)) + "</small>" +
+      "<div><strong>" + esc(shopName(p)) + "</strong><small>" + esc(p.brand) + " · " + esc(S.categoryLabel(p.category)) + "</small>" +
       (tags.length ? '<div class="tags">' + tags.join("") + "</div>" : "") + "</div>" +
       '<div class="price"><b>' + money(p.price) + "</b>" + (p.discount ? "<del>" + money(p.oldPrice) + "</del>" : "") + "</div></button>" +
       '<button type="button" class="stock-toggle' + (p.inStock ? " on" : "") + '" data-stock="' + p.id + '" aria-pressed="' + p.inStock + '">' +
@@ -142,7 +169,7 @@ function renderDeleted() {
   $("#deletedBox").hidden = !removed.length;
   $("#deletedSummary").textContent = t("admin.deletedTitle", { n: removed.length });
   $("#deletedList").innerHTML = removed.map(p =>
-    '<div class="row">' + imgTag(p) + "<div><strong>" + esc(p.name) + "</strong><small>" + esc(p.brand) + "</small></div>" +
+    '<div class="row">' + imgTag(p) + "<div><strong>" + esc(shopName(p)) + "</strong><small>" + esc(p.brand) + "</small></div>" +
     '<button type="button" class="btn small primary" data-restore="' + p.id + '">' + esc(t("admin.restore")) + "</button></div>").join("");
 }
 
@@ -175,12 +202,40 @@ function applyLanguage() {
 }
 
 /* ---------- Editor ---------- */
+let lastFocusedEditor = null;
 function openEditor(product) {
+  lastFocusedEditor = document.activeElement;
   const isNew = !product;
   const p = product || { name: "", brand: "", category: "", price: "", oldPrice: "", badge: "", description: "", descriptionAr: "", descriptionTr: "", image: "", inStock: true };
   editing = { product: p, isNew };
+  // Remember which version we started from, so a save can be refused if the
+  // product changed on another device in the meantime.
+  editorSeenAt = Number(p.savedAt) || 0;
   field("formTitle").textContent = t(isNew ? "admin.newTitle" : "admin.editTitle");
-  field("name").value = p.name;
+  // Only the owner's own wording goes in the box. A catalogue product keeps
+  // its imported name, shown as the placeholder, so an empty box plainly means
+  // "leave it as the shop has it" instead of inviting a rewrite in one language.
+  const ownName = editing.isNew || p.added || (Array.isArray(p.edits) && p.edits.includes("name"));
+  field("name").value = ownName ? (p.name || "") : "";
+  // The panel lists the name the shopper sees; the editor has to show the same
+  // thing, and let the owner set the other two languages rather than having an
+  // Arabic rename reach an English shopper.
+  field("nameEn").value = p.nameEn || "";
+  field("nameTr").value = p.nameTr || "";
+  // What the shopper reads today, per language, shown as a hint rather than a
+  // value so that leaving a box alone keeps the imported copy.
+  const imported = id => ({
+    ar: (shopCopyByLang.ar[id] || {}),
+    en: (shopCopyByLang.en[id] || {}),
+    tr: (shopCopyByLang.tr[id] || {})
+  });
+  const shown = imported(String(p.id));
+  field("name").placeholder = shown.ar.n || "";
+  field("nameEn").placeholder = shown.en.n || "";
+  field("nameTr").placeholder = shown.tr.n || "";
+  field("descriptionAr").placeholder = shown.ar.s || "";
+  field("description").placeholder = shown.en.s || "";
+  field("descriptionTr").placeholder = shown.tr.s || "";
   field("brand").value = p.brand;
   field("category").value = p.category;
   field("price").value = isNew ? "" : p.price;
@@ -200,6 +255,8 @@ function openEditor(product) {
   updateDiscountHint();
   dirty = false;
   field("editor").hidden = false;
+  const behind = field("adminView");
+  if (behind) { behind.inert = true; behind.setAttribute("aria-hidden", "true"); }
   document.body.style.overflow = "hidden";
   if (!editorPushed) { history.pushState({ editor: true }, ""); editorPushed = true; }
   if (isNew) field("name").focus();
@@ -214,8 +271,16 @@ function closeEditor(force) {
   }
   field("editor").hidden = true;
   document.body.style.overflow = "";
+  // The page behind a dialog must be reachable again, and focus has to go
+  // back to whatever opened it rather than falling to the body.
+  const view = field("adminView");
+  if (view) { view.inert = false; view.removeAttribute("aria-hidden"); }
   editing = null;
   dirty = false;
+  if (lastFocusedEditor && document.contains(lastFocusedEditor)) {
+    try { lastFocusedEditor.focus(); } catch (e) {}
+  }
+  lastFocusedEditor = null;
   if (editorPushed) { editorPushed = false; history.back(); }
 }
 
@@ -237,10 +302,15 @@ function updateDiscountHint() {
   hint.className = "hint";
 }
 
+let editorSeenAt = 0;
 function formProduct() {
   return {
     id: editing.isNew ? undefined : editing.product.id,
-    name: field("name").value.trim(),
+    // Empty means "keep the imported name", which is what the placeholder says.
+    name: field("name").value.trim() ||
+      ((shopCopyByLang.ar[String(editing.product.id)] || {}).n) || editing.product.name || "",
+    nameEn: field("nameEn").value.trim(),
+    nameTr: field("nameTr").value.trim(),
     brand: field("brand").value.trim(),
     category: field("category").value,
     price: field("price").value,
@@ -329,7 +399,7 @@ async function saveProduct(e) {
   const button = field("saveBtn");
   busy(button, true);
   try {
-    const data = await api("save", { product: p, isNew: editing.isNew });
+    const data = await api("save", { product: p, isNew: editing.isNew, seenAt: editorSeenAt });
     setState(data.state);
     closeEditor(true);
     toast(t("admin.saved"));
@@ -357,6 +427,19 @@ async function simpleAction(action, id, successKey, button) {
 
 /* ---------- Events ---------- */
 function bind() {
+  // The shop keeps twenty automatic copies; before this there was no way for
+  // the owner to reach any of them when something went wrong.
+  field("restoreBackupBtn")?.addEventListener("click", async () => {
+    if (!confirm(t("admin.confirmRestoreBackup"))) return;
+    const button = field("restoreBackupBtn");
+    busy(button, true);
+    try {
+      const data = await api("restore-backup", {});
+      setState(data.state);
+      toast(t("admin.backupRestored"));
+    } catch (err) { toast(err.message, true); }
+    busy(button, false);
+  });
   $("#loginForm").addEventListener("submit", async e => {
     e.preventDefault();
     const button = $("#loginBtn");
@@ -366,6 +449,7 @@ function bind() {
       await api("login", { password: $("#password").value });
       $("#password").value = "";
       const data = await api("state");
+      await loadShopCopy();
       showAdmin();
       setState(data.state);
     } catch (err) {
@@ -415,9 +499,19 @@ function bind() {
           stock.setAttribute("aria-pressed", String(now.inStock));
           stock.textContent = t(now.inStock ? "inStock" : "outOfStock");
           const row = stock.previousElementSibling;
-          const tags = row && row.querySelector(".tags");
-          if (tags) tags.innerHTML = tags.innerHTML.replace(/<span class="tag out">[^<]*<\/span>/, "") +
-            (now.inStock ? "" : '<span class="tag out">' + esc(t("admin.tagOutOfStock")) + "</span>");
+          // A product with no tags yet has no container to write into, so the
+          // "out of stock" mark simply never appeared until the next full
+          // re-render. Create the row of tags when it is missing.
+          let tags = row && row.querySelector(".tags");
+          if (row && !tags) {
+            tags = document.createElement("div");
+            tags.className = "tags";
+            row.appendChild(tags);
+          }
+          if (tags) {
+            tags.innerHTML = tags.innerHTML.replace(/<span class="tag out">[^<]*<\/span>/, "") +
+              (now.inStock ? "" : '<span class="tag out">' + esc(t("admin.tagOutOfStock")) + "</span>");
+          }
         }
         renderDeleted();
         toast(t("admin.saved"));
@@ -524,6 +618,7 @@ async function boot() {
   bind();
   try {
     const data = await api("state");
+    await loadShopCopy();
     showAdmin();
     setState(data.state);
   } catch (e) {

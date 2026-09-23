@@ -7,6 +7,8 @@ import { pathToFileURL } from "node:url";
 const REPO = path.resolve(process.env.DEV_REPO);
 const PORT = Number(process.env.DEV_PORT || 3100);
 const BLOB_DIR = process.env.DEV_BLOB_DIR;
+// The api functions refuse a Host-derived origin; give them the local one.
+if (!process.env.SITE_ORIGIN) process.env.SITE_ORIGIN = "http://127.0.0.1:" + PORT;
 
 const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml", ".json": "application/json", ".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg", ".gif": "image/gif", ".ico": "image/x-icon" };
 

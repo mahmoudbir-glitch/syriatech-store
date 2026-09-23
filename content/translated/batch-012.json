@@ -1,0 +1,1058 @@
+{
+  "26804": {
+    "en": {
+      "name": "Turret PoE Cam E41",
+      "summary": "4K PoE turret camera with a 122° view, color night vision and AI human detection, for use with a eufy PoE NVR system.",
+      "bullets": [
+        {
+          "title": "4K UHD, 122° Wide View",
+          "text": "4K Ultra HD resolution captures sharp, lifelike video, while the 122° field of view covers wide areas in fine detail. The E41 PoE add-on camera works exclusively with the eufy PoE NVR system and cannot operate on its own."
+        },
+        {
+          "title": "Starlight Color Night Vision",
+          "text": "AI-ISP processing shows nighttime detail in full color without a spotlight. Switch the spotlight on for an even clearer view, and HDR prevents overexposure so details such as a license plate stay readable."
+        },
+        {
+          "title": "AI Human Detection",
+          "text": "Advanced AI tells people, pets and vehicles apart and cuts false alerts by 99%, so you are notified only when it matters."
+        },
+        {
+          "title": "Red and Blue Strobe",
+          "text": "The AI tracks intruders across your property and deters them with a smart siren and a red and blue strobe light."
+        },
+        {
+          "title": "Discreet All-Round Monitoring",
+          "text": "Suitable for both indoor and outdoor installation. The compact, understated housing keeps watch without drawing attention."
+        },
+        {
+          "title": "24/7 Recording with PoE",
+          "text": "A single cable carries power and data for round-the-clock recording with your eufy NVR S4. A PoE NVR, switch, injector and DC adapter are required and are not included."
+        },
+        {
+          "title": "IP67 and Two-Way Talk",
+          "text": "IP67 waterproofing stands up to any weather for reliable monitoring. AI noise reduction filters out background noise so two-way conversations stay clear."
+        }
+      ]
+    },
+    "ar": {
+      "name": "كاميرا Turret E41 بتقنية PoE",
+      "summary": "كاميرا PoE بدقّة 4K وزاوية رؤية 122° مع رؤية ليلية ملوّنة وكشف ذكي للأشخاص، تعمل ضمن نظام eufy PoE NVR.",
+      "bullets": [
+        {
+          "title": "دقّة 4K وزاوية رؤية 122°",
+          "text": "دقّة 4K Ultra HD تلتقط صورة حادّة وواقعية، وزاوية رؤية 122° تغطّي مساحة واسعة بتفاصيل دقيقة. ملاحظة: كاميرا E41 الإضافية بتقنية PoE مصمّمة للعمل حصريًا مع نظام eufy PoE NVR ولا تعمل بمفردها."
+        },
+        {
+          "title": "رؤية ليلية ملوّنة Starlight",
+          "text": "تعرض معالجة AI-ISP تفاصيل الليل بالألوان الكاملة دون الحاجة إلى كشّاف. شغّل الكشّاف لصورة أوضح، ويمنع نظام HDR الإضاءة الزائدة لتبقى التفاصيل مثل لوحة السيارة مقروءة."
+        },
+        {
+          "title": "كشف الأشخاص بالذكاء الاصطناعي",
+          "text": "يميّز الذكاء الاصطناعي المتقدّم بين الأشخاص والحيوانات الأليفة والمركبات، ويقلّل التنبيهات الخاطئة بنسبة 99%، فلا يصلك إشعار إلا عند الأهمية."
+        },
+        {
+          "title": "وميض أحمر وأزرق",
+          "text": "يتعقّب الذكاء الاصطناعي المتسلّلين داخل محيط منزلك ويردعهم بصفّارة إنذار ذكية ووميض ضوئي أحمر وأزرق."
+        },
+        {
+          "title": "مراقبة شاملة وغير ملفتة",
+          "text": "مناسبة للتركيب الداخلي والخارجي على حدّ سواء. تصميم صغير وهادئ يراقب بفعالية دون أن يلفت الأنظار."
+        },
+        {
+          "title": "تسجيل مستمر عبر PoE",
+          "text": "كابل واحد ينقل الطاقة والبيانات للتسجيل على مدار الساعة مع جهاز eufy NVR S4. ملاحظة: يلزم توفّر مسجّل PoE NVR ومبدّل شبكة (Switch) وحاقن طاقة ومحوّل DC، وهي غير مشمولة بالمنتج."
+        },
+        {
+          "title": "حماية IP67 ومحادثة ثنائية",
+          "text": "مقاومة الماء بمعيار IP67 تتحمّل جميع الظروف الجوية لمراقبة موثوقة. ويزيل نظام إلغاء الضجيج بالذكاء الاصطناعي أصوات الخلفية لتبقى المحادثة الثنائية واضحة."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Turret PoE Kamera E41",
+      "summary": "122° görüş açılı 4K PoE turret kamera; renkli gece görüşü ve yapay zekâ ile insan algılama sunar, eufy PoE NVR ile çalışır.",
+      "bullets": [
+        {
+          "title": "4K UHD, 122° Geniş Açı",
+          "text": "4K Ultra HD çözünürlük keskin ve gerçekçi görüntü sunarken 122° görüş açısı geniş alanları ince ayrıntılarla kapsar. Not: E41 PoE ek kamera yalnızca eufy PoE NVR sistemiyle çalışır ve tek başına kullanılamaz."
+        },
+        {
+          "title": "Starlight Renkli Gece Görüşü",
+          "text": "AI-ISP işleme, spot ışığa gerek kalmadan gece ayrıntılarını tam renkli gösterir. Daha net görüntü için spot ışığı açın; HDR aşırı pozlamayı önler, böylece plaka gibi ayrıntılar okunabilir kalır."
+        },
+        {
+          "title": "Yapay Zekâ ile İnsan Algılama",
+          "text": "Gelişmiş yapay zekâ insanları, evcil hayvanları ve araçları birbirinden ayırır ve yanlış uyarıları %99 azaltır; yalnızca gerektiğinde bildirim alırsınız."
+        },
+        {
+          "title": "Kırmızı ve Mavi Flaş",
+          "text": "Yapay zekâ davetsiz misafirleri takip eder ve akıllı sirenle kırmızı-mavi flaş ışığı kullanarak caydırır."
+        },
+        {
+          "title": "Göze Batmayan Tasarım",
+          "text": "Hem iç hem dış mekân kurulumuna uygundur. Kompakt ve sade gövdesi dikkat çekmeden etkili biçimde izler."
+        },
+        {
+          "title": "PoE ile 7/24 Kayıt",
+          "text": "Tek kablo hem gücü hem veriyi taşıyarak eufy NVR S4 ile kesintisiz kayıt sağlar. Not: PoE NVR, switch, enjektör ve DC adaptör gereklidir ve dahil değildir."
+        },
+        {
+          "title": "IP67 ve Çift Yönlü Konuşma",
+          "text": "IP67 su geçirmezliği her hava koşuluna dayanır. Yapay zekâ destekli gürültü azaltma arka plan seslerini süzerek çift yönlü konuşmayı net tutar."
+        }
+      ]
+    }
+  },
+  "26828": {
+    "en": {
+      "name": "PoE Bullet-PTZ Cam S4",
+      "summary": "Triple-lens 16 MP PoE camera pairing a fixed 4K wide view with a 2K PTZ lens that auto-tracks subjects up to 164 ft away.",
+      "bullets": [
+        {
+          "title": "16 MP Triple-Lens Camera",
+          "text": "The upper 4K wide-angle camera gives a fixed 122° view of the whole scene, while the lower 2K PTZ camera adds 8x auto-zoom and 360° pan for complete coverage. The S4 PoE add-on camera works exclusively with the eufy PoE NVR system and cannot operate on its own."
+        },
+        {
+          "title": "Auto-Framing and Group Tracking",
+          "text": "When the bullet camera detects a subject, the PTZ lens locks on and follows it in sharp, centered close-ups from up to 164 ft away. Auto-zoom keeps moving subjects framed until they leave the scene."
+        },
+        {
+          "title": "Starlight Color Night Vision",
+          "text": "AI-ISP processing shows nighttime detail in full color without a spotlight. Switch the spotlight on for an even clearer view, and HDR prevents overexposure so details such as a license plate stay readable."
+        },
+        {
+          "title": "Red and Blue Strobe",
+          "text": "The AI tracks intruders across your property and deters them with a smart siren and a red and blue strobe light."
+        },
+        {
+          "title": "AI Human Detection",
+          "text": "Advanced AI tells people, pets and vehicles apart and cuts false alerts by 99%, so you are notified only when it matters."
+        },
+        {
+          "title": "24/7 Recording with PoE",
+          "text": "A single cable carries power and data for round-the-clock recording with your eufy NVR S4. A PoE NVR, switch, injector and DC adapter are required and are not included."
+        },
+        {
+          "title": "IP65 and Two-Way Talk",
+          "text": "IP65 weather resistance stands up to rain and wind for reliable monitoring. AI noise reduction filters out background noise so two-way conversations stay clear."
+        }
+      ]
+    },
+    "ar": {
+      "name": "كاميرا Bullet-PTZ S4 بتقنية PoE",
+      "summary": "كاميرا PoE بثلاث عدسات ودقّة 16 MP تجمع رؤية 4K ثابتة مع عدسة PTZ بدقّة 2K تتعقّب الأهداف حتى مسافة 50 متراً.",
+      "bullets": [
+        {
+          "title": "ثلاث عدسات بدقّة 16 MP",
+          "text": "الكاميرا العلوية بدقّة 4K وزاوية واسعة تمنح رؤية ثابتة 122° للمشهد كاملًا، بينما تضيف الكاميرا السفلية PTZ بدقّة 2K تقريبًا تلقائيًا 8× ودورانًا أفقيًا 360° لتغطية شاملة. ملاحظة: كاميرا S4 الإضافية بتقنية PoE مصمّمة للعمل حصريًا مع نظام eufy PoE NVR ولا تعمل بمفردها."
+        },
+        {
+          "title": "تأطير وتتبّع تلقائي",
+          "text": "عندما ترصد كاميرا Bullet هدفًا، تقفل عليه عدسة PTZ وتتعقّبه بلقطات قريبة حادّة ومتمركزة من مسافة تصل إلى 50 متراً. ويحافظ التقريب التلقائي على الهدف داخل الإطار حتى يغادر المشهد."
+        },
+        {
+          "title": "رؤية ليلية ملوّنة Starlight",
+          "text": "تعرض معالجة AI-ISP تفاصيل الليل بالألوان الكاملة دون الحاجة إلى كشّاف. شغّل الكشّاف لصورة أوضح، ويمنع نظام HDR الإضاءة الزائدة لتبقى التفاصيل مثل لوحة السيارة مقروءة."
+        },
+        {
+          "title": "وميض أحمر وأزرق",
+          "text": "يتعقّب الذكاء الاصطناعي المتسلّلين داخل محيط منزلك ويردعهم بصفّارة إنذار ذكية ووميض ضوئي أحمر وأزرق."
+        },
+        {
+          "title": "كشف الأشخاص بالذكاء الاصطناعي",
+          "text": "يميّز الذكاء الاصطناعي المتقدّم بين الأشخاص والحيوانات الأليفة والمركبات، ويقلّل التنبيهات الخاطئة بنسبة 99%، فلا يصلك إشعار إلا عند الأهمية."
+        },
+        {
+          "title": "تسجيل مستمر عبر PoE",
+          "text": "كابل واحد ينقل الطاقة والبيانات للتسجيل على مدار الساعة مع جهاز eufy NVR S4. ملاحظة: يلزم توفّر مسجّل PoE NVR ومبدّل شبكة (Switch) وحاقن طاقة ومحوّل DC، وهي غير مشمولة بالمنتج."
+        },
+        {
+          "title": "حماية IP65 ومحادثة ثنائية",
+          "text": "مقاومة الطقس بمعيار IP65 تتحمّل المطر والرياح لمراقبة موثوقة. ويزيل نظام إلغاء الضجيج بالذكاء الاصطناعي أصوات الخلفية لتبقى المحادثة الثنائية واضحة."
+        }
+      ]
+    },
+    "tr": {
+      "name": "PoE Bullet-PTZ Kamera S4",
+      "summary": "Üç lensli 16 MP PoE kamera; sabit 4K geniş görüşü, 50 metre mesafeye kadar otomatik takip yapan 2K PTZ lensle birleştirir.",
+      "bullets": [
+        {
+          "title": "16 MP Üç Lensli Kamera",
+          "text": "Üstteki 4K geniş açı kamera tüm sahnenin 122° sabit görüntüsünü verirken, alttaki 2K PTZ kamera 8x otomatik yakınlaştırma ve 360° yatay hareketle tam kapsama sağlar. Not: S4 PoE ek kamera yalnızca eufy PoE NVR sistemiyle çalışır ve tek başına kullanılamaz."
+        },
+        {
+          "title": "Otomatik Çerçeveleme ve Takip",
+          "text": "Bullet kamera bir hedef algıladığında PTZ lens kilitlenir ve 50 metre mesafeye kadar net, ortalanmış yakın planlarla takip eder. Otomatik yakınlaştırma, hareketli hedefi sahneden çıkana dek çerçevede tutar."
+        },
+        {
+          "title": "Starlight Renkli Gece Görüşü",
+          "text": "AI-ISP işleme, spot ışığa gerek kalmadan gece ayrıntılarını tam renkli gösterir. Daha net görüntü için spot ışığı açın; HDR aşırı pozlamayı önler, böylece plaka gibi ayrıntılar okunabilir kalır."
+        },
+        {
+          "title": "Kırmızı ve Mavi Flaş",
+          "text": "Yapay zekâ davetsiz misafirleri takip eder ve akıllı sirenle kırmızı-mavi flaş ışığı kullanarak caydırır."
+        },
+        {
+          "title": "Yapay Zekâ ile İnsan Algılama",
+          "text": "Gelişmiş yapay zekâ insanları, evcil hayvanları ve araçları birbirinden ayırır ve yanlış uyarıları %99 azaltır; yalnızca gerektiğinde bildirim alırsınız."
+        },
+        {
+          "title": "PoE ile 7/24 Kayıt",
+          "text": "Tek kablo hem gücü hem veriyi taşıyarak eufy NVR S4 ile kesintisiz kayıt sağlar. Not: PoE NVR, switch, enjektör ve DC adaptör gereklidir ve dahil değildir."
+        },
+        {
+          "title": "IP65 ve Çift Yönlü Konuşma",
+          "text": "IP65 hava koşullarına dayanıklılığı yağmura ve rüzgâra karşı güvenilir izleme sunar. Yapay zekâ destekli gürültü azaltma arka plan seslerini süzerek konuşmaları net tutar."
+        }
+      ]
+    }
+  },
+  "26863": {
+    "en": {
+      "name": "Bullet PoE Cam E40",
+      "summary": "4K bullet PoE camera with a 122° view, color night vision and IP67 weatherproofing, for use with a eufy PoE NVR system.",
+      "bullets": [
+        {
+          "title": "4K UHD, 122° Wide View",
+          "text": "4K Ultra HD resolution captures sharp, lifelike video, while the 122° field of view covers wide areas in fine detail. The E40 PoE add-on camera works exclusively with the eufy PoE NVR system and cannot operate on its own."
+        },
+        {
+          "title": "Starlight Color Night Vision",
+          "text": "AI-ISP processing shows nighttime detail in full color without a spotlight. Switch the spotlight on for an even clearer view, and HDR prevents overexposure so details such as a license plate stay readable."
+        },
+        {
+          "title": "AI Human Detection",
+          "text": "Advanced AI tells people, pets and vehicles apart and cuts false alerts by 99%, so you are notified only when it matters."
+        },
+        {
+          "title": "Red and Blue Strobe",
+          "text": "The AI tracks intruders across your property and deters them with a smart siren and a red and blue strobe light."
+        },
+        {
+          "title": "Crystal-Clear Two-Way Talk",
+          "text": "AI noise reduction filters distracting background noise out of both your microphone and the incoming audio, keeping conversations clean and easy to follow."
+        },
+        {
+          "title": "24/7 Recording with PoE",
+          "text": "A single cable carries power and data for round-the-clock recording with your eufy NVR S4. A PoE NVR, switch, injector and DC adapter are required and are not included."
+        },
+        {
+          "title": "IP67 Weatherproof",
+          "text": "Robust IP67 weatherproofing keeps the camera watching over your property through rain, snow and strong sun."
+        }
+      ]
+    },
+    "ar": {
+      "name": "كاميرا Bullet E40 بتقنية PoE",
+      "summary": "كاميرا Bullet بدقّة 4K وتقنية PoE وزاوية 122°، مع رؤية ليلية ملوّنة ومقاومة IP67، تعمل ضمن نظام eufy PoE NVR.",
+      "bullets": [
+        {
+          "title": "دقّة 4K وزاوية رؤية 122°",
+          "text": "دقّة 4K Ultra HD تلتقط صورة حادّة وواقعية، وزاوية رؤية 122° تغطّي مساحة واسعة بتفاصيل دقيقة. ملاحظة: كاميرا E40 الإضافية بتقنية PoE مصمّمة للعمل حصريًا مع نظام eufy PoE NVR ولا تعمل بمفردها."
+        },
+        {
+          "title": "رؤية ليلية ملوّنة Starlight",
+          "text": "تعرض معالجة AI-ISP تفاصيل الليل بالألوان الكاملة دون الحاجة إلى كشّاف. شغّل الكشّاف لصورة أوضح، ويمنع نظام HDR الإضاءة الزائدة لتبقى التفاصيل مثل لوحة السيارة مقروءة."
+        },
+        {
+          "title": "كشف الأشخاص بالذكاء الاصطناعي",
+          "text": "يميّز الذكاء الاصطناعي المتقدّم بين الأشخاص والحيوانات الأليفة والمركبات، ويقلّل التنبيهات الخاطئة بنسبة 99%، فلا يصلك إشعار إلا عند الأهمية."
+        },
+        {
+          "title": "وميض أحمر وأزرق",
+          "text": "يتعقّب الذكاء الاصطناعي المتسلّلين داخل محيط منزلك ويردعهم بصفّارة إنذار ذكية ووميض ضوئي أحمر وأزرق."
+        },
+        {
+          "title": "محادثة ثنائية واضحة",
+          "text": "يزيل نظام إلغاء الضجيج بالذكاء الاصطناعي أصوات الخلفية المزعجة من الميكروفون ومن الصوت الوارد معًا، لتبقى المحادثة نقية وسهلة المتابعة."
+        },
+        {
+          "title": "تسجيل مستمر عبر PoE",
+          "text": "كابل واحد ينقل الطاقة والبيانات للتسجيل على مدار الساعة مع جهاز eufy NVR S4. ملاحظة: يلزم توفّر مسجّل PoE NVR ومبدّل شبكة (Switch) وحاقن طاقة ومحوّل DC، وهي غير مشمولة بالمنتج."
+        },
+        {
+          "title": "مقاومة للطقس بمعيار IP67",
+          "text": "مقاومة قوية للطقس بمعيار IP67 تبقي الكاميرا تحرس منزلك في المطر والثلج وأشعة الشمس القوية."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Bullet PoE Kamera E40",
+      "summary": "122° görüş açılı 4K bullet PoE kamera; renkli gece görüşü ve IP67 dayanıklılığı sunar, eufy PoE NVR ile çalışır.",
+      "bullets": [
+        {
+          "title": "4K UHD, 122° Geniş Açı",
+          "text": "4K Ultra HD çözünürlük keskin ve gerçekçi görüntü sunarken 122° görüş açısı geniş alanları ince ayrıntılarla kapsar. Not: E40 PoE ek kamera yalnızca eufy PoE NVR sistemiyle çalışır ve tek başına kullanılamaz."
+        },
+        {
+          "title": "Starlight Renkli Gece Görüşü",
+          "text": "AI-ISP işleme, spot ışığa gerek kalmadan gece ayrıntılarını tam renkli gösterir. Daha net görüntü için spot ışığı açın; HDR aşırı pozlamayı önler, böylece plaka gibi ayrıntılar okunabilir kalır."
+        },
+        {
+          "title": "Yapay Zekâ ile İnsan Algılama",
+          "text": "Gelişmiş yapay zekâ insanları, evcil hayvanları ve araçları birbirinden ayırır ve yanlış uyarıları %99 azaltır; yalnızca gerektiğinde bildirim alırsınız."
+        },
+        {
+          "title": "Kırmızı ve Mavi Flaş",
+          "text": "Yapay zekâ davetsiz misafirleri takip eder ve akıllı sirenle kırmızı-mavi flaş ışığı kullanarak caydırır."
+        },
+        {
+          "title": "Kristal Netliğinde Konuşma",
+          "text": "Yapay zekâ destekli gürültü azaltma, hem mikrofonunuzdaki hem gelen sesteki rahatsız edici arka plan gürültüsünü süzer ve konuşmaları net tutar."
+        },
+        {
+          "title": "PoE ile 7/24 Kayıt",
+          "text": "Tek kablo hem gücü hem veriyi taşıyarak eufy NVR S4 ile kesintisiz kayıt sağlar. Not: PoE NVR, switch, enjektör ve DC adaptör gereklidir ve dahil değildir."
+        },
+        {
+          "title": "IP67 Hava Koşullarına Dayanıklı",
+          "text": "Güçlü IP67 koruması sayesinde kamera yağmurda, karda ve güçlü güneşte evinizi izlemeye devam eder."
+        }
+      ]
+    }
+  },
+  "26877": {
+    "en": {
+      "name": "eufyCam E40 2-Cam Kit (HomeBase S380 and Solar Panel)",
+      "summary": "Two solar-charged 2K cameras with color night vision, face recognition and local storage on HomeBase S380 — no monthly fee.",
+      "bullets": [
+        {
+          "title": "Day-Like 2K Clarity at Night",
+          "text": "Quad HD resolution and MaxColor Vision produce vivid, full-color footage, so even in very low light the scene looks close to daylight."
+        },
+        {
+          "title": "Stay Charged with Solar Power",
+          "text": "SolarPlus 2.0 keeps the cameras running with efficient charging. Use the built-in panel or add the external panel to capture more sunlight, and the camera stays powered on cloudy days and in partial shade."
+        },
+        {
+          "title": "Months of Battery Life",
+          "text": "The high-capacity built-in 13000mAh battery supports months of use after a simple wireless installation. It suits gardens, driveways and hard-to-reach corners."
+        },
+        {
+          "title": "Advanced PIR Sensor",
+          "text": "The upgraded passive infrared (PIR) sensor detects motion reliably so important events are always captured."
+        },
+        {
+          "title": "BionicMind AI Recognition",
+          "text": "Self-learning facial recognition tells family and friends apart from strangers, so you always know who is at the door and who is trusted."
+        },
+        {
+          "title": "Local Storage, No Monthly Fee",
+          "text": "HomeBase S380 manages your eufy devices and stores video locally on 16GB of built-in storage, expandable to 16TB with a hard drive (not included). No hidden costs."
+        },
+        {
+          "title": "Note on Cloud Features",
+          "text": "If you use cloud features such as cloud storage or push notifications with thumbnail previews, the related videos or thumbnails are sent to the cloud as needed. Some optional or premium features require a monthly subscription."
+        }
+      ]
+    },
+    "ar": {
+      "name": "طقم eufyCam E40 بكاميرتين (HomeBase S380 ولوح شمسي)",
+      "summary": "كاميرتا مراقبة 2K بالطاقة الشمسية مع رؤية ليلية ملوّنة وتعرّف على الوجوه وتخزين محلي عبر HomeBase S380 بلا رسوم شهرية.",
+      "bullets": [
+        {
+          "title": "وضوح 2K يشبه النهار",
+          "text": "دقّة Quad HD مع تقنية MaxColor Vision تمنحك تسجيلًا ملوّنًا نابضًا بالحياة، فيبدو المشهد قريبًا من ضوء النهار حتى في الإضاءة الخافتة جدًا."
+        },
+        {
+          "title": "شحن بالطاقة الشمسية",
+          "text": "تحافظ تقنية SolarPlus 2.0 على عمل الكاميرات بشحن فعّال. استخدم اللوح المدمج أو أضف اللوح الخارجي لالتقاط مزيد من أشعة الشمس، وتبقى الكاميرا مشحونة في الأيام الغائمة وفي الظل الجزئي."
+        },
+        {
+          "title": "بطارية تدوم أشهرًا",
+          "text": "بطارية مدمجة عالية السعة 13000mAh تكفي لأشهر من الاستخدام بعد تركيب لاسلكي بسيط. مثالية للحدائق والمداخل والزوايا البعيدة."
+        },
+        {
+          "title": "حسّاس PIR مطوّر",
+          "text": "حسّاس الأشعة تحت الحمراء السلبي (PIR) المطوّر يرصد الحركة بدقّة ليضمن تسجيل كل حدث مهم."
+        },
+        {
+          "title": "تعرّف على الوجوه BionicMind",
+          "text": "تعرّف ذكي على الوجوه يتعلّم ذاتيًا ويميّز أفراد العائلة والأصدقاء عن الغرباء، فتعرف دائمًا من يقف عند الباب ومن هو موضع ثقة."
+        },
+        {
+          "title": "تخزين محلي بلا رسوم شهرية",
+          "text": "يدير جهاز HomeBase S380 أجهزة eufy لديك ويحفظ التسجيلات محليًا على ذاكرة مدمجة 16GB قابلة للتوسيع حتى 16TB بقرص صلب (غير مرفق). بلا أي تكاليف خفيّة."
+        },
+        {
+          "title": "ملاحظة حول الخدمات السحابية",
+          "text": "عند استخدام ميزات سحابية مثل التخزين السحابي أو الإشعارات مع صور مصغّرة، تُرسَل المقاطع أو الصور المصغّرة إلى السحابة حسب الحاجة. وبعض الميزات الاختيارية أو المتقدّمة تتطلّب اشتراكًا شهريًا."
+        }
+      ]
+    },
+    "tr": {
+      "name": "eufyCam E40 2 Kameralı Set (HomeBase S380 ve Güneş Paneli)",
+      "summary": "Güneş enerjisiyle çalışan iki 2K kamera; renkli gece görüşü, yüz tanıma ve HomeBase S380 ile aylık ücretsiz yerel depolama.",
+      "bullets": [
+        {
+          "title": "Gece de Gündüz Netliği",
+          "text": "Quad HD çözünürlük ve MaxColor Vision canlı, tam renkli görüntü üretir; çok düşük ışıkta bile sahne gündüz gibi görünür."
+        },
+        {
+          "title": "Güneş Enerjisiyle Şarj",
+          "text": "SolarPlus 2.0 verimli şarjla kameraları çalışır durumda tutar. Yerleşik paneli kullanın ya da harici panel ekleyerek daha fazla güneş ışığı toplayın; kamera bulutlu günlerde ve kısmi gölgede de şarjlı kalır."
+        },
+        {
+          "title": "Aylarca Süren Pil",
+          "text": "Yüksek kapasiteli 13.000mAh yerleşik pil, basit kablosuz kurulumun ardından aylarca kullanım sağlar. Bahçeler, araç yolları ve ulaşılması zor köşeler için idealdir."
+        },
+        {
+          "title": "Gelişmiş PIR Sensörü",
+          "text": "Geliştirilmiş pasif kızılötesi (PIR) sensör hareketi güvenilir biçimde algılar; önemli olaylar hiç kaçmaz."
+        },
+        {
+          "title": "BionicMind Yüz Tanıma",
+          "text": "Kendi kendine öğrenen yüz tanıma, aile ve arkadaşları yabancılardan ayırır; kapıda kimin olduğunu ve kime güvenilebileceğini her zaman bilirsiniz."
+        },
+        {
+          "title": "Yerel Depolama, Aylık Ücret Yok",
+          "text": "HomeBase S380 eufy cihazlarınızı yönetir ve videoları 16GB yerleşik depolamada yerel olarak saklar; sabit diskle 16TB'a kadar genişletilebilir (dahil değildir). Gizli maliyet yoktur."
+        },
+        {
+          "title": "Bulut Özellikleri Hakkında Not",
+          "text": "Bulut depolama veya küçük önizleme görselli bildirimler gibi bulut özelliklerini kullanırsanız ilgili videolar ya da önizlemeler gerektiğinde buluta gönderilir. Bazı isteğe bağlı veya premium özellikler aylık abonelik gerektirir."
+        }
+      ]
+    }
+  },
+  "26896": {
+    "en": {
+      "name": "Robot Vacuum Omni E25",
+      "summary": "Robot vacuum and roller mop with 20000 Pa suction and a station that empties, washes and dries everything for you.",
+      "bullets": [
+        {
+          "title": "HydroJet Roller Mop",
+          "text": "The E25 self-cleans its roller mop 6 times a second, so the mop stays spotless from the beginning of the session to the end."
+        },
+        {
+          "title": "All-in-One Station",
+          "text": "The station handles daily cleaning for you with self-emptying, self-washing, self-refilling, hot air drying, automatic detergent dispensing and wastewater storage."
+        },
+        {
+          "title": "20000 Pa Turbo Suction",
+          "text": "Professional-quality results on carpets and hard floors, clearing stubborn dust and hair for a spotless home."
+        },
+        {
+          "title": "DuoSpiral Anti-Tangle Brushes",
+          "text": "The brushes keep hair and pet fur from tangling and reduce clogs, so you spend far less time on manual cleaning."
+        },
+        {
+          "title": "100% Edge Coverage",
+          "text": "The CornerRover arm tracks along walls and into corners for full cleaning reach, which is ideal in homes with pets."
+        },
+        {
+          "title": "Keep the Firmware Updated",
+          "text": "Update the robot through the app so it keeps cleaning reliably and gains new functions over time."
+        },
+        {
+          "title": "Wi-Fi Requirement",
+          "text": "The robot connects to 2.4GHz Wi-Fi networks. 5GHz networks are not supported."
+        }
+      ]
+    },
+    "ar": {
+      "name": "مكنسة روبوت Omni E25",
+      "summary": "مكنسة روبوت وممسحة أسطوانية بقوة شفط 20000 Pa ومحطة تتولّى التفريغ والغسل والتجفيف بدلًا عنك.",
+      "bullets": [
+        {
+          "title": "ممسحة أسطوانية بنظام HydroJet",
+          "text": "ينظّف E25 ممسحته الأسطوانية ذاتيًا 6 مرات في الثانية، فتبقى نظيفة من بداية جلسة التنظيف حتى نهايتها."
+        },
+        {
+          "title": "محطة متكاملة",
+          "text": "تتولّى المحطة التنظيف اليومي عنك: تفريغ ذاتي وغسل ذاتي وإعادة تعبئة المياه وتجفيف بالهواء الساخن وضخّ تلقائي للمنظّف وتخزين للمياه المتّسخة."
+        },
+        {
+          "title": "شفط توربيني 20000 Pa",
+          "text": "نتائج بجودة احترافية على السجّاد والأرضيات الصلبة، مع إزالة الغبار والشعر العنيد للحصول على منزل نظيف تمامًا."
+        },
+        {
+          "title": "فرش DuoSpiral المانعة للتشابك",
+          "text": "تمنع الفرش تشابك الشعر ووبر الحيوانات الأليفة وتقلّل الانسدادات، فيقلّ وقت التنظيف اليدوي كثيرًا."
+        },
+        {
+          "title": "تغطية كاملة للحواف",
+          "text": "يتتبّع ذراع CornerRover حواف الجدران والزوايا ليصل إلى كل مكان بنسبة 100%، وهو مثالي للمنازل التي تضمّ حيوانات أليفة."
+        },
+        {
+          "title": "تحديث البرنامج الثابت",
+          "text": "حدّث الجهاز عبر التطبيق ليحافظ على أداء تنظيف موثوق ويحصل على ميزات جديدة مع الوقت."
+        },
+        {
+          "title": "متطلّبات الشبكة",
+          "text": "يتّصل الروبوت بشبكات Wi-Fi بتردّد 2.4GHz، ولا يدعم شبكات 5GHz."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Robot Süpürge Omni E25",
+      "summary": "20.000 Pa emişli robot süpürge ve silindir paspas; istasyonu boşaltma, yıkama ve kurutma işini sizin yerinize yapar.",
+      "bullets": [
+        {
+          "title": "HydroJet Silindir Mop",
+          "text": "E25 silindir mopunu saniyede 6 kez kendi kendine temizler; mop, temizliğin başından sonuna kadar tertemiz kalır."
+        },
+        {
+          "title": "Her Şey Bir Arada İstasyon",
+          "text": "İstasyon günlük temizliği sizin yerinize üstlenir: kendi kendine boşalma, yıkama, su takviyesi, sıcak hava ile kurutma, otomatik deterjan verme ve atık su depolama."
+        },
+        {
+          "title": "20.000 Pa Turbo Emiş",
+          "text": "Halıda ve sert zeminde profesyonel kalitede sonuç verir; inatçı tozu ve saçı temizleyerek evi pırıl pırıl bırakır."
+        },
+        {
+          "title": "DuoSpiral Dolaşma Önleyici Fırçalar",
+          "text": "Fırçalar saç ve evcil hayvan tüyünün dolanmasını önler, tıkanmaları azaltır; elle temizliğe ayırdığınız süre belirgin şekilde kısalır."
+        },
+        {
+          "title": "%100 Kenar Temizliği",
+          "text": "CornerRover kolu duvar diplerini ve köşeleri izleyerek her noktaya ulaşır; evcil hayvan besleyen evler için idealdir."
+        },
+        {
+          "title": "Yazılımı Güncel Tutun",
+          "text": "Cihazı uygulama üzerinden güncelleyin; böylece güvenilir temizlik sürer ve zamanla yeni işlevler eklenir."
+        },
+        {
+          "title": "Wi-Fi Gereksinimi",
+          "text": "Robot 2.4GHz Wi-Fi ağlarına bağlanır. 5GHz ağlar desteklenmez."
+        }
+      ]
+    }
+  },
+  "27219": {
+    "en": {
+      "name": "eufy Mop Pads for L60 Hybrid",
+      "summary": "Replacement mop pads for the L60 Hybrid that glide smoothly, protect your floors and keep mopping results consistent.",
+      "bullets": [
+        {
+          "title": "Replace Regularly",
+          "text": "Change the mop pad regularly to keep the vacuum performing at its best."
+        },
+        {
+          "title": "Scratch-Free Floors",
+          "text": "The pad keeps residual particles from scratching surfaces and leaves the floor clean and shiny."
+        },
+        {
+          "title": "Low-Resistance Glide",
+          "text": "The pad has low resistance, so the robot pushes and pulls it smoothly and with less effort."
+        },
+        {
+          "title": "Easier on the Robot",
+          "text": "Less drag means less strain on the unit, which helps extend its service life."
+        },
+        {
+          "title": "Compatible Model",
+          "text": "Compatible with the eufy L60."
+        }
+      ]
+    },
+    "ar": {
+      "name": "وسادات مسح eufy لموديل L60 Hybrid",
+      "summary": "وسادات مسح بديلة لمكنسة L60 Hybrid تنزلق بسلاسة وتحمي الأرضية وتحافظ على ثبات نتائج المسح.",
+      "bullets": [
+        {
+          "title": "استبدال دوري",
+          "text": "استبدل وسادة المسح بانتظام للحفاظ على أفضل أداء للمكنسة."
+        },
+        {
+          "title": "حماية من الخدوش",
+          "text": "تمنع الوسادة الجزيئات المتبقّية من خدش الأسطح وتترك الأرضية نظيفة ولامعة."
+        },
+        {
+          "title": "انزلاق بمقاومة منخفضة",
+          "text": "مقاومة الوسادة منخفضة، فيدفعها الروبوت ويسحبها بسلاسة وبجهد أقل."
+        },
+        {
+          "title": "جهد أقل على الجهاز",
+          "text": "قلّة الاحتكاك تعني حملًا أقل على الجهاز، ما يساعد على إطالة عمره التشغيلي."
+        },
+        {
+          "title": "الموديل المتوافق",
+          "text": "متوافقة مع مكنسة eufy L60."
+        }
+      ]
+    },
+    "tr": {
+      "name": "L60 Hybrid için eufy Mop Pedleri",
+      "summary": "L60 Hybrid için yedek mop pedleri; kolay kayar, zeminlerinizi korur ve paspaslama sonuçlarını istikrarlı tutar.",
+      "bullets": [
+        {
+          "title": "Düzenli Değiştirin",
+          "text": "Süpürgenin en iyi performansı sürdürmesi için mop pedini düzenli olarak değiştirin."
+        },
+        {
+          "title": "Çizilmeyen Zeminler",
+          "text": "Ped, kalan parçacıkların yüzeyleri çizmesini önler ve zemini temiz, parlak bırakır."
+        },
+        {
+          "title": "Düşük Sürtünmeli Kayma",
+          "text": "Pedin sürtünmesi düşüktür; robot pedi daha az güçle ve akıcı şekilde iter ve çeker."
+        },
+        {
+          "title": "Cihaza Daha Az Yük",
+          "text": "Daha az sürtünme, cihaz üzerinde daha az yük demektir ve kullanım ömrünü uzatmaya yardımcı olur."
+        },
+        {
+          "title": "Uyumlu Model",
+          "text": "eufy L60 ile uyumludur."
+        }
+      ]
+    }
+  },
+  "27229": {
+    "en": {
+      "name": "eufy Mop Pads for X8 Hybrid",
+      "summary": "Microfiber replacement pads for the X8 Hybrid: absorbent, lint-free and gentle on every kind of hard floor.",
+      "bullets": [
+        {
+          "title": "Applicable Model",
+          "text": "Compatible with the eufy X8 Hybrid. Please confirm your vacuum model before ordering."
+        },
+        {
+          "title": "Non-Shedding Fiber",
+          "text": "Made from selected microfibers, the pad performs better than the original material and will not scratch your floor."
+        },
+        {
+          "title": "Strong Water Absorption",
+          "text": "The pad resists high temperatures, does not fade and leaves no lint. It dries easily and stays durable through repeated use."
+        },
+        {
+          "title": "Easy to Replace",
+          "text": "As part of normal maintenance the pad can be taken off and swapped for a new one in seconds."
+        },
+        {
+          "title": "Replacement Interval",
+          "text": "Change the mop pad every 2 to 3 months, depending on how often you use the robot, to keep performance at its best."
+        }
+      ]
+    },
+    "ar": {
+      "name": "وسادات مسح eufy لموديل X8 Hybrid",
+      "summary": "وسادات مسح بديلة من الميكروفايبر لموديل X8 Hybrid: تمتصّ الماء جيدًا، ولا تترك وبرًا، ولطيفة على كل الأرضيات الصلبة.",
+      "bullets": [
+        {
+          "title": "الموديل المتوافق",
+          "text": "متوافقة مع مكنسة eufy X8 Hybrid. يُرجى التأكّد من موديل المكنسة قبل الشراء."
+        },
+        {
+          "title": "ألياف لا تتساقط",
+          "text": "مصنوعة من ألياف ميكروفايبر مختارة، وأداؤها أفضل من الخامة الأصلية ولا تخدش الأرضية."
+        },
+        {
+          "title": "امتصاص عالٍ للماء",
+          "text": "تتحمّل الوسادة الحرارة العالية ولا يبهت لونها ولا تترك وبرًا. تجفّ بسهولة وتبقى متينة مع الاستخدام المتكرّر."
+        },
+        {
+          "title": "سهلة الاستبدال",
+          "text": "ضمن الصيانة الاعتيادية، يمكن نزع الوسادة وتركيب أخرى جديدة خلال ثوانٍ."
+        },
+        {
+          "title": "مواعيد الاستبدال",
+          "text": "استبدل وسادة المسح كل شهرين إلى ثلاثة أشهر بحسب كثافة الاستخدام للحفاظ على أفضل أداء."
+        }
+      ]
+    },
+    "tr": {
+      "name": "X8 Hybrid için eufy Mop Pedleri",
+      "summary": "X8 Hybrid için mikrofiber yedek pedler: emici, tüy bırakmayan ve her tür sert zemine karşı nazik.",
+      "bullets": [
+        {
+          "title": "Uyumlu Model",
+          "text": "eufy X8 Hybrid ile uyumludur. Sipariş vermeden önce lütfen süpürge modelinizi doğrulayın."
+        },
+        {
+          "title": "Tüy Bırakmayan Kumaş",
+          "text": "Seçilmiş mikrofiberlerden üretilen ped, orijinal malzemeden daha iyi performans gösterir ve zemini çizmez."
+        },
+        {
+          "title": "Güçlü Su Emilimi",
+          "text": "Ped yüksek sıcaklığa dayanır, rengi solmaz ve tüy bırakmaz. Kolay kurur ve tekrarlanan kullanımda dayanıklı kalır."
+        },
+        {
+          "title": "Kolay Değişim",
+          "text": "Normal bakımın bir parçası olarak ped saniyeler içinde çıkarılıp yenisiyle değiştirilebilir."
+        },
+        {
+          "title": "Değişim Aralığı",
+          "text": "En iyi performans için mop pedini kullanım sıklığınıza göre 2-3 ayda bir değiştirin."
+        }
+      ]
+    }
+  },
+  "27232": {
+    "en": {
+      "name": "eufy Mop Pads for X8 Pro",
+      "summary": "Washable replacement mop cloths for the X8 Pro that lift stubborn stains without fading, linting or scratching floors.",
+      "bullets": [
+        {
+          "title": "Easy to Remove Stains",
+          "text": "The durable build lets these washable mop cloths lift stubborn stains. They absorb water well, dry fast and leave no fading or lint on the floor."
+        },
+        {
+          "title": "Protect the Floor",
+          "text": "These replacement eufy mop cloths are made of a soft material that removes dirt while protecting floors from scratches."
+        },
+        {
+          "title": "Broad Floor Compatibility",
+          "text": "Works well on well-sealed floors such as tile, hardwood and stone."
+        },
+        {
+          "title": "Authentic eufy Accessory",
+          "text": "Use genuine official accessories to extend the lifespan of your vacuum cleaner."
+        }
+      ]
+    },
+    "ar": {
+      "name": "وسادات مسح eufy لموديل X8 Pro",
+      "summary": "قطع مسح بديلة قابلة للغسل لموديل X8 Pro تزيل البقع العنيدة دون بهتان أو وبر أو خدوش على الأرضية.",
+      "bullets": [
+        {
+          "title": "إزالة سهلة للبقع",
+          "text": "بنيتها المتينة تتيح لقطع المسح القابلة للغسل إزالة البقع العنيدة. وهي تمتصّ الماء جيدًا وتجفّ بسرعة ولا تترك أثر بهتان أو وبرًا على الأرضية."
+        },
+        {
+          "title": "حماية الأرضية",
+          "text": "قطع المسح البديلة من eufy مصنوعة من مادة ناعمة تزيل الأوساخ وتحمي الأرضية من الخدوش في الوقت نفسه."
+        },
+        {
+          "title": "توافق واسع مع الأرضيات",
+          "text": "تعمل بكفاءة على الأرضيات المعالَجة جيدًا مثل البلاط والخشب الصلب والحجر."
+        },
+        {
+          "title": "ملحق eufy أصلي",
+          "text": "استخدم الملحقات الأصلية المعتمدة لإطالة عمر مكنستك."
+        }
+      ]
+    },
+    "tr": {
+      "name": "X8 Pro için eufy Mop Pedleri",
+      "summary": "X8 Pro için yıkanabilir yedek mop bezleri; inatçı lekeleri çıkarır, rengi solmaz, tüy bırakmaz ve zemini çizmez.",
+      "bullets": [
+        {
+          "title": "Lekeleri Kolayca Çıkarır",
+          "text": "Dayanıklı yapısı sayesinde yıkanabilir mop bezleri inatçı lekeleri kaldırır. Suyu iyi emer, hızlı kurur ve zeminde solma ya da tüy bırakmaz."
+        },
+        {
+          "title": "Zemini Korur",
+          "text": "eufy yedek mop bezleri, kiri temizlerken zemini çiziklerden koruyan yumuşak malzemeden üretilmiştir."
+        },
+        {
+          "title": "Geniş Zemin Uyumu",
+          "text": "Fayans, sert ahşap ve taş gibi iyi yalıtılmış zeminlerde etkili şekilde çalışır."
+        },
+        {
+          "title": "Orijinal eufy Aksesuarı",
+          "text": "Süpürgenizin ömrünü uzatmak için orijinal aksesuarları tercih edin."
+        }
+      ]
+    }
+  },
+  "27237": {
+    "en": {
+      "name": "eufy Mop Pads for Omni C20",
+      "summary": "Washable polyester microfiber pads for the Omni C20 that attach without tools and protect your floors.",
+      "bullets": [
+        {
+          "title": "Compatible Model",
+          "text": "Made for the eufy Omni C20."
+        },
+        {
+          "title": "Floor Protection",
+          "text": "High-quality polyester microfiber cleans thoroughly while protecting your floors."
+        },
+        {
+          "title": "Easy Installation",
+          "text": "The pad attaches firmly without tools and is easy to replace. A change is recommended after 180 hours of operation."
+        },
+        {
+          "title": "Washable and Reusable",
+          "text": "Washable and quick-drying, so the pad can be used again and again."
+        },
+        {
+          "title": "Use Official Parts",
+          "text": "Use official replacement parts to protect your vacuum and extend its life."
+        }
+      ]
+    },
+    "ar": {
+      "name": "وسادات مسح eufy لموديل Omni C20",
+      "summary": "وسادات ميكروفايبر بوليستر قابلة للغسل لموديل Omni C20، تُركَّب بلا أدوات وتحمي أرضيات المنزل.",
+      "bullets": [
+        {
+          "title": "الموديل المتوافق",
+          "text": "مصمّمة لمكنسة eufy Omni C20."
+        },
+        {
+          "title": "حماية الأرضية",
+          "text": "ميكروفايبر بوليستر عالي الجودة ينظّف بعمق ويحمي أرضياتك في الوقت نفسه."
+        },
+        {
+          "title": "تركيب سهل",
+          "text": "تُثبَّت الوسادة بإحكام دون أدوات ويسهل استبدالها. ويُنصَح بتبديلها بعد 180 ساعة تشغيل."
+        },
+        {
+          "title": "قابلة للغسل وإعادة الاستخدام",
+          "text": "قابلة للغسل وسريعة الجفاف، فيمكن استخدامها مرارًا."
+        },
+        {
+          "title": "استخدم القطع الأصلية",
+          "text": "استخدم قطع الغيار الرسمية لحماية مكنستك وإطالة عمرها."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Omni C20 için eufy Mop Pedleri",
+      "summary": "Omni C20 için yıkanabilir polyester mikrofiber pedler; alet gerektirmeden takılır ve zeminlerinizi korur.",
+      "bullets": [
+        {
+          "title": "Uyumlu Model",
+          "text": "eufy Omni C20 için üretilmiştir."
+        },
+        {
+          "title": "Zemin Koruması",
+          "text": "Yüksek kaliteli polyester mikrofiber, iyi temizlerken zeminlerinizi korur."
+        },
+        {
+          "title": "Kolay Takma",
+          "text": "Ped alet gerekmeden sıkıca takılır ve kolayca değiştirilir. 180 saatlik kullanımdan sonra değiştirilmesi önerilir."
+        },
+        {
+          "title": "Yıkanabilir ve Tekrar Kullanılabilir",
+          "text": "Yıkanabilir ve çabuk kurur; defalarca kullanılabilir."
+        },
+        {
+          "title": "Orijinal Parça Kullanın",
+          "text": "Süpürgenizi korumak ve ömrünü uzatmak için orijinal yedek parça kullanın."
+        }
+      ]
+    }
+  },
+  "27246": {
+    "en": {
+      "name": "eufy Roller Mop For S/E Series",
+      "summary": "Reusable polyester microfiber roller mop for eufy S and E series robots, absorbing evenly and drying quickly.",
+      "bullets": [
+        {
+          "title": "Even Absorption, Fast Drying",
+          "text": "The roller mop absorbs water evenly and dries quickly, so it removes stains effectively and can be reused many times."
+        },
+        {
+          "title": "Suits Most Hard Floors",
+          "text": "Works on tiles, marble, other common hard surfaces and composite flooring."
+        },
+        {
+          "title": "Tool-Free Replacement",
+          "text": "The roller mop is easy to install and replace with no extra tools. Replacement every 6 months is recommended."
+        },
+        {
+          "title": "Floor-Safe Microfiber",
+          "text": "Made of polyester microfiber that protects the floor from damage."
+        },
+        {
+          "title": "Authentic eufy Accessory",
+          "text": "Use genuine official accessories to extend the lifespan of your machine."
+        }
+      ]
+    },
+    "ar": {
+      "name": "أسطوانة مسح eufy لسلسلة S/E",
+      "summary": "أسطوانة مسح من ميكروفايبر البوليستر لروبوتات eufy من سلسلتَي S وE، تمتصّ الماء بالتساوي وتجفّ بسرعة.",
+      "bullets": [
+        {
+          "title": "امتصاص متساوٍ وجفاف سريع",
+          "text": "تمتصّ الأسطوانة الماء بالتساوي وتجفّ بسرعة، فتزيل البقع بفعالية ويمكن إعادة استخدامها مرات كثيرة."
+        },
+        {
+          "title": "مناسبة لمعظم الأرضيات الصلبة",
+          "text": "تعمل على البلاط والرخام وغيرها من الأسطح الصلبة الشائعة، إضافة إلى الأرضيات المركّبة."
+        },
+        {
+          "title": "استبدال بلا أدوات",
+          "text": "يسهل تركيب الأسطوانة واستبدالها دون أي أدوات إضافية. ويُنصَح بتبديلها كل 6 أشهر."
+        },
+        {
+          "title": "ميكروفايبر آمن على الأرضية",
+          "text": "مصنوعة من ميكروفايبر البوليستر الذي يحمي الأرضية من التلف."
+        },
+        {
+          "title": "ملحق eufy أصلي",
+          "text": "استخدم الملحقات الأصلية المعتمدة لإطالة عمر جهازك."
+        }
+      ]
+    },
+    "tr": {
+      "name": "S/E Serisi için eufy Silindir Mop",
+      "summary": "eufy S ve E serisi robotlar için polyester mikrofiber silindir mop; suyu eşit emer ve hızla kurur.",
+      "bullets": [
+        {
+          "title": "Eşit Emiş, Hızlı Kuruma",
+          "text": "Silindir mop suyu eşit biçimde emer ve hızla kurur; lekeleri etkili şekilde çıkarır ve defalarca kullanılabilir."
+        },
+        {
+          "title": "Sert Zeminlere Uygun",
+          "text": "Fayans, mermer, diğer yaygın sert yüzeyler ve kompozit zeminlerde kullanılabilir."
+        },
+        {
+          "title": "Aletsiz Değişim",
+          "text": "Silindir mop ek alet gerekmeden kolayca takılır ve değiştirilir. 6 ayda bir değiştirilmesi önerilir."
+        },
+        {
+          "title": "Zemine Zarar Vermeyen Mikrofiber",
+          "text": "Zemini hasardan koruyan polyester mikrofiberden üretilmiştir."
+        },
+        {
+          "title": "Orijinal eufy Aksesuarı",
+          "text": "Cihazınızın ömrünü uzatmak için orijinal aksesuarları tercih edin."
+        }
+      ]
+    }
+  },
+  "27251": {
+    "en": {
+      "name": "eufy Dust Bags For X8 Pro/X10 Pro Omni",
+      "summary": "High-capacity replacement dust bags that trap 99.7% of ultra-fine dust in the X8 Pro and X10 Pro Omni self-empty station.",
+      "bullets": [
+        {
+          "title": "Compatible Models",
+          "text": "Replacement dust bags for the self-empty station of the eufy X8 Pro and X10 Pro Omni robot vacuums."
+        },
+        {
+          "title": "Large Capacity",
+          "text": "The large bags hold more dust and filter fine particles such as food crumbs, hair and pet dander."
+        },
+        {
+          "title": "Durable Multi-Layer Fabric",
+          "text": "Made of melt-blown and non-woven fabric, the bag captures 99.7% of ultra-fine dust and helps extend the service life of your vacuum."
+        },
+        {
+          "title": "Easy to Replace",
+          "text": "Change the dust bag every 2 to 3 months to keep the robot running at peak performance."
+        }
+      ]
+    },
+    "ar": {
+      "name": "أكياس غبار eufy لموديلات X8 Pro / X10 Pro Omni",
+      "summary": "أكياس غبار بديلة بسعة كبيرة تحتجز 99.7% من الغبار الدقيق في محطة التفريغ الذاتي لموديلَي X8 Pro وX10 Pro Omni.",
+      "bullets": [
+        {
+          "title": "الموديلات المتوافقة",
+          "text": "أكياس غبار بديلة لمحطة التفريغ الذاتي في مكنستَي eufy X8 Pro وX10 Pro Omni."
+        },
+        {
+          "title": "سعة كبيرة",
+          "text": "أكياس كبيرة الحجم تستوعب كمية أكبر من الغبار وترشّح الجزيئات الدقيقة مثل فتات الطعام والشعر ووبر الحيوانات الأليفة."
+        },
+        {
+          "title": "نسيج متعدّد الطبقات",
+          "text": "مصنوعة من نسيج منفوخ بالصهر ونسيج غير منسوج، وتحتجز 99.7% من الغبار فائق النعومة، ما يساعد على إطالة عمر المكنسة."
+        },
+        {
+          "title": "سهلة الاستبدال",
+          "text": "استبدل كيس الغبار كل شهرين إلى ثلاثة أشهر للحفاظ على أفضل أداء للروبوت."
+        }
+      ]
+    },
+    "tr": {
+      "name": "X8 Pro/X10 Pro Omni için eufy Toz Torbaları",
+      "summary": "X8 Pro ve X10 Pro Omni boşaltma istasyonu için yüksek kapasiteli yedek torbalar; ince tozun %99,7'sini tutar.",
+      "bullets": [
+        {
+          "title": "Uyumlu Modeller",
+          "text": "eufy X8 Pro ve X10 Pro Omni robot süpürgelerin kendi kendine boşalan istasyonu için yedek toz torbaları."
+        },
+        {
+          "title": "Büyük Kapasite",
+          "text": "Geniş torbalar daha fazla toz alır ve yemek kırıntısı, saç, evcil hayvan tüyü gibi ince parçacıkları filtreler."
+        },
+        {
+          "title": "Dayanıklı Çok Katmanlı Kumaş",
+          "text": "Eriyik üflemeli ve dokunmamış kumaştan üretilen torba, ultra ince tozun %99,7'sini tutar ve süpürgenizin ömrünü uzatmaya yardımcı olur."
+        },
+        {
+          "title": "Kolay Değişim",
+          "text": "Robotun en iyi performansta çalışması için toz torbasını 2-3 ayda bir değiştirin."
+        }
+      ]
+    }
+  },
+  "27259": {
+    "en": {
+      "name": "eufy Dust Bags For Omni C20",
+      "summary": "Sealed, clog-free replacement dust bags for the Omni C20 self-empty station, changed in seconds with guiding slots.",
+      "bullets": [
+        {
+          "title": "Compatible Model",
+          "text": "Dust bags for the eufy Omni C20 with self-empty station."
+        },
+        {
+          "title": "Tightly Sealed",
+          "text": "A strong seal makes sure dust, dirt and debris cannot escape once they have been collected."
+        },
+        {
+          "title": "Never Clogs",
+          "text": "The bags do not clog and keep airflow steady even when full."
+        },
+        {
+          "title": "Easy to Replace",
+          "text": "Take out the full bag and slide a new one in using the guiding slots."
+        },
+        {
+          "title": "Authentic eufy Accessory",
+          "text": "Use genuine official accessories to extend the lifespan of your vacuum cleaner."
+        }
+      ]
+    },
+    "ar": {
+      "name": "أكياس غبار eufy لموديل Omni C20",
+      "summary": "أكياس غبار بديلة محكمة الإغلاق ولا تنسدّ، لمحطة التفريغ الذاتي في Omni C20، وتُبدَّل خلال ثوانٍ بفضل المجاري الموجّهة.",
+      "bullets": [
+        {
+          "title": "الموديل المتوافق",
+          "text": "أكياس غبار لمكنسة eufy Omni C20 المزوّدة بمحطة تفريغ ذاتي."
+        },
+        {
+          "title": "إغلاق محكم",
+          "text": "إغلاق قوي يضمن عدم تسرّب الغبار والأوساخ والفتات بعد جمعها."
+        },
+        {
+          "title": "لا تنسدّ أبدًا",
+          "text": "لا تنسدّ الأكياس وتحافظ على تدفّق هواء ثابت حتى عندما تمتلئ."
+        },
+        {
+          "title": "سهلة الاستبدال",
+          "text": "أخرج الكيس الممتلئ وركّب كيسًا جديدًا باستخدام المجاري الموجّهة."
+        },
+        {
+          "title": "ملحق eufy أصلي",
+          "text": "استخدم الملحقات الأصلية المعتمدة لإطالة عمر مكنستك."
+        }
+      ]
+    },
+    "tr": {
+      "name": "Omni C20 için eufy Toz Torbaları",
+      "summary": "Omni C20 boşaltma istasyonu için sızdırmaz ve tıkanmayan yedek toz torbaları; kılavuz yuvalarla saniyeler içinde değişir.",
+      "bullets": [
+        {
+          "title": "Uyumlu Model",
+          "text": "Kendi kendine boşalan istasyona sahip eufy Omni C20 için toz torbaları."
+        },
+        {
+          "title": "Sıkı Sızdırmazlık",
+          "text": "Güçlü conta, toplanan toz, kir ve döküntülerin dışarı çıkmasını engeller."
+        },
+        {
+          "title": "Asla Tıkanmaz",
+          "text": "Torbalar tıkanmaz ve dolduğunda bile hava akışını sabit tutar."
+        },
+        {
+          "title": "Kolay Değişim",
+          "text": "Dolan torbayı çıkarın ve kılavuz yuvaları kullanarak yenisini yerleştirin."
+        },
+        {
+          "title": "Orijinal eufy Aksesuarı",
+          "text": "Süpürgenizin ömrünü uzatmak için orijinal aksesuarları tercih edin."
+        }
+      ]
+    }
+  }
+}

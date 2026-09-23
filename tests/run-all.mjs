@@ -19,6 +19,9 @@ const env = {
   ...process.env,
   DEV_REPO: REPO,
   DEV_PORT: PORT,
+  // api/p.js refuses to build a page without a configured origin, because a
+  // request Host header must never decide what a cached page says.
+  SITE_ORIGIN: "http://127.0.0.1:" + PORT,
   DEV_BLOB_DIR: BLOB_DIR,
   DEV_BLOB_MOCK: path.join(HERE, "blob-mock.mjs"),
   SHOT_DIR: process.env.SHOT_DIR || path.join(HERE, ".shots"),
@@ -57,7 +60,7 @@ if (!await ready()) {
   process.exit(1);
 }
 
-const suites = ["config-test.mjs", "lang-test.mjs", "api-test.mjs", "ui-test.mjs", "compat-test.mjs"];
+const suites = ["config-test.mjs", "content-test.mjs", "lang-test.mjs", "api-test.mjs", "ui-test.mjs", "compat-test.mjs"];
 const results = [];
 for (const suite of suites) {
   fs.rmSync(BLOB_DIR, { recursive: true, force: true });

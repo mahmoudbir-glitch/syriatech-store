@@ -120,13 +120,18 @@ const page = await fetch(`${BASE}/api/p?id=${anyProduct.id}`);
 const pageHtml = page.status === 200 ? await page.text() : "";
 check("a shared product link renders a page", page.status === 200, { status: page.status, id: anyProduct.id });
 check("the product page carries its own preview image", /<meta property="og:image" content="[^"]+"/.test(pageHtml));
-check("the product page carries the product name", pageHtml.includes(anyProduct.name), anyProduct.name);
+// The crawler page is built in Arabic, so it carries the Arabic name — that is
+// the whole point of translating the catalogue.
+const copyAr = JSON.parse(fs.readFileSync(new URL("../assets/copy.ar.json", import.meta.url), "utf8"));
+const shownName = (copyAr[anyProduct.id] && copyAr[anyProduct.id].n) || anyProduct.name;
+check("the product page carries the product name", pageHtml.includes(shownName), shownName);
+check("the shared preview is in Arabic", /[؀-ۿ]/.test(shownName) || !copyAr[anyProduct.id], shownName);
 check("the product page drops the site-wide preview tags",
   (pageHtml.match(/<meta property="og:title"/g) || []).length === 1);
 check("the product page ships structured data", /"@type":"Product"/.test(pageHtml));
 
 const unknown = await fetch(`${BASE}/api/p?id=999999999`, { redirect: "manual" });
-check("an unknown product redirects home", unknown.status === 302);
+check("an unknown product answers 404, not a redirect", unknown.status === 404, unknown.status);
 
 const sitemap = await fetch(`${BASE}/api/sitemap`);
 const sitemapXml = await sitemap.text();

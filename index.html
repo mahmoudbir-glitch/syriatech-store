@@ -7,13 +7,13 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <!-- head:start (generated from i18n.js by tools/sync-head.cjs — do not edit by hand) -->
 <title>Syriatech | إلكترونيات وشواحن أصلية</title>
-<meta name="description" content="متجر Syriatech للإلكترونيات الأصلية: Anker وeufy وsoundcore وNebula وPITAKA. أسعار واضحة وطلب مباشر عبر واتساب.">
+<meta name="description" content="متجر Syriatech للإلكترونيات الأصلية: Anker · eufy · soundcore · Nebula · PITAKA. أسعار واضحة وطلب مباشر عبر واتساب.">
 <link rel="canonical" href="https://syriatech-store.vercel.app/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Syriatech">
 <meta property="og:url" content="https://syriatech-store.vercel.app/">
 <meta property="og:title" content="Syriatech | إلكترونيات وشواحن أصلية">
-<meta property="og:description" content="متجر Syriatech للإلكترونيات الأصلية: Anker وeufy وsoundcore وNebula وPITAKA. أسعار واضحة وطلب مباشر عبر واتساب.">
+<meta property="og:description" content="متجر Syriatech للإلكترونيات الأصلية: Anker · eufy · soundcore · Nebula · PITAKA. أسعار واضحة وطلب مباشر عبر واتساب.">
 <meta property="og:image" content="https://syriatech-store.vercel.app/assets/og-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,40 +22,42 @@
 <meta property="og:locale:alternate" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Syriatech | إلكترونيات وشواحن أصلية">
-<meta name="twitter:description" content="متجر Syriatech للإلكترونيات الأصلية: Anker وeufy وsoundcore وNebula وPITAKA. أسعار واضحة وطلب مباشر عبر واتساب.">
+<meta name="twitter:description" content="متجر Syriatech للإلكترونيات الأصلية: Anker · eufy · soundcore · Nebula · PITAKA. أسعار واضحة وطلب مباشر عبر واتساب.">
 <meta name="twitter:image" content="https://syriatech-store.vercel.app/assets/og-cover.png">
 <link rel="alternate" hreflang="ar" href="https://syriatech-store.vercel.app/?lang=ar">
 <link rel="alternate" hreflang="en" href="https://syriatech-store.vercel.app/?lang=en">
 <link rel="alternate" hreflang="tr" href="https://syriatech-store.vercel.app/?lang=tr">
 <link rel="alternate" hreflang="x-default" href="https://syriatech-store.vercel.app/">
 <!-- head:end -->
-<link rel="stylesheet" href="/style.css?v=7fe851ff">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/cairo-arabic.woff2" crossorigin>
+  <script src="/lang-boot.js?v=11e22a78"></script>
+  <link rel="stylesheet" href="/style.css?v=0152db3c">
 </head>
 <body>
 
-<a class="skip-link" href="#products" data-i18n="skipToProducts"></a>
+<a class="skip-link" href="#products" data-i18n="skipToProducts">الانتقال إلى المنتجات</a>
 
 <div class="notice-bar">
   <div class="container notice-inner">
-    <span data-i18n="noticeMain"></span>
-    <span data-i18n="noticeSide"></span>
+    <span data-i18n="noticeMain">توصيل سريع لكل المحافظات · اطلب مباشرة عبر واتساب</span>
+    <span data-i18n="noticeSide">منتجات أصلية 100% · ضمان الوكيل</span>
   </div>
 </div>
 
 <header class="store-header">
   <div class="container header-main">
     <a class="brand-logo" href="#home" data-i18n-attr="aria-label:brandName">
-      <span class="logo-mark">S</span><span data-i18n="brandName"></span>
+      <span class="logo-mark">S</span><span data-i18n="brandName">Syriatech</span>
     </a>
     <form id="searchForm" class="search-form" role="search">
       <span class="search-icon" data-icon="search" aria-hidden="true"></span>
       <input id="searchInput" type="search" autocomplete="off" data-i18n-attr="placeholder:searchPlaceholder;aria-label:searchLabel">
       <button id="searchClear" type="button" class="search-clear" hidden data-i18n-attr="aria-label:searchClear" data-icon="close"></button>
-      <button id="searchButton" type="submit" data-i18n-attr="aria-label:searchLabel"><span data-i18n="searchLabel"></span></button>
+      <button id="searchButton" type="submit" data-i18n-attr="aria-label:searchLabel"><span data-i18n="searchLabel">بحث</span></button>
     </form>
     <div class="header-actions">
       <label class="lang-picker">
-        <span class="visually-hidden" data-i18n="languageLabel"></span>
+        <span class="visually-hidden" data-i18n="languageLabel">اللغة</span>
         <span class="lang-icon" data-icon="globe" aria-hidden="true"></span>
         <select id="languageSelect" data-i18n-attr="aria-label:languageLabel"></select>
       </label>
@@ -63,24 +65,25 @@
         <span data-icon="heart" aria-hidden="true"></span><b id="favoritesCount">0</b>
       </button>
       <button id="cartButton" type="button" class="icon-action cart-action" data-i18n-attr="aria-label:cartLabel">
-        <span data-icon="cart" aria-hidden="true"></span><span class="hide-sm" data-i18n="cartLabel"></span><b id="cartCount">0</b>
+        <span data-icon="cart" aria-hidden="true"></span><span class="hide-sm" data-i18n="cartLabel">السلة</span><b id="cartCount">0</b>
       </button>
     </div>
   </div>
   <nav class="main-nav">
     <div class="container nav-inner">
-      <a href="#home" data-i18n="navHome"></a>
-      <a href="#products" data-show-all="true" data-i18n="navShop"></a>
+      <a href="#home" data-i18n="navHome">الرئيسية</a>
+      <a href="#products" data-show-all="true" data-i18n="navShop">المتجر</a>
       <div class="nav-dropdown">
-        <button type="button" aria-expanded="false" aria-haspopup="true"><span data-i18n="navBrands"></span><span data-icon="chevron" aria-hidden="true"></span></button>
+        <button type="button" aria-expanded="false" aria-haspopup="true"><span data-i18n="navBrands">العلامات التجارية</span><span data-icon="chevron" aria-hidden="true"></span></button>
         <div class="nav-mega">
-          <div><strong data-i18n="navBrands"></strong><div id="megaBrands" class="mega-list"></div></div>
-          <div><strong data-i18n="navCategories"></strong><div id="megaCategories" class="mega-list mega-columns"></div></div>
+          <div><strong data-i18n="navBrands">العلامات التجارية</strong><div id="megaBrands" class="mega-list"></div></div>
+          <div><strong data-i18n="navCategories">الأقسام</strong><div id="megaCategories" class="mega-list mega-columns"></div></div>
         </div>
       </div>
-      <a href="#products" data-show-deals="true" data-i18n="navOffers"></a>
-      <a href="#products" data-show-favorites="true" data-i18n="navFavorites"></a>
-      <a href="#contact" data-i18n="navContact"></a>
+      <a href="#products" data-show-deals="true" data-i18n="navOffers">العروض</a>
+      <a href="#products" data-show-favorites="true" data-i18n="navFavorites">المفضلة</a>
+      <a href="#info" data-i18n="navInfo">الشحن والضمان</a>
+      <a href="#contact" data-i18n="navContact">تواصل معنا</a>
     </div>
   </nav>
 </header>
@@ -91,35 +94,35 @@
     <div class="hero-shade"></div>
     <div class="container hero-content">
       <div class="hero-text">
-        <div class="hero-label"><span data-i18n="heroTagBrand"></span><span data-i18n="heroTagOriginal"></span><span data-i18n="heroTagYear"></span></div>
-        <h1 data-i18n-html="heroTitle"></h1>
-        <p data-i18n="heroSubtitle"></p>
+        <div class="hero-label"><span data-i18n="heroTagBrand">SYRIATECH</span><span data-i18n="heroTagOriginal">وكلاء معتمدون</span><span data-i18n="heroTagYear">تشكيلة 2026</span></div>
+        <h1 data-i18n-html="heroTitle">تقنية أصلية<br><em>بأسعار واضحة.</em></h1>
+        <p data-i18n="heroSubtitle">شواحن وباور بانك وسماعات وكاميرات أمان وكفرات أصلية من Anker · eufy · soundcore · Nebula · PITAKA — اطلبها بضغطة واحدة عبر واتساب.</p>
         <div class="hero-buttons">
-          <a href="#products" class="primary-button" data-show-all="true"><span data-i18n="heroShop"></span><span data-icon="arrow" aria-hidden="true"></span></a>
-          <a href="#products" class="text-button" data-show-deals="true" data-i18n="heroOffers"></a>
+          <a href="#products" class="primary-button" data-show-all="true"><span data-i18n="heroShop">تسوّق الآن</span><span data-icon="arrow" aria-hidden="true"></span></a>
+          <a href="#products" class="text-button" data-show-deals="true" data-i18n="heroOffers">شاهد العروض</a>
         </div>
       </div>
       <div class="hero-product-showcase"><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
         <img src="/assets/products/35141.webp" width="700" height="700" data-i18n-attr="alt:heroImageAlt">
-        <div class="showcase-badge"><strong data-i18n="heroBadgeTitle"></strong><small data-i18n="heroBadgeText"></small></div>
+        <div class="showcase-badge"><strong data-i18n="heroBadgeTitle">أصلي ومضمون</strong><small data-i18n="heroBadgeText">بضاعة وكيل بضمان حقيقي</small></div>
       </div>
     </div>
   </section>
 
   <section class="benefits">
     <div class="container benefit-grid">
-      <div><span data-icon="shield" aria-hidden="true"></span><div><b data-i18n="benefitOriginalTitle"></b><small data-i18n="benefitOriginalText"></small></div></div>
-      <div><span data-icon="truck" aria-hidden="true"></span><div><b data-i18n="benefitShippingTitle"></b><small data-i18n="benefitShippingText"></small></div></div>
-      <div><span data-icon="chat" aria-hidden="true"></span><div><b data-i18n="benefitSupportTitle"></b><small data-i18n="benefitSupportText"></small></div></div>
-      <div><span data-icon="tag" aria-hidden="true"></span><div><b data-i18n="benefitPriceTitle"></b><small data-i18n="benefitPriceText"></small></div></div>
+      <div><span data-icon="shield" aria-hidden="true"></span><div><b data-i18n="benefitOriginalTitle">أصلي 100%</b><small data-i18n="benefitOriginalText">بضاعة وكيل أصلية، وليست تقليداً</small></div></div>
+      <div><span data-icon="truck" aria-hidden="true"></span><div><b data-i18n="benefitShippingTitle">توصيل سريع</b><small data-i18n="benefitShippingText">لكل المحافظات</small></div></div>
+      <div><span data-icon="chat" aria-hidden="true"></span><div><b data-i18n="benefitSupportTitle">دعم على واتساب</b><small data-i18n="benefitSupportText">نرد عليك مباشرة</small></div></div>
+      <div><span data-icon="tag" aria-hidden="true"></span><div><b data-i18n="benefitPriceTitle">سعر واضح</b><small data-i18n="benefitPriceText">بدون رسوم خفية</small></div></div>
     </div>
   </section>
 
   <section id="brands" class="brand-section">
     <div class="container">
       <div class="section-head centered">
-        <span data-i18n="brandsEyebrow"></span>
-        <h2 data-i18n="brandsTitle"></h2>
+        <span data-i18n="brandsEyebrow">علاماتنا التجارية</span>
+        <h2 data-i18n="brandsTitle">تسوّق حسب العلامة التجارية</h2>
       </div>
       <div id="brandCards" class="brand-cards"></div>
     </div>
@@ -129,47 +132,51 @@
     <div class="container">
       <div class="catalog-heading">
         <div>
-          <span data-i18n="productsEyebrow"></span>
+          <span data-i18n="productsEyebrow">تشكيلتنا</span>
           <h2 id="productsTitle"></h2>
         </div>
-        <button id="clearFilterButton" type="button" class="outline-button" data-show-all="true" data-i18n="showAll"></button>
+        <button id="clearFilterButton" type="button" class="outline-button" data-show-all="true" data-i18n="showAll">كل المنتجات</button>
       </div>
 
       <div id="categoryPills" class="category-pills"></div>
 
       <div class="catalog-toolbar">
         <div class="toolbar-left">
-          <button id="filtersToggle" type="button" class="filter-button" aria-expanded="false" aria-controls="filtersPanel"><span data-icon="filter" aria-hidden="true"></span><span data-i18n="filtersTitle"></span></button>
+          <button id="filtersToggle" type="button" class="filter-button" aria-expanded="false" aria-controls="filtersPanel"><span data-icon="filter" aria-hidden="true"></span><span data-i18n="filtersTitle">تصفية</span></button>
           <span id="resultCount" class="result-count" aria-live="polite" aria-atomic="true"></span>
         </div>
         <label class="sort-picker">
-          <span class="visually-hidden" data-i18n="sortLabel"></span>
+          <span class="visually-hidden" data-i18n="sortLabel">ترتيب</span>
           <select id="sortSelect" data-i18n-attr="aria-label:sortLabel">
-            <option value="featured" data-i18n="sortFeatured"></option>
-            <option value="price-low" data-i18n="sortLow"></option>
-            <option value="price-high" data-i18n="sortHigh"></option>
-            <option value="name" data-i18n="sortName"></option>
+            <option value="featured" data-i18n="sortFeatured">الأكثر مبيعاً</option>
+            <option value="price-low" data-i18n="sortLow">الأرخص أولاً</option>
+            <option value="price-high" data-i18n="sortHigh">الأغلى أولاً</option>
+            <option value="name" data-i18n="sortName">حسب الاسم</option>
           </select>
         </label>
       </div>
 
       <div id="filtersPanel" class="filters-panel" hidden>
         <div class="filter-group">
-          <strong data-i18n="filterBrand"></strong>
+          <strong data-i18n="filterBrand">العلامة التجارية</strong>
           <div id="brandFilters" class="brand-filters"></div>
         </div>
+        <div class="filter-group" id="deviceGroup" hidden>
+          <strong data-i18n="filterDevice">جهازك</strong>
+          <div id="deviceFilters" class="brand-filters"></div>
+        </div>
         <div class="filter-group">
-          <strong data-i18n="filterPrice"></strong>
+          <strong data-i18n="filterPrice">السعر</strong>
           <div class="price-inputs">
             <input id="minPrice" type="number" min="0" step="1" inputmode="numeric" data-i18n-attr="placeholder:priceFrom;aria-label:priceFrom">
             <input id="maxPrice" type="number" min="0" step="1" inputmode="numeric" data-i18n-attr="placeholder:priceTo;aria-label:priceTo">
           </div>
         </div>
         <div class="filter-group">
-          <strong data-i18n="filterStock"></strong>
-          <label class="check"><input id="inStockFilter" type="checkbox"><span data-i18n="inStockOnly"></span></label>
+          <strong data-i18n="filterStock">التوفر</strong>
+          <label class="check"><input id="inStockFilter" type="checkbox"><span data-i18n="inStockOnly">المتوفر فقط</span></label>
         </div>
-        <button id="clearFiltersButton" type="button" class="outline-button" data-i18n="clearFilters"></button>
+        <button id="clearFiltersButton" type="button" class="outline-button" data-i18n="clearFilters">مسح التصفية</button>
       </div>
 
       <div id="activeFilters" class="active-filters"></div>
@@ -180,17 +187,25 @@
   <section id="offers" class="sale-banner">
     <div class="container sale-inner">
       <div>
-        <span data-i18n="offersEyebrow"></span>
-        <h2 data-i18n="offersTitle"></h2>
-        <p data-i18n="offersText"></p>
+        <span data-i18n="offersEyebrow">عروض هذا الشهر</span>
+        <h2 data-i18n="offersTitle">خصومات حقيقية على تشكيلة مختارة</h2>
+        <p data-i18n="offersText">نعرض السعر قبل الخصم وبعده بوضوح، بدون رسوم أو ضرائب مخفية.</p>
       </div>
-      <a href="#" data-wa target="_blank" rel="noopener noreferrer" class="whatsapp-button"><span data-icon="whatsapp" aria-hidden="true"></span><span data-i18n="orderWhatsApp"></span></a>
+      <a href="#" data-wa target="_blank" rel="noopener noreferrer" class="whatsapp-button"><span data-icon="whatsapp" aria-hidden="true"></span><span data-i18n="orderWhatsApp">اطلب عبر واتساب</span></a>
+    </div>
+  </section>
+
+  <section id="info" class="info-section">
+    <div class="container">
+      <p class="eyebrow" data-i18n="infoEyebrow">قبل أن تطلب</p>
+      <h2 data-i18n="infoTitle">الشحن والضمان والإرجاع</h2>
+      <div id="infoBlocks" class="info-blocks"></div>
     </div>
   </section>
 
   <section id="contact" class="contact">
     <div class="container contact-inner">
-      <div><span data-i18n="contactEyebrow"></span><h2 data-i18n="contactTitle"></h2><p data-i18n="contactText"></p></div>
+      <div><span data-i18n="contactEyebrow">خدمة الزبائن</span><h2 data-i18n="contactTitle">اطلب أو استفسر مباشرة</h2><p data-i18n="contactText">فريقنا يرد عليك عبر واتساب خلال دقائق ضمن أوقات الدوام.</p></div>
       <div class="contact-actions">
         <a href="#" data-wa target="_blank" rel="noopener noreferrer"><span data-icon="whatsapp" aria-hidden="true"></span><span data-wa-text dir="ltr"></span></a>
         <a href="#" data-email><span data-icon="mail" aria-hidden="true"></span><span data-email-text dir="ltr"></span></a>
@@ -203,14 +218,15 @@
 
 <aside id="cart" class="cart" inert aria-hidden="true" data-i18n-attr="aria-label:cartTitle">
   <div class="cart-header">
-    <div><span data-i18n="cartEyebrow"></span><h2 data-i18n="cartTitle"></h2></div>
+    <div><span data-i18n="cartEyebrow">طلبك</span><h2 data-i18n="cartTitle">سلة المشتريات</h2></div>
     <button id="closeCartButton" type="button" data-i18n-attr="aria-label:closeLabel" data-icon="close"></button>
   </div>
   <div id="cartItems"></div>
   <div class="cart-foot">
-    <div class="cart-total"><span data-i18n="cartTotal"></span><strong>$<span id="cartTotal">0.00</span></strong></div>
-    <a id="checkoutButton" href="#" class="checkout-button"><span data-icon="whatsapp" aria-hidden="true"></span><span data-i18n="cartCheckout"></span></a>
-    <small class="cart-note" data-i18n="cartNote"></small>
+    <div class="cart-total"><span data-i18n="cartTotal">الإجمالي</span><strong>$<span id="cartTotal">0.00</span></strong></div>
+    <a id="checkoutButton" href="#" class="checkout-button"><span data-icon="whatsapp" aria-hidden="true"></span><span data-i18n="cartCheckout">إتمام الطلب عبر واتساب</span></a>
+    <p class="cart-delivery" data-i18n="cartDeliveryNote">السعر لا يشمل أجور التوصيل — نتفق عليها معك على واتساب حسب مدينتك.</p>
+    <small class="cart-note" data-i18n="cartNote">نؤكد لك الطلب ونتفق على التوصيل عبر واتساب.</small>
   </div>
 </aside>
 <div id="overlay"></div>
@@ -224,26 +240,27 @@
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div><div class="brand-logo footer-logo"><span class="logo-mark">S</span><span data-i18n="brandName"></span></div><p data-i18n="footerAbout"></p></div>
-    <div><h3 data-i18n="footerProducts"></h3><div id="footerCategories" class="footer-links"></div></div>
-    <div><h3 data-i18n="footerHelp"></h3>
+    <div><div class="brand-logo footer-logo"><span class="logo-mark">S</span><span data-i18n="brandName">Syriatech</span></div><p data-i18n="footerAbout">متجر سوري للتقنية الأصلية — وكلاء موزّعون معتمدون للعلامات التي نبيعها.</p></div>
+    <div><h3 data-i18n="footerProducts">أقسام مختارة</h3><div id="footerCategories" class="footer-links"></div></div>
+    <div><h3 data-i18n="footerHelp">روابط سريعة</h3>
       <div class="footer-links">
-        <a href="#contact" data-i18n="navContact"></a>
-        <a href="#offers" data-i18n="navOffers"></a>
-        <a href="#products" data-show-favorites="true" data-i18n="navFavorites"></a>
-        <a href="/admin.html" class="admin-link" rel="nofollow"><span data-icon="lock" aria-hidden="true"></span><span data-i18n="footerAdmin"></span></a>
+        <a href="#info" data-i18n="navInfo">الشحن والضمان</a>
+      <a href="#contact" data-i18n="navContact">تواصل معنا</a>
+        <a href="#offers" data-i18n="navOffers">العروض</a>
+        <a href="#products" data-show-favorites="true" data-i18n="navFavorites">المفضلة</a>
+        <a href="/admin.html" class="admin-link" rel="nofollow"><span data-icon="lock" aria-hidden="true"></span><span data-i18n="footerAdmin">لوحة تحكم المتجر</span></a>
       </div>
     </div>
-    <div><h3 data-i18n="footerBrands"></h3><p id="footerBrands"></p></div>
+    <div><h3 data-i18n="footerBrands">العلامات التجارية</h3><p id="footerBrands"></p></div>
   </div>
-  <div class="footer-bottom"><span id="footerRights"></span><span data-i18n="footerNote"></span></div>
+  <div class="footer-bottom"><span id="footerRights"></span><span data-i18n="footerNote">جميع الأسماء والعلامات التجارية ملك لأصحابها.</span></div>
 </footer>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-<script src="/i18n.js?v=50807a4e" defer></script>
-<script src="/catalog.js?v=ed8a03e1" defer></script>
+<script src="/i18n.js?v=b1f77c1b" defer></script>
+<script src="/catalog.js?v=98e12dc8" defer></script>
 <script src="/product-images.js?v=ca2bc1c1" defer></script>
-<script src="/script.js?v=2774eb9f" defer></script>
+<script src="/script.js?v=37c51b7e" defer></script>
 </body>
 </html>
