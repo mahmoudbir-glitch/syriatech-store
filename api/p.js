@@ -11,9 +11,16 @@ let shellHtml = null;
 // The bundled files are read from disk. A request's Host header must never
 // decide where code is loaded from, so the HTTP fallback uses Vercel's own
 // deployment URL.
+// Where this shop lives. Set SITE_ORIGIN when it moves to its own domain;
+// the Vercel variables are only present when a project exposes them, and this
+// one does not, so the constant is the dependable answer. A request's Host
+// header is never consulted: it is attacker-controlled and these pages are
+// cached and served on to other visitors.
+const SITE_FALLBACK = "https://syriatech-store.vercel.app";
+
 function trustedOrigin() {
-  const host = process.env.SITE_ORIGIN || process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL || "";
-  if (!host) return "";
+  const host = process.env.SITE_ORIGIN || process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+    process.env.VERCEL_URL || SITE_FALLBACK;
   return /^https?:\/\//.test(host) ? host : "https://" + host;
 }
 
