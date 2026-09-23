@@ -20,18 +20,26 @@ function trustedOrigin() {
 async function readSource(name) {
   const fs = await import("node:fs/promises");
   const path = await import("node:path");
-  const { fileURLToPath } = await import("node:url");
-  // The bundled files sit next to the api directory, so resolve from this
-  // module rather than from whatever directory the process was started in.
-  const here = path.dirname(fileURLToPath(import.meta.url));
-  for (const base of [path.join(here, ".."), process.cwd()]) {
+  /*
+   * Vercel compiles these functions from ESM to CommonJS, where import.meta
+   * does not exist — using it here made every product page throw in
+   * production while working perfectly under the dev server. __dirname is
+   * present in the compiled output and points at the api directory, and the
+   * files named in includeFiles sit one level above it.
+   */
+  const bases = [];
+  if (typeof __dirname !== "undefined") bases.push(path.join(__dirname, ".."), __dirname);
+  bases.push(process.cwd());
+  for (const base of bases) {
     try {
       return await fs.readFile(path.join(base, name), "utf8");
     } catch (e) { /* try the next one */ }
   }
-  const origin = trustedOrigin();
-  if (!origin) throw new Error("cannot read " + name);
-  return fetch(origin + "/" + name).then(r => r.text());
+  // Last resort: our own deployment over HTTP, never a Host-derived address.
+  return fetch(trustedOrigin() + "/" + name).then(r => {
+    if (!r.ok) throw new Error("cannot read " + name + ": HTTP " + r.status);
+    return r.text();
+  });
 }
 
 async function loadStore() {

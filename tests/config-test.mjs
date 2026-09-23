@@ -85,6 +85,21 @@ for (const name of readFromDisk) {
   check('"' + name + '" is bundled via includeFiles', included.includes(name), { includeFiles: included });
 }
 
+/*
+ * Vercel compiles these functions from ESM to CommonJS, where import.meta does
+ * not exist. Using it works perfectly under the dev server and throws on every
+ * request in production — /p/<id> and the sitemap answered 500 while every
+ * local check passed. __dirname is what the compiled output provides.
+ */
+for (const file of apiFiles) {
+  const source = fs.readFileSync(path.join(REPO, file), "utf8");
+  const withoutComments = source
+    .split("/*").map((part, i) => (i ? part.slice(part.indexOf("*/") + 2) : part)).join("")
+    .split("\n").map(line => line.replace(/^\s*\/\/.*$/, "")).join("\n");
+  check(file + " does not rely on import.meta (Vercel compiles it to CommonJS)",
+    !withoutComments.includes("import.meta"),
+    (withoutComments.match(/.{0,40}import\.meta.{0,30}/) || [])[0]);
+}
 /* maxDuration above the plan ceiling is rejected at build time. */
 for (const [pattern, value] of Object.entries(config.functions || {})) {
   if (value.maxDuration === undefined) continue;
