@@ -142,5 +142,34 @@ for (const page of stamper.PAGES) {
   check(page + " leaves no unversioned script or style", bare.length === 0, bare);
 }
 
+/*
+ * Adding a `build` script to package.json silently changes what Vercel does.
+ * With no build script it serves the repository as it stands, which is the
+ * whole design here: the generators live in tools/, which .vercelignore keeps
+ * out of the deployment entirely, and their output is committed. The moment
+ * package.json declared one, Vercel ran it, then looked for a directory named
+ * `public`, found none, and failed the deployment — while the shop went on
+ * serving the previous build and every local check stayed green.
+ *
+ * So the two have to agree: if `npm run build` exists, vercel.json must say
+ * that the build does not belong to Vercel and that the output is the
+ * repository itself.
+ */
+{
+  const pkg = JSON.parse(fs.readFileSync(path.join(REPO, "package.json"), "utf8"));
+  const hasBuild = !!(pkg.scripts && pkg.scripts.build);
+  const ignored = fs.readFileSync(path.join(REPO, ".vercelignore"), "utf8")
+    .split(/\r?\n/).map(l => l.trim());
+  check("the generators are kept out of the deployment", ignored.includes("tools"), ignored);
+  if (hasBuild) {
+    check("vercel.json tells Vercel not to run the build script",
+      config.buildCommand === "",
+      { buildCommand: config.buildCommand, why: "npm run build regenerates from tools/, which is not deployed" });
+    check("vercel.json names the repository as the output directory",
+      config.outputDirectory === ".",
+      { outputDirectory: config.outputDirectory, why: "Vercel looks for `public` otherwise and fails the deployment" });
+  }
+}
+
 console.log(failures ? "\n" + failures + " configuration problem(s)" : "\nDeployment configuration is sound");
 process.exit(failures ? 1 : 0);
