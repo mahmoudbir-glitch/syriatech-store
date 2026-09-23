@@ -68,20 +68,14 @@ export default async function handler(req, res) {
     const win = await loadStore();
     const state = await fetch(origin + "/api/products").then(r => r.json()).catch(() => ({}));
     const products = win.STORE.merge(state);
-    const probe = "merged=" + products.length +
-      " catalogue=" + ((win.STORE.products && win.STORE.products.length) || "n/a") +
-      " stateKeys=" + Object.keys(state || {}).join("|") +
-      " deleted=" + ((state && state.deleted && state.deleted.length) || 0);
     const urls = ["<url><loc>" + origin + "/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>"]
       .concat(products.map(p => "<url><loc>" + origin + "/p/" + p.id + "</loc><priority>0.7</priority></url>"));
     res.setHeader("Content-Type", "application/xml; charset=utf-8");
-    res.setHeader("Cache-Control", "public, max-age=0, s-maxage=60");
-    return res.status(200).send('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><!--' + probe + '-->' + urls.join("") + "</urlset>");
+    res.setHeader("Cache-Control", "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400");
+    return res.status(200).send('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + urls.join("") + "</urlset>");
   } catch (e) {
     console.error("sitemap error", e);
-    // Temporary: surface why the fallback fired. No secrets pass through here.
-    const why = String((e && e.message) || e).slice(0, 300);
     res.setHeader("Content-Type", "application/xml; charset=utf-8");
-    return res.status(200).send('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><!--' + why + '--><url><loc>' + origin + "/</loc></url></urlset>");
+    return res.status(200).send('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>' + origin + "/</loc></url></urlset>");
   }
 }
