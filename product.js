@@ -1278,10 +1278,27 @@
 
   window.PRODUCT = { render, open, close, view };
 
+  /* This page's words travel in i18n-pdp.js. On the product route api/p.js
+     links product.js server-side, so this file can run before that chunk has
+     even been asked for — and drawing then replaces a correct server-rendered
+     page with ⟦pdpBuyNow⟧. The server sends its own <script> for the chunk
+     now, so this is usually already satisfied; asking for it here is what
+     makes it true rather than likely. */
+  const words = () => SY.require("i18n-pdp.js").catch(() => {});
+
+  /* And if the chunk lands after a draw anyway — a slow link, a cold cache —
+     the page draws itself again rather than leaving the keys on the screen. */
+  SY.on("words", file => {
+    if (file !== "i18n-pdp.js" || !view.id) return;
+    if (root() && root().innerHTML.indexOf("⟦") === -1) return;
+    render(view.id);
+  });
+
   SY.ready(() => {
     const fromPath = /^\/p\/(\d+)/.exec(location.pathname);
     const id = doc.body.dataset.productId || (fromPath && fromPath[1]);
     if (!id) return;
+    words();
     view.seed = readSeed();
     /* Remember the server's hero <img> so render() can adopt it rather than
        retire an already-painted LCP element. */

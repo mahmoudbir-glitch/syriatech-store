@@ -214,7 +214,24 @@ const browser = await puppeteer.launch({
    cart.js — a key the home page does not load is a poor signature. */
 const SIGNATURE = { ar: "homeAuthorised", en: "homeAuthorised", tr: "homeAuthorised" };
 
-for (const page of ["/", "/admin.html"]) {
+/* Every page the server renders in full, not only the two that are files on
+   disk. Each of these arrives complete and correct from api/p.js or api/c.js,
+   and then the browser runs i18n.apply() over it — which is where a correct
+   page used to be replaced by raw keys, because the words for that surface
+   travel in a chunk that had not arrived yet. The failure is invisible to a
+   check that only loads "/": the home page's words are in the base file. */
+const firstProduct = await (async () => {
+  const tab = await browser.newPage();
+  await tab.goto(BASE + "/", { waitUntil: "networkidle0" });
+  const id = await tab.evaluate(() => (document.querySelector(".pcard") || { dataset: {} }).dataset.product || "");
+  await tab.close();
+  return id;
+})();
+check("the shop has a product to open", !!firstProduct, firstProduct);
+
+const PAGES = ["/", "/admin.html", "/browse", "/brands", "/c/charging", "/checkout"]
+  .concat(firstProduct ? ["/p/" + firstProduct] : []);
+for (const page of PAGES) {
   for (const code of LANGS) {
     const tab = await browser.newPage();
     const errors = [];
@@ -251,7 +268,11 @@ for (const page of ["/", "/admin.html"]) {
 
     const label = `[${code}] ${page}`;
     check(`${label} html lang/dir`, info.lang === code && info.dir === (code === "ar" ? "rtl" : "ltr"), info);
-    check(`${label} title is translated`, info.title === maps[code][page === "/" ? "pageTitle" : "adminPageTitle"], info.title);
+    /* The two pages whose title is one dictionary key. A product or category
+       page titles itself after what it is showing, which content-test reads. */
+    if (page === "/" || page === "/admin.html") {
+      check(`${label} title is translated`, info.title === maps[code][page === "/" ? "pageTitle" : "adminPageTitle"], info.title);
+    }
     check(`${label} every visible i18n element is filled`, !info.untranslated.length, info.untranslated);
     check(`${label} no missing-key markers`, !info.markers);
     check(`${label} no page errors`, !errors.length, errors);

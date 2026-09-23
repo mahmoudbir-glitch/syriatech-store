@@ -593,7 +593,7 @@ export default async function handler(req, res) {
         },
         { "@context": "https://schema.org", "@type": "CollectionPage", "@id": canonical + "#page", name: heading, url: canonical }
       ];
-      const seed = '<div id="seo-seed" data-seo-seed>' +
+      const seed = '<div id="seo-seed" data-seo-seed data-seo-lang="' + code + '">' +
         breadcrumbHtml(win, crumbs, code) +
         '<h1 data-i18n="' + (isBrowse ? "routeBrowse" : "routeBrands") + '">' + esc(heading) + "</h1>" +
         '<p class="seo-count">' + countPhrase(win, total, code, num(total)) + "</p>" +
@@ -661,7 +661,7 @@ export default async function handler(req, res) {
           '" data-i18n="cat.' + esc(x.n.id) + '">' + esc(labelOf(win, t, x.n.id, code)) + "</a> " + num(x.c) + "</li>")
         .join("");
 
-      const seed = '<div id="seo-seed" data-seo-seed>' +
+      const seed = '<div id="seo-seed" data-seo-seed data-seo-lang="' + code + '">' +
         breadcrumbHtml(win, crumbs, code) +
         "<h1><bdi>" + esc(heading) + "</bdi></h1>" +
         '<p class="seo-desc">' + esc(description) + "</p>" +
@@ -771,7 +771,7 @@ export default async function handler(req, res) {
       itemListLd(win, origin, copy, slice, shown.length, (page - 1) * PAGE, code)
     ];
 
-    const seed = '<div id="seo-seed" data-seo-seed>' +
+    const seed = '<div id="seo-seed" data-seo-seed data-seo-lang="' + code + '">' +
       breadcrumbHtml(win, crumbs, code) +
       "<h1>" + esc(heading) + "</h1>" +
       '<p class="seo-desc"' + (hasWritten ? ' data-i18n="catDesc.' + esc(target.id) + '"' : "") + ">" +

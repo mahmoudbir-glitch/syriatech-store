@@ -860,14 +860,34 @@
   }
 
   // Fills every element marked with data-i18n / data-i18n-html / data-i18n-attr.
+  /* A key this language cannot resolve yet must not be written over text that
+     is already there. The server renders a category page complete, with the
+     description in the markup; i18n-cat.js is a separate request, so apply()
+     ran first, found nothing under `catDesc.charging`, and painted the raw
+     key over a perfectly good paragraph. Leaving it alone costs nothing — the
+     chunk arrives a moment later and apply() runs again — while an element
+     that was empty still shows ⟦key⟧, which is what the language test reads.
+     A language switch is not affected: after switching, every key resolves. */
+  const MARK = "⟦";
+  const keep = (el, value) => value.charAt(0) === MARK && el.textContent.trim() !== "";
+
   function apply(root) {
     const scope = root || document;
-    scope.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
-    scope.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+    scope.querySelectorAll("[data-i18n]").forEach(el => {
+      const value = t(el.dataset.i18n);
+      if (!keep(el, value)) el.textContent = value;
+    });
+    scope.querySelectorAll("[data-i18n-html]").forEach(el => {
+      const value = t(el.dataset.i18nHtml);
+      if (!keep(el, value)) el.innerHTML = value;
+    });
     scope.querySelectorAll("[data-i18n-attr]").forEach(el => {
       el.dataset.i18nAttr.split(";").forEach(pair => {
         const [attr, key] = pair.split(":").map(s => s && s.trim());
-        if (attr && key) el.setAttribute(attr, t(key));
+        if (!attr || !key) return;
+        const value = t(key);
+        if (value.charAt(0) === MARK && el.getAttribute(attr)) return;
+        el.setAttribute(attr, value);
       });
     });
     if (scope === document) {
@@ -885,9 +905,38 @@
     }
   }
 
+  /* ------------------------------------------------------- arriving words */
+
+  /* The dictionary is split by surface, so a page can be drawn before its own
+     words have landed. That is not a rare race: api/p.js links product.js
+     into the product route server-side, product.js draws the page the moment
+     it runs, and i18n-pdp.js is a separate request — so the correct page the
+     server had already rendered was replaced by ⟦pdpBuyNow⟧, and nothing ever
+     drew it again. The same happened to every category description.
+     A chunk arriving is therefore an event, and whoever renders from the
+     dictionary listens for it. A listener registered late still hears about
+     the chunks that came before it, because "did I miss it" is precisely the
+     question this is here to stop anyone having to ask. */
+  const chunksIn = [];
+  const chunkWatchers = [];
+  function onChunk(file) {
+    if (chunksIn.indexOf(file) === -1) chunksIn.push(file);
+    /* Words that were not there a moment ago are there now: anything still
+       showing a raw key can be written properly. */
+    if (typeof document !== "undefined" && document.body) {
+      try { apply(); } catch (e) {}
+    }
+    chunkWatchers.slice().forEach(fn => { try { fn(file); } catch (e) {} });
+  }
+  function whenChunk(fn) {
+    if (typeof fn !== "function") return;
+    chunkWatchers.push(fn);
+    chunksIn.slice().forEach(file => { try { fn(file); } catch (e) {} });
+  }
+
   window.I18N = {
     languages, dict, t, apply, set, normalize,
     get current() { return current; },
-    meta, STORAGE_KEY
+    meta, STORAGE_KEY, onChunk, whenChunk, chunks: chunksIn
   };
 })();

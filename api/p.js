@@ -617,10 +617,25 @@ export default async function handler(req, res) {
       ? html.replace(holder, (whole, opening, tag, closing) => opening + body + closing)
       : html.replace("</body>", () => '<div id="productView">' + body + "</div></body>");
 
-    /* The runtime this page needs, if the shell does not already carry it. */
+    /* The runtime this page needs, if the shell does not already carry it.
+       The words go first. Deferred scripts run in document order, so linking
+       i18n-pdp.js ahead of product.js is what guarantees the page is drawn
+       with its own words — this page used to serve a correct render and then
+       have the browser paint ⟦pdpBuyNow⟧ over it, because the chunk was a
+       separate request nobody had made yet. It is also one round trip saved:
+       the words are fetched beside the code, not after it.
+       The hash comes from the shell so the file is cache-busted exactly as
+       every other link on the page is. */
+    const stamp = (() => {
+      const m = /data-js='([^']*)'/.exec(html);
+      try { return m ? JSON.parse(m[1]) : {}; } catch (e) { return {}; }
+    })();
+    const link = file => '<script src="/' + file +
+      (stamp[file] ? "?v=" + stamp[file] : "") + '" defer></script>';
     let inject = "";
     if (!/\bsrc="\/core\.js/.test(html)) inject += '<script src="/core.js" defer></script>';
-    if (!/\bsrc="\/product\.js/.test(html)) inject += '<script src="/product.js" defer></script>';
+    if (!/\bsrc="\/i18n-pdp\.js/.test(html)) inject += link("i18n-pdp.js");
+    if (!/\bsrc="\/product\.js/.test(html)) inject += link("product.js");
     if (inject) html = html.replace("</body>", () => inject + "</body>");
 
     res.setHeader("Content-Type", "text/html; charset=utf-8");

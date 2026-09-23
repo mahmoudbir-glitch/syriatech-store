@@ -738,6 +738,14 @@
     return function () { listeners[name] = listeners[name].filter(f => f !== fn); };
   }
 
+  /* A chunk of the dictionary landing is an event on the same bus as anything
+     else. Whoever drew a surface before its words arrived draws it again.
+     I18N replays the chunks that came in before this line ran, so core being
+     later than a chunk is not a way to miss one. */
+  if (I18N && typeof I18N.whenChunk === "function") {
+    I18N.whenChunk(file => emit("words", file));
+  }
+
   /* --------------------------------------------------------------- router */
 
   /* Every discovery state has a URL: a category, a brand, a search, a filter,
@@ -813,6 +821,13 @@
     "checkout.js": "i18n-order.js"
   };
   const loaded = {};
+  /* A surface leaves its object on window; a dictionary chunk registers its
+     own name with I18N as it merges. Either is proof the file has run. */
+  const globalOf = name => window[name.replace(/\.js$/, "").toUpperCase()];
+  function hasRun(name) {
+    if (globalOf(name)) return true;
+    return !!(I18N && I18N.chunks && I18N.chunks.indexOf(name) !== -1);
+  }
   function require(name) {
     if (loaded[name]) return loaded[name];
     const words = WORDS[name];
@@ -834,7 +849,13 @@
          tags and ran the module twice. */
       const already = doc.querySelector('script[src^="/' + name + '"]');
       if (already) {
-        if (already.dataset.done !== undefined) return resolve();
+        /* A tag the server wrote carries no marker of ours, and its load
+           event fired long before anyone asked for the file — so waiting for
+           that event waits forever. It is what left ⟦catDesc.charging⟧ on a
+           category page: script.js asked for the words, the promise never
+           settled, and the re-render it was waiting to do never happened.
+           So ask the file whether it has run, rather than the tag. */
+        if (already.dataset.done !== undefined || hasRun(name)) return resolve(globalOf(name));
         already.addEventListener("load", () => resolve(), { once: true });
         already.addEventListener("error", () => reject(new Error(name)), { once: true });
         return;
@@ -842,7 +863,7 @@
       const el = doc.createElement("script");
       el.src = "/" + name + (SCRIPT_VERSION[name] ? "?v=" + SCRIPT_VERSION[name] : "");
       el.defer = true;
-      el.onload = () => { el.dataset.done = ""; resolve(window[name.replace(/\.js$/, "").toUpperCase()]); };
+      el.onload = () => { el.dataset.done = ""; resolve(globalOf(name)); };
       el.onerror = () => { loaded[name] = null; reject(new Error(name)); };
       doc.head.appendChild(el);
     });
@@ -860,7 +881,7 @@
 
   /* Mark a file as already present, so a page that links it directly — the
      product route links product.js server-side — never fetches it twice. */
-  function provide(name) { loaded[name] = Promise.resolve(window[name.replace(/\.js$/, "").toUpperCase()]); }
+  function provide(name) { loaded[name] = Promise.resolve(globalOf(name)); }
 
   /* --------------------------------------------------------------- language */
 

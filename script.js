@@ -961,6 +961,27 @@
     const seed = qs("#seo-seed");
     if (seed) qsa("#seo-list, .seo-aisles, .browse__dept", seed).forEach(el => el.remove());
 
+    /* The server wrote this block in one language — Arabic unless the link
+       carried ?lang= — and a shopper reading the shop in English or Turkish
+       was left with an Arabic heading and an Arabic product count above an
+       otherwise English page. The parts carrying a dictionary key are handled
+       by i18n.apply(); the heading and the count are written from values only
+       the server had, so they are rewritten here, in the same pass that runs
+       before the first paint, rather than swapped afterwards. */
+    if (seed && seed.dataset.seoLang && seed.dataset.seoLang !== SY.lang()) {
+      const h1 = qs("h1", seed);
+      if (h1) { h1.dataset.own = "1"; h1.textContent = titleFor(); }
+      /* A description with no key is the server's generic sentence in its own
+         language. There is no translation of it to put here, and a paragraph
+         in the wrong language is worse than none. */
+      const desc = qs(".seo-desc", seed);
+      if (desc && !desc.dataset.i18n) desc.remove();
+      /* This branch only runs on a page that is now English or Turkish, so
+         the phrase needs no <bdi>: the whole line reads left to right. */
+      const count = qs(".seo-count", seed);
+      if (count) count.textContent = SY.plural("routeCount", expectedRows());
+    }
+
     /* The browse and brands indexes render from script too, so their box is
        reserved the same way. */
     const index = qs("#indexView");
