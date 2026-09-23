@@ -75,7 +75,9 @@ export default async function handler(req, res) {
     return res.status(200).send('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + urls.join("") + "</urlset>");
   } catch (e) {
     console.error("sitemap error", e);
+    // Temporary: surface why the fallback fired. No secrets pass through here.
+    const why = String((e && e.message) || e).slice(0, 300);
     res.setHeader("Content-Type", "application/xml; charset=utf-8");
-    return res.status(200).send('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>' + origin + "/</loc></url></urlset>");
+    return res.status(200).send('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><!--' + why + '--><url><loc>' + origin + "/</loc></url></urlset>");
   }
 }
